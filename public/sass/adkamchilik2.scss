@@ -1,0 +1,271 @@
+.admin__dashboard-kamchilik2 {
+    display: grid;
+    grid-template-columns: 13% 87%;
+    grid-template-rows: 6% 80%;
+    height: 150vh;
+  
+    &-left {
+      display: grid;
+      grid-template-rows: max-content max-content 1fr;
+      justify-content: center;
+      grid-column: 1 / 2;
+      grid-row: 1 / 5;
+      border: 1px solid black;
+      padding: 1rem;
+      background-image: linear-gradient(
+        to bottom,
+        rgb(166, 32, 180),
+        rgb(56, 156, 208)
+      );
+  
+      &--logo {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 0.7fr;
+        justify-items: center;
+        border-bottom: 1px solid #fff;
+        align-items: center;
+        &--img {
+          width: 60%;
+        }
+        &--title {
+          text-align: center;
+  
+          &--h4 {
+            text-align: center;
+            font-size: 170%;
+            color: #fff;
+          }
+          &--p {
+            text-align: center;
+            color: #fff;
+            font-size: 150%;
+          }
+        }
+      }
+  
+      &--bottom{
+        align-self: flex-end;
+  
+        .admin__left-bottom-text{
+          font-size: 2rem;
+          color: #fff;
+          text-align: center;
+          margin: 2rem;
+        }
+      }
+    }
+  
+    &-top {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+  position: relative;
+      border-bottom: 2px solid rgb(219, 231, 243);
+      display:grid;
+    grid-template-columns: max-content 1fr;
+    justify-items: flex-end;
+    align-items: center;
+    grid-template-rows: 100%;
+    padding: 1rem 3rem;
+  
+    &--left{
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+    &--right{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      column-gap: 2rem;
+    }
+  
+  
+      .admin-top{
+      
+      &--img{
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        overflow: hidden;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  
+        
+      }
+  
+      &--pic{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }}
+  
+    &-main {
+      grid-column: 2 / 3;
+      padding: 2rem;
+      grid-row: 2 / 4;
+      display: grid;
+      gap: 2rem;
+      grid-template-rows: 6% 70%;
+      background-color: rgb(222, 234, 246);
+  
+  &--top{
+  // border-bottom: 1px solid black;
+    .admin__main-top--title{
+      font-size: 2.5rem;
+      color: #000;
+    }
+    .admin__main-top--date{
+      font-size: 2rem;
+      color: rgb(12, 136, 178);
+    }
+  }
+    }
+  
+    &-footer {
+      grid-column: 2 / 3;
+      grid-row: 4 / 5;
+      display: grid;
+      align-items: center;
+  
+  
+      &--pages{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        width: 25%;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+    .admin__footer-link{
+      font-size: 2.5rem;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      color: rgb(10, 75, 109);
+  
+      &:hover{
+        background-color: rgb(80, 143, 244);
+        color: #fff;
+        padding: 0.6rem 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+  .admin__left-nav{
+    display: grid;
+    grid-template-rows: repeat(6, 1f );
+   
+  
+    &--link{
+      color: #fff;
+    font-size: 2rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20% 80%;
+    text-decoration: none;
+    padding: 1rem 2rem;
+  
+    }
+  }
+  .ad-icons {
+    color: white;
+    font-size: 2rem;
+    margin: 1rem 3rem 1rem 0;
+  }
+  
+  .admin-top--icon{
+    font-size: 3.5rem;
+    color: rgb(10, 75, 109);
+  
+  }
+  
+  .admin-footer-icon{
+    font-size: 5rem;
+    color: rgb(80, 143, 244);
+  }
+  .admin__kamchilik2-main{
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 85vw;
+    position: relative;
+  }
+
+  .admin__kamchilik2-main--top{
+
+display: grid;
+grid-template-columns: repeat(3, 1fr );
+gap: 10rem;
+padding: 3rem 0;
+border-bottom: 2px solid grey;
+
+  }
+
+  .kamchilik2__shaxsiy{
+    display: grid;
+grid-template-rows: repeat(4, 7rem);
+row-gap: 2rem;
+  }
+  .kamchilik2__kontakt1{
+    display: grid;
+grid-template-rows: repeat(4,7rem );
+row-gap: 2rem;
+  }
+  .kamchilik2__kontakt2{
+    display: grid;
+grid-template-rows: repeat(4,7rem );
+row-gap: 2rem;
+  }
+
+
+  .kamchilik2-input{
+    display: grid;
+    grid-template-columns: 35% 60%;
+    position: relative;
+  }
+  .kamchilik2-box{
+padding: 1rem 2rem;
+font-size: 1.5rem;
+background-color: rgb(93, 222, 114);
+color: #fff;
+border-top-left-radius: 1rem;
+border-bottom-left-radius: 1rem;
+text-transform: uppercase;
+display: grid;
+align-items: center;
+  }
+  .kamchilik2-main-title{
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgb(255, 148, 124);
+    text-transform: uppercase;
+    padding: 1rem;
+    padding-bottom: 2rem;
+  }
+  .input-kamchilik2{
+    border: none;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 2.5rem;
+
+
+
+
+  }
+  .input-kamchiliklar2-icon{
+    position: absolute;
+    font-size: 2rem;
+    left: 85%;
+    top: 35%;
+  }
+  .kamchilik2__autentifikatsiya{
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    display: grid;
+  }
+  .kamchilik2-unputs-row{
+    grid-template-columns: repeat(3, 20%) 33%;
+    display: grid;
+    column-gap: 4rem;
+    height: 7rem;
+  }

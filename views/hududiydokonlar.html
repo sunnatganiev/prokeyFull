@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+      <label for="navi-toggle" class="navigation__button">
+        <span class="navigation__icon">&nbsp;</span>
+      </label>
+<!-- ikkinchi uzgarsih -->
+      <div class="navigation__background">&nbsp;</div>
+
+      <nav class="navigation__nav">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="index.html" class="navigation__link"
+              >Asosiy</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="mahsulotlar.html" class="navigation__link"
+              >Mahsulotlar</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="hududiydokonlar.html" class="navigation__link"
+              >Hududiy do'konlar</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="yangiliklar.html" class="navigation__link">Yangiliklar</a>
+          </li>
+          <li class="navigation__item">
+            <a href="galereya.html" class="navigation__link">Galereya</a>
+          </li>
+         
+          <li class="navigation__item">
+            <a href="kontaktlar.html" class="navigation__link">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="nav">
+      <div class="nav-logo">
+        <a href="index.html"><img src="img/logopresskeyuz.png" alt="logo" class="logo-img" /></a>
+      </div>
+      <ul class="nav-navigation">
+        <li class="nav-item"><a href="index.html" class="nav-link">Asosiy</a></li>
+        <li class="nav-item"><a href="mahsulotlar.html" class="nav-link">Mahsulotlar</a></li>
+        <li class="nav-item"><a href="hududiydokonlar.html" class="nav-link">Hududiy do'konlar</a></li>
+        <li class="nav-item"><a href="yangiliklar.html" class="nav-link">Yangiliklar</a></li>
+        <li class="nav-item"><a href="galereya.html" class="nav-link">Galereya</a></li>
+        <li class="nav-item"><a href="kontaktlar.html" class="nav-link">Kontakt</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-right-phone">
+          <div class="nav-phone">
+            <p class="tel">Telefon</p>
+            <p class="phone">+998(71)258-36-69</p>
+          </div>
+        </div>
+
+        <div class="icons">
+          <a href="" class="lupa">
+            <i class="far fa-search"></i>
+          </a>
+          <div class="dropdown">
+            <button
+              class="dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Eng
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Ru</a>
+              <a class="dropdown-item" href="#">Uz</a>
+            </div>
+          </div>
+          <i class="fal fa-user"></i>
+          <a href="" class="admin"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hudud">
+      <div class="hudud__head">
+        <h1>Hududiy do'konlar</h1>
+        <div class="underline"></div>
+        <h2>
+          Hududiy do'konlarimizni aniqlash uchun sizdan quyidagi formani
+          to'ldirish talab etiladi.
+        </h2>
+      </div>
+      <div class="hudud__drop tayoq">
+        <div class="hudud__drop-element">
+          <form>
+            <label for="viloyat">Viloyat</label>
+            <select name="viloyat" id="viloyat">
+              <option value="toshkent">Toshkent</option>
+              <option value="samarqand">Samarqand</option>
+              <option value="qarshi">Qarshi</option>
+              <option value="buxoro">Buxoro</option>
+            </select>
+          </form>
+        </div>
+        <div class="hudud__drop-element">
+          <form>
+            <label for="tuman">Tuman</label>
+            <select name="tuman" id="tuman">
+              <option value="yunusobod">Yunusobod</option>
+              <option value="chilonzor">Chilonzor</option>
+              <option value="sergeli">Sergeli</option>
+              <option value="qoraqamish">Qoraqamish</option>
+            </select>
+          </form>
+        </div>
+        <div class="hudud__drop-element">
+          <form>
+            <label for="shahar">Shahar</label>
+            <select name="shahar" id="shahar">
+              <option value="toshkentSh">Toshkent shahri</option>
+              <option value="sample">sample</option>
+              <option value="sample1">sample1</option>
+              <option value="sample2">sample2</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="hudud__malumotlar">
+        <div class="hudud__malumotlar-cart">
+          <i class="far fa-map-marker-alt icon"></i>
+          <h4>Manzil</h4>
+          <p>201 lorem ipsum</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="fal fa-phone-alt icon"></i>
+          <h4>Telefon</h4>
+          <p>+998 00 000 00 00</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="fal fa-envelope icon"></i>
+          <h4>E-Pochta</h4>
+          <p>info@progresskey.uz</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="fal fa-globe icon"></i>
+          <h4>Sayt</h4>
+          <p>progresskey.uz</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="far fa-fax icon"></i>
+          <h4>Faks</h4>
+          <p>+998 71 777 88 99</p>
+        </div>
+      </div>
+      <div class="hudud__map">
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              class="gmap_iframe"
+              width="100%"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+              src="https://maps.google.com/maps?width=1120&amp;height=527&amp;hl=en&amp;q=toshkent&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            ></iframe
+            ><a href="https://www.fridaynightfunkin.net/"
+              >Friday Night Funkin Download</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="hudud__murojat">
+        <h1>Hududiy do'kon adminiga murojaat qilish</h1>
+        <div class="hudud__murojat-container">
+          <div class="hudud__murojat-left">
+            <div class="hudud__murojat-ism">
+              <input type="text" name="ism" placeholder="Ism" />
+            </div>
+            <div class="hudud__murojat-email">
+              <input type="email" name="email" placeholder="E-mail" />
+            </div>
+            <div class="hudud__murojat-number">
+              <input
+                type="number"
+                name="tel"
+                placeholder="+998(__) ___ - __ - __"
+              />
+            </div>
+            <div class="hudud__murojat-textarea">
+              <textarea rows="4" cols="50" placeholder="Xabar matni"></textarea>
+            </div>
+          </div>
+          <div class="hudud__murojat-right">
+            <div class="hudud__murojat-ishvaqti">
+              <input type="text" name="ishvaqti" />
+            </div>
+          </div>
+        </div>
+        <button class="btn" href="#">
+          <span>Jo'natish</span> <i class="fab fa-telegram-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="footer">
+
+      <div class="footer__info">
+        <a href="www.prokey.one
+        " class="footer-text">www.prokey.one
+        </a>
+        <p class="footer-address">Toshkent shaxri, Chilonzor tumani, Bunyodkor va Cho'pon ota ko'chalari kesishuvi
+        </p>
+       
+        <div class="footer-info">
+          <p class="footer-tel"> <i class="fad fa-phone"></i> +998 (91) 778-89-89
+          </p>
+          <p class="footer-tel"> <i class="fad fa-phone"></i> +998 (99) 699-00-19
+      
+          </p>
+        <p class="footer-email"> <i class="fad fa-envelope"></i> info@progresskey.uz</p>
+        <p class="footer-email"> <i class="fab fa-telegram-plane"></i> +998 (99) 699-00-19</p>
+        </div>
+      
+        <div class="footer-ishkun">
+          <h4 class="ishkunlari-left">ish kunlari</h4>
+          <p class="ishkunlari-right">dushanba-Shanba <span>09:00 - 20:00</span></p>
+        </div>
+        <p class="footer-huquq">Progresskey.uz Barcha huquqlar himoyalangan</p>
+      </div>
+      <ul class="footer__menyu">
+        <h3 class="footer-text">menyu</h3>
+        <li class="footer-li"><a href="index.html" class="footer-menyu--link">Asosiy</a></li>
+        <li class="footer-li"><a href="mahsulotlar.html" class="footer-menyu--link">Tovarlar</a></li>
+        <li class="footer-li"><a href="hududiydokonlar.html" class="footer-menyu--link">Hududiy do'konlar</a></li>
+        <li class="footer-li"><a href="yangiliklar.html" class="footer-menyu--link">Yangiliklar</a></li>
+        <li class="footer-li"><a href="galereya.html" class="footer-menyu--link">Galereya</a></li>
+        <li class="footer-li"><a href="kontaktlar.html" class="footer-menyu--link">Ma'lumot va yordam</a></li>
+      </ul>
+      
+      <div class="footer__last">
+        <h3 class="footer-text">
+          sayt yangiliklariga a'zo bo'lish
+        </h3>
+        <form class="footer__form-src" action="">
+          <input class="footer__input" type="text" placeholder="Email" name="search">
+          <button class="footer__btn" type="submit">Jo'natish</button>
+        </form>
+        <h3 class="footer-text">
+      ijtimoiy tarmoqlar
+        </h3>
+        <div class="footer__social-media">
+          <a href="https://www.facebook.com/progresskey" target="_blank" class="facebook">
+            <i class="soc-icons fab fa-facebook"></i>
+          </a>    
+          <a href="https://www.instagram.com/progresskey.uz/" target="_blank" class="instagram">
+            <i class="soc-icons fab fa-instagram"></i>
+          </a>
+          <a href="https://t.me/Progress_key" target="_blank" class="telegram">
+            <i class="soc-icons fab fa-telegram"></i>
+          </a>
+          <a href="" class="twitter">
+            <i class="soc-icons fab fa-twitter"></i>
+          </a>
+        </div>
+      
+      </div>
+      
+       
+      </div>
+      
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/all.js"></script>
+    <script src="scripts/stick.js"></script>
+  </body>
+</html>

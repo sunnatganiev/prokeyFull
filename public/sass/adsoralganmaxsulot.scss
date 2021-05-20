@@ -1,0 +1,155 @@
+.requested_goods_card {
+    border-radius: 1rem;
+    padding: 2rem 2rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+  }
+  
+  .requested_title {
+    display: grid;
+    grid-template-columns:max-content;
+  }
+ 
+  .requested_goods_title {
+    padding: 0;
+    color: orange;
+    padding-left: 0.5rem;
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  
+  table {
+    margin-top: 1rem;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .soralgan_table-th {
+    background-color: rgba(108, 250, 108, 0.26);
+    font-size: 2rem;
+    color: #000;
+    text-align: center;
+  }
+
+  .soralgan_table-td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 2rem;
+    text-align: center;
+  }
+ 
+  
+  tr:nth-child(even) {
+    background-color: #fac3ff2d;
+  }
+  
+  .td_nomer {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .add_requested_goods {
+    width: 20%;
+    margin: auto;
+  }
+  
+  .requested_goods_button .requested_goods_input {
+    display: inline-block;
+    padding: 1rem;
+    font-size: 2.2rem;
+
+  }
+  
+  .requested_goods_input {
+    width: 7rem;
+    text-align: center;
+    border: none;
+    font-size: 2.2rem;
+  }
+  
+  .requested_goods_button {
+    border: none;
+    background-color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  
+  .add_requested_goods {
+    text-align: center;
+    padding: 0;
+  }
+  
+  .requested_total_price {
+    font-weight: bold;
+    text-align: end;
+    padding: 1rem 0rem;
+    font-size: large;
+    color: #000;
+  }
+  
+  .requested_goods_bottom_line {
+    width: 100%;
+    height: 1px;
+    background-color: grey;
+    margin-bottom: 1rem;
+  }
+  
+  .requested_goods_bottom {
+    display: grid;
+    grid-template-columns: 35% 35% 30%;
+  }
+  
+  .requested_goods_left {
+    border-right: 1px solid gray;
+  }
+  
+  .requested_goods_left_title {
+    display: grid;
+    grid-template-columns: 0.1rem max-content;
+  }
+  
+  .requested_goods_title1 {
+    color: orange;
+    padding-left: 0.5rem;
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  
+  .requested_goods_center {
+    padding: 0rem 3rem;
+    border-right: 1px solid gray;
+    margin-right: -2.5rem;
+  }
+  
+  .requested_goods_right {
+    display: grid;
+    padding-left: 6.5rem;
+    gap: 1rem;
+    width: 10rem;
+  }
+  
+  .btn_requested {
+    border-radius: 0.5rem;
+    color: white;
+    border: none;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 19vw;
+    font-size: 2rem;
+  }
+  
+  .requested_goods_btn_top {
+    background-color: tomato;
+  }
+  .requested_goods_btn_middle {
+    background-color: tomato;
+  }
+  
+  .requested_goods_btn_bottom {
+    background-color: rgb(8, 184, 8);
+  }
+  .soralgan__maxsulot-malumotlar--p{
+    font-size: 2rem;
+  }

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>progresskey.uz</title>
+    <style>
+      .mapouter {
+        position: relative;
+        text-align: right;
+        width: 100%;
+        height: 575px;
+      }
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        width: 100%;
+        height: 575px;
+      }
+      .gmap_iframe {
+        height: 575px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+      <label for="navi-toggle" class="navigation__button">
+        <span class="navigation__icon">&nbsp;</span>
+      </label>
+
+      <div class="navigation__background">&nbsp;</div>
+
+      <nav class="navigation__nav">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="index.html" class="navigation__link">Asosiy</a>
+          </li>
+          <li class="navigation__item">
+            <a href="mahsulotlar.html" class="navigation__link">Mahsulotlar</a>
+          </li>
+          <li class="navigation__item">
+            <a href="hududiydokonlar.html" class="navigation__link"
+              >Hududiy do'konlar</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="yangiliklar.html" class="navigation__link">Yangiliklar</a>
+          </li>
+          <li class="navigation__item">
+            <a href="galereya.html" class="navigation__link">Galereya</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="kontaktlar.html" class="navigation__link">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="nav">
+      <div class="nav-logo">
+        <a href="index.html"><img src="img/logopresskeyuz.png" alt="logo" class="logo-img" /></a>
+      </div>
+      <ul class="nav-navigation">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Asosiy</a>
+        </li>
+        <li class="nav-item">
+          <a href="mahsulotlar.html" class="nav-link">Mahsulotlar</a>
+        </li>
+        <li class="nav-item">
+          <a href="hududiydokonlar.html" class="nav-link">Hududiy do'konlar</a>
+        </li>
+        <li class="nav-item">
+          <a href="yangiliklar.html" class="nav-link">Yangiliklar</a>
+        </li>
+        <li class="nav-item">
+          <a href="galereya.html" class="nav-link">Galereya</a>
+        </li>
+        <li class="nav-item">
+          <a href="kontaktlar.html" class="nav-link">Kontakt</a>
+        </li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-right-phone">
+          <div class="nav-phone">
+            <p class="tel">Telefon</p>
+            <p class="phone">+998(71)258-36-69</p>
+          </div>
+        </div>
+
+        <div class="icons">
+          <a href="" class="lupa">
+            <i class="far fa-search"></i>
+          </a>
+          <div class="dropdown">
+            <button
+              class="dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Eng
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Ru</a>
+              <a class="dropdown-item" href="#">Uz</a>
+            </div>
+          </div>
+          <i class="fal fa-user"></i>
+          <a href="" class="admin"></a>
+        </div>
+      </div>
+    </div>
+    <div class="news_main_body">
+      <div class="news_first_sec tayoq">
+        `
+        <div class="news_first_sec_carousel">
+          <div
+            id="yangiliklar_carousel"
+            class="carousel slide"
+            ,
+            data-ride="carousel"
+          >
+            <ul class="carousel-indicators">
+              <li
+                data-target="yangiliklar_carousel"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="yangiliklar_carousel" data-slide-to="1"></li>
+              <li data-target="yangiliklar_carousel" data-slide-to="2"></li>
+            </ul>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  class="carousel_pic"
+                  src="./img/docs/Nurses-support-their-young.jpg"
+                  alt="Los Angeles"
+                />
+                <div class="carousel-caption">
+                  <p>We had such a great time in LA!</p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <img
+                  class="carousel_pic"
+                  src="./img/docs/file-20200407-116223-gwtpno.jpg"
+                  alt="Los Angeles"
+                />
+                <div class="carousel-caption">
+                  <p>We had such a great time in LA!</p>
+                </div>
+              </div>
+
+              <di v class="carousel-item">
+                <img
+                  class="carousel_pic"
+                  src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
+                  alt="Los Angeles"
+                />
+                <div class="carousel-caption">
+                  <p>We had such a great time in LA!</p>
+                </div>
+              </di>
+            </div>
+
+            <a
+              class="carousel-control-prev"
+              href="#yangiliklar_carousel"
+              data-slide="prev"
+            >
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#yangiliklar_carousel"
+              data-slide="next"
+            >
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="news_first_sec_pic_top">
+          <img
+            class="pic_par"
+            src="./img/docs/mobile_home_photo_01.jpg"
+            alt="Los Angeles"
+          />
+          <p class="bottom_center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Distinctio, molestiae!
+          </p>
+        </div>
+
+        <div class="news_first_sec_pic_bottom">
+          <img
+            class="pic_par"
+            src="./img/docs/nurses-in-action.png"
+            alt="Los Angeles"
+          />
+          <p class="bottom_center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Distinctio, molestiae!
+          </p>
+        </div>
+      </div>
+      <h5 class="news_title">So'ngi yangiliklar</h5>
+
+      <div class="news_second_sec">
+        <div class="news_second_sec-left">
+          <div class="second_sec_news_pic">
+            <img
+              class="second_sec_news_pic_class"
+              src="./img/docs/Nurses-support-their-young.jpg"
+              alt=""
+            />
+          </div>
+          <div class="second_sec_info">
+            <div class="second_sec_info_part">
+              <h6 class="second_sec_info_title">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+                veniam possimus doloribus eos unde eius obcaecati.
+              </h6>
+
+              <div class="second_sec_info_line"></div>
+
+              <div class="second_sec_info_text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+                repellendus ex, facere laudantium alias autem, in maiores odit,
+                error atque dolorem et dolore optio facilis nulla officia non
+                totam commodi! Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Pariatur laboriosam facilis autem cumque,
+                enim, modi omnis fuga ullam atque quaerat voluptatem, placeat
+                excepturi voluptate provident dolorum obcaecati ad est quasi
+                dfgva fasf fafsfa afsf.
+              </div>
+            </div>
+            <div class="info__bottom-all">
+              <div class="second_sec_info_datatime">
+                <i class="fal fa-calendar-alt"></i> 19.02.2020
+              </div>
+              <div class="second_sec_info_button_div">
+                <a href="yangiliklarichi.html"><button class="second_sec_info_button">Batafsil...</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="second_sec_mini_news">
+          <div class="second_sec_news_mini-1">
+            <img
+              class="second_sec_news_mini_pic pic"
+              src="./img/docs/Supporting-student-nurses_social-image.jpg"
+              alt=""
+            />
+
+            <div class="second_sec_news_mini_info">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
+              adipisicing.
+            </div>
+          </div>
+
+          <div class="second_sec_news_mini-2">
+            <img
+              class="second_sec_news_mini_pic pic"
+              src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
+              alt=""
+            />
+            <div class="second_sec_news_mini_info">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
+              adipisicing.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="news_second_sec">
+        <div class="news_second_sec-left">
+          <div class="second_sec_news_pic">
+            <img
+              class="second_sec_news_pic_class"
+              src="./img/docs/Nurses-support-their-young.jpg"
+              alt=""
+            />
+          </div>
+          <div class="second_sec_info">
+            <div class="second_sec_info_part">
+              <h6 class="second_sec_info_title">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+                veniam possimus doloribus eos unde eius obcaecati.
+              </h6>
+
+              <div class="second_sec_info_line"></div>
+
+              <div class="second_sec_info_text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+                repellendus ex, facere laudantium alias autem, in maiores odit,
+                error atque dolorem et dolore optio facilis nulla officia non
+                totam commodi! Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Pariatur laboriosam facilis autem cumque,
+                enim, modi omnis fuga ullam atque quaerat voluptatem, placeat
+                excepturi voluptate provident dolorum obcaecati ad est quasi
+                dfgva fasf fafsfa afsf.
+              </div>
+            </div>
+            <div class="info__bottom-all">
+              <div class="second_sec_info_datatime">
+                <i class="fal fa-calendar-alt"></i> 19.02.2020
+              </div>
+              <div class="second_sec_info_button_div">
+                <a href="yangiliklarichi.html"><button class="second_sec_info_button">Batafsil...</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="second_sec_mini_news">
+          <div class="second_sec_news_mini-1">
+            <img
+              class="second_sec_news_mini_pic pic"
+              src="./img/docs/Supporting-student-nurses_social-image.jpg"
+              alt=""
+            />
+
+            <div class="second_sec_news_mini_info">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
+              adipisicing.
+            </div>
+          </div>
+
+          <div class="second_sec_news_mini-2">
+            <img
+              class="second_sec_news_mini_pic pic"
+              src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
+              alt=""
+            />
+            <div class="second_sec_news_mini_info">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
+              adipisicing.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="news_second_sec">
+        <div class="news_second_sec-left">
+          <div class="second_sec_news_pic">
+            <img
+              class="second_sec_news_pic_class"
+              src="./img/docs/Nurses-support-their-young.jpg"
+              alt=""
+            />
+          </div>
+          <div class="second_sec_info">
+            <div class="second_sec_info_part">
+              <h6 class="second_sec_info_title">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+                veniam possimus doloribus eos unde eius obcaecati.
+              </h6>
+
+              <div class="second_sec_info_line"></div>
+
+              <div class="second_sec_info_text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+                repellendus ex, facere laudantium alias autem, in maiores odit,
+                error atque dolorem et dolore optio facilis nulla officia non
+                totam commodi! Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Pariatur laboriosam facilis autem cumque,
+                enim, modi omnis fuga ullam atque quaerat voluptatem, placeat
+                excepturi voluptate provident dolorum obcaecati ad est quasi
+                dfgva fasf fafsfa afsf.
+              </div>
+            </div>
+            <div class="info__bottom-all">
+              <div class="second_sec_info_datatime">
+                <i class="fal fa-calendar-alt"></i> 19.02.2020
+              </div>
+              <div class="second_sec_info_button_div">
+                <a href="yangiliklarichi.html"><button class="second_sec_info_button">Batafsil...</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="second_sec_mini_news">
+          <div class="second_sec_news_mini-1">
+            <img
+              class="second_sec_news_mini_pic pic"
+              src="./img/docs/Supporting-student-nurses_social-image.jpg"
+              alt=""
+            />
+
+            <div class="second_sec_news_mini_info">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
+              adipisicing.
+            </div>
+          </div>
+
+          <div class="second_sec_news_mini-2">
+            <img
+              class="second_sec_news_mini_pic pic"
+              src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
+              alt=""
+            />
+            <div class="second_sec_news_mini_info">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
+              adipisicing.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+
+      <div class="footer__info">
+        <a href="www.prokey.one
+        " class="footer-text">www.prokey.one
+        </a>
+        <p class="footer-address">Toshkent shaxri, Chilonzor tumani, Bunyodkor va Cho'pon ota ko'chalari kesishuvi
+        </p>
+       
+        <div class="footer-info">
+          <p class="footer-tel"> <i class="fad fa-phone"></i> +998 (91) 778-89-89
+          </p>
+          <p class="footer-tel"> <i class="fad fa-phone"></i> +998 (99) 699-00-19
+      
+          </p>
+        <p class="footer-email"> <i class="fad fa-envelope"></i> info@progresskey.uz</p>
+        <p class="footer-email"> <i class="fab fa-telegram-plane"></i> +998 (99) 699-00-19</p>
+        </div>
+      
+        <div class="footer-ishkun">
+          <h4 class="ishkunlari-left">ish kunlari</h4>
+          <p class="ishkunlari-right">dushanba-Shanba <span>09:00 - 20:00</span></p>
+        </div>
+        <p class="footer-huquq">Progresskey.uz Barcha huquqlar himoyalangan</p>
+      </div>
+      <ul class="footer__menyu">
+        <h3 class="footer-text">menyu</h3>
+        <li class="footer-li"><a href="index.html" class="footer-menyu--link">Asosiy</a></li>
+        <li class="footer-li"><a href="mahsulotlar.html" class="footer-menyu--link">Tovarlar</a></li>
+        <li class="footer-li"><a href="hududiydokonlar.html" class="footer-menyu--link">Hududiy do'konlar</a></li>
+        <li class="footer-li"><a href="yangiliklar.html" class="footer-menyu--link">Yangiliklar</a></li>
+        <li class="footer-li"><a href="galereya.html" class="footer-menyu--link">Galereya</a></li>
+        <li class="footer-li"><a href="kontaktlar.html" class="footer-menyu--link">Ma'lumot va yordam</a></li>
+      </ul>
+      
+      <div class="footer__last">
+        <h3 class="footer-text">
+          sayt yangiliklariga a'zo bo'lish
+        </h3>
+        <form class="footer__form-src" action="">
+          <input class="footer__input" type="text" placeholder="Email" name="search">
+          <button class="footer__btn" type="submit">Jo'natish</button>
+        </form>
+        <h3 class="footer-text">
+      ijtimoiy tarmoqlar
+        </h3>
+        <div class="footer__social-media">
+          <a href="https://www.facebook.com/progresskey" target="_blank" class="facebook">
+            <i class="soc-icons fab fa-facebook"></i>
+          </a>    
+          <a href="https://www.instagram.com/progresskey.uz/" target="_blank" class="instagram">
+            <i class="soc-icons fab fa-instagram"></i>
+          </a>
+          <a href="https://t.me/Progress_key" target="_blank" class="telegram">
+            <i class="soc-icons fab fa-telegram"></i>
+          </a>
+          <a href="" class="twitter">
+            <i class="soc-icons fab fa-twitter"></i>
+          </a>
+        </div>
+      
+      </div>
+      
+       
+      </div>
+      
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/all.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

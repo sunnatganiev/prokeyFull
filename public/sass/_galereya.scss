@@ -1,0 +1,373 @@
+.galereya {
+  padding: 2rem 10rem;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3rem;
+
+  @include responsive($bp-xl) {
+    padding: 2rem 5rem;
+  }
+  @include responsive($bp-s) {
+    grid-template-rows: min-content min-content min-content;
+    gap: 4rem;
+  }
+
+  &__top {
+    display: grid;
+    grid-row: 1 / 2;
+    grid-template-columns: 1fr 3fr 2fr;
+    gap: 2rem;
+
+    @include responsive($bp-s) {
+      grid-template-columns: 2fr 1fr;
+    }
+    @include responsive($bp-500) {
+      grid-template-columns: 1fr;
+    }
+
+    &-middle {
+      grid-column: 1 / 3;
+      position: relative;
+
+      @include responsive($bp-s) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+      @include responsive($bp-500) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+      // border: 1px solid black;
+    }
+    &-right {
+      grid-column: 3 / 4;
+      gap: 2rem;
+      display: grid;
+      grid-template-rows: 1.4fr 1fr;
+
+      @include responsive($bp-s) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+
+      @include responsive($bp-500) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      &--2 {
+        padding: 1rem 5rem;
+      }
+    }
+  }
+
+  &__middle {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include responsive($bp-s) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.5fr min-content;
+    }
+    &-left {
+      grid-column: 1 / 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      gap: 2rem;
+
+      @include responsive($bp-s) {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      // border: 1px solid black;
+      &--top {
+        grid-row: 1 / 2;
+        position: relative;
+
+        // border: 1px solid black;
+      }
+
+      // &--bottom {
+      //   padding: 1rem 3rem;
+      //   display: grid;
+      //   gap: 2rem;
+      //   grid-template-columns: repeat(4, 1fr);
+
+      //   @include responsive($bp-s) {
+      //     grid-column: 1 / 3;
+      //     grid-row: 2 / 3;
+      //     padding: 1rem 0;
+      //   }
+
+      //   @include responsive($bp-500) {
+      //     grid-template-columns: repeat(2, 1fr);
+      //     grid-template-rows: repeat(2, 1fr);
+      //   }
+      // }
+    }
+    &-right {
+      grid-column: 2 / 4;
+      display: grid;
+      gap: 2rem;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+
+      @include response($bp-s) {
+        grid-column: 1 / 2;
+      }
+
+      &--1 {
+        grid-column: 1 / 3;
+
+        @include responsive($bp-500) {
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    @include responsive($bp-s) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    gap: 2rem;
+    &-left {
+      grid-column: 1 / 2;
+      position: relative;
+
+      // border: 1px solid black;
+    }
+    &-right {
+      grid-column: 2 / 3;
+
+      @include responsive($bp-s) {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+      }
+
+      display: grid;
+      gap: 2rem;
+      grid-template-rows: repeat(4, 1fr);
+
+      &--1 {
+        // border: 1px solid black;
+        padding-top: 10%;
+      }
+      &--2 {
+        // border: 1px solid black;
+        padding-top: 10%;
+      }
+      &--3 {
+        // border: 1px solid black;
+        padding-top: 10%;
+      }
+
+      &--4 {
+        // border: 1px solid black;
+        padding-top: 10%;
+      }
+    }
+  }
+}
+
+.tl-img {
+  width: 100%;
+  height: 100%;
+  grid-row: 1 / 2;
+}
+.mrl-img {
+  width: 100%;
+  height: 50%;
+}
+.mrr-img {
+  width: 100%;
+  height: 30%;
+}
+
+.tr {
+  &-title {
+    font-size: 2rem;
+    padding: 1rem 0;
+    color: black;
+    @include responsive($bp-500) {
+      font-size: 3rem;
+    }
+  }
+
+  &-text {
+    font-size: 1.5rem;
+
+    @include responsive($bp-500) {
+      font-size: 2.5rem;
+    }
+  }
+}
+.mrl {
+  &-title {
+    font-size: 4rem;
+    padding: 2rem 0;
+    text-align: center;
+    @include responsive($bp-xxl) {
+      padding: 1rem 0;
+    }
+    @include responsive($bp-s) {
+      font-size: 3.5rem;
+    }
+    @include responsive($bp-500) {
+      font-size: 3.5rem;
+      padding: 1rem 0;
+    }
+  }
+  &-text {
+    padding: 3rem 5rem;
+    font-size: 2rem;
+
+    @include responsive($bp-xxl) {
+      padding: 1rem 5rem;
+    }
+    @include responsive($bp-s) {
+      font-size: 2.5rem;
+    }
+    @include responsive($bp-500) {
+      font-size: 3rem;
+    }
+  }
+}
+.mrb {
+  &-title {
+    font-size: 2rem;
+    padding: 2rem 0;
+    color: black;
+    @include responsive($bp-s) {
+      font-size: 3.5rem;
+    }
+    @include responsive($bp-500) {
+      font-size: 6.5rem;
+    }
+  }
+  &-text {
+    @include responsive($bp-s) {
+      font-size: 2.5rem;
+    }
+    @include responsive($bp-500) {
+      font-size: 4.5rem;
+    }
+  }
+}
+.mrr-btn {
+  padding: 4% 13%;
+  border: 2px solid rgb(91, 91, 241);
+  background-color: transparent;
+  border-radius: 10rem;
+  font-size: 1.5rem;
+}
+.btn-home {
+  display: flex;
+  justify-content: center;
+}
+.titlewebpage {
+  display: flex;
+  justify-content: space-between;
+
+  &-1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+
+    @include responsive($bp-s) {
+      font-size: 3rem;
+    }
+  }
+  &-2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+
+    @include responsive($bp-s) {
+      font-size: 3rem;
+    }
+  }
+}
+.typeofpage {
+  display: flex;
+  justify-content: space-between;
+
+  &-1 {
+    font-size: 1.5rem;
+
+    @include responsive($bp-s) {
+      font-size: 3rem;
+    }
+  }
+  &-2 {
+    font-size: 1.5rem;
+
+    @include responsive($bp-s) {
+      font-size: 3rem;
+    }
+  }
+}
+.title-lorem {
+  display: flex;
+  justify-content: space-between;
+
+  &-1 {
+    font-size: 1.5rem;
+
+    @include responsive($bp-s) {
+      font-size: 3rem;
+    }
+    @include responsive($bp-500) {
+      font-size: 2rem;
+    }
+  }
+  &-2 {
+    font-size: 1.5rem;
+
+    @include responsive($bp-s) {
+      font-size: 3rem;
+    }
+    @include responsive($bp-500) {
+      font-size: 2rem;
+    }
+  }
+}
+.tl-img-text {
+  position: absolute;
+  bottom: 0;
+  padding: 3rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  color: #fff;
+  &-h3 {
+    font-size: 3rem;
+    color: rgb(153, 144, 144);
+
+    @include responsive($bp-xxl) {
+      font-size: 2rem;
+    }
+  }
+  &-h4 {
+    font-size: 4rem;
+
+    @include responsive($bp-xxl) {
+      font-size: 3rem;
+    }
+  }
+  &-p {
+    font-size: 2rem;
+    color: rgb(153, 144, 144);
+
+    @include responsive($bp-xxl) {
+      font-size: 1.5;
+    }
+  }
+}

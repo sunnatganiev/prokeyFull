@@ -1,0 +1,90 @@
+.mahsulotlar {
+  padding: 4% 10% 10%;
+  z-index: 0;
+
+  @include responsive($bp-600) {
+    padding-bottom: 30%;
+  }
+
+  @include responsive($bp-420) {
+    padding-bottom: 258%;
+  }
+
+  &__page {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 3%;
+    column-gap: 5%;
+    // margin-bottom: 5rem;
+    padding: 5vh 0 0;
+
+    @include responsive($bp-7) {
+      grid-template-columns: 4, 1fr;
+    }
+
+    @include responsive($bp-600) {
+      gap: 8rem;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 1vh 2rem;
+    }
+    @include responsive($bp-585) {
+      padding: 3% 5%;
+      row-gap: 3%;
+    }
+
+    @include responsive($bp-420) {
+      grid-template-columns: 1fr;
+      row-gap: 1%;
+    }
+
+    &-royxat {
+      display: flex;
+      justify-content: center;
+      padding: 5vh 0 0;
+    }
+
+    &-card {
+      border-radius: 3%;
+      //   margin: 3rem;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+
+      &:hover .back {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.mahsulot-img {
+  height: 40rem;
+}
+
+.colored {
+  color: rgb(255, 213, 74);
+}
+
+.fa-star {
+  font-size: 2rem;
+  text-align: center;
+  padding: 0.1rem;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.m-logo {
+  width: 25rem;
+}
+
+.mahsulot-card:hover .card_inside {
+  text-decoration: none;
+}
+
+.card_inside h3 {
+  color: var(--color-grey-dark-2);
+}
