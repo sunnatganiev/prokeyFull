@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+<!-- Bu uchinchisi -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <%- include('./components/nav.ejs') %>
+
+
+    <div class="hudud">
+      <div class="hudud__malumotlar">
+        <div class="hudud__malumotlar-cart tayoq">
+          <i class="far fa-map-marker-alt icon"></i>
+          <h4>Manzil</h4>
+          <p>201 lorem ipsum</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="fal fa-phone-alt icon"></i>
+          <h4>Telefon</h4>
+          <p>+998 00 000 00 00</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="fal fa-envelope icon"></i>
+          <h4>E-Pochta</h4>
+          <p>info@progresskey.uz</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="fal fa-globe icon"></i>
+          <h4>Sayt</h4>
+          <p>progresskey.uz</p>
+        </div>
+        <div class="hudud__malumotlar-cart">
+          <i class="far fa-fax icon"></i>
+          <h4>Faks</h4>
+          <p>+998 71 777 88 99</p>
+        </div>
+      </div>
+      <div class="hudud__murojat">
+        <h1>Hududiy do'kon adminiga murojaat qilish</h1>
+        <div class="hudud__murojat-container">
+          <div class="hudud__murojat-left">
+            <div class="hudud__murojat-ism">
+              <input type="text" name="ism" placeholder="Ism" />
+            </div>
+            <div class="hudud__murojat-email">
+              <input type="email" name="email" placeholder="E-mail" />
+            </div>
+            <div class="hudud__murojat-number">
+              <input
+                type="number"
+                name="tel"
+                placeholder="+998(__) ___ - __ - __"
+              />
+            </div>
+            <div class="hudud__murojat-textarea">
+              <textarea rows="4" cols="50" placeholder="Xabar matni"></textarea>
+            </div>
+          </div>
+          <div class="hudud__murojat-right">
+            <div class="hudud__murojat-ishvaqti">
+              <input type="text" name="ishvaqti" />
+            </div>
+          </div>
+        </div>
+        <button class="btn" href="#">
+          <span>Jo'natish</span> <i class="fab fa-telegram-plane"></i>
+        </button>
+      </div>
+      <div class="hudud__map">
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              class="gmap_iframe"
+              width="100%"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+              src="https://maps.google.com/maps?width=1120&amp;height=527&amp;hl=en&amp;q=toshkent&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            ></iframe
+            ><a href="https://www.fridaynightfunkin.net/"
+              >Friday Night Funkin Download</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./components/footer.ejs') %>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/all.js"></script>
+    <script src="scripts/stick.js"></script>
+  </body>
+</html>

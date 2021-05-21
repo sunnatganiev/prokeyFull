@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="admin__dashboard">
+      <div class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+        <label for="navi-toggle" class="navigation__button">
+          <span class="navigation__icon">&nbsp;</span>
+        </label>
+  
+        <div class="navigation__background">&nbsp;</div>
+  
+        <nav class="navigation__nav">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a href="index.html" class="navigation__link"
+                >Asosiy</a
+              >
+            </li>
+            <li class="navigation__item">
+              <a href="mahsulotlar.html" class="navigation__link"
+                >Mahsulotlar</a
+              >
+            </li>
+            <li class="navigation__item">
+              <a href="hududiydokonlar.html" class="navigation__link"
+                >Hududiy do'konlar</a
+              >
+            </li>
+            <li class="navigation__item">
+              <a href="yangiliklar.html" class="navigation__link">Yangiliklar</a>
+            </li>
+            <li class="navigation__item">
+              <a href="galereya.html" class="navigation__link">Galereya</a>
+            </li>
+           
+            <li class="navigation__item">
+              <a href="kontaktlar.html" class="navigation__link">Kontakt</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div id="leftMenu" class="admin__dashboard-left"> 
+        <div class="admin__dashboard-left--logo">
+          <a href="index.html" style="text-align: center;">
+
+            <img
+              class="admin__dashboard-left--logo--img"
+              src="img/logopresskeyuz.png"
+              alt=""
+            />
+          </a>
+          <div class="admin__dashboard-left--logo--title">
+            <h4 class="admin__dashboard-left--logo--title--h4">
+              PROGRESSKEY.UZ
+            </h4>
+            <p class="admin__dashboard-left--logo--title--p">admin panel</p>
+          </div>
+        </div>
+        <div class="admin__left-nav">
+          <a href="adasosiy.html" class="admin__left-nav--link">
+            <i class="ad-icons fad fa-bars"></i>Asosiy</a
+          >
+          <a href="#" class="admin__left-nav--link"
+            ><i class="ad-icons fad fa-clipboard"></i> Registratorlar</a
+          >
+          <a href="adkamchilik2.html" class="admin__left-nav--link"
+            ><i class="ad-icons fad fa-users"></i>Xaridorlar</a
+          >
+          <a href="adsoralganmaxsulot.html" class="admin__left-nav--link"
+            ><i class="ad-icons fad fa-laptop"></i> Sayt boshqaruvi</a
+          >
+          <a href="adombor.html" class="admin__left-nav--link"
+            ><i class="ad-icons fas fa-warehouse-alt"></i>Ombor</a
+          >
+          <a href="#" class="admin__left-nav--link"
+            ><i class="ad-icons fal fa-cog"></i> Sozlamalar</a
+          >
+        </div>
+        <div class="admin__dashboard-left--bottom">
+          <button class="btn-chiqish">
+            <i class="far fa-power-off"></i> Tizimdan chiqish
+          </button>
+          <p class="admin__left-bottom-text">Softplus.uz</p>
+        </div>
+      </div> 
+
+      <div class="admin__dashboard-top">
+
+        <div class="box-arrow--left">
+          <i id="btnLeft" onclick="closeFunction()" class=" arrow-left  far  fa-arrow-left"></i>
+        </div>
+        <!-- <div class="box-arrow--right">
+          <i  id="btnRight"  onclick="openFunction()" class=" arrow-right   far fa-arrow-right"></i>
+
+        </div> -->
+     
+       
+        <h4 class="admin__dashboard-top--left">
+          <%= user.name %>  <%= user.surname %>
+        </h4>
+        <div class="admin__dashboard-top--right">
+          <i class="admin-top--icon fal fa-comment-alt-lines"></i>
+          <i class="admin-top--icon far fa-search"></i>
+          <i class="admin-top--icon fad fa-bell"></i>
+          <div class="admin-top--img">
+            <img src=<%="img/${user.photo}"%> alt="" class="admin-top--pic" />
+          </div>
+        </div>
+        </div>
+
+        <div class="admin__dashboard-main">
+          <div class="admin__dashboard-main--top">
+            <h4 class="admin__main-top--title">Admin dashboard</h4>
+            <div class="admin__main-top--date">26/02/2021</div>
+          </div>
+  
+          <div class="adasosiy__main">
+            <div class="adasosiy__main-registratorlar">
+              <div class="adasosiy__main-registratorlar--top">
+                <h3 class="adasosiy-registratorlar">registratorlar</h3>
+                <p class="adasosiy-jadval">Jadval holatida ko'rish</p>
+              </div>
+              <div class="adasosiy__main-registratorlar--bottom">
+                <div class="adasosiy-card--1">
+                  <div class="adasosiy-card--1--top">
+                    <i class="adasosiy-plus far fa-plus"></i>
+                  </div>
+                  <p class="adasosiy-card--1--bottom">Yangi qo'shish</p>
+                </div>
+                <div class="adasosiy-card--2">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--2">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--2">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--2">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--2"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="adasosiy-card--3">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--3">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--3">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--3">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--3"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="adasosiy-card--4">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--4">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--4">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--4">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--4"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="adasosiy-card--5">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--5">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--5">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--5">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--5"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="adasosiy__main-registratorlar">
+              <div class="adasosiy__main-registratorlar--top">
+                <h3 class="adasosiy-registratorlar">xaridorlar</h3>
+                <p class="adasosiy-jadval">Jadval holatida ko'rish</p>
+              </div>
+              <div class="adasosiy__main-registratorlar--bottom">
+                <div class="adasosiy-card--1">
+                  <div class="adasosiy-card--1--top">
+                    <i class="adasosiy-plus far fa-plus"></i>
+                  </div>
+                  <p class="adasosiy-card--1--bottom">Yangi qo'shish</p>
+                </div>
+                <div class="adasosiy-card--2">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--2">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--2">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--2">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--2"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="adasosiy-card--3">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--3">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--3">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--3">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--3"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="adasosiy-card--4">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                         src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--4">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--4">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--4">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--4"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="adasosiy-card--5">
+                  <div class="adasosiy-card--top">
+                    <div class="adasosiy-card--top--left">
+                      <img
+                        class="adasosiy-card--top--left--img"
+                        src="img/face.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="adasosiy-card--top--right">
+                      <p class="adasosiy-card--name">Azamat Azamatov</p>
+                      <p class="adasosiy-card--id"><span>ID </span> UZ 0056563</p>
+                      <p class="adasosiy-card--lavozim">
+                        <span>Lavozim </span> Registrator
+                      </p>
+                    </div>
+                  </div>
+  
+                  <div class="adasosiy-card--middle">
+                    <p class="adasosiy-card--middle--top--5">
+                      Qo'shilgan profillari
+                    </p>
+                    <div class="adasosiy-card--middle--bottom">
+                      <div class="adasosiy-card--middle-img--1">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--2">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--3">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--4">
+                        <img
+                          src="img/face.jpg"
+                          alt=""
+                          class="adasosiy-card--middle--img--pic"
+                        />
+                      </div>
+                      <div class="adasosiy-card--middle-img--5">+55</div>
+                    </div>
+                  </div>
+                  <div class="adasosiy-card--bottom">
+                    <div class="adasosiy-card--bottom--top">
+                      <p class="adasosiy-card--bottom--top--left--5">Faolligi</p>
+                      <p class="adasosiy-card--bottom--top--right--5">67%</p>
+                    </div>
+                    <div class="adasosiy-card--bottom--line">
+                      <div class="adasosiy-card--bottom--line--into--5"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="ad__main-right">
+            <div class="ad__main-right--ombor">
+              <h3 class="adasosiy-ombor--title">ombor</h3>
+              <p class="adasosiy-ombor--text">barcha mahsulotlar</p>
+              <p class="adasosiy-ombor--bonus">443.022 <span>ball</span></p>
+            </div>
+            <div class="ad__main-right--soralgan">
+              <h3 class="adasosiy-ombor--title">so'ralgan</h3>
+              <p class="adasosiy-ombor--text">barcha mahsulotlar</p>
+              <p class="adasosiy-soralgan--bonus">443.022 <span>ball</span></p>
+            </div>
+          </div>
+        </div>
+
+
+        
+              <div class="admin__dashboard-footer">
+                <div class="admin__dashboard-footer--pages">
+                  <a href="#" class="admin__footer-link"
+                    ><i class="admin-footer-icon fas fa-chevron-square-left"></i> </a
+                  ><a href="#" class="admin__footer-link">1 </a
+                  ><a href="#" class="admin__footer-link">2 </a
+                  ><a href="#" class="admin__footer-link">3 </a
+                  ><a href="#" class="admin__footer-link">4 </a
+                  ><a href="#" class="admin__footer-link"
+                    ><i class="admin-footer-icon fas fa-chevron-square-right"></i>
+                  </a>
+                </div>
+              </div>
+
+      </div>
+
+    </div>
+
+    <script src="scripts/all.js"></script>
+  
+  </body>
+</html>
