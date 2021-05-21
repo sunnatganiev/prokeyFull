@@ -1,8 +1,9 @@
 /* eslint-disable */
 import '@babel/polyfill';
-import { login } from './login';
+import { login, logout } from './login';
 
 const loginForm = document.getElementById('login');
+const logOutBtn = document.getElementById('logout');
 
 loginForm?.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -10,3 +11,5 @@ loginForm?.addEventListener('submit', (e) => {
   const password = document.getElementById('password').value;
   login(email, password);
 });
+
+if(logOutBtn) logOutBtn.addEventListener('click', logout)

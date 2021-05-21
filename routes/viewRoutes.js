@@ -5,11 +5,22 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/', viewsController.home);
+
 router.get('/index.html', viewsController.home);
 
 router.get('/mahsulotlar.html', viewsController.getProducts);
 
+router.get('/mahsulotichi.html', viewsController.proIn);
+
+router.get('/hududiydokonlar.html', viewsController.dokonlar);
+
+router.get('/galereya.html', viewsController.galereya);
+
+router.get('/kontaktlar.html', viewsController.kontakt);
+
 router.get('/yangiliklar.html', viewsController.yangiliklar);
+
+router.get('/yangiliklarichi.html', viewsController.yangilikIchi);
 
 router.get(
   '/login.html',
