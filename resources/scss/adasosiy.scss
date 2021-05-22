@@ -1,0 +1,954 @@
+.admin__dashboard {
+  display: grid;
+  grid-template-columns: 13% 87%;
+  grid-template-rows: 6% 80%;
+  height: 100vh;
+
+  @include responsive($bp-xl) {
+    grid-template-columns: 100%;
+    grid-template-rows: 8% 6% 80%;
+  }
+
+  &-left {
+    display: grid;
+    grid-template-rows: max-content max-content 1fr;
+    justify-content: center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
+    padding: 1rem;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(166, 32, 180),
+      rgb(56, 156, 208)
+    );
+    @include responsive($bp-xl) {
+      grid-row: 1 / 2;
+      grid-template-rows: 100%;
+      grid-template-columns: max-content max-content max-content;
+      justify-content: space-around;
+      padding: 1rem 0;
+    }
+
+    &--logo {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 0.7fr;
+      justify-items: center;
+      border-bottom: 1px solid #fff;
+      align-items: center;
+
+      @include responsive($bp-xl) {
+        grid-template-columns: 10rem;
+        border-bottom: none;
+        border-right: 1px solid #fff;
+        padding: 0 1rem;
+
+        @include responsive($bp-ipad) {
+          border-right: none;
+        }
+      }
+      &--img {
+        width: 60%;
+
+        @include responsive($bp-xl) {
+          width: 80%;
+        }
+      }
+      &--title {
+        text-align: center;
+        @include responsive($bp-xl) {
+          display: none;
+        }
+
+        &--h4 {
+          text-align: center;
+          // font-size: 170%;
+          color: #fff;
+
+          @include responsive($bp-xl) {
+            display: none;
+          }
+        }
+        &--p {
+          text-align: center;
+          color: #fff;
+          // font-size: 150%;
+        }
+      }
+    }
+
+    &--bottom {
+      align-self: flex-end;
+
+      @include responsive($bp-xl) {
+        align-self: center;
+      }
+
+      .admin__left-bottom-text {
+        // font-size: 2rem;
+        color: #fff;
+        text-align: center;
+        margin: 2rem;
+
+        @include responsive($bp-xl) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &-top {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    position: relative;
+    border-bottom: 2px solid rgb(219, 231, 243);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    justify-items: flex-end;
+    align-items: center;
+    grid-template-rows: 100%;
+    padding: 1rem 3rem;
+
+    @include responsive($bp-xl) {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+    }
+
+    &--left {
+      // font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+    &--right {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 2rem;
+      align-items: center;
+    }
+
+    .admin-top {
+      &--img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+      }
+
+      &--pic {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &-main {
+    grid-column: 2 / 3;
+    padding: 2rem;
+    grid-row: 2 / 4;
+    display: grid;
+    gap: 2rem;
+    grid-template-rows: 7% 90%;
+    background-color: rgb(222, 234, 246);
+    grid-template-columns: 80% 20%;
+
+    @include responsive($bp-xl) {
+      grid-row: 3 /4;
+      grid-column: 1 / 2;
+    }
+    @include responsive($bp-l) {
+      grid-template-columns: 100%;
+      grid-template-rows: 4% 69% 15%;
+      display: grid;
+      padding: 1rem;
+    }
+    @include responsive($bp-s) {
+      height: 285vh;
+      grid-template-rows: 2% 85% 10%;
+    }
+
+    &--top {
+      border-bottom: 1px solid rgb(199, 198, 198);
+      grid-column: 1 / 3;
+
+      @include responsive($bp-l) {
+        grid-template-columns: max-content max-content;
+        display: grid;
+        align-items: center;
+        column-gap: 4rem;
+      }
+      .admin__main-top--title {
+        // font-size: 2rem;
+        color: #000;
+
+        @include responsive($bp-1000) {
+          // font-size: 3rem;
+        }
+      }
+      .admin__main-top--date {
+        // font-size: 1.5rem;
+        color: rgb(12, 136, 178);
+
+        @include responsive($bp-1000) {
+          // font-size: 2.5rem;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+
+    display: grid;
+    align-items: center;
+
+    @include responsive($bp-xl) {
+      grid-column: 1 / 2;
+    }
+    @include responsive($bp-s) {
+      transform: translateY(428rem);
+    }
+
+    &--pages {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      width: 25%;
+      align-items: center;
+      gap: 1rem;
+
+      @include responsive($bp-s) {
+        gap: 5rem;
+      }
+    }
+  }
+  .admin__footer-link {
+    // font-size: 2.5rem;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    color: rgb(10, 75, 109);
+
+    &:hover {
+      background-color: rgb(80, 143, 244);
+      color: #fff;
+      padding: 0.6rem 0;
+      border-radius: 1rem;
+    }
+  }
+
+  .admin__left-nav {
+    display: grid;
+    grid-template-rows: repeat(6, 1f);
+
+    @include responsive($bp-xl) {
+      grid-template-columns: repeat(6, max-content);
+      grid-template-rows: 100%;
+    }
+    @include responsive($bp-ipad) {
+      display: none;
+    }
+
+    .admin__left-nav--link {
+      color: #fff;
+      // font-size: 1.8rem;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 20% 80%;
+      text-decoration: none;
+      padding: 1rem 2rem;
+
+      @include responsive($bp-xl) {
+        // font-size: 1.5rem;
+        grid-template-columns: 100%;
+      }
+      @include responsive($bp-1000) {
+        // font-size: 2.5rem;
+      }
+    }
+  }
+  .ad-icons {
+    color: white;
+    // font-size: 2rem;
+    margin: 1rem 3rem 1rem 0;
+
+    @include responsive($bp-xl) {
+      display: none;
+    }
+  }
+
+  .admin-top--icon {
+    // font-size: 3.5rem;
+    color: rgb(10, 75, 109);
+  }
+
+  .admin-footer-icon {
+    // font-size: 5rem;
+    color: rgb(80, 143, 244);
+  }
+
+  .adasosiy__main {
+    display: grid;
+    overflow: hidden;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+    padding: 0 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    grid-column: 1 / 2;
+    grid-template-rows: repeat(2, 50%);
+    @include responsive($bp-l) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4rem;
+      grid-template-rows: 1fr;
+      background-color: #deeaf6;
+      box-shadow: none;
+    }
+    @include responsive($bp-s) {
+      grid-template-columns: 100%;
+      grid-template-rows: repeat(2, 1fr);
+      row-gap: 3rem;
+    }
+    &-registratorlar {
+      height: 30vh;
+      display: grid;
+      row-gap: 3rem;
+      @include responsive($bp-l) {
+        background-color: #fff;
+        height: 53vh;
+        padding: 0 2rem 1rem;
+        border-radius: 3rem;
+      }
+      @include responsive($bp-s) {
+        height: 115vh;
+      }
+
+      &--top {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid grey;
+        padding: 1rem;
+
+        @include responsive($bp-l) {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: 1fr 1fr;
+        }
+      }
+
+      &--bottom {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3rem;
+
+        @include responsive($bp-16) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include responsive($bp-l) {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: 1fr 1fr;
+        }
+        @include responsive($bp-s) {
+          grid-template-columns: 100%;
+          padding: 4rem 13rem;
+        }
+        @include responsive($bp-600) {
+          padding: 4rem 0;
+        }
+      }
+    }
+  }
+
+  .adasosiy-card {
+    &--1 {
+      display: grid;
+      grid-template-rows: 60% 40%;
+      position: relative;
+      height: 18vw;
+
+      background-image: linear-gradient(
+          to right,
+          rgba(242, 242, 242, 0.8),
+          rgba(242, 242, 242, 0.8)
+        ),
+        url(../img/pattern.jpg);
+      background-size: cover;
+      border-radius: 4rem;
+      justify-items: center;
+      align-items: center;
+
+      @include responsive($bp-l) {
+        height: 23vh;
+      }
+
+      &--top {
+        width: 8rem;
+        height: 8rem;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        border: 3px solid grey;
+        display: grid;
+        align-items: center;
+      }
+      &--bottom {
+        // font-size: 2rem;
+        grid-row: 2 / 3;
+      }
+    }
+    &--2 {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+      gap: 3rem;
+      padding: 1rem;
+      height: 18vw;
+      background-image: linear-gradient(
+          to right,
+          rgba(206, 232, 202, 0.8),
+          rgba(206, 232, 202, 0.8)
+        ),
+        url(../img/pattern.jpg);
+      background-size: cover;
+      border-radius: 4rem;
+      @include responsive($bp-l) {
+        height: 23vh;
+      }
+      @include responsive($bp-s) {
+        grid-template-columns: 32vw 1fr;
+
+        grid-template-rows: 1fr 1fr 0.5fr;
+
+        padding: 3rem 7rem 3rem 3rem;
+
+        gap: 7rem;
+        position: relative;
+      }
+    }
+    &--3 {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+      gap: 3rem;
+      padding: 1rem;
+      height: 18vw;
+
+      background-image: linear-gradient(
+          to right,
+          rgba(239, 185, 155, 0.8),
+          rgba(239, 185, 155, 0.8)
+        ),
+        url(../img/pattern.jpg);
+      background-size: cover;
+      border-radius: 4rem;
+      @include responsive($bp-l) {
+        height: 23vh;
+      }
+      @include responsive($bp-s) {
+        grid-template-columns: 32vw 1fr;
+
+        grid-template-rows: 1fr 1fr 0.5fr;
+
+        padding: 3rem 7rem 3rem 3rem;
+
+        gap: 7rem;
+        position: relative;
+      }
+    }
+    &--4 {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+      gap: 3rem;
+      padding: 1rem;
+      height: 18vw;
+
+      background-image: linear-gradient(
+          to right,
+          rgba(146, 199, 232, 0.8),
+          rgba(146, 199, 232, 0.8)
+        ),
+        url(../img/pattern.jpg);
+      background-size: cover;
+      border-radius: 4rem;
+      @include responsive($bp-l) {
+        height: 23vh;
+      }
+      @include responsive($bp-s) {
+        grid-template-columns: 32vw 1fr;
+
+        grid-template-rows: 1fr 1fr 0.5fr;
+
+        padding: 3rem 7rem 3rem 3rem;
+
+        gap: 7rem;
+        position: relative;
+      }
+    }
+    &--5 {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+      gap: 3rem;
+      padding: 1rem;
+      height: 18vw;
+      background-image: linear-gradient(
+          to right,
+          rgba(239, 185, 155, 0.8),
+          rgba(239, 185, 155, 0.8)
+        ),
+        url(../img/pattern.jpg);
+      background-size: cover;
+      border-radius: 4rem;
+
+      @include responsive($bp-16) {
+        display: none;
+      }
+      @include responsive($bp-s) {
+        grid-template-columns: 32vw 1fr;
+        grid-template-rows: 1fr 1fr 0.5fr;
+        padding: 3rem 7rem 3rem 3rem;
+        gap: 7rem;
+        position: relative;
+        height: 23vh;
+      }
+    }
+
+    &--top {
+      display: grid;
+      grid-template-columns: 35% 65%;
+      column-gap: 1rem;
+
+      @include responsive($bp-1000) {
+        column-gap: 2rem;
+      }
+
+      &--left {
+        width: 4rem;
+        height: 4rem;
+        &--img {
+          width: 7rem;
+          @include responsive($bp-1000) {
+            width: 13rem;
+          }
+          @include responsive($bp-s) {
+            width: 25vw;
+          }
+          @include responsive($bp-600) {
+            width: 29rem;
+          }
+          border-radius: 2.5rem;
+        }
+      }
+      &--right {
+        display: grid;
+        grid-template-rows: repeat(3, min-content);
+
+        @include responsive($bp-s) {
+          position: absolute;
+          left: 38vw;
+          top: 3rem;
+          letter-spacing: 2px;
+          line-height: 5.5rem;
+        }
+        .adasosiy-card {
+          &--name {
+            font-weight: 600;
+            // font-size: 1.1rem;
+            color: rgb(10, 70, 87);
+            @include responsive($bp-1000) {
+              // font-size: 2.6rem;
+            }
+            @include responsive($bp-s) {
+              // font-size: 3vw;
+            }
+          }
+          &--id {
+            // font-size: 1.5rem;
+            color: rgb(10, 70, 87);
+            @include responsive($bp-1000) {
+              // font-size: 2.8rem;
+            }
+            @include responsive($bp-s) {
+              // font-size: 2.5vw;
+            }
+          }
+          &--lavozim {
+            // font-size: 1.3rem;
+            color: rgb(10, 70, 87);
+            @include responsive($bp-1000) {
+              // font-size: 2.3rem;
+            }
+            @include responsive($bp-s) {
+              // font-size: 2.5vw;
+            }
+          }
+        }
+      }
+    }
+    &--middle {
+      display: grid;
+      grid-template-rows: 50% 50%;
+
+      @include responsive($bp-s) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      &--top {
+        &--2 {
+          color: rgb(81, 121, 76);
+          // font-size: 1.5rem;
+          @include responsive($bp-1000) {
+            // font-size: 3rem;
+          }
+        }
+        &--3 {
+          color: rgb(158, 47, 19);
+          // font-size: 1.5rem;
+
+          @include responsive($bp-1000) {
+            // font-size: 3rem;
+          }
+        }
+        &--4 {
+          color: rgb(46, 27, 150);
+          // font-size: 1.5rem;
+          @include responsive($bp-1000) {
+            // font-size: 3rem;
+          }
+        }
+        &--5 {
+          color: rgb(158, 47, 19);
+          // font-size: 1.5rem;
+
+          @include responsive($bp-1000) {
+            // font-size: 3rem;
+          }
+        }
+      }
+      &--bottom {
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(5, 1fr);
+
+        .adasosiy-card--middle-img {
+          &--1 {
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            bottom: -6px;
+          }
+          &--2 {
+            left: 3.5rem;
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            bottom: -6px;
+
+            @include responsive($bp-1000) {
+              left: 4.5rem;
+            }
+          }
+          &--3 {
+            position: absolute;
+            left: 6.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            bottom: -6px;
+            @include responsive($bp-1000) {
+              left: 9rem;
+            }
+          }
+          &--4 {
+            position: absolute;
+            left: 9.5rem;
+            overflow: hidden;
+            border: 2px solid #fff;
+            bottom: -6px;
+            border-radius: 50%;
+            @include responsive($bp-1000) {
+              left: 13.5rem;
+            }
+          }
+          &--5 {
+            position: absolute;
+            left: 12.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            background-color: #fff;
+            bottom: -6px;
+            color: grey;
+            width: 5rem;
+            height: 5rem;
+            // font-size: 2rem;
+            text-align: center;
+            display: grid;
+            align-items: center;
+            @include responsive($bp-1000) {
+              left: 17.5rem;
+              width: 7.5rem;
+              height: 7.5rem;
+            }
+          }
+        }
+      }
+    }
+    &--bottom {
+      display: grid;
+      grid-template-rows: 50% 50%;
+      gap: 1rem;
+
+      @include responsive($bp-s) {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+      @include responsive($bp-600) {
+        grid-column: 1 / 3;
+      }
+
+      &--top {
+        display: flex;
+        justify-content: space-between;
+        &--left {
+          // font-size: 1.5rem;
+
+          &--2 {
+            color: rgb(81, 121, 76);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+          &--3 {
+            color: rgb(158, 47, 19);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+          &--4 {
+            color: rgb(46, 27, 150);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+          &--5 {
+            color: rgb(158, 47, 19);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+        }
+        &--right {
+          &--2 {
+            color: rgb(81, 121, 76);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+          &--3 {
+            color: rgb(158, 47, 19);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+          &--4 {
+            color: rgb(46, 27, 150);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+          &--5 {
+            color: rgb(158, 47, 19);
+            // font-size: 1.5rem;
+            @include responsive($bp-1000) {
+              // font-size: 3rem;
+            }
+          }
+        }
+      }
+
+      .adasosiy-card--bottom--line {
+        height: 0.7rem;
+        width: 100%;
+        border-radius: 1rem;
+
+        background-color: #fff;
+        &--into {
+          &--2 {
+            height: 100%;
+            width: 63%;
+            background-color: rgb(31, 199, 76);
+            border-radius: 1rem;
+          }
+          &--3 {
+            height: 100%;
+            width: 63%;
+            background-color: rgb(195, 99, 56);
+            border-radius: 1rem;
+          }
+          &--4 {
+            height: 100%;
+            width: 63%;
+            background-color: rgb(80, 105, 211);
+            border-radius: 1rem;
+          }
+          &--5 {
+            height: 100%;
+            width: 63%;
+            background-color: rgb(195, 99, 56);
+            border-radius: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .adasosiy-card--middle--img--pic {
+    width: 4rem;
+    height: 4rem;
+
+    @include responsive($bp-1000) {
+      width: 6.5rem;
+      height: 6.5rem;
+    }
+  }
+
+  .adasosiy {
+    &-registratorlar {
+      // font-size: 2rem;
+      text-transform: uppercase;
+      color: rgb(255, 144, 119);
+
+      @include responsive($bp-1000) {
+        // font-size: 3.5rem;
+      }
+    }
+    &-jadval {
+      // font-size: 2rem;
+      color: #000;
+
+      @include responsive($bp-1000) {
+        // font-size: 3rem;
+      }
+    }
+  }
+
+  .adasosiy-plus {
+    color: rgb(31, 199, 76);
+    // font-size: 6rem;
+    justify-self: center;
+  }
+
+  .ad__main-right {
+    grid-column: 2 /3;
+    grid-template-rows: repeat(2, 1fr);
+    display: grid;
+    row-gap: 3rem;
+    padding: 3rem;
+
+    @include responsive($bp-16) {
+      padding: 5rem 3rem 5rem 0;
+    }
+    @include responsive($bp-l) {
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 100%;
+      gap: 5rem;
+      height: 23vh;
+    }
+
+    &--ombor {
+      grid-row: 1 / 2;
+      border: none;
+      border-radius: 2rem;
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+
+      @include responsive($bp-l) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+    }
+    &--soralgan {
+      grid-row: 2 / 3;
+      border: none;
+      border-radius: 2rem;
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+      @include responsive($bp-l) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+    }
+  }
+  .ad__main-right--ombor {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    padding: 2rem;
+    background-color: #fff;
+  }
+  .ad__main-right--soralgan {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    padding: 2rem;
+    background-color: #fff;
+  }
+  .adasosiy-soralgan--bonus {
+    // font-size: 3rem;
+    background-color: rgb(255, 144, 119);
+    border-radius: 2rem;
+    text-align: center;
+    color: #fff;
+    display: grid;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+
+    @include responsive($bp-s) {
+      // font-size: 5rem;
+    }
+  }
+
+  .adasosiy-ombor {
+    &--title {
+      // font-size: 4rem;
+      text-align: center;
+      border-bottom: 1px solid black;
+      color: rgb(255, 144, 119);
+
+      @include responsive($bp-s) {
+        // font-size: 6rem;
+      }
+    }
+    &--text {
+      // font-size: 2rem;
+      text-align: center;
+      display: grid;
+      align-items: center;
+
+      @include responsive($bp-s) {
+        // font-size: 5rem;
+      }
+    }
+    &--bonus {
+      // font-size: 3rem;
+      background-color: rgb(255, 144, 119);
+      border-radius: 2rem;
+      text-align: center;
+      color: #fff;
+      display: grid;
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+
+      @include responsive($bp-s) {
+        // font-size: 5rem;
+      }
+    }
+  }
+}
