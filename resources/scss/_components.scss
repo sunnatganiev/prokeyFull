@@ -1,0 +1,186 @@
+.btn {
+  &-batafsil {
+    padding: 1.8rem 8rem;
+    background-color: transparent;
+    border: 0.3rem solid #fff;
+    // font-size: 2rem;
+    color: #fff;
+    margin-top: 3rem;
+
+    @include responsive($bp-xxl) {
+      margin-top: 1.5rem;
+      padding: 1.1rem 5rem;
+    }
+
+    @include responsive($bp-s) {
+      margin-top: 1.5rem;
+      padding: 1rem 4rem;
+    }
+    @include responsive($bp-500) {
+      // font-size: 1.5rem;
+      padding: 0.5rem 2rem;
+    }
+  }
+  &-jonatish {
+    padding: 1rem 1.5rem;
+    background-color: rgb(3, 170, 232);
+    color: #fff;
+    grid-row: 6 / 7;
+    grid-column: 1 / 4;
+    width: 25%;
+    border: none;
+    justify-self: center;
+    text-align: center;
+
+    // font-size: 2rem;
+
+    @include responsive($bp-xl) {
+      width: 26%;
+    }
+    @include responsive($bp-l) {
+      width: 26%;
+      // font-size: 1.6rem;
+      padding: 1rem 1.5rem;
+    }
+    @include responsive($bp-7) {
+      width: 17%;
+    }
+    @include responsive($bp-500) {
+      width: 23%;
+    }
+  }
+
+  &-chiqish {
+    padding: 1.5rem 3rem;
+    width: 100%;
+    // font-size: 1.5rem;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 1rem;
+
+    @include responsive($bp-ipad) {
+      display: none;
+    }
+  }
+}
+
+.back {
+  background-color: rgba(144, 205, 166, 0.6);
+  height: 75%;
+  padding: 2rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  opacity: 0;
+  // position: relative;
+
+  &-zoom {
+    // font-size: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
+  &-heart {
+    // font-size: 5rem;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.nav-bg {
+  padding: 0 10rem;
+  position: fixed;
+  background-image: linear-gradient(
+    to right,
+    rgb(166, 32, 180),
+    rgb(56, 156, 208)
+  );
+}
+.toleft {
+  border-radius: 50%;
+  // font-size: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  bottom: 1.5vh;
+  left: -2rem;
+  color: #fff;
+  background-image: linear-gradient(to right, #fff, rgb(166, 32, 180));
+
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  .arrow-right {
+    display: none;
+  }
+}
+.kamchilik2__btn-saqlash {
+  padding: 1rem 1rem;
+  color: #fff;
+  background-color: rgb(255, 144, 119);
+  width: 12%;
+  text-transform: uppercase;
+  text-align: center;
+  // font-size: 2rem;
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
+  border-radius: 1rem;
+}
+
+.box-arrow--left {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.5rem;
+  // font-size: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  bottom: 1.5vh;
+  left: -2rem;
+  color: #fff;
+  background-image: linear-gradient(to right, #fff, rgb(166, 32, 180));
+  @include responsive($bp-xl) {
+    display: none;
+  }
+
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  &:hover #leftMenu {
+    left: -30rem;
+  }
+}
+.box-arrow--right {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.5rem;
+  // font-size: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  bottom: 1.5vh;
+  left: -2rem;
+  color: #fff;
+  background-image: linear-gradient(to right, #fff, rgb(166, 32, 180));
+  margin-left: 5rem;
+
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  &:hover #rightMenu {
+    left: 30rem;
+  }
+}

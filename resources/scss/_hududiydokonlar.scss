@@ -1,0 +1,316 @@
+// // COLORS
+
+// // Primary: #eb2f64
+// // Primary light: #FF3366
+// // Primary dark: #BA265D
+
+// // grey-light-1: #faf9f9;
+// // grey-light-2: #f4f2f2;
+// // grey-light-3: #f0eeee;
+// // grey-light-4: #ccc;
+
+// // grey-dark-1: #333;
+// // grey-dark-2: #777;
+// // grey-dark-3: #999;
+
+:root {
+  --color-primary: rgb(151, 89, 255);
+  --color-primary-dark: rgb(159, 0, 164);
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(65, 62, 62, 0.05);
+
+  --line: 1px solid var(--color-grey-light-2);
+}
+
+$bp-largest: 75em; //1200px
+$bp-large: 62.5em; //1000px
+$bp-medium: 43.75em; //700px
+$bp-small: 37.5em; //600px
+
+@mixin response($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-grey-dark-2);
+  background-color: var(--color-grey-light-1);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+}
+
+// Google Map
+.mapouter {
+  position: relative;
+  text-align: right;
+  width: 100%;
+  height: 527px;
+}
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  width: 100%;
+  height: 527px;
+}
+.gmap_iframe {
+  height: 527px !important;
+}
+
+.hudud {
+  &__head {
+    display: block;
+    margin: 5rem 0 0;
+    text-align: center;
+    .underline {
+      height: 0.5rem;
+      width: 13rem;
+      background-color: var(--color-primary);
+      margin: 0 auto 0.5rem;
+    }
+  }
+
+  &__drop {
+    display: flex;
+    padding: 7rem;
+
+    @include response($bp-small) {
+      display: block;
+      padding: 5rem 0;
+    }
+
+    &-element {
+      width: 33%;
+      height: 5rem;
+      padding: 1.5rem 3rem;
+      @include response($bp-small) {
+        width: 100%;
+      }
+      label {
+        // font-size: 2rem;
+      }
+      select {
+        height: 6.5rem;
+        margin-top: 0.7rem;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        // font-size: 2rem;
+        color: var(--color-grey-dark-3);
+        border: none;
+        box-shadow: var(--shadow-dark);
+        border-radius: 5px;
+
+        @include response($bp-small) {
+          height: 6rem;
+        }
+      }
+    }
+
+    &-element:not(:first-child) {
+      @include response($bp-small) {
+        margin-top: 7rem;
+      }
+    }
+  }
+  &__malumotlar {
+    display: flex;
+    margin: 3vw 2rem;
+    padding: 3rem 0;
+    justify-content: space-around;
+
+    @include response($bp-small) {
+      display: block;
+    }
+
+    &-cart {
+      display: grid;
+      width: 20rem;
+      height: 12rem;
+      border-radius: 5px;
+      background-color: var(--color-primary);
+      padding: 1.5rem;
+      color: white;
+      justify-items: center;
+      align-items: center;
+      // font-size: 1.5rem;
+
+      @include response($bp-small) {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        &:not(:first-child) {
+          margin-top: 3rem;
+        }
+      }
+
+      .icon {
+        // font-size: 2rem;
+        font-weight: 700;
+
+        @include response($bp-small) {
+          margin-right: 2rem;
+        }
+      }
+      h4 {
+        font-weight: 100;
+        @include response($bp-small) {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+
+  &__murojat {
+    padding: 3rem 7rem;
+    text-align: center;
+
+    @include response($bp-medium) {
+      padding: 3rem 0;
+    }
+
+    &-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      column-gap: 5rem;
+      margin: 5rem;
+
+      @include response($bp-small) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &-left {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 3rem;
+      row-gap: 5rem;
+
+      input,
+      textarea {
+        width: 100%;
+        height: 6.5rem;
+        // font-size: 2rem;
+        padding: 3rem;
+        border: none;
+        box-shadow: var(--shadow-dark);
+        border-radius: 5px;
+      }
+
+      textarea {
+        resize: none;
+        height: 100%;
+      }
+    }
+
+    &-right {
+      @include response($bp-small) {
+        margin-top: 5rem;
+        height: 30rem;
+      }
+    }
+
+    &-ishvaqti {
+      height: 100%;
+      input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        box-shadow: var(--shadow-dark);
+        border-radius: 5px;
+      }
+    }
+
+    &-ism {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+
+      @include response($bp-small) {
+        grid-column: 1 / span 2;
+      }
+    }
+
+    &-email {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+
+      @include response($bp-small) {
+        grid-column: 1 / span 2;
+        grid-row: 2 / 3;
+      }
+    }
+
+    &-number {
+      grid-column: 1 / span 2;
+    }
+
+    &-textarea {
+      grid-column: 1 / span 2;
+    }
+
+    .btn {
+      width: 17rem;
+      height: 5rem;
+      padding: 0.7rem 1.2rem;
+      background-color: rgb(4, 97, 184);
+      border-radius: 5px;
+      color: white;
+      margin-right: 33%;
+
+      @include response($bp-large) {
+        // font-size: 2rem;
+      }
+
+      @include response($bp-small) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.hudud {
+  background-color: var(--color-grey-light-1);
+  padding: 0 10rem;
+
+  @include response($bp-medium) {
+    padding: 0 5rem;
+  }
+}
+
+h1 {
+  color: var(--color-grey-dark-1);
+  // font-size: 3rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: var(--color-grey-dark-2);
+  font-weight: 400;
+}

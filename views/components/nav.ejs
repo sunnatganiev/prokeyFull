@@ -1,22 +1,20 @@
 <div class="navigation">
+  <div class="container">
     <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
     <label for="navi-toggle" class="navigation__button">
       <span class="navigation__icon">&nbsp;</span>
     </label>
-<!-- Abduhamid uzgartirdi -->
+    <!-- Abduhamid uzgartirdi -->
     <div class="navigation__background">&nbsp;</div>
 
+    <!-- //mobile -->
     <nav class="navigation__nav">
       <ul class="navigation__list">
         <li class="navigation__item">
-          <a href="index.html" class="navigation__link"
-            >Asosiy</a
-          >
+          <a href="index.html" class="navigation__link">Asosiy</a>
         </li>
         <li class="navigation__item">
-          <a href="mahsulotlar.html" class="navigation__link"
-            >Mahsulotlar</a
-          >
+          <a href="mahsulotlar.html" class="navigation__link">Mahsulotlar</a>
         </li>
         <li class="navigation__item">
           <a href="hududiydokonlar.html" class="navigation__link"
@@ -29,42 +27,26 @@
         <li class="navigation__item">
           <a href="galereya.html" class="navigation__link">Galereya</a>
         </li>
-       
+
         <li class="navigation__item">
           <a href="kontaktlar.html" class="navigation__link">Kontakt</a>
         </li>
       </ul>
-    </nav>
-  </div>
-  <div class="nav">
-      <div class="nav-logo">
-        <a href="index.html"><img src="img/logopresskeyuz.png" alt="logo" class="logo-img" /></a>
-      </div>
-      <ul class="nav-navigation">
-        <li class="nav-item"><a href="index.html" class="nav-link">Asosiy</a></li>
-        <li class="nav-item"><a href="mahsulotlar.html" class="nav-link">Mahsulotlar</a></li>
-        <li class="nav-item"><a href="hududiydokonlar.html" class="nav-link">Hududiy do'konlar</a></li>
-        <li class="nav-item"><a href="yangiliklar.html" class="nav-link">Yangiliklar</a></li>
-        <li class="nav-item"><a href="galereya.html" class="nav-link">Galereya</a></li>
-        <li class="nav-item"><a href="kontaktlar.html" class="nav-link">Kontakt</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="nav-right-phone">
-          <div class="nav-phone"><p class="tel">Telefon</p>
-            <p class="phone">+998(71)258-36-69</p></div>
-           
-
-        </div>
-        
-        
-        <div class="icons">
+      <div class="nav-right d-flex flex-column">
+        <div class="icons mb-3 d-flex align-items-center justify-content-center">
           <a href="adasosiy.html" class="lupa">
-            <i class="far fa-search"></i>
-
+            <i class="fas fa-user-lock text-white"></i>
           </a>
           <div class="dropdown">
-            <button class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Eng
+            <button
+              class="dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Eng
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Ru</a>
@@ -72,11 +54,108 @@
             </div>
           </div>
           <div class="admin_login">
-
             <a href="login.html" class="admin"><i class="fal fa-user"></i></a>
           </div>
+        </div>
+        <div class="container">
+          <form class="collapse show w-100 mb-3">
+            <div class="d-flex">
+              <div class="form-group w-100 mb-0">
+                <input
+                  type="email"
+                  class="form-control w-100 h-100"
+                  placeholder="Qidirish..."
+                />
+              </div>
+              <button type="submit" class="btn btn-primary ml-2">Qidirish</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    
+  </div>
+</div>
+<div class="nav" id="main-nav">
+  <div class="container">
+    <div class="nav-logo">
+      <a href="index.html"
+        ><img src="img/logopresskeyuz.png" alt="logo" class="logo-img"
+      /></a>
+    </div>
+    <ul class="nav-navigation">
+      <li class="nav-item"><a href="index.html" class="nav-link">Asosiy</a></li>
+      <li class="nav-item">
+        <a href="mahsulotlar.html" class="nav-link">Mahsulotlar</a>
+      </li>
+      <li class="nav-item">
+        <a href="hududiydokonlar.html" class="nav-link">Hududiy do'konlar</a>
+      </li>
+      <li class="nav-item">
+        <a href="yangiliklar.html" class="nav-link">Yangiliklar</a>
+      </li>
+      <li class="nav-item">
+        <a href="galereya.html" class="nav-link">Galereya</a>
+      </li>
+      <li class="nav-item">
+        <a href="kontaktlar.html" class="nav-link">Kontakt</a>
+      </li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-right-phone">
+        <div class="nav-phone">
+          <p class="tel mb-0">Telefon</p>
+          <p class="phone mb-0">+998(71)258-36-69</p>
+        </div>
+      </div>
 
-          
+      <div class="d-flex align-items-center justify-content-end">
+        <a href="adasosiy.html" class="lupa">
+          <i class="fas fa-user-lock text-white"></i>
+        </a>
+        <button
+          type="button"
+          data-toggle="collapse"
+          data-target="#search-bar"
+          class="lupa btn"
+        >
+          <i class="far fa-search"></i>
+        </button>
+        <div class="dropdown ml-2">
+          <button
+            class="dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Eng
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Ru</a>
+            <a class="dropdown-item" href="#">Uz</a>
+          </div>
+        </div>
+        <div class="admin_login ml-2">
+          <a href="login.html" class="admin"><i class="fal fa-user"></i></a>
         </div>
       </div>
     </div>
+  </div>
+  <div class="container">
+    <form id="search-bar" class="collapse w-100 mb-3">
+      <div class="d-flex">
+        <div class="form-group w-100 mb-0">
+          <input
+            type="email"
+            class="form-control w-100 h-100"
+            placeholder="Qidirish..."
+          />
+        </div>
+        <button type="submit" class="btn btn-primary ml-2">Qidirish</button>
+      </div>
+    </form>
+  </div>
+</div>
