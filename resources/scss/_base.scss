@@ -152,3 +152,9 @@ body {
     bottom: 0;
   }
 }
+
+@media screen and (min-width: $md) {
+  .w-md-50 {
+    width: 50% !important;
+  }
+}
