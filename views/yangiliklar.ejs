@@ -15,126 +15,127 @@
     <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
     <link rel="stylesheet" href="css/main.css" />
     <title>progresskey.uz</title>
-    <style>
-      .mapouter {
-        position: relative;
-        text-align: right;
-        width: 100%;
-        height: 575px;
-      }
-      .gmap_canvas {
-        overflow: hidden;
-        background: none !important;
-        width: 100%;
-        height: 575px;
-      }
-      .gmap_iframe {
-        height: 575px !important;
-      }
-    </style>
   </head>
   <body>
     <%- include('./components/nav.ejs') %>
 
-    <div class="news_main_body">
-      <div class="news_first_sec tayoq">
-        `
-        <div class="news_first_sec_carousel">
-          <div
-            id="yangiliklar_carousel"
-            class="carousel slide"
-            ,
-            data-ride="carousel"
-          >
-            <ul class="carousel-indicators">
-              <li
-                data-target="yangiliklar_carousel"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li data-target="yangiliklar_carousel" data-slide-to="1"></li>
-              <li data-target="yangiliklar_carousel" data-slide-to="2"></li>
-            </ul>
-
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  class="carousel_pic"
-                  src="./img/photo_2021-05-20_17-37-10.jpg"
-                  alt="Los Angeles"
-                />
-                <div class="carousel-caption">
-                  <p>We had such a great time in LA!</p>
+   <div class="container">
+    <div class="news_main_body pt-5">
+      <div class="row">
+        
+        <div class="col-lg-8 col-md-12">
+          <div class="news_first_sec_carousel">
+            <div
+              id="yangiliklar_carousel"
+              class="carousel slide"
+              ,
+              data-ride="carousel"
+            >
+              <ul class="carousel-indicators">
+                <li
+                  data-target="#yangiliklar_carousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#yangiliklar_carousel" data-slide-to="1"></li>
+                <li data-target="#yangiliklar_carousel" data-slide-to="2"></li>
+              </ul>
+  
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    class="carousel_pic"
+                    src="./img/photo_2021-05-20_17-37-10.jpg"
+                    alt="Los Angeles"
+                  />
+                  <div class="carousel-caption">
+                    <p>We had such a great time in LA!</p>
+                  </div>
                 </div>
+  
+                <div class="carousel-item">
+                  <img
+                    class="carousel_pic"
+                    src="./img/docs/file-20200407-116223-gwtpno.jpg"
+                    alt="Los Angeles"
+                  />
+                  <div class="carousel-caption">
+                    <p>We had such a great time in LA!</p>
+                  </div>
+                </div>
+  
+                <di v class="carousel-item">
+                  <img
+                    class="carousel_pic"
+                    src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
+                    alt="Los Angeles"
+                  />
+                  <div class="carousel-caption">
+                    <p>We had such a great time in LA!</p>
+                  </div>
+                </di>
               </div>
-
-              <div class="carousel-item">
-                <img
-                  class="carousel_pic"
-                  src="./img/docs/file-20200407-116223-gwtpno.jpg"
-                  alt="Los Angeles"
-                />
-                <div class="carousel-caption">
-                  <p>We had such a great time in LA!</p>
-                </div>
-              </div>
-
-              <di v class="carousel-item">
-                <img
-                  class="carousel_pic"
-                  src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
-                  alt="Los Angeles"
-                />
-                <div class="carousel-caption">
-                  <p>We had such a great time in LA!</p>
-                </div>
-              </di>
+  
+              <a
+                class="carousel-control-prev"
+                href="#yangiliklar_carousel"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#yangiliklar_carousel"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon"></span>
+              </a>
             </div>
-
-            <a
-              class="carousel-control-prev"
-              href="#yangiliklar_carousel"
-              data-slide="prev"
-            >
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#yangiliklar_carousel"
-              data-slide="next"
-            >
-              <span class="carousel-control-next-icon"></span>
-            </a>
           </div>
         </div>
 
-        <div class="news_first_sec_pic_top">
-          <img
-            class="pic_par"
-            src="./img/photo_2021-05-20_17-36-56.jpg"
-            alt="Los Angeles"
-          />
-          <p class="bottom_center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Distinctio, molestiae!
-          </p>
-        </div>
-
-        <div class="news_first_sec_pic_bottom">
-          <img
-            class="pic_par"
-            src="./img/photo_2021-05-20_17-37-01.jpg"
-            alt="Los Angeles"
-          />
-          <p class="bottom_center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Distinctio, molestiae!
-          </p>
+        <div class="col-lg-4 col-md-12 d-flex flex-wrap justify-content-center">
+          <div class="news_first_sec_pic">
+            <img
+              class="pic_par"
+              src="./img/photo_2021-05-20_17-36-56.jpg"
+              alt="Los Angeles"
+            />
+            <p class="bottom_center">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Distinctio, molestiae!
+            </p>
+          </div>
+  
+          <div class="news_first_sec_pic">
+            <img
+              class="pic_par"
+              src="./img/photo_2021-05-20_17-37-01.jpg"
+              alt="Los Angeles"
+            />
+            <p class="bottom_center">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Distinctio, molestiae!
+            </p>
+          </div>
         </div>
       </div>
-      <h5 class="news_title">So'ngi yangiliklar</h5>
+      <h5 class="my-4 font-weight-bold">So'ngi yangiliklar</h5>
 
-      <div class="news_second_sec">
+      
+      <div class="row">
+        <% for (var i =1; i <=10;  i++ ) { %>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <%- include('./components/news-item.ejs', {
+              img: "img/news2.jpg",
+              title: "Bibisara opa Yusupova bilan suhbat",
+              description: "Qoraqalpog'iston Respublikasida Nukusning eng kuchli lideri, parapsixolog,moderator Bibisara opa Yusupova vrachlarga kompaniyamiz mahsulotlari va imkoniyatlari to'g'risida ma'lumot berishdi. Judayam maroqli suhbat bo'ldi."
+            }) %>
+          </div>
+        <% } %>
+      </div>
+
+      <!-- <div class="news_second_sec">
         <div class="news_second_sec-left">
           <div class="second_sec_news_pic">
             <img
@@ -346,21 +347,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+   </div>
     <%- include('./components/footer.ejs') %>
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-      crossorigin="anonymous"
-    ></script>
-    <script src="scripts/all.js"></script>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
