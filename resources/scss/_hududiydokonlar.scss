@@ -46,12 +46,14 @@
     flex-wrap: wrap;
     margin-bottom: 35px;
     &-cart {
-      max-width: 300px;
+      min-width: 240px;
+      width: 19.5%;
       border-radius: 5px;
       padding: 20px;
       color: white;
       text-align: center;
       background: #a977ff;
+      margin-bottom: 25px;
       .icon {
         font-size: 35px;
         margin-bottom: 10px;
