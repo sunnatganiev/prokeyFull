@@ -115,7 +115,7 @@
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
 
-      @include response($bp-s) {
+      @include responsive($bp-s) {
         grid-column: 1 / 2;
       }
 

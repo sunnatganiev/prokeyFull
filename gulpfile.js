@@ -1,34 +1,35 @@
-let projectFolder = 'public';
-let srcFolder = 'resources';
+let projectFolder = "public";
+let srcFolder = "resources";
 
 let path = {
   build: {
-    css: projectFolder + '/css/',
-    js: projectFolder + '/scripts/',
-    img: projectFolder + '/img/',
+    css: projectFolder + "/css/",
+    js: projectFolder + "/scripts/",
+    img: projectFolder + "/img/",
   },
   src: {
-    css: srcFolder + '/scss/main.scss',
-    js: srcFolder + '/js/**/*.js',
-    img: srcFolder + '/img/**/*.{jpg,png,svg,ico,gif,webp,mp4}',
+    css: srcFolder + "/scss/main.scss",
+    js: srcFolder + "/js/**/*.js",
+    img: srcFolder + "/img/**/*.{jpg,png,svg,ico,gif,webp,mp4}",
   },
   watch: {
-    css: srcFolder + '/scss/**/*.scss',
-    js: srcFolder + '/js/**/*.js',
-    img: srcFolder + '/img/**/*.{jpg,png,svg,ico,gif,webp}',
+    css: srcFolder + "/scss/**/*.scss",
+    js: srcFolder + "/js/**/*.js",
+    img: srcFolder + "/img/**/*.{jpg,png,svg,ico,gif,webp}",
   },
-  clean: './' + projectFolder + '/',
+  clean: "./" + projectFolder + "/",
 };
 
-let { src, dest } = require('gulp'),
-  gulp = require('gulp'),
-  del = require('del'),
-  sass = require('gulp-sass'),
-  autoprefixer = require('gulp-autoprefixer'),
-  groupMedia = require('gulp-group-css-media-queries'),
-  cleanCss = require('gulp-clean-css'),
-  sourcemaps = require('gulp-sourcemaps'),
-  include = require('gulp-include');
+let { src, dest } = require("gulp"),
+  gulp = require("gulp"),
+  del = require("del"),
+  sass = require("gulp-sass"),
+  autoprefixer = require("gulp-autoprefixer"),
+  groupMedia = require("gulp-group-css-media-queries"),
+  cleanCss = require("gulp-clean-css"),
+  sourcemaps = require("gulp-sourcemaps"),
+  include = require("gulp-include"),
+  browsersync = require("browser-sync").create();
 // ttf2woff = require("gulp-ttf2woff"),
 // ttf2woff2 = require("gulp-ttf2woff2");
 // webp = require("gulp-webp"),
@@ -36,26 +37,35 @@ let { src, dest } = require('gulp'),
 // webpcss = require("gulp-webpcss");
 // imagemin = require("gulp-imagemin"),
 
+function browserSync() {
+  browsersync.init({
+    port: 5500,
+    proxy: "localhost:3000",
+    notify: false, //turn off notification when browser reloaded
+  });
+}
+
 function css() {
   return (
     src(path.src.css)
       .pipe(sourcemaps.init())
       .pipe(
         sass({
-          outputStyle: 'expanded',
+          outputStyle: "expanded",
         })
       )
       .pipe(groupMedia())
       .pipe(
         autoprefixer({
-          overrideBrowserslist: ['last 5 versions'],
+          overrideBrowserslist: ["last 5 versions"],
           cascade: true,
         })
       )
       // .pipe(webpcss())
       .pipe(cleanCss())
-      .pipe(sourcemaps.write('.'))
+      .pipe(sourcemaps.write("."))
       .pipe(dest(path.build.css))
+      .pipe(browsersync.stream())
   );
 }
 
@@ -78,6 +88,7 @@ function images() {
       //   })
       // )
       .pipe(dest(path.build.img))
+      .pipe(browsersync.stream())
   );
 }
 
@@ -86,7 +97,7 @@ function js() {
     src(path.src.js)
       .pipe(
         include({
-          includePaths: [__dirname + '/node_modules', __dirname + '/src/js'],
+          includePaths: [__dirname + "/node_modules", __dirname + "/src/js"],
         })
       ) //to collect js sections
       //     .pipe(
@@ -98,6 +109,7 @@ function js() {
       //       })
       //     )
       .pipe(dest(path.build.js))
+      .pipe(browsersync.stream())
   );
 }
 
@@ -116,7 +128,7 @@ let build = gulp.series(
   // html,
   gulp.parallel(js, css, images)
 );
-let watch = gulp.parallel(build, watchFiles);
+let watch = gulp.parallel(build, watchFiles, browserSync);
 exports.images = images;
 exports.js = js;
 exports.css = css;
