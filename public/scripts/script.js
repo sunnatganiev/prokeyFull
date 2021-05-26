@@ -4,25 +4,37 @@ try {
 
   const navHeight = nav.getBoundingClientRect().height;
 
-  // $("body").css(`margin-top`, `${navHeight}px`);
   $(".navigation__nav").css(`top`, `${navHeight}px`);
 
+  $("body").css(`margin-top`, `${navHeight}px`);
   // console.log(navHeight)
 
-  const stickyNav = function (entries) {
-    const [entry] = entries;
-    // console.log(entry)
+  // const stickyNav = function (entries) {
+  //   const [entry] = entries;
+  //   // console.log(entry)
 
-    if (!entry.isIntersecting) nav.classList.add("sticky");
-    else nav.classList.remove("sticky");
-  };
-  const headerObserver = new IntersectionObserver(stickyNav, {
-    root: null,
-    threshold: 0,
-    rootMargin: `-${navHeight}px`,
+  //   if (!entry.isIntersecting) {
+  //     nav.classList.add("sticky");
+  //   } else {
+  //     nav.classList.remove("sticky");
+  //   }
+  // };
+  // const headerObserver = new IntersectionObserver(stickyNav, {
+  //   root: null,
+  //   threshold: 0,
+  //   rootMargin: `-${navHeight}px`,
+  // });
+
+  // headerObserver.observe(header);
+
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("sticky", window.scrollY > 0);
+    if (window.scrollY > 0) {
+      $("body").css(`margin-top`, `${0}px`);
+    } else {
+      $("body").css(`margin-top`, `${navHeight}px`);
+    }
   });
-
-  headerObserver.observe(header);
 
   const allSections = document.querySelectorAll(".section");
 

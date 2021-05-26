@@ -8,10 +8,16 @@
 }
 #main-nav {
   width: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 10000;
+  transition: 0.3s ease;
+  &.sticky {
+    .logo-img {
+      width: 80px;
+    }
+  }
 
   background-image: linear-gradient(
     to right,
@@ -67,6 +73,7 @@
 
 .logo-img {
   width: 150px;
+  transition: 0.3s ease;
   @include responsive($lg) {
     width: 100px;
   }
@@ -195,7 +202,7 @@
   margin-right: auto;
   margin-left: auto;
 
-  @include responsive($md) {
+  @include responsive($lg) {
     width: 100%;
   }
 

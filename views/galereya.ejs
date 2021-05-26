@@ -20,159 +20,61 @@
     <%- include('./components/nav.ejs') %>
 
 
-    <div class="galereya">
-      <div class="galereya__top">
-        <div class="galereya__top-middle">
-          <figure class="tl-img">
-            <img class="tl-img" src="img/mountain.jpg" alt="" />
-            <figcaption class="tl-img-text">
-              <h3 class="tl-img-text-h3">type of gallery</h3>
-              <h4 class="tl-img-text-h4">Title of verticale image card</h4>
-              <p class="tl-img-text-p">
-                Lorem ipsum dolor sit, amet consectetur adipisicing
-              </p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="galereya__top-right">
-          <div class="galereya__top-right--1 tayoq">
-            <img class="tl-img" src="img/mountain.jpg" alt="" />
+    <div class="container">
+      <div class="galereya py-5">
+        <div class="row">
+          <div class="col-xl-3 col-lg-12 d-flex flex-wrap justify-content-center mb-2">
+            <% for( let i = 0; i < 3 ; i++ ) { %>
+                <img src="https://picsum.photos/id/1<%= i %>/300/200" class="img-fluid gallery-small-img m-1" alt="put name here"> 
+            <% } %>
           </div>
-          <div class="galereya__top-right--2">
-            <h3 class="tr-title">Title of verticale image card</h3>
-            <p class="tr-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              suscipit explicabo eveniet repudiandae animi quaerat
-              necessitatibus harum ab iusto facilis ducimus eos placeat
-              voluptatem, delectus mollitia consectetur sapiente est. Voluptate.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="galereya__middle">
-        <div class="galereya__middle-left">
-          <div class="galereya__middle-left--top">
-
-            
-            <figure class="tl-img">
-              <img class="tl-img" src="img/mountain.jpg" alt="" />
-              <figcaption class="tl-img-text">
-                <h3 class="tl-img-text-h3">type of gallery</h3>
-                <h4 class="tl-img-text-h4">Title of verticale image card</h4>
-                <p class="tl-img-text-p">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing
-                </p>
-              </figcaption>
-            </figure>
-          </div>
-        
-        </div>
-        <div class="galereya__middle-right">
-          <div class="galereya__middle-right--1">
-            <h4 class="mrl-title">title of image card</h4>
-            <p class="mrl-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quas
-              consequatur explicabo odio! Deserunt officiis ut porro,
-              voluptatem, voluptates vero, voluptatum dolorem quisquam ipsa
-              ipsum id enim architecto harum illum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quas
-              consequatur explicabo odio! Deserunt officiis ut porro,
-              voluptatem, voluptates vero, voluptatum dolorem quisquam ipsa
-              ipsum id enim architecto harum illum.
-            </p>
-          </div>
-        
-        </div>
-      </div>
-      <div class="galereya__bottom">
-        <div class="galereya__bottom-left">
-          <figure class="tl-img">
-            <img class="tl-img" src="img/mountain.jpg" alt="" />
-            <figcaption class="tl-img-text">
-              <h3 class="tl-img-text-h3">type of gallery</h3>
-              <h4 class="tl-img-text-h4">Title of verticale image card</h4>
-              <p class="tl-img-text-p">
-                Lorem ipsum dolor sit, amet consectetur adipisicing
-              </p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="galereya__bottom-right">
-          <div class="galereya__bottom-right--1">
-            <div class="typeofpage">
-              <div class="typeofpage-1">type of page</div>
-              <div class="typeofpage-2">type pf page</div>
-            </div>
-            <div class="titlewebpage">
-              <div class="titlewebpage-1">Title of intern web page</div>
-              <div class="titlewebpage-2">Title of intern</div>
-            </div>
-            <div class="title-lorem">
-              <div class="title-lorem-1">Lorem ipsum dolor sit amet</div>
-              <div class="title-lorem-2">Lorem, ipsum dolor.</div>
+          <div class="col-xxl-6 col-xl-9 col-lg-8 col-sm-12 mb-2">
+            <div class="img-with-caption">
+              <img src="https://picsum.photos/id/20/800/600" alt="put name here">
+              <h4>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, fugiat?
+              </h4>
             </div>
           </div>
-          <div class="galereya__bottom-right--2">
-            <div class="typeofpage">
-              <div class="typeofpage-1">type of page</div>
-              <div class="typeofpage-2">type pf page</div>
-            </div>
-            <div class="titlewebpage">
-              <div class="titlewebpage-1">Title of intern web page</div>
-              <div class="titlewebpage-2">Title of intern</div>
-            </div>
-            <div class="title-lorem">
-              <div class="title-lorem-1">Lorem ipsum dolor sit amet</div>
-              <div class="title-lorem-2">Lorem, ipsum dolor.</div>
-            </div>
-          </div>
-          <div class="galereya__bottom-right--3">
-            <div class="typeofpage">
-              <div class="typeofpage-1">type of page</div>
-              <div class="typeofpage-2">type pf page</div>
-            </div>
-            <div class="titlewebpage">
-              <div class="titlewebpage-1">Title of intern web page</div>
-              <div class="titlewebpage-2">Title of intern</div>
-            </div>
-            <div class="title-lorem">
-              <div class="title-lorem-1">Lorem ipsum dolor sit amet</div>
-              <div class="title-lorem-2">Lorem, ipsum dolor.</div>
-            </div>
-          </div>
-          <div class="galereya__bottom-right--4">
-            <div class="typeofpage">
-              <div class="typeofpage-1">type of page</div>
-              <div class="typeofpage-2">type pf page</div>
-            </div>
-            <div class="titlewebpage">
-              <div class="titlewebpage-1">Title of intern web page</div>
-              <div class="titlewebpage-2">Title of intern</div>
-            </div>
-            <div class="title-lorem">
-              <div class="title-lorem-1">
-                Lorem ipsum dolor sit amet consectetur
+          <div class="col-xxl-3 col-xl-12 d-flex flex-wrap justify-content-around col-lg-4 col-sm-12">
+            <div class="card gallery-card border-0 mb-3">
+              <img src="https://picsum.photos/id/65/300/200" class="card-img-top" alt="put name here">
+              <div class="card-body  p-4 bg-light">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
-              <div class="title-lorem-2">Lorem, ipsum dolor.</div>
+            </div>
+            <div class="card gallery-card border-0 mb-3">
+              <img src="https://picsum.photos/id/65/300/200" class="card-img-top" alt="put name here">
+              <div class="card-body  p-4 bg-light">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-9 col-sm-12 mb-2">
+            <div class="img-with-caption">
+              <img src="https://picsum.photos/id/100/800/600" alt="put name here">
+              <h4>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, fugiat?
+              </h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-12 d-flex flex-wrap justify-content-center mb-2">
+            <% for( let i = 0; i < 3 ; i++ ) { %>
+                <img src="https://picsum.photos/id/4<%= i %>/300/200" class="img-fluid gallery-small-img m-1" alt="put name here"> 
+            <% } %>
+          </div>
+          
         </div>
       </div>
     </div>
 
     <%- include('./components/footer.ejs') %>
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-      crossorigin="anonymous"
-    ></script>
-    <script src="scripts/all.js"></script>
-    <script src="scripts/script.js"></script>
+   
+    <script src="scripts/main.js"></script>
   </body>
 </html>

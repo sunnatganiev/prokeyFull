@@ -229,7 +229,7 @@
             role="tabpanel"
             aria-labelledby="recently-added-tab"
           >
-            <% include('./components/products.ejs') %>
+            <%- include('./components/products.ejs') %>
           </div>
           <div
             class="tab-pane fade"
@@ -237,7 +237,7 @@
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <% include('./components/products.ejs') %>
+            <%- include('./components/products.ejs') %>
           </div>
           <div
             class="tab-pane fade"
@@ -245,7 +245,7 @@
             role="tabpanel"
             aria-labelledby="most-sold-products-tab"
           >
-            <% include('./components/products.ejs') %>
+            <%- include('./components/products.ejs') %>
           </div>
           <div
             class="tab-pane fade"
@@ -253,11 +253,9 @@
             role="tabpanel"
             aria-labelledby="popular-products-tab"
           >
-            <% include('./components/products.ejs') %>
+            <%- include('./components/products.ejs') %>
           </div>
         </div>
-
-        <%- include('./components/products.ejs') %>
 
         <p class="korish-item">
           <a class="korish-link" href="#">Barchasini ko'rish ></a>
@@ -345,14 +343,14 @@
                     </div>
                   </div>
                 </div>
+                <div
+                  class="w-100 d-flex align-items-center justify-content-center"
+                >
+                  <button class="btn btn-primary" type="submit">
+                    Jo'natish <i class="fab fa-telegram-plane"></i>
+                  </button>
+                </div>
               </form>
-              <div
-                class="w-100 d-flex align-items-center justify-content-center"
-              >
-                <button class="btn btn-primary" type="submit">
-                  Jo'natish <i class="fab fa-telegram-plane"></i>
-                </button>
-              </div>
             </div>
 
             <div class="col-lg-6 col-md-12">
