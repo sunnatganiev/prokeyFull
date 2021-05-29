@@ -1,33 +1,51 @@
-const express = require('express');
-const viewsController = require('../controllers/viewsController');
-const authController = require('../controllers/authController');
+const express = require("express");
+const viewsController = require("../controllers/viewsController");
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
-router.get('/', viewsController.home);
+router.get("/", viewsController.home);
 
-router.get('/index.html', viewsController.home);
+router.get("/index.html", viewsController.home);
 
-router.get('/mahsulotlar.html', viewsController.getProducts);
+router.get("/mahsulotlar.html", viewsController.getProducts);
 
-router.get('/mahsulotichi.html', viewsController.proIn);
+router.get("/mahsulotichi.html", viewsController.proIn);
 
-router.get('/hududiydokonlar.html', viewsController.dokonlar);
+router.get("/hududiydokonlar.html", viewsController.dokonlar);
 
-router.get('/galereya.html', viewsController.galereya);
+router.get("/galereya.html", viewsController.galereya);
 
-router.get('/kontaktlar.html', viewsController.kontakt);
+router.get("/kontaktlar.html", viewsController.kontakt);
 
-router.get('/yangiliklar.html', viewsController.yangiliklar);
+router.get("/yangiliklar.html", viewsController.yangiliklar);
 
-router.get('/yangiliklarichi.html', viewsController.yangilikIchi);
+router.get("/yangiliklarichi.html", viewsController.yangilikIchi);
 
 router.get(
-  '/login.html',
+  "/login.html",
   authController.isLoggedIn,
   viewsController.getLoginForm
 );
 
-router.get('/adasosiy.html', authController.isLoggedIn, viewsController.asosiy);
+//DASHBOARD
+
+router.get(
+  "/dashboard",
+  authController.isLoggedIn,
+  viewsController.dashboard.index
+);
+
+router.get(
+  "/dashboard/customers",
+  authController.isLoggedIn,
+  viewsController.dashboard.customers.index
+);
+
+router.get(
+  "/dashboard/customers/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.customers.add
+);
 
 module.exports = router;

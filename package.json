@@ -8,8 +8,8 @@
     "dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
-    "watch:js": "parcel watch ./public/scripts/index.js --out-dir ./public/scripts --out-file bundle.js",
-    "build:js": "parcel build ./public/scripts/index.js --out-dir ./public/scripts --out-file bundle.js"
+    "watch:js": "parcel watch ./resources/js/backend/index.js --out-dir ./public/scripts --out-file backend.js",
+    "build:js": "parcel build ./resources/js/backend/index.js --out-dir ./public/scripts --out-file backend.js"
   },
   "author": "",
   "license": "ISC",

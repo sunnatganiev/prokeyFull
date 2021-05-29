@@ -1,0 +1,23 @@
+<header class="navbar navbar-light bg-white sticky-top flex-md-nowrap shadow-sm py-2">
+  <p class="col-md-3 col-lg-2 mb-0 text-uppercase"><%= user.name %></p>
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-toggle="collapse"
+    data-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap square-50 overflow-hidden rounded-circle">
+      <img
+        src="/img/slide-2.jpg"
+        class="w-100 h-100 object-fit-cover"
+        alt="<%= user.name %> "
+      />
+    </li>
+  </ul>
+</header>

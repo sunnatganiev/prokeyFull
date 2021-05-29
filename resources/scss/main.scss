@@ -1,20 +1,25 @@
 @import "variables";
 @import "../../node_modules/bootstrap//scss/bootstrap.scss";
-@import "base";
+@import "client/base";
 @import "typography";
 @import "components";
-@import "hududiydokonlar";
-@import "home";
-@import "kontakt";
-@import "mahsulotichi";
-@import "footer";
-@import "mahsulotlar";
-@import "yangilikichi";
-@import "yangiliklar";
-@import "navigation";
-@import "adasosiy.scss";
-@import "adkamchilik2.scss";
-@import "adsoralganmaxsulot.scss";
-@import "adombor.scss";
-@import "galereya";
-@import "adombordagimaxsulotlar.scss";
+@import "client/hududiydokonlar";
+@import "client/home";
+@import "client/kontakt";
+@import "client/mahsulotichi";
+@import "client/footer";
+@import "client/mahsulotlar";
+@import "client/yangilikichi";
+@import "client/yangiliklar";
+@import "client/navigation";
+@import "client/galereya";
+@import "sizes";
+// @import "adasosiy.scss";
+// @import "adkamchilik2.scss";
+// @import "adsoralganmaxsulot.scss";
+// @import "adombor.scss"
+// @import "adombordagimaxsulotlar.scss";
+
+//dashboard
+
+@import "admin/index";

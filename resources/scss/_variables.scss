@@ -1,7 +1,9 @@
 $color-primary: #2a00a2;
+$color-primary-light: #103c6e;
 $primary: #03aae8;
 $color-primary-dark: #07003b;
 $green: #3eae67;
+$green-light: #97e7b3;
 
 $color-secondary: #5f2eea;
 $color-secondary-light: #6e7191;
@@ -9,6 +11,14 @@ $color-secondary-light-1: #a0a3bd;
 $color-secondary-light-2: #a0a3bd;
 
 $color-grey-dark-1: #07003b;
+
+$sidebar-width: 220px;
+
+$custom-file-text: (
+  en: "Rasm yuklash",
+  uz: "Rasm yuklash",
+  es: "Elegir",
+);
 
 $font-display: "Josefin Sans", sans-serif;
 $font-family-sans-serif: "Noto Sans JP", sans-serif;

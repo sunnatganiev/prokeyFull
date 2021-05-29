@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script defer src="scripts/pages/index.js"></script>
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('./sidebar.ejs', {
+        page: 'home'
+      }) %>
+
+      <main>
+        <%- include('./header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0">Asosiy</h6>
+            </div>
+            <div class="row">
+              <div class="col-lg-9 col-md-12 my-3">
+                <div class="p-3 shadow-sm rounded bg-white">
+                  <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom">
+                    <h4 class="title-left-stick">
+                      Registratorlar
+                    </h4>
+                    <a href="#" class="h6 text-dark">Jadval shaklida ko'rish</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-12 my-3">
+                <div class="d-flex justify-content-around"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="scripts/backend/index.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
