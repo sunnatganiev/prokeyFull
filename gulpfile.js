@@ -41,7 +41,7 @@ function browserSync() {
   browsersync.init({
     port: 5500,
     proxy: "localhost:3000",
-    notify: false, //turn off notification when browser reloaded
+    notify: false,
   });
 }
 

@@ -1,0 +1,63 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light px-0 sidebar collapse h-100" >
+  <div class="position-sticky pt-3">
+    <a class="navbar-brand d-flex w-100 justify-content-center" href="/">
+      <img src="/img/logopresskeyuz.png" alt="logo" class="logo-img">
+    </a>
+
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link <% if (page === 'home') {%>active<%}%>" aria-current="page" href="/dashboard">
+          <div class="icon-wrapper">
+            <i class="icon fas fa-home"></i>
+          </div>
+          Asosiy
+        </a>
+        <a class="nav-link <% if (page === 'registrators') {%>active<%}%>" aria-current="page" href="/dashboard/registrators">
+         <div class="icon-wrapper">
+          <i class="icon fas fa-clipboard-user"></i>
+         </div>
+          Registratorlar
+        </a>
+        <a class="nav-link <% if (page === 'team') {%>active<%}%>" aria-current="page" href="/dashboard/teams">
+          <div class="icon-wrapper">
+            <i class="icon fas fa-user-friends"></i>
+          </div>
+          Jamoa
+        </a>
+        <a class="nav-link <% if (page === 'transfers') {%>active<%}%>" aria-current="page" href="/dashboard/transfers">
+          <div class="icon-wrapper">
+            <i class="icon fas fa-random"></i>
+          </div>
+          Transferlar
+        </a>
+        <a class="nav-link <% if (page === 'statistics') {%>active<%}%>" aria-current="page" href="/dashboard/statistics">
+          <div class="icon-wrapper">
+            <i class="icon fas fa-chart-bar"></i>
+          </div>
+          Statistika
+        </a>
+        <a class="nav-link <% if (page === 'customers') {%>active<%}%>" aria-current="page" href="/dashboard/customers">
+          <div class="icon-wrapper">
+            <i class="icon fas fa-users"></i>
+          </div>
+          Xaridorlar
+        </a>
+        <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
+          <div class="icon-wrapper">
+            <i class="icon fas fa-warehouse"></i>
+          </div>
+          Omborlar
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="position-absolute logout-wrapper d-flex justify-content-center">
+    <button class="btn btn-outline-light d-flex align-items-center">
+      <div class="icon-wrapper">
+        <i class="fas fa-power-off"></i>
+      </div>
+      Chiqish
+    </button>
+  </div>
+</nav>
