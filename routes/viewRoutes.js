@@ -36,6 +36,7 @@ router.get(
   viewsController.dashboard.index
 );
 
+//customers
 router.get(
   "/dashboard/customers",
   authController.isLoggedIn,
@@ -48,6 +49,7 @@ router.get(
   viewsController.dashboard.customers.add
 );
 
+//registrators
 router.get(
   "/dashboard/registrators",
   authController.isLoggedIn,
@@ -60,6 +62,7 @@ router.get(
   viewsController.dashboard.registrators.add
 );
 
+//team
 router.get(
   "/dashboard/team",
   authController.isLoggedIn,
@@ -70,6 +73,13 @@ router.get(
   "/dashboard/team/add",
   authController.isLoggedIn,
   viewsController.dashboard.team.add
+);
+
+//transfers
+router.get(
+  "/dashboard/transfers",
+  authController.isLoggedIn,
+  viewsController.dashboard.transfers.index
 );
 
 module.exports = router;

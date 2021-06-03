@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', { page: 'transfers' }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0">Transferlar</h6>
+              <a href="#buy-product" data-toggle="collapse">
+                Maxsulot sotib olish
+                <i class="fas fa-plus"></i>
+              </a>
+            </div>
+            <div class="row px-3">
+
+              <div class="col-lg-12 dashboard__card collapse" id="buy-product">
+                <div class="p-3 shadow-sm">
+                  <h6 class="title-left-stick mb-3">Maxsulot sotib olish</h6>
+                  <form>
+                    <div class="d-flex flex-wrap align-items-center justify-content-around">
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="warehouse-input"
+                          >Omborni tanlang</label
+                        >
+                        <div class="input-group mb-3">
+                          <select class="custom-select" name="warehouse" id="warehouse-input">
+                            <option value="chilonzor">Chilonzor</option>
+                            <option value="olmazor">Olmazor</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="product-input"
+                          >Maxsulotni tanlang</label
+                        >
+                        <div class="input-group mb-3">
+                          <select class="custom-select" name="product" id="product-input">
+                            <option value="sirop">Sirop</option>
+                            <option value="vitamin-b">Vitamin B</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="quantity-input"
+                          >Soni</label
+                        >
+                        <div class="input-group mb-3">
+                         <input class="form-control" type="number" min="1" name="quantity" id="quantity-input">
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="money-amount-input"
+                          >Jami Summa</label
+                        >
+                        <div class="input-group mb-3">
+                         <input class="form-control" type="number" min="1" name="money-amount" id="money-amount-input">
+                        </div>
+                      </div>
+
+                      <div>
+                        <div class="input-group mb-3">
+                          <button type="submit" class="btn btn-primary">Sotib olish</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="col-lg-12 dashboard__card">
+                <div class="p-3 shadow-sm">
+                  <h6 class="title-left-stick mb-3">Transferlar qilish</h6>
+                  <form>
+                    <div class="d-flex flex-wrap align-items-center justify-content-around">
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="amount-input"
+                          >Transfer miqdori</label
+                        >
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text bg-danger text-white"
+                              >Summa</span
+                            >
+                          </div>
+                          <input
+                            type="number"
+                            min="5000"
+                            class="form-control"
+                            id="amount-input"
+                            placeholder="Kamida 5000"
+                            name="amount"
+                          />
+                        </div>
+                      </div>
+
+                      <i class="fas fa-exchange-alt h2 mx-5"></i>
+
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="reciever-input"
+                          >Qabul qiluvchi</label
+                        >
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text bg-info text-white"
+                              >ID</span
+                            >
+                          </div>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="reciever-input"
+                            placeholder="U000000"
+                            name="receiver"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="reciever-input"
+                          >Tasdiqlash</label
+                        >
+                        <div class="input-group mb-3">
+                          <button type="submit" class="btn btn-primary">Roziman</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-12 dashboard__card">
+                <div class="p-3 shadow-sm">
+                  <h6 class="title-left-stick mb-3">Transferlar tarixi</h6>
+                  <table
+                    class="table-striped table table-responsive-md custom-table table-hover"
+                  >
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">F.I.SH</th>
+                        <th scope="col">Maqomi</th>
+                        <th scope="col">Sana</th>
+                        <th scope="col">
+                          Kirim<i class="fas fa-arrow-down ml-2"></i>
+                        </th>
+                        <th scope="col">
+                          Chiqim<i class="fas fa-arrow-up ml-2"></i>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">UZ100000</th>
+                        <td>
+                          <img
+                            src="/img/slide-2.jpg"
+                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                            alt="John Doe"
+                          />
+                          Jhon Doe
+                        </td>
+                        <td>Lider</td>
+                        <td>21.05.2021</td>
+                        <td>100 000 so'm</td>
+                        <td>50 000 so'm</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">UZ100000</th>
+                        <td>
+                          <img
+                            src="/img/slide-2.jpg"
+                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                            alt="John Doe"
+                          />
+                          Jhon Doe
+                        </td>
+                        <td>Lider</td>
+                        <td>21.05.2021</td>
+                        <td>100 000 so'm</td>
+                        <td>50 000 so'm</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">UZ100000</th>
+                        <td>
+                          <img
+                            src="/img/slide-2.jpg"
+                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                            alt="John Doe"
+                          />
+                          Jhon Doe
+                        </td>
+                        <td>Lider</td>
+                        <td>21.05.2021</td>
+                        <td>100 000 so'm</td>
+                        <td>50 000 so'm</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">UZ100000</th>
+                        <td>
+                          <img
+                            src="/img/slide-2.jpg"
+                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                            alt="John Doe"
+                          />
+                          Jhon Doe
+                        </td>
+                        <td>Lider</td>
+                        <td>21.05.2021</td>
+                        <td>100 000 so'm</td>
+                        <td>50 000 so'm</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">UZ100000</th>
+                        <td>
+                          <img
+                            src="/img/slide-2.jpg"
+                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                            alt="John Doe"
+                          />
+                          Jhon Doe
+                        </td>
+                        <td>Lider</td>
+                        <td>21.05.2021</td>
+                        <td>100 000 so'm</td>
+                        <td>50 000 so'm</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">UZ100000</th>
+                        <td>
+                          <img
+                            src="/img/slide-2.jpg"
+                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                            alt="John Doe"
+                          />
+                          Jhon Doe
+                        </td>
+                        <td>Lider</td>
+                        <td>21.05.2021</td>
+                        <td>100 000 so'm</td>
+                        <td>50 000 so'm</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item disabled">
+                      <a
+                        class="page-link"
+                        href="#"
+                        tabindex="-1"
+                        aria-disabled="true"
+                        ><i class="fas fa-chevron-left"></i
+                      ></a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#"
+                        ><i class="fas fa-chevron-right"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/backend/index.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

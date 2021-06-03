@@ -78,4 +78,9 @@ exports.dashboard = {
       res.status(200).render("admin/pages/team/add");
     },
   },
+  transfers: {
+    index(req, res) {
+      res.status(200).render("admin/pages/transfers/index");
+    },
+  },
 };
