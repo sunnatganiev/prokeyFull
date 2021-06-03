@@ -48,4 +48,28 @@ router.get(
   viewsController.dashboard.customers.add
 );
 
+router.get(
+  "/dashboard/registrators",
+  authController.isLoggedIn,
+  viewsController.dashboard.registrators.index
+);
+
+router.get(
+  "/dashboard/registrators/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.registrators.add
+);
+
+router.get(
+  "/dashboard/team",
+  authController.isLoggedIn,
+  viewsController.dashboard.team.index
+);
+
+router.get(
+  "/dashboard/team/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.team.add
+);
+
 module.exports = router;

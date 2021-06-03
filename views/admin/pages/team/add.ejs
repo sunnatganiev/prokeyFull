@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', {
+        page: 'customers'
+      }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0">Yangi xaridor qo'shish</h6>
+            </div>
+            <div class="row px-3">
+              <div class="col-lg-9 col-md-12 my-3">
+                <div class="dashboard__card bg-white p-3 rounded mx-n3">
+                  <form>
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">
+                        Malumotlar
+                      </h6>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-success text-white">ISM</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Ism" name="firstname">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-success text-white">FAMILIYA</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Familiya" name="lastname">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-success text-white">SHARIF</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Sharif" name="middle">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-success text-white">JINSI</span>
+                            </div>
+                            <select name="gender" class="custom-select">
+                              <option value="male">Erkak</option>
+                              <option value="female">Ayol</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-success text-white">TUG'ULGAN KUN</span>
+                            </div>
+                            <input type="date" id="birthday-input" class="form-control" name="birthday">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">
+                        Kontakt
+                      </h6>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-danger text-white">TELEFON</span>
+                            </div>
+                            <input type="text" class="form-control phone-input-mask" placeholder="+998" name="phone">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-danger text-white">EMAIL</span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="example@mail.com" name="phone">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-danger text-white">PROFIL RASMI</span>
+                            </div>
+                            <div class="custom-file">
+                              <input type="file" id="avatar-input" class="custom-file-input" placeholder="Rasm yuklash" name="avatar">
+                              <label class="custom-file-label" for="avatar-input"></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">
+                        Referal
+                      </h6>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-warning text-white">Kim taklif qilgan?</span>
+                            </div>
+                            <input type="email" class="form-control" name="whoInvited" placeholder="example@.gmail.com">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-warning text-white">Obuna</span>
+                            </div>
+                            <input type="email" class="form-control" name="following" placeholder="example@.gmail.com">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-warning text-white">Obuna tomoni</span>
+                            </div>
+                            <select name="followingSide" class="custom-select">
+                              <option value="right">O'ng</option>
+                              <option value="left">Chap</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-warning text-white">Lavozim</span>
+                            </div>
+                            <select name="role" class="custom-select">
+                              <option value="client" selected>Klient</option>
+                              <option value="admin">Admin</option>
+                              <option value="registrator">Registrator</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-warning text-white">Status</span>
+                            </div>
+                            <select name="status" class="custom-select">
+                              <option value="client" selected>Klient</option>
+                              <option value="partner">Partner</option>
+                              <option value="master">Master</option>
+                              <option value="manager">Manager</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>  
+                    </div>
+
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">
+                        Autentifikatsiya
+                      </h6>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-primary text-white">Parol</span>
+                            </div>
+                            <input type="password" class="form-control" name="password">
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-primary text-white">Parolni qaytaring</span>
+                            </div>
+                            <input type="password" class="form-control" name="passwordConfirm" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
+
+                  </form>
+                </div>
+              </div>
+
+              <%- include('../../components/right-sidebar.ejs') %> 
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/backend/index.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>
