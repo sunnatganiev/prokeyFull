@@ -70,4 +70,12 @@ exports.dashboard = {
       res.status(200).render("admin/pages/registrators/add");
     },
   },
+  team: {
+    index(req, res) {
+      res.status(200).render("admin/pages/team/index");
+    },
+    add(req, res) {
+      res.status(200).render("admin/pages/team/add");
+    },
+  },
 };

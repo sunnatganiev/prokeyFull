@@ -60,4 +60,16 @@ router.get(
   viewsController.dashboard.registrators.add
 );
 
+router.get(
+  "/dashboard/team",
+  authController.isLoggedIn,
+  viewsController.dashboard.team.index
+);
+
+router.get(
+  "/dashboard/team/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.team.add
+);
+
 module.exports = router;
