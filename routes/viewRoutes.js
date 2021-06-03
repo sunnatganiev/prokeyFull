@@ -82,4 +82,17 @@ router.get(
   viewsController.dashboard.transfers.index
 );
 
+//warehouses
+router.get(
+  "/dashboard/warehouses",
+  authController.isLoggedIn,
+  viewsController.dashboard.warehouses.index
+);
+
+router.get(
+  "/dashboard/warehouses/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.warehouses.single
+);
+
 module.exports = router;

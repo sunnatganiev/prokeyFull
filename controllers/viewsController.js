@@ -83,4 +83,16 @@ exports.dashboard = {
       res.status(200).render("admin/pages/transfers/index");
     },
   },
+  warehouses: {
+    index(req, res) {
+      res.status(200).render("admin/pages/warehouses/index");
+    },
+    single(req, res) {
+      //handle id
+      console.log(req.params.id);
+      res
+        .status(200)
+        .render("admin/pages/warehouses/single", { id: req.params.id });
+    },
+  },
 };
