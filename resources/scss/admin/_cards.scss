@@ -18,14 +18,16 @@
   padding-left: 7px;
   padding-right: 7px;
   margin-bottom: 20px;
-  a {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 11px;
-    color: $primary;
-    svg {
-      margin-right: 5px;
+  .shadow-sm {
+    & > a {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: $primary;
+      svg {
+        margin-right: 5px;
+      }
     }
   }
   h5 {

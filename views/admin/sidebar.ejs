@@ -33,11 +33,11 @@
           </div>
           Transferlar
         </a>
-        <a class="nav-link <% if (page === 'statistics') {%>active<%}%>" aria-current="page" href="/dashboard/statistics">
+        <a class="nav-link <% if (page === 'products') {%>active<%}%>" aria-current="page" href="/dashboard/products">
           <div class="icon-wrapper">
-            <i class="icon fas fa-chart-bar"></i>
+            <i class="fas fa-shopping-basket"></i>
           </div>
-          Statistika
+          Maxsulotlar
         </a>
         <a class="nav-link <% if (page === 'customers') {%>active<%}%>" aria-current="page" href="/dashboard/customers">
           <div class="icon-wrapper">
@@ -51,16 +51,25 @@
           </div>
           Omborlar
         </a>
+        <a class="nav-link <% if (page === 'news') {%>active<%}%>" aria-current="page" href="/dashboard/news">
+          <div class="icon-wrapper">
+            <i class="fas fa-newspaper"></i>
+          </div>
+          Yangiliklar
+        </a>
+        <a class="nav-link <% if (page === 'gallery') {%>active<%}%>" aria-current="page" href="/dashboard/gallery">
+          <div class="icon-wrapper">
+            <i class="fas fa-images"></i>
+          </div>
+          Galereya
+        </a>
+        <a class="nav-link <% if (page === 'banners') {%>active<%}%>" aria-current="page" href="/dashboard/banners">
+          <div class="icon-wrapper">
+            <i class="fas fa-map"></i>
+          </div>
+          Bannerlar
+        </a>
       </li>
     </ul>
-  </div>
-
-  <div class="position-absolute logout-wrapper d-flex justify-content-center">
-    <button class="btn btn-outline-light d-flex align-items-center">
-      <div class="icon-wrapper">
-        <i class="fas fa-power-off"></i>
-      </div>
-      Chiqish
-    </button>
   </div>
 </nav>

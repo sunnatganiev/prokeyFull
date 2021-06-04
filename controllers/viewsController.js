@@ -78,4 +78,36 @@ exports.dashboard = {
       res.status(200).render("admin/pages/team/add");
     },
   },
+  transfers: {
+    index(req, res) {
+      res.status(200).render("admin/pages/transfers/index");
+    },
+  },
+  warehouses: {
+    index(req, res) {
+      res.status(200).render("admin/pages/warehouses/index");
+    },
+    single(req, res) {
+      //handle id
+      console.log(req.params.id);
+      res
+        .status(200)
+        .render("admin/pages/warehouses/single", { id: req.params.id });
+    },
+  },
+  products: {
+    index(req, res) {
+      res.status(200).render("admin/pages/products/index");
+    },
+    single(req, res) {
+      //handle id
+      console.log(req.params.id);
+      res
+        .status(200)
+        .render("admin/pages/products/single", { id: req.params.id });
+    },
+    add(req, res) {
+      res.status(200).render("admin/pages/products/add", { id: req.params.id });
+    },
+  },
 };
