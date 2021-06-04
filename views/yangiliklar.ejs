@@ -23,15 +23,14 @@
     <div class="news_main_body pt-5">
       <div class="row">
         
-        <div class="col-lg-8 col-md-12">
-          <div class="news_first_sec_carousel">
+        <div class="col-lg-8 col-md-12 mb-3 mb-lg-0">
+          <div class="news_first_sec_carousel h-100">
             <div
               id="yangiliklar_carousel"
-              class="carousel slide"
-              ,
+              class="carousel slide h-100"
               data-ride="carousel"
             >
-              <ul class="carousel-indicators">
+              <ul class="carousel-indicators mb-0">
                 <li
                   data-target="#yangiliklar_carousel"
                   data-slide-to="0"
@@ -41,37 +40,43 @@
                 <li data-target="#yangiliklar_carousel" data-slide-to="2"></li>
               </ul>
   
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100">
                   <img
                     class="carousel_pic"
-                    src="./img/photo_2021-05-20_17-37-10.jpg"
+                    src="/img/news1.jpg"
                     alt="Los Angeles"
                   />
                   <div class="carousel-caption">
-                    <p>We had such a great time in LA!</p>
+                    <a href="yangilikichi.html">
+                      "Orzu O'g'rilar" treningini seminar 
+                    </a>
                   </div>
                 </div>
   
-                <div class="carousel-item">
+                <div class="carousel-item h-100">
                   <img
                     class="carousel_pic"
-                    src="./img/docs/file-20200407-116223-gwtpno.jpg"
+                    src="/img/news2.jpg"
                     alt="Los Angeles"
                   />
                   <div class="carousel-caption">
-                    <p>We had such a great time in LA!</p>
+                    <a href="yangilikichi.html">
+                      Bibisara opa Yusupova bilan suhbat 
+                    </a>
                   </div>
                 </div>
   
-                <di v class="carousel-item">
+                <di v class="carousel-item h-100">
                   <img
                     class="carousel_pic"
-                    src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
+                    src="/img/news3.jpg"
                     alt="Los Angeles"
                   />
                   <div class="carousel-caption">
-                    <p>We had such a great time in LA!</p>
+                    <a href="yangilikichi.html">
+                      4-6 may kunlari yurtimizning tog' you bag'rlarida kompaniyamizning ilk dam olish seminari bo'lib o'tti. 
+                    </a>
                   </div>
                 </di>
               </div>
@@ -98,25 +103,23 @@
           <div class="news_first_sec_pic">
             <img
               class="pic_par"
-              src="./img/photo_2021-05-20_17-36-56.jpg"
+              src="/img/news4.jpg"
               alt="Los Angeles"
             />
-            <p class="bottom_center">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Distinctio, molestiae!
-            </p>
+            <a href="yangilikichi.html" class="bottom_center">       
+                ProgressKey oilasi tog' seminarida 
+            </a>
           </div>
   
           <div class="news_first_sec_pic">
             <img
               class="pic_par"
-              src="./img/photo_2021-05-20_17-37-01.jpg"
+              src="/img/news5.jpg"
               alt="Los Angeles"
             />
-            <p class="bottom_center">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Distinctio, molestiae!
-            </p>
+            <a href="yangilikichi.html" class="bottom_center">
+              Surxondaryo liderlari
+            </a>
           </div>
         </div>
       </div>
@@ -124,230 +127,67 @@
 
       
       <div class="row">
-        <% for (var i =1; i <=10;  i++ ) { %>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-            <%- include('./components/news-item.ejs', {
-              img: "img/news2.jpg",
-              title: "Bibisara opa Yusupova bilan suhbat",
-              description: "Qoraqalpog'iston Respublikasida Nukusning eng kuchli lideri, parapsixolog,moderator Bibisara opa Yusupova vrachlarga kompaniyamiz mahsulotlari va imkoniyatlari to'g'risida ma'lumot berishdi. Judayam maroqli suhbat bo'ldi."
-            }) %>
-          </div>
-        <% } %>
-      </div>
-
-      <!-- <div class="news_second_sec">
-        <div class="news_second_sec-left">
-          <div class="second_sec_news_pic">
-            <img
-              class="second_sec_news_pic_class"
-              src="./img/photo_2021-05-20_17-36-44.jpg"
-              alt=""
-            />
-          </div>
-          <div class="second_sec_info">
-            <div class="second_sec_info_part">
-              <h6 class="second_sec_info_title">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                veniam possimus doloribus eos unde eius obcaecati.
-              </h6>
-
-              <div class="second_sec_info_line"></div>
-
-              <div class="second_sec_info_text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-                repellendus ex, facere laudantium alias autem, in maiores odit,
-                error atque dolorem et dolore optio facilis nulla officia non
-                totam commodi! Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Pariatur laboriosam facilis autem cumque,
-                enim, modi omnis fuga ullam atque quaerat voluptatem, placeat
-                excepturi voluptate provident dolorum obcaecati ad est quasi
-                dfgva fasf fafsfa afsf.
-              </div>
-            </div>
-            <div class="info__bottom-all">
-              <div class="second_sec_info_datatime">
-                <i class="fal fa-calendar-alt"></i> 19.02.2020
-              </div>
-              <div class="second_sec_info_button_div">
-                <a href="yangiliklarichi.html"
-                  ><button class="second_sec_info_button">
-                    Batafsil...
-                  </button></a
-                >
-              </div>
-            </div>
-          </div>
+        
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news5.jpg",
+            title: "Surxondaryo liderlari",
+            description: "Surxondaryo viloyati liderlari Kompaniyamizning eksklyuziv mahsulotlarini qabul qilib olishdi."
+          }) %> 
         </div>
 
-        <div class="second_sec_mini_news">
-          <div class="second_sec_news_mini-1">
-            <img
-              class="second_sec_news_mini_pic pic"
-              src="./img/photo_2021-05-20_17-35-08.jpg"
-              alt=""
-            />
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news6.jpg",
+            title: "Farg'ona liderlari",
+            description: "Farg'ona viloyati liderlari Kompaniyamiz mahsulotlarini qabul qilib olishdi."
+          }) %> 
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news7.jpg",
+            title: "Farg'ona liderlari natijalari",
+            description: "Farg'ona viloyati liderlari mahsulotlarni olishdan mamnun bo'lishdi. Natijalar sari olg'a."
+          }) %> 
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news8.jpg",
+            title: "Buxoro viloyati liderlari",
+            description: "Buhoro viloyati lideri bn ijobiy taqdimot jarayoni."
+          }) %> 
+        </div>
 
-            <div class="second_sec_news_mini_info">
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
-              adipisicing.
-            </div>
-          </div>
-
-          <div class="second_sec_news_mini-2">
-            <img
-              class="second_sec_news_mini_pic pic"
-              src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
-              alt=""
-            />
-            <div class="second_sec_news_mini_info">
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
-              adipisicing.
-            </div>
-          </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news1.jpg",
+            title: "\"Orzu O'g'rilar\" treningini seminar",
+            description: "Tog' seminarimizda, kompaniyamizning direktori, kuchli spiker, marketolog Shikhnazar Ruzmetov o'zining avtorlik  \"Orzu O'g'rilar\" treningini seminar qatnashchilariga o'tib berdi. Hamma ishtirokchilar birdamlikda katta kuch borligini yana bir marotaba xis qilishdi."
+          }) %> 
+        </div>       
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news2.jpg",
+            title: "Bibisara opa Yusupova bilan suhbat",
+            description: "Qoraqalpog'iston Respublikasida Nukusning eng kuchli lideri, parapsixolog,moderator Bibisara opa Yusupova vrachlarga kompaniyamiz mahsulotlari va imkoniyatlari to'g'risida ma'lumot berishdi. Judayam maroqli suhbat bo'ldi."
+          }) %> 
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news3.jpg",
+            title: "4-6 may kunlari yurtimizning tog' you bag'rlarida kompaniyamizning ilk dam olish seminari bo'lib o'tti.",
+            description: "4-6 may kunlari yurtimizning tog' you bag'rlarida kompaniyamizning ilk dam olish seminari bo'lib o'tti. Unda Qoraqalpog'iston Respublikasi, Farg'ona viloyati, Surxondaryo violation hamda Toshkent viloyati liderlari ishtirok etishdi. Seminarians kompaniyamizning kelgusidagi 3-4 yillik rejalari haqida fikr almashinildi."
+          }) %> 
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <%- include('./components/news-item.ejs', {
+            img: "/img/news4.jpg",
+            title: "ProgressKey oilasi tog' seminarida",
+            description: "ProgressKey oilasi tog' seminarida maza qilib dam olishdi.  Undan tashqari  3 kunlik seminar qatnashchilariga sovg'a salomlar berildi. Eng katta sovg'a Bilim ekanligi yana bir marotaba tasdiqini topdi."
+          }) %> 
         </div>
       </div>
-      <div class="news_second_sec">
-        <div class="news_second_sec-left">
-          <div class="second_sec_news_pic">
-            <img
-              class="second_sec_news_pic_class"
-              src="./img/photo_2021-05-20_17-34-58.jpg"
-              alt=""
-            />
-          </div>
-          <div class="second_sec_info">
-            <div class="second_sec_info_part">
-              <h6 class="second_sec_info_title">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                veniam possimus doloribus eos unde eius obcaecati.
-              </h6>
 
-              <div class="second_sec_info_line"></div>
-
-              <div class="second_sec_info_text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-                repellendus ex, facere laudantium alias autem, in maiores odit,
-                error atque dolorem et dolore optio facilis nulla officia non
-                totam commodi! Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Pariatur laboriosam facilis autem cumque,
-                enim, modi omnis fuga ullam atque quaerat voluptatem, placeat
-                excepturi voluptate provident dolorum obcaecati ad est quasi
-                dfgva fasf fafsfa afsf.
-              </div>
-            </div>
-            <div class="info__bottom-all">
-              <div class="second_sec_info_datatime">
-                <i class="fal fa-calendar-alt"></i> 19.02.2020
-              </div>
-              <div class="second_sec_info_button_div">
-                <a href="yangiliklarichi.html"
-                  ><button class="second_sec_info_button">
-                    Batafsil...
-                  </button></a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="second_sec_mini_news">
-          <div class="second_sec_news_mini-1">
-            <img
-              class="second_sec_news_mini_pic pic"
-              src="./img/docs/Supporting-student-nurses_social-image.jpg"
-              alt=""
-            />
-
-            <div class="second_sec_news_mini_info">
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
-              adipisicing.
-            </div>
-          </div>
-
-          <div class="second_sec_news_mini-2">
-            <img
-              class="second_sec_news_mini_pic pic"
-              src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
-              alt=""
-            />
-            <div class="second_sec_news_mini_info">
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
-              adipisicing.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="news_second_sec">
-        <div class="news_second_sec-left">
-          <div class="second_sec_news_pic">
-            <img
-              class="second_sec_news_pic_class"
-              src="./img/docs/Nurses-support-their-young.jpg"
-              alt=""
-            />
-          </div>
-          <div class="second_sec_info">
-            <div class="second_sec_info_part">
-              <h6 class="second_sec_info_title">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                veniam possimus doloribus eos unde eius obcaecati.
-              </h6>
-
-              <div class="second_sec_info_line"></div>
-
-              <div class="second_sec_info_text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-                repellendus ex, facere laudantium alias autem, in maiores odit,
-                error atque dolorem et dolore optio facilis nulla officia non
-                totam commodi! Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Pariatur laboriosam facilis autem cumque,
-                enim, modi omnis fuga ullam atque quaerat voluptatem, placeat
-                excepturi voluptate provident dolorum obcaecati ad est quasi
-                dfgva fasf fafsfa afsf.
-              </div>
-            </div>
-            <div class="info__bottom-all">
-              <div class="second_sec_info_datatime">
-                <i class="fal fa-calendar-alt"></i> 19.02.2020
-              </div>
-              <div class="second_sec_info_button_div">
-                <a href="yangiliklarichi.html"
-                  ><button class="second_sec_info_button">
-                    Batafsil...
-                  </button></a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="second_sec_mini_news">
-          <div class="second_sec_news_mini-1">
-            <img
-              class="second_sec_news_mini_pic pic"
-              src="./img/docs/Supporting-student-nurses_social-image.jpg"
-              alt=""
-            />
-
-            <div class="second_sec_news_mini_info">
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
-              adipisicing.
-            </div>
-          </div>
-
-          <div class="second_sec_news_mini-2">
-            <img
-              class="second_sec_news_mini_pic pic"
-              src="./img/docs/how-can-nurses-improve-patient-satisfaction-.jpg"
-              alt=""
-            />
-            <div class="second_sec_news_mini_info">
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur
-              adipisicing.
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
    </div>
     <%- include('./components/footer.ejs') %>
