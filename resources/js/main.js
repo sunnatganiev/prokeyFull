@@ -16,4 +16,12 @@ elsPhoneMask?.forEach((el) => {
   IMask(el, phoneMask);
 });
 
-// const mask = IMask(element, maskOptions);
+jQuery(function () {
+  if ($(window).width() < 800) {
+    $("body").addClass("sidebar--close");
+  }
+
+  $(".js-toggle-sidebar").on("click", () => {
+    $("body").toggleClass("sidebar--close");
+  });
+});

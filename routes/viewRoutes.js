@@ -37,6 +37,7 @@ router.get(
   viewsController.dashboard.index
 );
 
+//customers
 router.get(
   "/dashboard/customers",
   authController.isLoggedIn,
@@ -49,13 +50,50 @@ router.get(
   viewsController.dashboard.customers.add
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-router.post(
-  "/dashboard/customers/add",
+//registrators
+router.get(
+  "/dashboard/registrators",
   authController.isLoggedIn,
-  viewsController.dashboard.customers.add
+  viewsController.dashboard.registrators.index
+);
+
+router.get(
+  "/dashboard/registrators/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.registrators.add
+);
+
+//team
+router.get(
+  "/dashboard/team",
+  authController.isLoggedIn,
+  viewsController.dashboard.team.index
+);
+
+router.get(
+  "/dashboard/team/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.team.add
+);
+
+//transfers
+router.get(
+  "/dashboard/transfers",
+  authController.isLoggedIn,
+  viewsController.dashboard.transfers.index
+);
+
+//warehouses
+router.get(
+  "/dashboard/warehouses",
+  authController.isLoggedIn,
+  viewsController.dashboard.warehouses.index
+);
+
+router.get(
+  "/dashboard/warehouses/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.warehouses.single
 );
 
 module.exports = router;

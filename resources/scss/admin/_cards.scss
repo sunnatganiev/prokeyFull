@@ -1,0 +1,169 @@
+.dashboard-sidebar-card {
+  // min-width: 250px;
+  max-width: 100%;
+  margin-bottom: 15px;
+  p {
+    font-size: 15px;
+  }
+  .box {
+    padding: 2px 10px;
+    background: rgba($color: $red, $alpha: 0.8);
+    color: white;
+    font-size: 13px;
+    border-radius: 5px;
+  }
+}
+
+.dashboard__card {
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-bottom: 20px;
+  .shadow-sm {
+    & > a {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: $primary;
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+  h5 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid $gray-300;
+  }
+  .p-3 {
+    border-radius: 15px;
+    background: white;
+  }
+  p {
+    font-size: 13px;
+    color: $gray-500;
+  }
+  .d-flex {
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+
+    svg {
+      height: 20px;
+    }
+  }
+  &:nth-child(1) {
+    .icon-wrapper {
+      color: $red;
+      background-color: rgba($color: $red, $alpha: 0.2);
+    }
+  }
+  &:nth-child(2) {
+    .icon-wrapper {
+      color: $primary;
+      background-color: rgba($color: $primary, $alpha: 0.2);
+    }
+  }
+  &:nth-child(3) {
+    .icon-wrapper {
+      color: $yellow;
+      background-color: rgba($color: $yellow, $alpha: 0.3);
+    }
+  }
+  &:nth-child(4) {
+    .icon-wrapper {
+      color: $green;
+      background-color: rgba($color: $green, $alpha: 0.3);
+    }
+  }
+}
+
+.user-card,
+.add-card {
+  min-width: 230px;
+  width: 230px;
+  border-radius: 10px;
+
+  .top {
+    color: $color-primary-dark !important;
+    .img-wrapper {
+      margin-right: 10px;
+    }
+    h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    p {
+      margin-bottom: 0px;
+      font-size: 14px;
+    }
+  }
+
+  .progress {
+    height: 4px;
+  }
+
+  h5 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  //since it has one el before the real ones it starts with 2
+  &:nth-child(3n + 2) {
+    background-color: rgba($color: $green, $alpha: 0.2);
+    color: $green;
+    .progress-bar {
+      background-color: $green;
+    }
+  }
+  &:nth-child(3n + 3) {
+    background-color: rgba($color: $red, $alpha: 0.2);
+    color: $red;
+    .progress-bar {
+      background-color: $red;
+    }
+  }
+  &:nth-child(3n + 4) {
+    background-color: rgba($color: $primary, $alpha: 0.2);
+    color: $primary;
+    .progress-bar {
+      background-color: $primary;
+    }
+  }
+}
+
+.add-card {
+  min-width: 200px;
+  width: 200px;
+  background: $gray-300;
+}
+
+.added-users {
+  display: flex;
+  align-items: center;
+  a {
+    width: 33px;
+    height: 33px;
+    min-width: 33px;
+    min-height: 33px;
+    position: relative;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px #fff;
+    &:not(:first-child) {
+      margin-left: -10px;
+    }
+  }
+}

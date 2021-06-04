@@ -23,18 +23,54 @@
             </div>
             <div class="row">
               <div class="col-lg-9 col-md-12 my-3">
-                <div class="p-3 shadow-sm rounded bg-white">
+                <div class="p-3 shadow-sm rounded bg-white mb-3">
                   <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom">
                     <h4 class="title-left-stick">
                       Registratorlar
                     </h4>
                     <a href="#" class="h6 text-dark">Jadval shaklida ko'rish</a>
+                    
+                  </div>
+                  <div class="container-fluid">
+                    <div class="user-cards-wrapper d-flex overflow-auto pb-3">
+                      <a href="/dashboard/registrators/add" class="add-card d-flex justify-content-center align-items-center flex-column">
+                        <div class="border border-2 border-black square-50 rounded-circle bg-white d-flex justify-content-center align-items-center">
+                          <i class="fas fa-plus"></i>
+                        </div>
+                        <h5>Yangi qo'shish</h5>
+                      </a>
+                      <%- include('./components/user-card.ejs') %>
+                      <%- include('./components/user-card.ejs') %>
+                      <%- include('./components/user-card.ejs') %>
+                      <%- include('./components/user-card.ejs') %>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3 shadow-sm rounded bg-white mb-3">
+                  <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom">
+                    <h4 class="title-left-stick">
+                      Xaridorlar
+                    </h4>
+                    <a href="#" class="h6 text-dark">Jadval shaklida ko'rish</a>
+                    
+                  </div>
+                  <div class="container-fluid">
+                    <div class="user-cards-wrapper d-flex overflow-auto pb-3">
+                      <a href="/dashboard/customers/add" class="add-card d-flex justify-content-center align-items-center flex-column">
+                        <div class="border border-2 border-black square-50 rounded-circle bg-white d-flex justify-content-center align-items-center">
+                          <i class="fas fa-plus"></i>
+                        </div>
+                        <h5>Yangi qo'shish</h5>
+                      </a>
+                      <%- include('./components/user-card.ejs') %>
+                      <%- include('./components/user-card.ejs') %>
+                      <%- include('./components/user-card.ejs') %>
+                      <%- include('./components/user-card.ejs') %>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-12 my-3">
-                <div class="d-flex justify-content-around"></div>
-              </div>
+              <%- include('./components/right-sidebar.ejs') %> 
             </div>
           </div>
         </div>

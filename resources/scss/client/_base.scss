@@ -182,6 +182,18 @@ body {
   }
 }
 
+.img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 @media screen and (min-width: $md) {
   .w-md-50 {
     width: 50% !important;
