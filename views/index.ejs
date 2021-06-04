@@ -10,7 +10,7 @@
     <title>progresskey.uz | <%= title %></title>
   </head>
   <body>
-    <%- include('./components/nav.ejs') %>
+    <%- include('./components/nav.ejs', user) %>
 
     <div class="home tayoq">
       <div class="home__main">
@@ -371,7 +371,7 @@
     >
       <div class="carousel-inner mb-4">
         <div class="carousel-item active">
-        <div class="home__carousel-img">
+          <div class="home__carousel-img">
             <img src="img/face.jpg" alt="" class="carousel-img" />
           </div>
 

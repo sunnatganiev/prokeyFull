@@ -31,6 +31,7 @@ exports.kontakt = (req, res) => {
 exports.home = (req, res) => {
   res.status(200).render("index", {
     title: "Home",
+    user: res.locals.user,
   });
 };
 
@@ -60,6 +61,7 @@ exports.dashboard = {
     },
     add(req, res) {
       res.status(200).render("admin/pages/customers/add");
+      console.log('viewsController line 64: ', req.body);
     },
   },
 };

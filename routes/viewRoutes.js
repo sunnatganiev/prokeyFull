@@ -2,6 +2,7 @@ const express = require("express");
 const viewsController = require("../controllers/viewsController");
 const authController = require("../controllers/authController");
 
+const app = express();
 const router = express.Router();
 
 router.get("/", viewsController.home);
@@ -43,6 +44,15 @@ router.get(
 );
 
 router.get(
+  "/dashboard/customers/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.customers.add
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+router.post(
   "/dashboard/customers/add",
   authController.isLoggedIn,
   viewsController.dashboard.customers.add

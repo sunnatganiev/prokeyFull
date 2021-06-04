@@ -9,53 +9,74 @@
   </head>
   <body class="dashboard">
     <div class="dashboard-content-wrapper">
-      <%- include('../../sidebar.ejs', {
-        page: 'customers'
-      }) %>
+      <%- include('../../sidebar.ejs', { page: 'customers' }) %>
 
       <main>
         <%- include('../../header.ejs') %>
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Yangi xaridor qo'shish</h6>
+              <h6 class="font-weight-bold text-muted mb-0">
+                Yangi xaridor qo'shish
+              </h6>
             </div>
             <div class="row px-3">
               <div class="col-lg-9 col-md-12 my-3">
-                <div class="dashboard__card bg-white p-3 rounded mx-n3">
-                  <form>
-                    <h6 class="title-left-stick mb-3">
-                      Malumotlar
-                    </h6>
-                    <div class="row">
+                <div class="dashboard__card bg-white p-3 rounded mx-n3 p-4">
+                  <form method="POST" action="/admin/pages/customers/add">
+                    <h6 class="title-left-stick mb-3">Malumotlar</h6>
+                    <div class="row mb-4">
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-success text-white">ISM</span>
+                            <span class="input-group-text bg-success text-white"
+                              >ISM</span
+                            >
                           </div>
-                          <input type="text" class="form-control" placeholder="Ism" name="firstname">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Ism"
+                            name="name"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-success text-white">FAMILIYA</span>
+                            <span class="input-group-text bg-success text-white"
+                              >FAMILIYA</span
+                            >
                           </div>
-                          <input type="text" class="form-control" placeholder="Familiya" name="lastname">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Familiya"
+                            name="surname"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-success text-white">SHARIF</span>
+                            <span class="input-group-text bg-success text-white"
+                              >SHARIF</span
+                            >
                           </div>
-                          <input type="text" class="form-control" placeholder="Sharif" name="middle">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Sharif"
+                            name="middleName"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-success text-white">JINSI</span>
+                            <span class="input-group-text bg-success text-white"
+                              >JINSI</span
+                            >
                           </div>
                           <select name="gender" class="custom-select">
                             <option value="male">Erkak</option>
@@ -63,73 +84,117 @@
                           </select>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 col-sm-12">
+                      <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-success text-white">TUG'ULGAN KUN</span>
+                            <span class="input-group-text bg-success text-white"
+                              >TUG'ILGAN KUN</span
+                            >
                           </div>
-                          <input type="date" id="birthday-input" class="form-control" name="birthday">
+                          <input
+                            type="date"
+                            id="birthday-input"
+                            class="form-control"
+                            name="birthDate"
+                          />
                         </div>
                       </div>
                     </div>
 
-                    <h6 class="title-left-stick mb-3">
-                      Kontakt
-                    </h6>
-                    <div class="row">
+                    <h6 class="title-left-stick mb-3">Kontakt</h6>
+                    <div class="row mb-4">
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-danger text-white">TELEFON</span>
+                            <span class="input-group-text bg-danger text-white"
+                              >TELEFON</span
+                            >
                           </div>
-                          <input type="text" class="form-control phone-input-mask" placeholder="+998" name="phone">
+                          <input
+                            type="text"
+                            class="form-control phone-input-mask"
+                            placeholder="+998"
+                            name="phoneNumber"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-danger text-white">EMAIL</span>
+                            <span class="input-group-text bg-danger text-white"
+                              >EMAIL</span
+                            >
                           </div>
-                          <input type="email" class="form-control" placeholder="example@mail.com" name="phone">
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="example@mail.com"
+                            name="email"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-danger text-white">PROFIL RASMI</span>
+                            <span class="input-group-text bg-danger text-white"
+                              >PROFIL RASMI</span
+                            >
                           </div>
                           <div class="custom-file">
-                            <input type="file" id="avatar-input" class="custom-file-input" placeholder="Rasm yuklash" name="avatar">
-                            <label class="custom-file-label" for="avatar-input"></label>
+                            <input
+                              type="file"
+                              id="avatar-input"
+                              class="custom-file-input"
+                              placeholder="Rasm yuklash"
+                              name="photo"
+                            />
+                            <label
+                              class="custom-file-label"
+                              for="avatar-input"
+                            ></label>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <h6 class="title-left-stick mb-3">
-                      Referal
-                    </h6>
-                    <div class="row">
+                    <h6 class="title-left-stick mb-3">Referal</h6>
+                    <div class="row mb-4">
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-warning text-white">Kim taklif qilgan?</span>
+                            <span class="input-group-text bg-warning text-white"
+                              >Kim taklif qilgan?</span
+                            >
                           </div>
-                          <input type="email" class="form-control" name="whoInvited" placeholder="example@.gmail.com">
+                          <input
+                            type="email"
+                            class="form-control"
+                            name="whoInvited"
+                            placeholder="example@.gmail.com"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-warning text-white">Obuna</span>
+                            <span class="input-group-text bg-warning text-white"
+                              >Obuna</span
+                            >
                           </div>
-                          <input type="email" class="form-control" name="following" placeholder="example@.gmail.com">
+                          <input
+                            type="email"
+                            class="form-control"
+                            name="following"
+                            placeholder="example@.gmail.com"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-warning text-white">Obuna tomoni</span>
+                            <span class="input-group-text bg-warning text-white"
+                              >Obuna tomoni</span
+                            >
                           </div>
                           <select name="followingSide" class="custom-select">
                             <option value="right">O'ng</option>
@@ -140,7 +205,9 @@
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-warning text-white">Lavozim</span>
+                            <span class="input-group-text bg-warning text-white"
+                              >Lavozim</span
+                            >
                           </div>
                           <select name="role" class="custom-select">
                             <option value="client" selected>Klient</option>
@@ -152,7 +219,9 @@
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-warning text-white">Status</span>
+                            <span class="input-group-text bg-warning text-white"
+                              >Status</span
+                            >
                           </div>
                           <select name="status" class="custom-select">
                             <option value="client" selected>Klient</option>
@@ -164,93 +233,96 @@
                       </div>
                     </div>
 
-                    <h6 class="title-left-stick mb-3">
-                      Autentifikatsiya
-                    </h6>
-                    <div class="row">
+                    <h6 class="title-left-stick mb-3">Autentifikatsiya</h6>
+                    <div class="row mb-4">
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-primary text-white">Parol</span>
+                            <span class="input-group-text bg-primary text-white"
+                              >Parol</span
+                            >
                           </div>
-                          <input type="password" class="form-control phone-input-mask" name="password">
+                          <input
+                            type="password"
+                            class="form-control phone-input-mask"
+                            name="password"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text bg-primary text-white">Parolni qaytaring</span>
+                            <span class="input-group-text bg-primary text-white"
+                              >Parolni qaytaring</span
+                            >
                           </div>
-                          <input type="password" class="form-control" name="passwordConfirm" />
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text bg-primary text-white">MAQOM</span>
-                          </div>
-                          <select name="gender" class="custom-select">
-                            <option value="male">Erkak</option>
-                            <option value="female">Ayol</option>
-                          </select>
+                          <input
+                            type="password"
+                            class="form-control"
+                            name="passwordConfirm"
+                          />
                         </div>
                       </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
-
+                    <div class="d-block text-right">
+                      <button
+                        type="submit"
+                        class="btn btn-primary text-uppercase"
+                      >
+                        Saqlash
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
 
               <div class="col-lg-3 col-md-12 my-3">
                 <div class="d-flex justify-content-around flex-wrap">
-                  <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card">
-                    <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
-                      <h4 class="title-left-stick">
-                        PAKETLAR
-                      </h4>
+                  <div
+                    class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card"
+                  >
+                    <div
+                      class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom"
+                    >
+                      <h4 class="title-left-stick">PAKETLAR</h4>
                     </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <p class="text-muted mb-0">
-                        Sotilgan paketlar:
-                      </p>
-                      <div class="box">
-                        390 ball
-                      </div>
-                    </div>
-                  </div>
-                  <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card">
-                    <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
-                      <h4 class="title-left-stick">
-                        Ombor
-                      </h4>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <p class="text-muted mb-0">
-                        Barcha mahsulotlar:
-                      </p>
-                      <div class="box">
-                        390 ball
-                      </div>
+                    <div
+                      class="d-flex align-items-center justify-content-between"
+                    >
+                      <p class="text-muted mb-0">Sotilgan paketlar:</p>
+                      <div class="box">390 ball</div>
                     </div>
                   </div>
-                  <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card">
-                    <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
-                      <h4 class="title-left-stick">
-                        So'ralgan
-                      </h4>
+                  <div
+                    class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card"
+                  >
+                    <div
+                      class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom"
+                    >
+                      <h4 class="title-left-stick">Ombor</h4>
                     </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <p class="text-muted mb-0">
-                        Barcha mahsulotlar:
-                      </p>
-                      <div class="box">
-                        390 ball
-                      </div>
+                    <div
+                      class="d-flex align-items-center justify-content-between"
+                    >
+                      <p class="text-muted mb-0">Barcha mahsulotlar:</p>
+                      <div class="box">390 ball</div>
                     </div>
                   </div>
-                  
+                  <div
+                    class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card"
+                  >
+                    <div
+                      class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom"
+                    >
+                      <h4 class="title-left-stick">So'ralgan</h4>
+                    </div>
+                    <div
+                      class="d-flex align-items-center justify-content-between"
+                    >
+                      <p class="text-muted mb-0">Barcha mahsulotlar:</p>
+                      <div class="box">390 ball</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
