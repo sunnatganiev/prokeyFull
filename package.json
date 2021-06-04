@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@fancyapps/fancybox": "^3.5.7",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",

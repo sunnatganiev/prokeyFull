@@ -1,6 +1,7 @@
 //=require jquery/dist/jquery.js
 //=require popper.js/dist/umd/popper.js
 //=require bootstrap/dist/js/bootstrap.bundle.js
+//=require @fancyapps/fancybox/dist/jquery.fancybox.js
 //=require imask/dist/imask.js
 //=require ./all.js
 //=require ./script.js

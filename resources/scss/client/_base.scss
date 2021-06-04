@@ -22,6 +22,9 @@ body {
   transition: 0.3s ease;
 }
 
+.top-0 {
+  top: 0;
+}
 .dropdown-toggle {
   border: none;
   // font-size: 2rem;
@@ -69,6 +72,11 @@ body {
       grid-template-columns: 1fr;
     }
   }
+}
+
+b,
+strong {
+  font-weight: bold;
 }
 
 .slider__btn {

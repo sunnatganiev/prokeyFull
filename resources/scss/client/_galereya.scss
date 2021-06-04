@@ -37,3 +37,11 @@
 .gallery-card {
   max-width: 500px;
 }
+
+.gallery__item {
+  max-width: 100%;
+  margin-bottom: 20px;
+  img {
+    height: auto;
+  }
+}
