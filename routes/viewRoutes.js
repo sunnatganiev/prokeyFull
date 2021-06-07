@@ -95,4 +95,23 @@ router.get(
   viewsController.dashboard.warehouses.single
 );
 
+//products
+router.get(
+  "/dashboard/products",
+  authController.isLoggedIn,
+  viewsController.dashboard.products.index
+);
+
+router.get(
+  "/dashboard/product/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.products.single
+);
+
+router.get(
+  "/dashboard/products/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.products.add
+);
+
 module.exports = router;

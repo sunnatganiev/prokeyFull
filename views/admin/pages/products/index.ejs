@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', { page: 'registrators' }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0">Maxsulotlar</h6>
+              <a href="products/add">
+                Yangi qo'shish
+                <i class="fas fa-user-plus"></i>
+              </a>
+            </div>
+            <div class="row px-3">
+              <div class="col-lg-9 col-md-12 my-3">
+                <div class="row">
+                  <div class="col-lg-12 dashboard__card">
+                    <div class="p-3 shadow-sm">
+                      <div class="d-flex align-items-center mb-3">
+                        <h6 class="title-left-stick mr-4">Maxsulotlar</h6>
+                        <select name="warehouse" class="custom-select">
+                          <option value="chilonzor">Chilonzor</option>
+                        </select>
+                      </div>
+                      <table
+                        class="table table-responsive-md custom-table table-hover table-borderless table-sm"
+                      >
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Rasm</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Narx</th>
+                            <th scope="col">Soni</th>
+                            <th scope="col">Amallar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">15</th>
+                            <td>
+                              <img
+                              src="/img/dori-1.png"
+                              height="50"
+                              class="square-50 img-thumbnail object-fit-contain"
+                              alt="Product name"
+                            />
+                            </td>
+                            <td><a href="/dashboard/product/5">Evolution Cleaner</a></td>
+                            <td>200 000 so'm</td>
+                            <td>50</td>
+                            <td>
+                              <div class="d-flex justify-content-center">
+                                <a href="/dashboard/product/delete/5" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                <a href="/dashboard/product/edit/5" class="btn btn-warning ml-2"><i class="fas fa-edit"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class="page-item disabled">
+                          <a
+                            class="page-link"
+                            href="#"
+                            tabindex="-1"
+                            aria-disabled="true"
+                            ><i class="fas fa-chevron-left"></i
+                          ></a>
+                        </li>
+                        <li class="page-item active">
+                          <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#"
+                            ><i class="fas fa-chevron-right"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <%- include('../../components/right-sidebar.ejs') %>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/backend/index.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

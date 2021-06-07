@@ -1,10 +1,15 @@
 //=require jquery/dist/jquery.js
 //=require popper.js/dist/umd/popper.js
 //=require bootstrap/dist/js/bootstrap.bundle.js
+//=require bootstrap-fileinput/js/fileinput.js
+//=require bootstrap-fileinput/themes/fas/theme.js
+//=require bootstrap-fileinput/js/locales/uz.js
 //=require @fancyapps/fancybox/dist/jquery.fancybox.js
 //=require imask/dist/imask.js
-//=require ./all.js
+//=require ./jquery.richtext.js
 //=require ./script.js
+
+// require('bootstrap-fileinput/themes/fas/theme.js');
 
 const elsPhoneMask = document.querySelectorAll(".phone-input-mask");
 const phoneMask = {
@@ -24,5 +29,71 @@ jQuery(function () {
 
   $(".js-toggle-sidebar").on("click", () => {
     $("body").toggleClass("sidebar--close");
+  });
+
+  $("#input-images").fileinput({
+    showUpload: false,
+    maxFileCount: 10,
+    mainClass: "input-group",
+    language: "uz",
+    theme: "fas",
+    dropZoneEnabled: true,
+    allowedFileExtensions: ["jpg", "png", "svg", "jpeg", "webp"],
+  });
+
+  $("#product-description").richText({
+    fonts: false,
+    fontColor: false,
+    fontSize: true,
+
+    // uploads
+    imageUpload: false,
+    fileUpload: false,
+
+    // media
+    videoEmbed: false,
+
+    // link
+    urls: true,
+
+    // tables
+    table: false,
+
+    // code
+    removeStyles: true,
+    code: false,
+
+    translations: {
+      sameTab: "Joriy tabda",
+      newTab: "Yangi tabda",
+      title: "Sarlavha",
+      linkText: "Matnga havola",
+      url: "URL",
+      size: "O'lcham",
+      responsive: "Moslashuvchan",
+      text: "Matn",
+      openIn: "Ochish",
+      align: "Tekislash",
+      left: "Chap",
+      center: "Markaz",
+      right: "O'ng",
+      add: "Qo'shish",
+      pleaseEnterURL: "Havola kiriting",
+      bold: "Qalin matn",
+      italic: "Kursiv",
+      underline: "Tag chiziqli",
+      alignLeft: "Chapga tekislash",
+      alignCenter: "Markazga tekislash",
+      alignRight: "O'nga tekislash",
+      addOrderedList: "Tartiblangan ro'yxat",
+      addUnorderedList: "Tartiblanmagan ro'yxat",
+      addHeading: "Sarlavha qo'shish",
+      addFontSize: "Shrift o'lchami",
+      addURL: "Havola qo'shish",
+      removeStyles: "Remove styles",
+      undo: "Orqaga",
+      redo: "Oldinga",
+      close: "Yopish",
+    },
   });
 });

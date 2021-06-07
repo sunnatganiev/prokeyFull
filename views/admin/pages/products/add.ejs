@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', { page: 'customers' }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0">
+                Yangi xaridor qo'shish
+              </h6>
+            </div>
+            <div class="row px-3">
+              <div class="col-lg-12 my-3">
+                <div class="dashboard__card bg-white p-3 rounded mx-n3">
+                  <form>
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">Malumotlar</h6>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span
+                                class="input-group-text bg-success text-white"
+                                >Nom</span
+                              >
+                            </div>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Maxulot nomi"
+                              name="name"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span
+                                class="input-group-text bg-success text-white"
+                                >Soni</span
+                              >
+                            </div>
+                            <input
+                              type="number"
+                              min="1"
+                              class="form-control"
+                              placeholder="Soni"
+                              value="1"
+                              name="quantity"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span
+                                class="input-group-text bg-success text-white"
+                                >Narxi</span
+                              >
+                            </div>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Narx"
+                              name="price"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span
+                                class="input-group-text bg-success text-white"
+                                >Ombor</span
+                              >
+                            </div>
+                            <select name="warehouse" class="custom-select">
+                              <option value="chilonzor">Chilonzor</option>
+                              <option value="olmazor">Olmazor</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">Rasmlar</h6>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="file-loading">
+                            <input
+                              id="input-images"
+                              name="images"
+                              type="file"
+                              accept="image/*"
+                              multiple
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <h6 class="title-left-stick mb-3">Maxsulot haqida</h6>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <textarea name="description" id="product-description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="btn btn-primary text-uppercase"
+                    >
+                      Saqlash
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/backend/index.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>
