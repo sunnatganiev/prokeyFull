@@ -109,9 +109,91 @@ router.get(
 );
 
 router.get(
+  "/dashboard/product/delete/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.products.delete
+);
+
+// handle logic
+// router.put(
+//   "/dashboard/product/edit/:id",
+//   authController.isLoggedIn,
+//   viewsController.dashboard.products.edit
+// );
+
+router.get(
   "/dashboard/products/add",
   authController.isLoggedIn,
   viewsController.dashboard.products.add
+);
+
+//news
+router.get(
+  "/dashboard/news",
+  authController.isLoggedIn,
+  viewsController.dashboard.news.index
+);
+
+router.get(
+  "/dashboard/news/id/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.news.single
+);
+
+router.get(
+  "/dashboard/news/delete/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.news.delete
+);
+// handle logic
+// router.put(
+//   "/dashboard/product/edit/:id",
+//   authController.isLoggedIn,
+//   viewsController.dashboard.news.edit
+// );
+
+router.get(
+  "/dashboard/news/add",
+  authController.isLoggedIn,
+  viewsController.dashboard.news.add
+);
+
+//gallery
+router.get(
+  "/dashboard/gallery",
+  authController.isLoggedIn,
+  viewsController.dashboard.gallery.index
+);
+
+//banners
+router.get(
+  "/dashboard/banners",
+  authController.isLoggedIn,
+  viewsController.dashboard.banners.index
+);
+router.get(
+  "/dashboard/banners/id/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.banners.single
+);
+
+//workers
+router.get(
+  "/dashboard/workers",
+  authController.isLoggedIn,
+  viewsController.dashboard.workers.index
+);
+router.get(
+  "/dashboard/workers/id/:id",
+  authController.isLoggedIn,
+  viewsController.dashboard.workers.single
+);
+
+//workers
+router.get(
+  "/dashboard/settings",
+  authController.isLoggedIn,
+  viewsController.dashboard.settings.index
 );
 
 module.exports = router;

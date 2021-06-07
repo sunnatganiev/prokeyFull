@@ -97,17 +97,67 @@ exports.dashboard = {
   },
   products: {
     index(req, res) {
-      res.status(200).render("admin/pages/products/index");
+      res
+        .status(200)
+        .render("admin/pages/products/index", { isDeleted: false });
+    },
+    delete(req, res) {
+      //if successfull send isDeleted: true
+      res.status(200).render("admin/pages/products/index", { isDeleted: true });
     },
     single(req, res) {
       //handle id
       console.log(req.params.id);
-      res
-        .status(200)
-        .render("admin/pages/products/single", { id: req.params.id });
+      res.status(200).render("admin/pages/products/single", { error: true });
     },
     add(req, res) {
       res.status(200).render("admin/pages/products/add", { id: req.params.id });
+    },
+    // edit(req, res) {
+    //   res.status(200).render("admin/pages/products/edit", { error: null });
+    // },
+  },
+  news: {
+    index(req, res) {
+      res.status(200).render("admin/pages/news/index", { isDeleted: false });
+    },
+    delete(req, res) {
+      //if successfull send isDeleted: true
+      res.status(200).render("admin/pages/news/index", { isDeleted: true });
+    },
+    single(req, res) {
+      //handle id
+      console.log(req.params.id);
+      res.status(200).render("admin/pages/news/single", { error: true });
+    },
+    add(req, res) {
+      res.status(200).render("admin/pages/news/add", { id: req.params.id });
+    },
+  },
+  gallery: {
+    index(req, res) {
+      res.status(200).render("admin/pages/gallery/index");
+    },
+  },
+  banners: {
+    index(req, res) {
+      res.status(200).render("admin/pages/banners/index");
+    },
+    single(req, res) {
+      res.status(200).render("admin/pages/banners/single");
+    },
+  },
+  workers: {
+    index(req, res) {
+      res.status(200).render("admin/pages/workers/index");
+    },
+    single(req, res) {
+      res.status(200).render("admin/pages/workers/single");
+    },
+  },
+  settings: {
+    index(req, res) {
+      res.status(200).render("admin/pages/settings/index");
     },
   },
 };

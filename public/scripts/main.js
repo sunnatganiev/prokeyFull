@@ -39638,15 +39638,26 @@ jQuery(function () {
   $(".js-toggle-sidebar").on("click", () => {
     $("body").toggleClass("sidebar--close");
   });
-
+  console.log($("#input-images").data("images"));
   $("#input-images").fileinput({
     showUpload: false,
-    maxFileCount: 10,
-    mainClass: "input-group",
+    maxFileCount: $("#input-images").data("count") || 10,
+    showCaption: false,
+    showRemove: false,
     language: "uz",
     theme: "fas",
     dropZoneEnabled: true,
     allowedFileExtensions: ["jpg", "png", "svg", "jpeg", "webp"],
+    initialPreview: $("#input-images").data("images") || [],
+    initialPreviewAsData: true,
+    browseClass: "btn btn-primary btn-block",
+    //change this url
+    deleteUrl: "https://httpbin.org/post",
+    overwriteInitial: true,
+
+    // ...($("#input-images").data("gallery") && {
+    //   uploadUrl: "https://httpbin.org/post",
+    // }),
   });
 
   $("#product-description").richText({

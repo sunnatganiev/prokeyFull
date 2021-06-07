@@ -1,5 +1,5 @@
 /*
-
+DATABASE=mongodb+srv://sunnat:<PASSWORD>@cluster0.dllj2.mongodb.net/progress?retryWrites=true&w=majority
 User Class									1ball = 1000sum
 login: “string”
 parol: “string”       ✅

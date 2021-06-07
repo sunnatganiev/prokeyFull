@@ -9,7 +9,7 @@
   </head>
   <body class="dashboard">
     <div class="dashboard-content-wrapper">
-      <%- include('../../sidebar.ejs', { page: 'banners' }) %>
+      <%- include('../../sidebar.ejs', { page: 'news' }) %>
 
       <main>
         <%- include('../../header.ejs') %>
@@ -27,85 +27,53 @@
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">Malumotlar</h6>
                       <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
                                 class="input-group-text bg-success text-white"
-                                >Nom</span
+                                >Sarlavha</span
                               >
                             </div>
                             <input
                               type="text"
                               class="form-control"
                               placeholder="Maxulot nomi"
-                              name="name"
+                              name="title"
                             />
                           </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
                                 class="input-group-text bg-success text-white"
-                                >Soni</span
-                              >
-                            </div>
-                            <input
-                              type="number"
-                              min="1"
-                              class="form-control"
-                              placeholder="Soni"
-                              value="1"
-                              name="quantity"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span
-                                class="input-group-text bg-success text-white"
-                                >Narxi</span
+                                >Qisqa ta'rif</span
                               >
                             </div>
                             <input
                               type="text"
                               class="form-control"
-                              placeholder="Narx"
-                              name="price"
+                              placeholder="Qisa ta'rif"
+                              name="shortDescription"
                             />
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span
-                                class="input-group-text bg-success text-white"
-                                >Ombor</span
-                              >
-                            </div>
-                            <select name="warehouse" class="custom-select">
-                              <option value="chilonzor">Chilonzor</option>
-                              <option value="olmazor">Olmazor</option>
-                            </select>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Rasmlar</h6>
+                      <h6 class="title-left-stick mb-3">Rasm</h6>
                       <div class="row">
                         <div class="col-12">
                           <div class="file-loading">
                             <input
-                              
+                              data-count="1"
+                              data-images=["/img/news1.jpg"]
                               id="input-images"
                               name="images"
                               type="file"
                               accept="image/*"
-                              multiple
                             />
                           </div>
                         </div>
@@ -113,13 +81,13 @@
                     </div>
 
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Maxsulot haqida</h6>
+                      <h6 class="title-left-stick mb-3">Yangilik ta'rifi</h6>
                       <div class="row">
                         <div class="col-lg-12">
                           <textarea
                             name="description"
                             id="product-description"
-                          ></textarea>
+                          >News description</textarea>
                         </div>
                       </div>
                     </div>
