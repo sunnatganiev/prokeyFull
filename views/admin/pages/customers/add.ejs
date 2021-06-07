@@ -9,16 +9,16 @@
   </head>
   <body class="dashboard">
     <div class="dashboard-content-wrapper">
-      <%- include('../../sidebar.ejs', {
-        page: 'customers'
-      }) %>
+      <%- include('../../sidebar.ejs', { page: 'customers' }) %>
 
       <main>
         <%- include('../../header.ejs') %>
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Yangi xaridor qo'shish</h6>
+              <h6 class="font-weight-bold text-muted mb-0">
+                Yangi xaridor qo'shish
+              </h6>
             </div>
             <div class="row px-3">
               <div class="col-lg-9 col-md-12 my-3">
@@ -193,9 +193,14 @@
                         </div>
                       </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
-
+                    <div class="d-block text-right">
+                      <button
+                        type="submit"
+                        class="btn btn-primary text-uppercase"
+                      >
+                        Saqlash
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

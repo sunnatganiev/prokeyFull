@@ -2,6 +2,7 @@ const express = require("express");
 const viewsController = require("../controllers/viewsController");
 const authController = require("../controllers/authController");
 
+const app = express();
 const router = express.Router();
 
 router.get("/", viewsController.home);
