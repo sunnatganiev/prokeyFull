@@ -604,15 +604,6 @@
   }
 }
 
-.home__map {
-  padding: 2rem 15%;
-
-  @include responsive($bp-600) {
-    padding: 0 5%;
-    margin-top: 6rem;
-  }
-}
-
 .home__carousel {
   width: 70%;
   margin: 5rem auto;

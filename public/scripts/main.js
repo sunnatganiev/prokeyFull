@@ -39630,6 +39630,10 @@ elsPhoneMask?.forEach((el) => {
   IMask(el, phoneMask);
 });
 
+$(window).on("load", function () {
+  $(".preloader").fadeOut();
+});
+
 jQuery(function () {
   if ($(window).width() < 800) {
     $("body").addClass("sidebar--close");
