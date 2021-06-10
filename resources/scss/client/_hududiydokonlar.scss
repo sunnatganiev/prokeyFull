@@ -41,7 +41,6 @@
   }
   &__malumotlar {
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin-bottom: 35px;
@@ -54,6 +53,10 @@
       text-align: center;
       background: #a977ff;
       margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       .icon {
         font-size: 35px;
         margin-bottom: 10px;

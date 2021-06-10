@@ -49,6 +49,10 @@ exports.yangilikIchi = (req, res) => {
   res.status(200).render("yangiliklarichi");
 };
 
+exports.laws = (req, res) => {
+  res.status(200).render(`laws/${req.params.id}`);
+};
+
 //DASHBOARD
 
 exports.dashboard = {

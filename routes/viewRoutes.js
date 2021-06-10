@@ -23,6 +23,8 @@ router.get("/yangiliklar.html", viewsController.yangiliklar);
 
 router.get("/yangiliklarichi.html", viewsController.yangilikIchi);
 
+router.get("/laws/:id", viewsController.laws);
+
 router.get(
   "/login.html",
   authController.isLoggedIn,
