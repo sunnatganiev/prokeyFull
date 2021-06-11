@@ -1,0 +1,19 @@
+<div class="carousel-item <% if (isActive) { %>
+ active
+<% } %>">
+  <div class="kar">
+    <div class="main-left">
+      <h3 class="display-3"><%= title %> </h3>
+      <div class="line mb-3"></div>
+      <p>
+        <%= info %> 
+      </p>
+      <a href="<%= link %> " class="btn btn-outline-secondary btn-batafsil"
+        >Batafsil</a
+      >
+    </div>
+    <div class="main-right">
+      <img src="<%= img %>" alt="<%= title %> " />
+    </div>
+  </div>
+</div>

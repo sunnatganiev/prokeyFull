@@ -1,21 +1,12 @@
 .btn {
   &-batafsil {
-    padding: 1.8rem 8rem;
+    padding: 1rem 4rem;
     background-color: transparent;
     border: 0.3rem solid #fff;
     // font-size: 2rem;
     color: #fff;
     margin-top: 3rem;
 
-    @include responsive($bp-xxl) {
-      margin-top: 1.5rem;
-      padding: 1.1rem 5rem;
-    }
-
-    @include responsive($bp-s) {
-      margin-top: 1.5rem;
-      padding: 1rem 4rem;
-    }
     @include responsive($bp-500) {
       // font-size: 1.5rem;
       padding: 0.5rem 2rem;

@@ -17,60 +17,41 @@
         <div class="container">
           <div id="home-banner" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner karusel">
-              <div class="carousel-item active">
-                <div class="kar">
-                  <div class="main-left">
-                    <h3 class="display-3">Kalsiy va Magniy birikmasi</h3>
-                    <div class="line mb-3"></div>
-                    <p>
-                      Maxsulotlarimizni harid qilib liderga aylaning va o'z
-                      daromadingizni oshirib boring
-                    </p>
-                    <a href="#" class="btn btn-outline-secondary btn-batafsil"
-                      >Batafsil</a
-                    >
-                  </div>
-                  <div class="main-right">
-                    <img src="img/slide-1.jpg" alt="slide" />
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="kar">
-                  <div class="main-left">
-                    <h3 class="display-3">Kalsiy va Magniy birikmasi</h3>
-                    <div class="line mb-3"></div>
-                    <p>
-                      Maxsulotlarimizni harid qilib liderga aylaning va o'z
-                      daromadingizni oshirib boring
-                    </p>
-                    <a href="#" class="btn btn-outline-secondary btn-batafsil"
-                      >Batafsil</a
-                    >
-                  </div>
-                  <div class="main-right">
-                    <img src="img/slide-1.jpg" alt="slide" />
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="kar">
-                  <div class="main-left">
-                    <h3 class="display-3">Kalsiy va Magniy birikmasi</h3>
-                    <div class="line mb-3"></div>
-                    <p>
-                      Maxsulotlarimizni harid qilib liderga aylaning va o'z
-                      daromadingizni oshirib boring
-                    </p>
-                    <a href="#" class="btn btn-outline-secondary btn-batafsil"
-                      >Batafsil</a
-                    >
-                  </div>
-                  <div class="main-right">
-                    <img src="img/slide-1.jpg" alt="slide" />
-                  </div>
-                </div>
-              </div>
+              <%- include('./components/banner-item.ejs', {
+                isActive: true,
+                title: "Imbir choy",
+                img: "/img/medicine/1.png",
+                info: "",
+                link: "/mahsulotichi.html"
+              }) %> 
+              <%- include('./components/banner-item.ejs', {
+                isActive: false,
+                title: "Cleaner choyi",
+                img: "/img/medicine/2.png",
+                info: "",
+                link: "/mahsulotichi.html"
+              }) %> 
+              <%- include('./components/banner-item.ejs', {
+                isActive: false,
+                title: "Kaltsiy Magniy",
+                img: "/img/medicine/3.png",
+                info: "",
+                link: "/mahsulotichi.html"
+              }) %>
+              <%- include('./components/banner-item.ejs', {
+                isActive: false,
+                title: "Zn Fe Cu Spreyi",
+                img: "/img/medicine/4.png",
+                info: "",
+                link: "/mahsulotichi.html"
+              }) %> 
+              <%- include('./components/banner-item.ejs', {
+                isActive: false,
+                title: "Zn Spreyi",
+                img: "/img/medicine/5.png",
+                info: "",
+                link: "/mahsulotichi.html"
+              }) %> 
             </div>
             <ol
               class="carousel-indicators position-static mt-5"
@@ -81,6 +62,8 @@
               </li>
               <li data-target="#home-banner" data-slide-to="1">2</li>
               <li data-target="#home-banner" data-slide-to="2">3</li>
+              <li data-target="#home-banner" data-slide-to="3">4</li>
+              <li data-target="#home-banner" data-slide-to="4">5</li>
             </ol>
           </div>
         </div>
