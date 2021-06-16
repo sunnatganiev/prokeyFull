@@ -142,18 +142,20 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text bg-warning text-white">Lavozim</span>
+                        <% if (locals.user?.role === "admin") { %>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-warning text-white">Lavozim</span>
+                              </div>
+                              <select name="role" class="custom-select">
+                                <option value="client" selected>Klient</option>
+                                <option value="admin">Admin</option>
+                                <option value="registrator">Registrator</option>
+                              </select>
                             </div>
-                            <select name="role" class="custom-select">
-                              <option value="client" selected>Klient</option>
-                              <option value="admin">Admin</option>
-                              <option value="registrator">Registrator</option>
-                            </select>
                           </div>
-                        </div>
+                        <% } %>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">

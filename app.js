@@ -5,14 +5,25 @@ const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
-const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
 
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
-const userRouter = require("./routes/userRoutes");
-const viewRouter = require("./routes/viewRoutes");
+const routes = require("./routes");
+const i18n = require("i18n");
+const constants = require("./utils/constants");
+
+const locales = ["uz", "ru", "en"];
+
+i18n.configure({
+  locales: locales,
+  defaultLocale: "uz",
+  directory: path.join(__dirname, "locales"),
+  retryInDefaultLocale: true,
+  queryParameter: "lang",
+  cookie: "language",
+});
 
 const app = express();
 
@@ -27,6 +38,8 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
+
+app.locals = constants;
 
 // Development loginqa
 console.log(process.env.NODE_ENV);
@@ -44,7 +57,8 @@ const limiter = rateLimit({
 app.use("/api", limiter);
 
 // Body parser, reading data from body into req.body
-app.use(express.json({ limit: "10kb" }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Data sanitization against NoSQL query injection
@@ -61,9 +75,37 @@ app.use((req, res, next) => {
   next();
 });
 
+//register language
+app.use(i18n.init);
+
 // 2) ROUTES
-app.use("/", viewRouter);
-app.use("/api/v1/users", userRouter);
+app.use(routes.views.endpoint, routes.views.router);
+app.use(routes.dashboard.endpoint, routes.dashboard.router);
+app.use(routes.users.endpoint, routes.users.router);
+
+app.use(function (req, res, next) {
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+  // as you configured 'language' as cookiename, set it to current requests locale'
+  res.cookie("language", res.getLocale(), cookieOptions);
+  next();
+});
+
+app.get("/setlocale/:lang", (req, res) => {
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+  // as you configured 'language' as cookiename, set it to current requests locale'
+  res.cookie("language", req.params.lang, cookieOptions);
+  res.redirect("back");
+});
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

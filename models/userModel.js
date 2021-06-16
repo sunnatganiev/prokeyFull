@@ -1,17 +1,17 @@
-const crypto = require('crypto');
-const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
+const crypto = require("crypto");
+const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Iltimos ismingizni kirgizing!'],
+    required: [true, "Iltimos ismingizni kirgizing!"],
     trim: true,
   },
   surname: {
     type: String,
-    required: [true, 'Iltimos familiyangizni kirgizing!'],
+    required: [true, "Iltimos familiyangizni kirgizing!"],
     trim: true,
   },
   middleName: {
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ['male', 'female'],
+    enum: ["male", "female"],
   },
   phoneNumber: {
     type: String,
@@ -32,27 +32,27 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
-    required: [true, 'Iltimos elektron pochtangizni kirgizing!'],
+    required: [true, "Iltimos elektron pochtangizni kirgizing!"],
     lowercase: true,
-    validate: [validator.isEmail, 'Please provide a valid email'],
+    validate: [validator.isEmail, "Please provide a valid email"],
   },
   whoInvited: {
     type: String,
     required: [
       true,
-      'Iltimos sizni taklif qilgan mijozning emailini kirgizing',
+      "Iltimos sizni taklif qilgan mijozning emailini kirgizing",
     ],
   },
   following: {
     type: String,
-    required: [true, 'email kirgizing'],
+    required: [true, "email kirgizing"],
   },
   followingSide: {
     type: String,
-    required: [true, 'A user must select a side to followe'],
+    required: [true, "A user must select a side to followe"],
     enum: {
-      values: ['left', 'right'],
-      message: 'Side is either left or right',
+      values: ["left", "right"],
+      message: "Side is either left or right",
     },
   },
   photo: {
@@ -60,8 +60,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['admin', 'registrator', 'client'],
-    default: 'client',
+    enum: ["admin", "registrator", "client"],
+    default: "client",
   },
   balance: {
     type: Number,
@@ -86,26 +86,26 @@ const userSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: {
-      values: ['client', 'partner', 'master', 'manager'],
-      message: 'status is either: client, partner, master, manager',
+      values: ["client", "partner", "master", "manager"],
+      message: "status is either: client, partner, master, manager",
     },
-    required: [true, 'Mijozning statusini tanlang'],
+    required: [true, "Mijozning statusini tanlang"],
   },
   password: {
     type: String,
-    required: [true, 'A user must have a password'],
+    required: [true, "A user must have a password"],
     minlength: 8,
     select: false,
   },
   passwordConfirm: {
     type: String,
-    required: [true, 'A user must have a confirmed password'],
+    required: [true, "A user must have a confirmed password"],
     validate: {
       // this only works on CREATE and SAVE!!!
       validator: function (val) {
         return val === this.password;
       },
-      message: 'Passwords are not the same',
+      message: "Passwords are not the same",
     },
   },
   passwordChangedAt: Date,
@@ -118,8 +118,8 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
   next();
@@ -131,8 +131,8 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-userSchema.pre('save', function (next) {
-  if (!this.isModified('password') || this.isNew) return next();
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
   next();
@@ -160,18 +160,18 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 };
 
 userSchema.methods.createPasswordResetToken = function () {
-  const resetToken = crypto.randomBytes(32).toString('hex');
+  const resetToken = crypto.randomBytes(32).toString("hex");
 
   this.passwordResetToken = crypto
-    .createHash('sha256')
+    .createHash("sha256")
     .update(resetToken)
-    .digest('hex');
+    .digest("hex");
 
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
   return resetToken;
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

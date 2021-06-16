@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <script defer src="scripts/pages/index.js"></script>
   </head>
   <body class="dashboard">
@@ -39,10 +39,15 @@
                         </div>
                         <h5>Yangi qo'shish</h5>
                       </a>
-                      <%- include('./components/user-card.ejs') %>
-                      <%- include('./components/user-card.ejs') %>
-                      <%- include('./components/user-card.ejs') %>
-                      <%- include('./components/user-card.ejs') %>
+                      <% registrators?.forEach(user => { %>
+                        <%- include('./components/user-card.ejs', {
+                          __v: user.__v,
+                          name: user.name,
+                          surname: user.surname,
+                          role: user.role,
+                          photo: user.photo
+                        }) %>
+                      <% }) %>
                     </div>
                   </div>
                 </div>
@@ -62,10 +67,15 @@
                         </div>
                         <h5>Yangi qo'shish</h5>
                       </a>
-                      <%- include('./components/user-card.ejs') %>
-                      <%- include('./components/user-card.ejs') %>
-                      <%- include('./components/user-card.ejs') %>
-                      <%- include('./components/user-card.ejs') %>
+                      <% clients?.forEach(user => { %>
+                        <%- include('./components/user-card.ejs', {
+                          __v: user.__v,
+                          name: user.name,
+                          surname: user.surname,
+                          role: user.role,
+                          photo: user.photo
+                        }) %>
+                      <% }) %>
                     </div>
                   </div>
                 </div>
@@ -78,6 +88,6 @@
     </div>
 
     <script src="scripts/backend/index.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>

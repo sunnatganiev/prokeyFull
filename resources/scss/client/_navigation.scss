@@ -84,10 +84,9 @@
       transition: all 0.3s;
 
       &:hover,
-      &:active {
+      &.active {
         background-position: 100%;
         color: $color-primary;
-        transform: translateX(1rem);
       }
     }
 
@@ -160,7 +159,8 @@
     transition: 0.3s ease;
     border-bottom: 1px solid transparent;
     &:hover,
-    &:focus {
+    &:focus,
+    &.active {
       color: white !important;
       border-bottom: 1px solid white;
     }

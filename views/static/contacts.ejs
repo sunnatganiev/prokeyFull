@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title><%= title %> </title>
+  </head>
+  <body>
+    <%- include('../components/nav.ejs', {page: 'contacts'}) %>
+
+    <div class="container">
+      <div class="py-5">
+        <div class="hudud__malumotlar">
+          <div class="hudud__malumotlar-cart">
+            <i class="fas fa-map-marker-alt icon"></i>
+            <h4>Manzil</h4>
+            <p style="line-height: 1">
+              Toshkent shaxri, Chilonzor tumani, Bunyodkor va Cho'pon ota
+              ko'chalari kesishuvi
+            </p>
+          </div>
+          <div class="hudud__malumotlar-cart">
+            <i class="fas fa-phone icon"></i>
+            <h4>Telefon</h4>
+            <p class="mb-0">+998 91 778 89 89</p>
+            <p class="mb-0">+998 99 699 00 19</p>
+          </div>
+          <div class="hudud__malumotlar-cart">
+            <i class="fas fa-envelope icon"></i>
+            <h4>E-Pochta</h4>
+            <p>info@progresskey.uz</p>
+          </div>
+          <div class="hudud__malumotlar-cart">
+            <i class="fas fa-globe icon"></i>
+            <h4>Sayt</h4>
+            <p>progresskey.uz</p>
+          </div>
+          <!-- <div class="hudud__malumotlar-cart">
+            <i class="fas fa-fax icon"></i>
+            <h4>Faks</h4>
+            <p>+998 71 777 88 99</p>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-12 mb-2">
+            <form action="" class="contacts-form">
+              <div class="row">
+                <div class="col-lg-6 col-md-12 mb-2">
+                  <div class="form-group position-relative">
+                    <input
+                      class="form-control form-control-lg border-2 shadow-sm"
+                      type="text"
+                      placeholder="Ism"
+                      name="name"
+                    />
+                    <i class="fas fa-user text-primary position-absolute"></i>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-2">
+                  <div class="form-group position-relative">
+                    <input
+                      class="form-control form-control-lg border-2 shadow-sm phone-input-mask"
+                      type="text"
+                      name="phone"
+                      placeholder="+998 ("
+                    />
+                    <i class="fas fa-phone text-primary position-absolute"></i>
+                  </div>
+                </div>
+                <div class="col-lg-12 mb-2">
+                  <div class="form-group position-relative">
+                    <input
+                      class="form-control form-control-lg border-2 shadow-sm"
+                      type="email"
+                      placeholder="Email"
+                    />
+                    <i
+                      class="fas fa-envelope text-primary position-absolute"
+                    ></i>
+                  </div>
+                </div>
+                <div class="col-lg-12 mb-2">
+                  <div class="form-group position-relative">
+                    <textarea
+                      class="form-control form-control-lg border-2 shadow-sm"
+                      rows="4"
+                      placeholder="Xabar matnini kiriting"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="w-100 d-flex align-items-center justify-content-center"
+              >
+                <button class="btn btn-primary mx-auto px-4" type="submit">
+                  Jo'natish <i class="fab fa-telegram-plane"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-4 col-md-12 mb-2">
+            <div class="p-3 border border-2 text-left shadow-sm rounded">
+              <h4
+                class="title-underlined text-left text-uppercase font-weight-bold mr-auto"
+              >
+                Ish vaqti
+              </h4>
+              <p>Dushanba - Payshanba<br>
+                9:00 - 20:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../components/footer.ejs') %>
+
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

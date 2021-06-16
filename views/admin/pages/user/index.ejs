@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', {
+        page: 'customers'
+      }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0"><%= user.name %> <%= user.surname %> <%= user.middleName %> </h6>
+            </div>
+            <div class="row px-3">
+              <div class="col-lg-9 col-md-12 my-3">
+                <% if (locals.error) { %>
+                  <%- include('../components/alert.ejs', {
+                    dismissable: true,
+                    type: "danger",
+                    content: __(error)
+                  }) %> 
+                <% } %>
+
+                <% if(true){ %>
+                  <div class="dashboard__card bg-white p-3 rounded mx-n3">
+                    <form method="PUT" enctype="multipart/form-data" action="<%= api("users/user") %>">
+                      <div class="mb-4">
+                        <h6 class="title-left-stick mb-3">
+                          Malumotlar
+                        </h6>
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white">ISM</span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="Ism" name="name" required value="<%= user.name %>">
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white">FAMILIYA</span>
+                              </div>
+                              <input <%= user.surname %> type="text" class="form-control" placeholder="Familiya" name="surname" required>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white">SHARIF</span>
+                              </div>
+                              <input <%= user.middleName %> type="text" class="form-control" placeholder="Sharif" name="middleName" required>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white">JINSI</span>
+                              </div>
+                              <select name="gender" class="custom-select" required>
+                                <option value="male" <% if (user.gender === "male") { %>selected<% } %>>Erkak</option>
+                                <option value="female" <% if (user.gender === "female") { %>selected<% } %>>Ayol</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white">TUG'ULGAN KUN</span>
+                              </div>
+                              <input type="date" value="<%= user.birthDate %>" id="birthday-input" class="form-control" name="birthDate" required>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+   
+                      <div class="mb-4">
+                        <h6 class="title-left-stick mb-3">
+                          Kontakt
+                        </h6>
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white">TELEFON</span>
+                              </div>
+                              <input value="<%= user.phoneNumber %> " type="text" class="form-control phone-input-mask" placeholder="+998" name="phoneNumber" required>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white">EMAIL</span>
+                              </div>
+                              <input value="<%= user.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-sm-12 d-flex">
+                            <img src="<%= user.photo %>" alt="<%= user.name %>" width="100" height="100" class="img-thumbnail mr-2">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white">PROFIL RASMI</span>
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" id="avatar-input" class="custom-file-input" placeholder="Rasm yuklash" name="photo">
+                                <label class="custom-file-label" for="avatar-input"></label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+   
+                      <div class="mb-4">
+                        <h6 class="title-left-stick mb-3">
+                          Referal
+                        </h6>
+                        <div class="row">
+                          <% if (locals.user?.role === "admin") { %>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text bg-warning text-white">Lavozim</span>
+                                </div>
+                                <select name="role" class="custom-select" required>
+                                  <option value="client" selected <% if (user.role === "client") { %>selected<% } %>>Klient</option>
+                                  <option value="admin" <% if (user.role === "admin") { %>selected<% } %>>Admin</option>
+                                  <option value="registrator" <% if (user.role === "registrator") { %>selected<% } %>>Registrator</option>
+                                </select>
+                              </div>
+                            </div>
+                          <% } %>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-warning text-white">Status</span>
+                              </div>
+                              <select name="status" class="custom-select" required>
+                                <option value="client" selected <% if (user.status === "client") { %>selected<% } %>>Klient</option>
+                                <option value="partner" <% if (user.status === "partner") { %>selected<% } %>>Partner</option>
+                                <option value="master" <% if (user.status === "master") { %>selected<% } %>>Master</option>
+                                <option value="manager" <% if (user.status === "manager") { %>selected<% } %>>Manager</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>  
+                      </div>
+   
+                      <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
+   
+                    </form>
+                  </div>
+                <% } else{ %>  
+                  <%- include('../components/alert.ejs', {
+                    dismissable: true,
+                    type: "danger",
+                    content: __(locals.USER_DOES_NOT_EXIST)
+                  }) %> 
+               <% } %>
+
+              </div>
+
+              <%- include('../../components/right-sidebar.ejs') %> 
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/backend/index.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

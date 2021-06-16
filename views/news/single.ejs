@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title><%= title %> </title>
+  </head>
+  <body>
+    <%- include('../components/nav.ejs', {page: 'news'}) %>
+
+    <div class="container">
+      <div class="py-5">
+        <div class="yangilik-card news-single-page shadow-sm mb-3">
+          <div class="card-img">
+            <img src="/img/news1.jpg" alt="put name here" />
+          </div>
+          <div class="yangilik-card-content">
+            <h2>
+              Tog' seminarimizda, kompaniyamizning direktori, kuchli spiker,
+              marketolog Shikhnazar Ruzmetov o'zining avtorlik "Orzu O'g'rilar"
+              treningini seminar qatnashchilariga o'tib berdi. Hamma
+              ishtirokchilar birdamlikda katta kuch borligini yana bir marotaba
+              xis qilishdi.
+            </h2>
+
+            <div class="yangilik-bottom">
+              <div class="yangilik-bottom--left">
+                <i class="fas fa-calendar-edit"></i>
+                <p class="yangilik-date">16.02.2020</p>
+                <i class="fas fa-clock"></i>
+                <p class="yangilik-time">13:46</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../components/footer.ejs') %>
+
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

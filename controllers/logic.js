@@ -1,23 +1,26 @@
-const catchAsync = require('../utils/catchAsync');
-const User = require('../models/userModel');
-const { sum } = require('./utilities');
+const catchAsync = require("../utils/catchAsync");
+const User = require("../models/userModel");
+const { sum } = require("./utilities");
 
 exports.invite = catchAsync(async (req) => {
   const invited = await User.findOne({ email: req.body.whoInvited });
-  let ballInvite = invited.balance;
+
+  if (!invited) return;
+
+  let ballInvite = invited?.balance;
 
   switch (req.body.status) {
-    case 'client':
+    case "client":
       ballInvite += 75;
       break;
-    case 'partner':
+    case "partner":
       ballInvite += 150;
 
       break;
-    case 'master':
+    case "master":
       ballInvite += 300;
       break;
-    case 'manager':
+    case "manager":
       ballInvite += 600;
       break;
     default:
@@ -30,27 +33,29 @@ exports.invite = catchAsync(async (req) => {
 exports.side = catchAsync(async (req) => {
   const following = await User.findOne({ email: req.body.following });
 
+  if (!following) return;
+
   let ball = 0;
   switch (req.body.status) {
-    case 'client':
+    case "client":
       ball = 650;
       break;
-    case 'partner':
+    case "partner":
       ball = 1300;
       break;
-    case 'master':
+    case "master":
       ball = 2300;
       break;
-    case 'manager':
+    case "manager":
       ball = 4300;
       break;
     default:
       break;
   }
 
-  if (req.body.followingSide === 'left') {
+  if (req.body.followingSide === "left") {
     Object.values(following.left).forEach(async (arr) => {
-      if (typeof arr !== 'number' && arr !== true) {
+      if (typeof arr !== "number" && arr !== true) {
         arr.push({
           email: req.body.email,
           name: req.body.name,
@@ -64,9 +69,9 @@ exports.side = catchAsync(async (req) => {
     });
   }
 
-  if (req.body.followingSide === 'right') {
+  if (req.body.followingSide === "right") {
     Object.values(following.right).forEach(async (arr) => {
-      if (typeof arr !== 'number' && arr !== true) {
+      if (typeof arr !== "number" && arr !== true) {
         arr.push({
           email: req.body.email,
           name: req.body.name,
@@ -124,10 +129,10 @@ exports.checkDay = catchAsync(async () => {
   const users = await User.find();
 
   users.forEach((user) => {
-    if (user.status === 'client') binar(user, 2000);
-    if (user.status === 'partner') binar(user, 40000);
-    if (user.status === 'master') binar(user, 80000);
-    if (user.status === 'manager') binar(user, 150000);
+    if (user.status === "client") binar(user, 2000);
+    if (user.status === "partner") binar(user, 40000);
+    if (user.status === "master") binar(user, 80000);
+    if (user.status === "manager") binar(user, 150000);
   });
 });
 
@@ -156,9 +161,9 @@ exports.checkSalary = catchAsync(async () => {
   const users = await User.find();
 
   users.forEach((user) => {
-    if (user.status === 'partner') salary(user, 100000);
-    if (user.status === 'master') salary(user, 200000);
-    if (user.status === 'manager') salary(user, 400000);
+    if (user.status === "partner") salary(user, 100000);
+    if (user.status === "master") salary(user, 200000);
+    if (user.status === "manager") salary(user, 400000);
 
     console.log({
       name: user.name,
