@@ -32,7 +32,8 @@
 
                 <% if(locals.viewUser){ %>
                   <div class="dashboard__card bg-white p-3 rounded mx-n3">
-                    <form method="PUT" enctype="multipart/form-data" action="<%= api("users/user") %>">
+                    <form method="POST" enctype="multipart/form-data" action="<%= api("users/user/edit") %>">
+                      <input type="hidden" value="<%= viewUser._id %>" name="id">
                       <div class="mb-4">
                         <h6 class="title-left-stick mb-3">
                           Malumotlar
@@ -51,7 +52,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">FAMILIYA</span>
                               </div>
-                              <input <%= viewUser.surname %> type="text" class="form-control" placeholder="Familiya" name="surname" required>
+                              <input value="<%= viewUser.surname %>" type="text" class="form-control" placeholder="Familiya" name="surname" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -59,7 +60,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">SHARIF</span>
                               </div>
-                              <input <%= viewUser.middleName %> type="text" class="form-control" placeholder="Sharif" name="middleName" required>
+                              <input value="<%= viewUser.middleName %>"" type="text" class="form-control" placeholder="Sharif" name="middleName" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -78,7 +79,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">TUG'ULGAN KUN</span>
                               </div>
-                              <input type="date" value="<%= viewUser.birthDate %>" id="birthday-input" class="form-control" name="birthDate" required>
+                              <input type="date" value="<%= new Date(viewUser.birthDate).toISOString().substr(0,10) %>" id="birthday-input" class="form-control" name="birthDate" required>
                             </div>
                           </div>
                         </div>
@@ -89,7 +90,7 @@
                           Kontakt
                         </h6>
                         <div class="row">
-                          <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white">TELEFON</span>
@@ -97,7 +98,7 @@
                               <input value="<%= viewUser.phoneNumber %> " type="text" class="form-control phone-input-mask" placeholder="+998" name="phoneNumber" required>
                             </div>
                           </div>
-                          <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white">EMAIL</span>
@@ -105,11 +106,13 @@
                               <input value="<%= viewUser.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
                             </div>
                           </div>
-                          <div class="col-md-6 col-sm-12">
+                          <div class="col-12">
                             <img src="<%= viewUser.photo %>" alt="<%= viewUser.name %>" width="200" height="200" class="img-thumbnail mb-2">
                             <div class="input-group">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-danger text-white">PROFIL RASMI</span>
+                                <span class="input-group-text bg-danger text-white">
+                                  <i class="fas fa-image"></i>
+                                </span>
                               </div>
                               <div class="custom-file">
                                 <input type="file" id="avatar-input" class="custom-file-input" placeholder="Rasm yuklash" name="photo">

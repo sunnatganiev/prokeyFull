@@ -15,6 +15,8 @@ router.patch("/resetPassword/:token", authController.resetPassword);
 // Protect all routes after this middleware
 router.use(authController.protect);
 
+// =========USER==========
+//CREATE USER
 router.post(
   "/user",
   upload.single("photo"),
@@ -22,6 +24,15 @@ router.post(
   authController.restirctTo("admin", "registrator"),
   userController.createUser
 );
+//UPDATE USER
+router.post(
+  "/user/edit",
+  upload.single("photo"),
+  authController.protect,
+  authController.restirctTo("admin", "registrator"),
+  userController.updateUser
+);
+// ==========================
 
 // router.patch('/updateMyPassword', authController.updatePassword);
 

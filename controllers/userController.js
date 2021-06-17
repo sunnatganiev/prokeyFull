@@ -2,8 +2,12 @@ const User = require("../models/userModel");
 const logic = require("./logic");
 const { user: userViews } = require("./dashboard/userController");
 const { ERRORS } = require("../utils/constants");
+const fs = require("fs");
 
 const dashUrl = (url) => `/dashboard${url}`;
+const getFileName = (path) =>
+  `${path.replace("public", "").split("\\").join("/")}`;
+const getImgPath = (img) => `${__dirname}/../public${img}`;
 
 module.exports = {
   async createUser(req, res, next) {
@@ -20,11 +24,7 @@ module.exports = {
     }
 
     const userObj = req.body;
-    userObj.photo = `${req.file.path
-      .replace("public", "")
-      .split("\\")
-      .join("/")}`;
-
+    userObj.photo = getFileName(req.file.path);
     let user = {};
 
     await logic.invite(req, whoInvited);
@@ -37,6 +37,7 @@ module.exports = {
         ? Object.values(error.errors)[0].properties.message
         : error.toString();
       res.locals.error = errMsg;
+      console.log(error);
       return userViews.add(req, res);
     }
     if (await user.save()) {
@@ -46,5 +47,22 @@ module.exports = {
     }
 
     res.redirect(dashUrl(`/user/id/${user._id}`));
+  },
+  async updateUser(req, res, next) {
+    const file = req.file;
+    const userObj = req.body;
+    if (file) {
+      userObj.photo = getFileName(file.path);
+    }
+    const oldUser = await User.findByIdAndUpdate(userObj.id, userObj);
+    const oldFileName = oldUser.photo;
+
+    if (file) {
+      fs.unlink(getImgPath(oldFileName), (err) => {
+        if (err) console.log(err);
+        else console.log("deleted");
+      });
+    }
+    res.redirect(dashUrl(`/user/id/${oldUser._id}`));
   },
 };
