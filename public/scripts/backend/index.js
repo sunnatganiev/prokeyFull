@@ -8518,7 +8518,7 @@ var login = /*#__PURE__*/function () {
               (0, _alerts.showAlert)("success", "Logged in successfully!");
               window.setTimeout(function () {
                 // eslint-disable-next-line no-restricted-globals
-                location.assign("/index.html");
+                location.assign("/");
               }, 1500);
             }
 
@@ -8888,7 +8888,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58362" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52330" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

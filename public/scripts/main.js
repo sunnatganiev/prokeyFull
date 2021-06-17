@@ -39616,7 +39616,6 @@ jQuery(function () {
   }
 });
 
-
 // require('bootstrap-fileinput/themes/fas/theme.js');
 
 const elsPhoneMask = document.querySelectorAll(".phone-input-mask");
@@ -39635,6 +39634,13 @@ $(window).on("load", function () {
 });
 
 jQuery(function () {
+  $(".toast").toast();
+
+  $(".custom-file-input").on("change", function (e) {
+    var fileName = e.target.files[0].name;
+    $(this).next().text(fileName);
+  });
+
   if ($(window).width() < 800) {
     $("body").addClass("sidebar--close");
   }

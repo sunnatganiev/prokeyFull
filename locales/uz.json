@@ -1,0 +1,16 @@
+{
+  "main": "Asosiy",
+  "products": "Maxsulotlar",
+  "localShops": "Hududiy do'konlar",
+  "news": "Yangiliklar",
+  "gallery": "Galereya",
+  "contact": "Kontakt",
+  "WRONG_CREDENTIALS": "Parol yoki email xato!",
+  "danger": "Xatolik",
+  "PASSWORDS_NOT_SAME": "Parollar mos kelmadi!",
+  "client": "Mijoz",
+  "USER_DOES_NOT_EXIST": "Foydalanuvchi mavjud emas!",
+  "NO_USER_TO_BE_INVITED": "Kiritilgan email mavjud emas va sizni taklif qila olmaydi!",
+  "NO_USER_TO_FOLLOW": "NO_USER_TO_FOLLOW",
+  "partner": "Hamkor"
+}

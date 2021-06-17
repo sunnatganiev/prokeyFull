@@ -124,7 +124,7 @@ function watchFiles() {
 }
 
 let build = gulp.series(
-  clean,
+  // clean,
   // html,
   gulp.parallel(js, css, images)
 );
