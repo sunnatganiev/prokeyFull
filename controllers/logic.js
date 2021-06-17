@@ -1,13 +1,10 @@
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/userModel");
 const { sum } = require("./utilities");
+const { ERRORS } = require("../utils/constants");
 
-exports.invite = catchAsync(async (req) => {
-  const invited = await User.findOne({ email: req.body.whoInvited });
-
-  if (!invited) return;
-
-  let ballInvite = invited?.balance;
+exports.invite = async (req, invited) => {
+  let ballInvite = invited.balance;
 
   switch (req.body.status) {
     case "client":
@@ -27,15 +24,12 @@ exports.invite = catchAsync(async (req) => {
       break;
   }
   invited.balance = ballInvite;
-  await invited.save({ validateBeforeSave: false });
-});
+  return await invited.save({ validateBeforeSave: false });
+};
 
-exports.side = catchAsync(async (req) => {
-  const following = await User.findOne({ email: req.body.following });
-
-  if (!following) return;
-
+exports.side = async (req, following) => {
   let ball = 0;
+
   switch (req.body.status) {
     case "client":
       ball = 650;
@@ -84,8 +78,8 @@ exports.side = catchAsync(async (req) => {
       }
     });
   }
-  await following.save({ validateBeforeSave: false });
-});
+  return await following.save({ validateBeforeSave: false });
+};
 
 const binar = catchAsync(async (user, limit) => {
   let leftSumUpdated;

@@ -1,13 +1,11 @@
-//DASHBOARD
-
-const { getUsers } = require("../userController");
+const User = require("../../models/userModel");
 const { customers, registrators, user } = require("./userController");
 
 module.exports = {
   async index(req, res) {
-    const registrators = await getUsers("registrator", 4);
-    const clients = await getUsers("client", 4);
-    console.log(registrators);
+    const registrators = await User.find({ role: "registrator" });
+    const clients = await User.find({ role: "client" });
+
     res.status(200).render("admin/index", {
       registrators,
       clients,

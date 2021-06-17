@@ -1,26 +1,33 @@
+const User = require("../../models/userModel");
+const { getCurrentUser } = require("../authController");
+
 module.exports = {
   customers: {
     index(req, res) {
       res.status(200).render("admin/pages/customers/index");
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/customers/add");
-      console.log("viewsController line 64: ", req.body);
     },
   },
   registrators: {
     index(req, res) {
       res.status(200).render("admin/pages/registrators/index");
     },
-    add(req, res) {
-      res.status(200).render("admin/pages/registrators/add");
-    },
   },
   user: {
-    index(req, res) {
+    async index(req, res) {
+      const id = req.params.id;
+      const viewUser = await User.findById(id);
+      const currentUser = await getCurrentUser(req, res);
       res.status(200).render("admin/pages/user/index", {
-        user: res.locals.user,
+        user: currentUser,
         error: res.locals.error,
+        viewUser,
+      });
+    },
+    async add(req, res, next) {
+      const currentUser = await getCurrentUser(req, res);
+      res.status(200).render("admin/pages/user/add", {
+        error: res.locals.error,
+        user: currentUser,
       });
     },
   },

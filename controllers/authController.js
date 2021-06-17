@@ -9,6 +9,7 @@ const sendEmail = require("../utils/email");
 const logic = require("./logic");
 const viewsController = require("../controllers/viewsController");
 const { ERRORS } = require("../utils/constants");
+const { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } = require("constants");
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -109,6 +110,34 @@ exports.isLoggedIn = async (req, res, next) => {
     }
   }
   next();
+};
+
+exports.getCurrentUser = async (req, res) => {
+  if (req.cookies.jwt) {
+    try {
+      // 1) Verification token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+      // 2) Check if user still exists
+      const currentUser = await User.findById(decoded.id);
+      if (!currentUser) {
+        return null;
+      }
+
+      // 3) Check if user changed password after the token was issued
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return null;
+      }
+
+      // THERE IS A LOGGED IN USER
+      return currentUser;
+    } catch (error) {
+      return null;
+    }
+  }
 };
 
 exports.logout = (req, res) => {

@@ -8,7 +8,6 @@
 //=require imask/dist/imask.js
 //=require ./jquery.richtext.js
 //=require ./script.js
-
 // require('bootstrap-fileinput/themes/fas/theme.js');
 
 const elsPhoneMask = document.querySelectorAll(".phone-input-mask");
@@ -27,6 +26,8 @@ $(window).on("load", function () {
 });
 
 jQuery(function () {
+  $(".toast").toast();
+
   if ($(window).width() < 800) {
     $("body").addClass("sidebar--close");
   }

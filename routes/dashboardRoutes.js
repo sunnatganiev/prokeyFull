@@ -10,23 +10,11 @@ router.get("/", authController.isLoggedIn, dashboard.index);
 //customers
 router.get("/customers", authController.isLoggedIn, dashboard.customers.index);
 
-router.get(
-  "/customers/add",
-  authController.isLoggedIn,
-  dashboard.customers.add
-);
-
 //registrators
 router.get(
   "/registrators",
   authController.isLoggedIn,
   dashboard.registrators.index
-);
-
-router.get(
-  "/registrators/add",
-  authController.isLoggedIn,
-  dashboard.registrators.add
 );
 
 //team
@@ -113,6 +101,7 @@ router.get(
 );
 
 //user
-router.get("/user/:id", authController.isLoggedIn, dashboard.user.index);
+router.get("/user/id/:id", authController.isLoggedIn, dashboard.user.index);
+router.get("/user/add", authController.isLoggedIn, dashboard.user.add);
 
 module.exports = router;

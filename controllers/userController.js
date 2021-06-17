@@ -1,28 +1,50 @@
 const User = require("../models/userModel");
-const catchAsync = require("../utils/catchAsync");
 const logic = require("./logic");
+const { user: userViews } = require("./dashboard/userController");
+const { ERRORS } = require("../utils/constants");
+
+const dashUrl = (url) => `/dashboard${url}`;
 
 module.exports = {
-  async getUsers(role, count) {
-    const users = await User.find({ role });
-    return users;
-  },
-  createUser: catchAsync(async (req, res, next) => {
-    // const following = await User.findOne({ email: req.body.following });
+  async createUser(req, res, next) {
+    const following = await User.findOne({ email: req.body.following });
+    const whoInvited = await User.findOne({ email: req.body.whoInvited });
+
+    if (!following && !whoInvited) {
+      res.locals.error = following
+        ? whoInvited
+          ? null
+          : ERRORS.NO_USER_TO_BE_INVITED
+        : ERRORS.NO_USER_TO_FOLLOW;
+      return userViews.add(req, res);
+    }
+
     const userObj = req.body;
-    userObj.photo = `/${req.file.path.split("\\").join("/")}`;
-    console.log(userObj);
-    const user = await User.create(userObj);
+    userObj.photo = `${req.file.path
+      .replace("public", "")
+      .split("\\")
+      .join("/")}`;
 
-    await logic.invite(req);
-    await logic.side(req);
+    let user = {};
 
+    await logic.invite(req, whoInvited);
+    await logic.side(req, following);
+
+    try {
+      user = await User.create(userObj);
+    } catch (error) {
+      const errMsg = error.errors
+        ? Object.values(error.errors)[0].properties.message
+        : error.toString();
+      res.locals.error = errMsg;
+      return userViews.add(req, res);
+    }
     if (await user.save()) {
-      res.locals.user = user;
-      return dashboard.user.index(req, res);
+      res.locals.viewUser = user;
     } else {
       res.locals.error = ERRORS.DB_INSERTION_FAILED;
-      return dashboard.user.index(req, res);
     }
-  }),
+
+    res.redirect(dashUrl(`/user/id/${user._id}`));
+  },
 };

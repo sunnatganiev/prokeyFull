@@ -18,7 +18,7 @@
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0"><%= user.name %> <%= user.surname %> <%= user.middleName %> </h6>
+              <h6 class="font-weight-bold text-muted mb-0"><%= viewUser.name %> <%= viewUser.surname %> <%= viewUser.middleName %> </h6>
             </div>
             <div class="row px-3">
               <div class="col-lg-9 col-md-12 my-3">
@@ -30,7 +30,7 @@
                   }) %> 
                 <% } %>
 
-                <% if(true){ %>
+                <% if(locals.viewUser){ %>
                   <div class="dashboard__card bg-white p-3 rounded mx-n3">
                     <form method="PUT" enctype="multipart/form-data" action="<%= api("users/user") %>">
                       <div class="mb-4">
@@ -43,7 +43,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">ISM</span>
                               </div>
-                              <input type="text" class="form-control" placeholder="Ism" name="name" required value="<%= user.name %>">
+                              <input type="text" class="form-control" placeholder="Ism" name="name" required value="<%= viewUser.name %>">
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -51,7 +51,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">FAMILIYA</span>
                               </div>
-                              <input <%= user.surname %> type="text" class="form-control" placeholder="Familiya" name="surname" required>
+                              <input <%= viewUser.surname %> type="text" class="form-control" placeholder="Familiya" name="surname" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -59,7 +59,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">SHARIF</span>
                               </div>
-                              <input <%= user.middleName %> type="text" class="form-control" placeholder="Sharif" name="middleName" required>
+                              <input <%= viewUser.middleName %> type="text" class="form-control" placeholder="Sharif" name="middleName" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -68,8 +68,8 @@
                                 <span class="input-group-text bg-success text-white">JINSI</span>
                               </div>
                               <select name="gender" class="custom-select" required>
-                                <option value="male" <% if (user.gender === "male") { %>selected<% } %>>Erkak</option>
-                                <option value="female" <% if (user.gender === "female") { %>selected<% } %>>Ayol</option>
+                                <option value="male" <% if (viewUser.gender === "male") { %>selected<% } %>>Erkak</option>
+                                <option value="female" <% if (viewUser.gender === "female") { %>selected<% } %>>Ayol</option>
                               </select>
                             </div>
                           </div>
@@ -78,7 +78,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white">TUG'ULGAN KUN</span>
                               </div>
-                              <input type="date" value="<%= user.birthDate %>" id="birthday-input" class="form-control" name="birthDate" required>
+                              <input type="date" value="<%= viewUser.birthDate %>" id="birthday-input" class="form-control" name="birthDate" required>
                             </div>
                           </div>
                         </div>
@@ -94,7 +94,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white">TELEFON</span>
                               </div>
-                              <input value="<%= user.phoneNumber %> " type="text" class="form-control phone-input-mask" placeholder="+998" name="phoneNumber" required>
+                              <input value="<%= viewUser.phoneNumber %> " type="text" class="form-control phone-input-mask" placeholder="+998" name="phoneNumber" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -102,12 +102,12 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white">EMAIL</span>
                               </div>
-                              <input value="<%= user.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
+                              <input value="<%= viewUser.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
                             </div>
                           </div>
-                          <div class="col-lg-6 col-sm-12 d-flex">
-                            <img src="<%= user.photo %>" alt="<%= user.name %>" width="100" height="100" class="img-thumbnail mr-2">
-                            <div class="input-group mb-3">
+                          <div class="col-md-6 col-sm-12">
+                            <img src="<%= viewUser.photo %>" alt="<%= viewUser.name %>" width="200" height="200" class="img-thumbnail mb-2">
+                            <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white">PROFIL RASMI</span>
                               </div>
@@ -132,9 +132,9 @@
                                   <span class="input-group-text bg-warning text-white">Lavozim</span>
                                 </div>
                                 <select name="role" class="custom-select" required>
-                                  <option value="client" selected <% if (user.role === "client") { %>selected<% } %>>Klient</option>
-                                  <option value="admin" <% if (user.role === "admin") { %>selected<% } %>>Admin</option>
-                                  <option value="registrator" <% if (user.role === "registrator") { %>selected<% } %>>Registrator</option>
+                                  <option value="client" selected <% if (viewUser.role === "client") { %>selected<% } %>>Klient</option>
+                                  <option value="admin" <% if (viewUser.role === "admin") { %>selected<% } %>>Admin</option>
+                                  <option value="registrator" <% if (viewUser.role === "registrator") { %>selected<% } %>>Registrator</option>
                                 </select>
                               </div>
                             </div>
@@ -145,10 +145,10 @@
                                 <span class="input-group-text bg-warning text-white">Status</span>
                               </div>
                               <select name="status" class="custom-select" required>
-                                <option value="client" selected <% if (user.status === "client") { %>selected<% } %>>Klient</option>
-                                <option value="partner" <% if (user.status === "partner") { %>selected<% } %>>Partner</option>
-                                <option value="master" <% if (user.status === "master") { %>selected<% } %>>Master</option>
-                                <option value="manager" <% if (user.status === "manager") { %>selected<% } %>>Manager</option>
+                                <option value="client" selected <% if (viewUser.status === "client") { %>selected<% } %>>Klient</option>
+                                <option value="partner" <% if (viewUser.status === "partner") { %>selected<% } %>>Partner</option>
+                                <option value="master" <% if (viewUser.status === "master") { %>selected<% } %>>Master</option>
+                                <option value="manager" <% if (viewUser.status === "manager") { %>selected<% } %>>Manager</option>
                               </select>
                             </div>
                           </div>

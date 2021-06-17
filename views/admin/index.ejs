@@ -33,7 +33,7 @@
                   </div>
                   <div class="container-fluid">
                     <div class="user-cards-wrapper d-flex overflow-auto pb-3">
-                      <a href="/dashboard/registrators/add" class="add-card d-flex justify-content-center align-items-center flex-column">
+                      <a href="/dashboard/user/add" class="add-card d-flex justify-content-center align-items-center flex-column">
                         <div class="border border-2 border-black square-50 rounded-circle bg-white d-flex justify-content-center align-items-center">
                           <i class="fas fa-plus"></i>
                         </div>
@@ -41,11 +41,12 @@
                       </a>
                       <% registrators?.forEach(user => { %>
                         <%- include('./components/user-card.ejs', {
-                          __v: user.__v,
+                          email: user.email,
                           name: user.name,
                           surname: user.surname,
-                          role: user.role,
-                          photo: user.photo
+                          status: user.status,
+                          photo: user.photo,
+                          _id: user._id
                         }) %>
                       <% }) %>
                     </div>
@@ -61,7 +62,7 @@
                   </div>
                   <div class="container-fluid">
                     <div class="user-cards-wrapper d-flex overflow-auto pb-3">
-                      <a href="/dashboard/customers/add" class="add-card d-flex justify-content-center align-items-center flex-column">
+                      <a href="/dashboard/user/add" class="add-card d-flex justify-content-center align-items-center flex-column">
                         <div class="border border-2 border-black square-50 rounded-circle bg-white d-flex justify-content-center align-items-center">
                           <i class="fas fa-plus"></i>
                         </div>
@@ -69,11 +70,12 @@
                       </a>
                       <% clients?.forEach(user => { %>
                         <%- include('./components/user-card.ejs', {
-                          __v: user.__v,
+                          email: user.email,
                           name: user.name,
                           surname: user.surname,
-                          role: user.role,
-                          photo: user.photo
+                          status: user.status,
+                          photo: user.photo,
+                          _id: user._id
                         }) %>
                       <% }) %>
                     </div>
