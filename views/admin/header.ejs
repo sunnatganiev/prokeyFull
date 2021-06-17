@@ -39,9 +39,9 @@
           >
             <div class="square-50 overflow-hidden rounded-circle">
               <img
-                src="/img/slide-2.jpg"
+                src="<%= user.photo %>"
                 class="w-100 h-100 object-fit-cover"
-                alt="<%= user.name %> "
+                alt="<%= user.name %>"
               />
             </div>
           </button>
@@ -50,7 +50,7 @@
             aria-labelledby="profile-dropdown"
           >
             <a
-              href="/dashboard/settings"
+              href="/dashboard/user/id/<%= user._id %> "
               class="btn dropdown-item btn-sm d-flex align-items-center"
             >
               <div class="icon-wrapper mr-2">

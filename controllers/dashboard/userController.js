@@ -1,5 +1,6 @@
 const User = require("../../models/userModel");
 const { getCurrentUser } = require("../authController");
+const mongoose = require("mongoose");
 
 module.exports = {
   customers: {
@@ -15,13 +16,17 @@ module.exports = {
   user: {
     async index(req, res) {
       const id = req.params.id;
-      const viewUser = await User.findById(id);
-      const currentUser = await getCurrentUser(req, res);
-      res.status(200).render("admin/pages/user/index", {
-        user: currentUser,
-        error: res.locals.error,
-        viewUser,
-      });
+      if (mongoose.Types.ObjectId.isValid(id)) {
+        const viewUser = await User.findById(id);
+        const currentUser = await getCurrentUser(req, res);
+        res.status(200).render("admin/pages/user/index", {
+          user: currentUser,
+          error: res.locals.error,
+          viewUser,
+        });
+      } else {
+        res.send("");
+      }
     },
     async add(req, res, next) {
       const currentUser = await getCurrentUser(req, res);
