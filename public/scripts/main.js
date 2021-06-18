@@ -39616,6 +39616,28 @@ jQuery(function () {
   }
 });
 
+const elToastWrapper = $("#toast-wrapper");
+
+const toast = {
+  success(msg) {
+    elToastWrapper.append(getToast(msg, "success"));
+  },
+};
+
+function getToast(msg, type) {
+  return `<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 300px;">
+  <div class="toast-header justify-content-between">
+    <div style="width: 20px;height: 20px;" class="rounded bg-${type} mr-2"></div>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      &times;
+    </button>
+  </div>
+  <div class="toast-body">
+    <strong>${msg}</strong>
+  </div>
+</div>`;
+}
+
 // require('bootstrap-fileinput/themes/fas/theme.js');
 
 const elsPhoneMask = document.querySelectorAll(".phone-input-mask");
@@ -39636,6 +39658,10 @@ $(window).on("load", function () {
 jQuery(function () {
   $(".toast").toast();
 
+  elToastWrapper.on("click", ".close", function () {
+    $(this).parent().parent().remove();
+  });
+
   $(".custom-file-input").on("change", function (e) {
     var fileName = e.target.files[0].name;
     $(this).next().text(fileName);
@@ -39648,27 +39674,46 @@ jQuery(function () {
   $(".js-toggle-sidebar").on("click", () => {
     $("body").toggleClass("sidebar--close");
   });
-  console.log($("#input-images").data("images"));
-  $("#input-images").fileinput({
-    showUpload: false,
-    maxFileCount: $("#input-images").data("count") || 10,
-    showCaption: false,
-    showRemove: false,
-    language: "uz",
-    theme: "fas",
-    dropZoneEnabled: true,
-    allowedFileExtensions: ["jpg", "png", "svg", "jpeg", "webp"],
-    initialPreview: $("#input-images").data("images") || [],
-    initialPreviewAsData: true,
-    browseClass: "btn btn-primary btn-block",
-    //change this url
-    deleteUrl: "https://httpbin.org/post",
-    overwriteInitial: true,
-
-    // ...($("#input-images").data("gallery") && {
-    //   uploadUrl: "https://httpbin.org/post",
-    // }),
-  });
+  $("#input-images")
+    .fileinput({
+      showUpload: false,
+      maxFileCount: $("#input-images").data("count") || 10,
+      showCaption: false,
+      showRemove: false,
+      language: "uz",
+      theme: "fas",
+      dropZoneEnabled: true,
+      allowedFileExtensions: ["jpg", "png", "svg", "jpeg", "webp"],
+      initialPreview: $("#input-images").data("images").split(",") || [],
+      initialPreviewConfig:
+        $("#input-images")
+          .data("images")
+          .split(",")
+          .map((x) => ({ key: x })) || [],
+      initialPreviewAsData: true,
+      browseClass: "btn btn-primary btn-block",
+      deleteUrl: "/api/v1/gallery/delete",
+      //change this url
+      overwriteInitial: false,
+    })
+    .on("fileloaded", function (e, file) {
+      const formData = new FormData();
+      formData.append("image", file);
+      $.ajax({
+        url: "/api/v1/gallery/add",
+        method: "POST",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: (res) => {
+          if (res?.file) {
+            toast.success("Yuklandi!");
+          }
+        },
+        error: (err) => console.log(err),
+      });
+    });
 
   $("#product-description").richText({
     fonts: false,

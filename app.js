@@ -82,6 +82,7 @@ app.use(i18n.init);
 // 2) ROUTES
 app.use(routes.views.endpoint, routes.views.router);
 app.use(routes.dashboard.endpoint, routes.dashboard.router);
+app.use(routes.api.endpoint, routes.api.router);
 app.use(routes.users.endpoint, routes.users.router);
 
 app.use(function (req, res, next) {

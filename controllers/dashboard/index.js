@@ -1,5 +1,7 @@
 const User = require("../../models/userModel");
 const { customers, registrators, user } = require("./userController");
+const fs = require("fs");
+const getGallery = require("../../utils/getGallery");
 
 module.exports = {
   async index(req, res) {
@@ -93,9 +95,13 @@ module.exports = {
     },
   },
   gallery: {
-    index(req, res) {
-      res.status(200).render("admin/pages/gallery/index");
+    async index(req, res) {
+      const images = await getGallery();
+      res.status(200).render("admin/pages/gallery/index", {
+        images: images,
+      });
     },
+    async delete(req, res) {},
   },
   banners: {
     index(req, res) {

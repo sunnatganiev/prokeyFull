@@ -1,7 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
-const upload = require("../utils/uploadMiddleware");
+const { upload } = require("../utils/uploadMiddleware");
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.use(authController.protect);
 //CREATE USER
 router.post(
   "/user",
-  upload.single("photo"),
+  upload().single("photo"),
   authController.protect,
   authController.restirctTo("admin", "registrator"),
   userController.createUser
@@ -27,7 +27,7 @@ router.post(
 //UPDATE USER
 router.post(
   "/user/edit",
-  upload.single("photo"),
+  upload().single("photo"),
   authController.protect,
   authController.restirctTo("admin", "registrator"),
   userController.updateUser
