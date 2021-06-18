@@ -1,6 +1,9 @@
 const express = require("express");
 const dashboard = require("../controllers/dashboard");
 const authController = require("../controllers/authController");
+const { api } = require("../utils/constants");
+const apiController = require("../controllers/dashboard/apiController");
+const { upload } = require("../utils/uploadMiddleware");
 
 const router = express.Router();
 //DASHBOARD
@@ -101,7 +104,21 @@ router.get(
 );
 
 //user
-router.get("/user/id/:id", authController.isLoggedIn, dashboard.user.index);
-router.get("/user/add", authController.isLoggedIn, dashboard.user.add);
+router.get("/settings", authController.isLoggedIn, dashboard.user.index);
+
+router.get(
+  "/user/id/:id",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.restirctTo("admin", "registrator"),
+  dashboard.user.index
+);
+router.get(
+  "/user/add",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.restirctTo("admin", "registrator"),
+  dashboard.user.add
+);
 
 module.exports = router;

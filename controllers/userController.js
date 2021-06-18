@@ -3,6 +3,7 @@ const logic = require("./logic");
 const { user: userViews } = require("./dashboard/userController");
 const { ERRORS } = require("../utils/constants");
 const fs = require("fs");
+const { getCurrentUser } = require("./authController");
 
 const dashUrl = (url) => `/dashboard${url}`;
 const getFileName = (path) =>
@@ -49,8 +50,15 @@ module.exports = {
     res.redirect(dashUrl(`/user/id/${user._id}`));
   },
   async updateUser(req, res, next) {
+    const currentUser = await getCurrentUser(req, res);
+    console.log(currentUser);
     const file = req.file;
     const userObj = req.body;
+    if (!["admin", "registrator"].includes(currentUser.role)) {
+      if (currentUser._id.toString() !== userObj.id) {
+        return res.redirect("back");
+      }
+    }
     if (file) {
       userObj.photo = getFileName(file.path);
     }
@@ -63,6 +71,10 @@ module.exports = {
         else console.log("deleted");
       });
     }
-    res.redirect(dashUrl(`/user/id/${oldUser._id}`));
+    if (currentUser._id.toString() === userObj.id) {
+      res.redirect(dashUrl(`/settings`));
+    } else {
+      res.redirect(dashUrl(`/user/id/${oldUser._id}`));
+    }
   },
 };

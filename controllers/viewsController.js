@@ -1,3 +1,5 @@
+const getGallery = require("../utils/getGallery");
+
 exports.products = {
   index(req, res) {
     res.status(200).render("products/index", {
@@ -18,9 +20,17 @@ exports.localShops = (req, res) => {
   });
 };
 
-exports.gallery = (req, res) => {
+exports.gallery = async (req, res) => {
+  const images = await getGallery();
+  const rows = [];
+  const imagesLength = images.length;
+  while (images.length > 0) {
+    const chunk = images.splice(0, imagesLength / 3);
+    rows.push(chunk);
+  }
   res.status(200).render("static/gallery", {
-    title: "Do'konlar",
+    title: res.__("gallery"),
+    rows,
   });
 };
 

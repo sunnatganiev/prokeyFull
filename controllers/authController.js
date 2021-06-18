@@ -39,7 +39,7 @@ const createSendToken = (user, statusCode, res) => {
   // res.status(statusCode).render("static/login", {
   //   user: user,
   // });
-  res.redirect("/");
+  res.redirect("/dashboard");
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
@@ -146,7 +146,7 @@ exports.logout = (req, res) => {
     httpOnly: true,
   });
   // res.status(200).json({ status: "success" });
-  res.redirect("/");
+  res.redirect("/login");
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -192,9 +192,13 @@ exports.restirctTo = (...roles) => {
   return (req, res, next) => {
     // roles ['admin', 'registrator']. role='user'
     if (!roles.includes(req.user.role)) {
-      return next(
-        new AppError("You do not have permission to perfomr this action", 403)
-      );
+      // return next(
+      //   new AppError("You do not have permission to perfomr this action", 403)
+      // );
+      return res.status(403).render("admin/error", {
+        err_code: 403,
+        error: res.__(ERRORS.PERMISSION_DENIED),
+      });
     }
     next();
   };
