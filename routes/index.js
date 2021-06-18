@@ -2,7 +2,7 @@ const userRouter = require("./userRoutes");
 const viewRouter = require("./viewRoutes");
 const dashboardRouter = require("./dashboardRoutes");
 const apiRouter = require("./apiRoutes");
-const api = require("../utils/constants").api;
+const { api } = require("../utils/constants");
 const { BASE_URL } = require("../utils/constants");
 
 console.log(api("user"));

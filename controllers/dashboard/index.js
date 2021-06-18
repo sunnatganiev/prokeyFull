@@ -1,15 +1,15 @@
 const User = require("../../models/userModel");
 const { customers, registrators, user } = require("./userController");
-const fs = require("fs");
 const getGallery = require("../../utils/getGallery");
+const News = require("../../models/newsModel");
 
 module.exports = {
   async index(req, res) {
-    const registrators = await User.find({ role: "registrator" });
+    const regs = await User.find({ role: "registrator" });
     const clients = await User.find({ role: "client" });
 
     res.status(200).render("admin/index", {
-      registrators,
+      registrators: regs,
       clients,
     });
   },
@@ -70,28 +70,21 @@ module.exports = {
     // },
   },
   news: {
-    index(req, res) {
+    async index(req, res) {
+      //TODO apply pagination
+      const newsList = await News.find({});
       res.status(200).render("admin/pages/news/index", {
-        isDeleted: false,
+        newsList,
       });
     },
-    delete(req, res) {
-      //if successfull send isDeleted: true
-      res.status(200).render("admin/pages/news/index", {
-        isDeleted: true,
-      });
-    },
-    single(req, res) {
-      //handle id
-      console.log(req.params.id);
+    async single(req, res) {
+      const news = await News.findById(req.params.id);
       res.status(200).render("admin/pages/news/single", {
-        error: true,
+        news,
       });
     },
     add(req, res) {
-      res.status(200).render("admin/pages/news/add", {
-        id: req.params.id,
-      });
+      res.status(200).render("admin/pages/news/add");
     },
   },
   gallery: {
@@ -101,7 +94,6 @@ module.exports = {
         images: images,
       });
     },
-    async delete(req, res) {},
   },
   banners: {
     index(req, res) {
@@ -111,12 +103,12 @@ module.exports = {
       res.status(200).render("admin/pages/banners/single");
     },
   },
-  workers: {
+  feedbacks: {
     index(req, res) {
-      res.status(200).render("admin/pages/workers/index");
+      res.status(200).render("admin/pages/feedbacks/index");
     },
     single(req, res) {
-      res.status(200).render("admin/pages/workers/single");
+      res.status(200).render("admin/pages/feedbacks/single");
     },
   },
 };

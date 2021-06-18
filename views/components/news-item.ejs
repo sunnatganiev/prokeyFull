@@ -12,11 +12,11 @@
     <div class="yangilik-bottom">
       <div class="yangilik-bottom--left">
         <i class="fas fa-calendar-edit"></i>
-        <p class="yangilik-date">16.02.2020</p>
-        <i class="fas fa-clock"></i>
-        <p class="yangilik-time">13:46</p>
+        <p class="yangilik-date"><%= new Date(createdAt).toLocaleDateString("ru") %></p>
+                <i class="fas fa-clock"></i>
+                <p class="yangilik-time"><%= new Date(createdAt).toLocaleTimeString("ru") %></p>
       </div>
-      <a href="/news/5" class="yangilik-bottom--right"
+      <a href="/news/<%= id %>" class="yangilik-bottom--right"
         >Batafsil...</a
       >
     </div>

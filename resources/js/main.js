@@ -45,28 +45,34 @@ jQuery(function () {
   $(".js-toggle-sidebar").on("click", () => {
     $("body").toggleClass("sidebar--close");
   });
-  $("#input-images")
-    .fileinput({
-      showUpload: false,
-      maxFileCount: $("#input-images").data("count") || 10,
-      showCaption: false,
-      showRemove: false,
-      language: "uz",
-      theme: "fas",
-      dropZoneEnabled: true,
-      allowedFileExtensions: ["jpg", "png", "svg", "jpeg", "webp"],
-      initialPreview: $("#input-images").data("images").split(",") || [],
-      initialPreviewConfig:
-        $("#input-images")
-          .data("images")
-          .split(",")
-          .map((x) => ({ key: x })) || [],
-      initialPreviewAsData: true,
-      browseClass: "btn btn-primary btn-block",
-      deleteUrl: "/api/v1/gallery/delete",
-      //change this url
-      overwriteInitial: false,
-    })
+  const dataImages = $(".file-loading input").data("images");
+  const images = dataImages && dataImages.split(",");
+  const imgConfig =
+    dataImages && dataImages.split(",").map((x) => ({ key: x }));
+  const fileInputOptions = {
+    showUpload: false,
+    maxFileCount: $("#input-images").data("count") || 10,
+    showCaption: false,
+    showRemove: false,
+    language: "uz",
+    theme: "fas",
+    dropZoneEnabled: true,
+    allowedFileExtensions: ["jpg", "png", "svg", "jpeg", "webp"],
+    initialPreview: images || [],
+    initialPreviewConfig: imgConfig || [],
+
+    initialPreviewAsData: true,
+    browseClass: "btn btn-primary btn-block",
+    deleteUrl: "/api/v1/gallery/delete",
+    //change this url
+    overwriteInitial: false,
+  };
+  $("#input-news-images").fileinput({
+    ...fileInputOptions,
+    initialPreviewShowDelete: false,
+  });
+  $("#input-gallery-images")
+    .fileinput(fileInputOptions)
     .on("fileloaded", function (e, file) {
       const formData = new FormData();
       formData.append("image", file);

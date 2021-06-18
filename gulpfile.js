@@ -1,35 +1,36 @@
-let projectFolder = "public";
-let srcFolder = "resources";
+/* eslint-disable node/no-unpublished-require */
+const projectFolder = "public";
+const srcFolder = "resources";
 
-let path = {
+const path = {
   build: {
-    css: projectFolder + "/css/",
-    js: projectFolder + "/scripts/",
-    img: projectFolder + "/img/",
+    css: `${projectFolder}/css/`,
+    js: `${projectFolder}/scripts/`,
+    img: `${projectFolder}/img/`,
   },
   src: {
-    css: srcFolder + "/scss/main.scss",
-    js: srcFolder + "/js/**/*.js",
-    img: srcFolder + "/img/**/*.{jpg,png,svg,ico,gif,webp,mp4}",
+    css: `${srcFolder}/scss/main.scss`,
+    js: `${srcFolder}/js/**/*.js`,
+    img: `${srcFolder}/img/**/*.{jpg,png,svg,ico,gif,webp,mp4}`,
   },
   watch: {
-    css: srcFolder + "/scss/**/*.scss",
-    js: srcFolder + "/js/**/*.js",
-    img: srcFolder + "/img/**/*.{jpg,png,svg,ico,gif,webp}",
+    css: `${srcFolder}/scss/**/*.scss`,
+    js: `${srcFolder}/js/**/*.js`,
+    img: `${srcFolder}/img/**/*.{jpg,png,svg,ico,gif,webp}`,
   },
-  clean: "./" + projectFolder + "/",
+  clean: `./${projectFolder}/`,
 };
 
-let { src, dest } = require("gulp"),
-  gulp = require("gulp"),
-  del = require("del"),
-  sass = require("gulp-sass"),
-  autoprefixer = require("gulp-autoprefixer"),
-  groupMedia = require("gulp-group-css-media-queries"),
-  cleanCss = require("gulp-clean-css"),
-  sourcemaps = require("gulp-sourcemaps"),
-  include = require("gulp-include"),
-  browsersync = require("browser-sync").create();
+const { src, dest } = require("gulp");
+const gulp = require("gulp");
+// const del = require("del");
+const sass = require("gulp-sass");
+const autoprefixer = require("gulp-autoprefixer");
+const groupMedia = require("gulp-group-css-media-queries");
+const cleanCss = require("gulp-clean-css");
+const sourcemaps = require("gulp-sourcemaps");
+const include = require("gulp-include");
+const browsersync = require("browser-sync").create();
 // ttf2woff = require("gulp-ttf2woff"),
 // ttf2woff2 = require("gulp-ttf2woff2");
 // webp = require("gulp-webp"),
@@ -97,7 +98,7 @@ function js() {
     src(path.src.js)
       .pipe(
         include({
-          includePaths: [__dirname + "/node_modules", __dirname + "/src/js"],
+          includePaths: [`${__dirname}/node_modules`, `${__dirname}/src/js`],
         })
       ) //to collect js sections
       //     .pipe(
@@ -113,9 +114,9 @@ function js() {
   );
 }
 
-function clean() {
-  return del(path.clean);
-}
+// function clean() {
+//   return del(path.clean);
+// }
 
 function watchFiles() {
   gulp.watch([path.watch.css], css);
@@ -123,12 +124,12 @@ function watchFiles() {
   gulp.watch([path.watch.img], images);
 }
 
-let build = gulp.series(
+const build = gulp.series(
   // clean,
   // html,
   gulp.parallel(js, css, images)
 );
-let watch = gulp.parallel(build, watchFiles, browserSync);
+const watch = gulp.parallel(build, watchFiles, browserSync);
 exports.images = images;
 exports.js = js;
 exports.css = css;

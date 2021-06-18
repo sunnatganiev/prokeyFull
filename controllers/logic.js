@@ -1,7 +1,6 @@
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/userModel");
 const { sum } = require("./utilities");
-const { ERRORS } = require("../utils/constants");
 
 exports.invite = async (req, invited) => {
   let ballInvite = invited.balance;

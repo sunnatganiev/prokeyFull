@@ -1,14 +1,10 @@
+const fs = require("fs");
 const User = require("../models/userModel");
 const logic = require("./logic");
 const { user: userViews } = require("./dashboard/userController");
 const { ERRORS } = require("../utils/constants");
-const fs = require("fs");
 const { getCurrentUser } = require("./authController");
-
-const dashUrl = (url) => `/dashboard${url}`;
-const getFileName = (path) =>
-  `${path.replace("public", "").split("\\").join("/")}`;
-const getImgPath = (img) => `${__dirname}/../public${img}`;
+const { getFileName, dashUrl, getImgPath, getError } = require("./utilities");
 
 module.exports = {
   async createUser(req, res, next) {
@@ -16,6 +12,7 @@ module.exports = {
     const whoInvited = await User.findOne({ email: req.body.whoInvited });
 
     if (!following && !whoInvited) {
+      // eslint-disable-next-line no-nested-ternary
       res.locals.error = following
         ? whoInvited
           ? null
@@ -34,11 +31,8 @@ module.exports = {
     try {
       user = await User.create(userObj);
     } catch (error) {
-      const errMsg = error.errors
-        ? Object.values(error.errors)[0].properties.message
-        : error.toString();
+      const errMsg = getError(error);
       res.locals.error = errMsg;
-      console.log(error);
       return userViews.add(req, res);
     }
     if (await user.save()) {
@@ -51,8 +45,7 @@ module.exports = {
   },
   async updateUser(req, res, next) {
     const currentUser = await getCurrentUser(req, res);
-    console.log(currentUser);
-    const file = req.file;
+    const { file } = req;
     const userObj = req.body;
     if (!["admin", "registrator"].includes(currentUser.role)) {
       if (currentUser._id.toString() !== userObj.id) {
@@ -67,7 +60,9 @@ module.exports = {
 
     if (file) {
       fs.unlink(getImgPath(oldFileName), (err) => {
+        // eslint-disable-next-line no-console
         if (err) console.log(err);
+        // eslint-disable-next-line no-console
         else console.log("deleted");
       });
     }

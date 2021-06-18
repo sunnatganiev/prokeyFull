@@ -247,7 +247,10 @@
         </div>
       </div>
     </div>
-    <%- include('../components/news.ejs') %>
+
+    <%- include('../components/news.ejs', {
+      newsList: newsList
+    }) %>
 
     <div class="section section--hidden">
       <div class="py-5 bg-light">

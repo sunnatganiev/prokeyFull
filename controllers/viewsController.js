@@ -1,3 +1,4 @@
+const News = require("../models/newsModel");
 const getGallery = require("../utils/getGallery");
 
 exports.products = {
@@ -40,10 +41,12 @@ exports.contacts = (req, res) => {
   });
 };
 
-exports.home = (req, res) => {
+exports.home = async (req, res) => {
+  const newsList = await News.find({}, {}, { limit: 4 });
   res.status(200).render("static/index", {
     title: "Home",
     user: res.locals.user,
+    newsList,
   });
 };
 
@@ -56,15 +59,18 @@ exports.login = (req, res) => {
 };
 
 exports.news = {
-  index(req, res) {
+  async index(req, res) {
+    const newsList = await News.find({});
     res.status(200).render("news/index", {
       title: "Yangiliklar",
+      newsList,
     });
   },
-  single(req, res) {
-    //TODO handle id
+  async single(req, res) {
+    const news = await News.findById(req.params.id);
     res.status(200).render("news/single", {
-      title: "Yangiliklar",
+      title: news.title,
+      news,
     });
   },
 };

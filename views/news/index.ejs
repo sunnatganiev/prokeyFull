@@ -13,7 +13,7 @@
 
    <div class="container">
     <div class="news_main_body pt-5">
-      <div class="row">
+      <!-- <div class="row">
         
         <div class="col-lg-8 col-md-12 mb-3 mb-lg-0">
           <div class="news_first_sec_carousel h-100">
@@ -114,70 +114,14 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
       <h5 class="my-4 font-weight-bold">So'ngi yangiliklar</h5>
 
       
       <div class="row">
-        
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news5.jpg",
-            title: "Surxondaryo liderlari",
-            description: "Surxondaryo viloyati liderlari Kompaniyamizning eksklyuziv mahsulotlarini qabul qilib olishdi."
-          }) %> 
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news6.jpg",
-            title: "Farg'ona liderlari",
-            description: "Farg'ona viloyati liderlari Kompaniyamiz mahsulotlarini qabul qilib olishdi."
-          }) %> 
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news7.jpg",
-            title: "Farg'ona liderlari natijalari",
-            description: "Farg'ona viloyati liderlari mahsulotlarni olishdan mamnun bo'lishdi. Natijalar sari olg'a."
-          }) %> 
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news8.jpg",
-            title: "Buxoro viloyati liderlari",
-            description: "Buhoro viloyati lideri bn ijobiy taqdimot jarayoni."
-          }) %> 
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news1.jpg",
-            title: "\"Orzu O'g'rilar\" treningini seminar",
-            description: "Tog' seminarimizda, kompaniyamizning direktori, kuchli spiker, marketolog Shikhnazar Ruzmetov o'zining avtorlik  \"Orzu O'g'rilar\" treningini seminar qatnashchilariga o'tib berdi. Hamma ishtirokchilar birdamlikda katta kuch borligini yana bir marotaba xis qilishdi."
-          }) %> 
-        </div>       
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news2.jpg",
-            title: "Bibisara opa Yusupova bilan suhbat",
-            description: "Qoraqalpog'iston Respublikasida Nukusning eng kuchli lideri, parapsixolog,moderator Bibisara opa Yusupova vrachlarga kompaniyamiz mahsulotlari va imkoniyatlari to'g'risida ma'lumot berishdi. Judayam maroqli suhbat bo'ldi."
-          }) %> 
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news3.jpg",
-            title: "4-6 may kunlari yurtimizning tog' you bag'rlarida kompaniyamizning ilk dam olish seminari bo'lib o'tti.",
-            description: "4-6 may kunlari yurtimizning tog' you bag'rlarida kompaniyamizning ilk dam olish seminari bo'lib o'tti. Unda Qoraqalpog'iston Respublikasi, Farg'ona viloyati, Surxondaryo violation hamda Toshkent viloyati liderlari ishtirok etishdi. Seminarians kompaniyamizning kelgusidagi 3-4 yillik rejalari haqida fikr almashinildi."
-          }) %> 
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-          <%- include('../components/news-item.ejs', {
-            img: "/img/news4.jpg",
-            title: "ProgressKey oilasi tog' seminarida",
-            description: "ProgressKey oilasi tog' seminarida maza qilib dam olishdi.  Undan tashqari  3 kunlik seminar qatnashchilariga sovg'a salomlar berildi. Eng katta sovg'a Bilim ekanligi yana bir marotaba tasdiqini topdi."
-          }) %> 
-        </div>
+        <%- include('../components/news.ejs', {
+          newsList: newsList
+        }) %>
       </div>
 
     </div>

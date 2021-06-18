@@ -70,11 +70,6 @@ router.get("/news", authController.isLoggedIn, dashboard.news.index);
 
 router.get("/news/id/:id", authController.isLoggedIn, dashboard.news.single);
 
-router.get(
-  "/news/delete/:id",
-  authController.isLoggedIn,
-  dashboard.news.delete
-);
 // handle logic
 // router.put(
 //   "/product/edit/:id",
@@ -96,11 +91,11 @@ router.get(
 );
 
 //workers
-router.get("/workers", authController.isLoggedIn, dashboard.workers.index);
+router.get("/feedbacks", authController.isLoggedIn, dashboard.feedbacks.index);
 router.get(
-  "/workers/id/:id",
+  "/feedbacks/id/:id",
   authController.isLoggedIn,
-  dashboard.workers.single
+  dashboard.feedbacks.single
 );
 
 //user

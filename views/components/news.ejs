@@ -2,34 +2,16 @@
   <p class="main-text">yangiliklar</p>
 
   <div class="row">
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-      <%- include('./news-item.ejs', {
-        img: "/img/news5.jpg",
-        title: "Surxondaryo liderlari",
-        description: "Surxondaryo viloyati liderlari Kompaniyamizning eksklyuziv mahsulotlarini qabul qilib olishdi."
-      }) %> 
-    </div>
-
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-      <%- include('./news-item.ejs', {
-        img: "/img/news6.jpg",
-        title: "Farg'ona liderlari",
-        description: "Farg'ona viloyati liderlari Kompaniyamiz mahsulotlarini qabul qilib olishdi."
-      }) %> 
-    </div>
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-      <%- include('./news-item.ejs', {
-        img: "/img/news7.jpg",
-        title: "Farg'ona liderlari natijalari",
-        description: "Farg'ona viloyati liderlari mahsulotlarni olishdan mamnun bo'lishdi. Natijalar sari olg'a."
-      }) %> 
-    </div>
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-      <%- include('./news-item.ejs', {
-        img: "/img/news8.jpg",
-        title: "Buxoro viloyati liderlari",
-        description: "Buhoro viloyati lideri bn ijobiy taqdimot jarayoni."
-      }) %> 
-    </div>
+    <% newsList.forEach(news => { %>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+        <%- include('./news-item.ejs', {
+          img: news.photo,
+          title: news.title,
+          description: news.shortDescription,
+          id: news._id,
+          createdAt: news.createdAt
+        }) %> 
+      </div>
+    <% }) %>
   </div>
 </div>

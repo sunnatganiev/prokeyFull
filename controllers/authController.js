@@ -1,15 +1,13 @@
 const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
-
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const sendEmail = require("../utils/email");
 const logic = require("./logic");
-const viewsController = require("../controllers/viewsController");
+const viewsController = require("./viewsController");
 const { ERRORS } = require("../utils/constants");
-const { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } = require("constants");
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -188,20 +186,18 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.restirctTo = (...roles) => {
-  return (req, res, next) => {
-    // roles ['admin', 'registrator']. role='user'
-    if (!roles.includes(req.user.role)) {
-      // return next(
-      //   new AppError("You do not have permission to perfomr this action", 403)
-      // );
-      return res.status(403).render("admin/error", {
-        err_code: 403,
-        error: res.__(ERRORS.PERMISSION_DENIED),
-      });
-    }
-    next();
-  };
+exports.restirctTo = (...roles) => (req, res, next) => {
+  // roles ['admin', 'registrator']. role='user'
+  if (!roles.includes(req.user.role)) {
+    // return next(
+    //   new AppError("You do not have permission to perfomr this action", 403)
+    // );
+    return res.status(403).render("admin/error", {
+      err_code: 403,
+      error: res.__(ERRORS.PERMISSION_DENIED),
+    });
+  }
+  next();
 };
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {

@@ -8,10 +8,9 @@ const xss = require("xss-clean");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
 
-const AppError = require("./utils/appError");
+const i18n = require("i18n");
 const globalErrorHandler = require("./controllers/errorController");
 const routes = require("./routes");
-const i18n = require("i18n");
 const constants = require("./utils/constants");
 const { getCurrentUser } = require("./controllers/authController");
 
@@ -85,7 +84,7 @@ app.use(routes.dashboard.endpoint, routes.dashboard.router);
 app.use(routes.api.endpoint, routes.api.router);
 app.use(routes.users.endpoint, routes.users.router);
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000

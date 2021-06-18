@@ -1,11 +1,5 @@
 const elToastWrapper = $("#toast-wrapper");
 
-const toast = {
-  success(msg) {
-    elToastWrapper.append(getToast(msg, "success"));
-  },
-};
-
 function getToast(msg, type) {
   return `<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 300px;">
   <div class="toast-header justify-content-between">
@@ -19,3 +13,8 @@ function getToast(msg, type) {
   </div>
 </div>`;
 }
+const toast = {
+  success(msg) {
+    elToastWrapper.append(getToast(msg, "success"));
+  },
+};

@@ -1,6 +1,6 @@
+const mongoose = require("mongoose");
 const User = require("../../models/userModel");
 const { getCurrentUser } = require("../authController");
-const mongoose = require("mongoose");
 
 module.exports = {
   customers: {
@@ -16,7 +16,7 @@ module.exports = {
   user: {
     async index(req, res) {
       const currentUser = await getCurrentUser(req, res);
-      let id = req.params.id ? req.params.id : await currentUser._id;
+      const id = req.params.id ? req.params.id : await currentUser._id;
       if (mongoose.Types.ObjectId.isValid(id)) {
         const viewUser = await User.findById(id);
         res.status(200).render("admin/pages/user/index", {

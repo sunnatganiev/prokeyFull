@@ -15,23 +15,24 @@
       <div class="py-5">
         <div class="yangilik-card news-single-page shadow-sm mb-3">
           <div class="card-img">
-            <img src="/img/news1.jpg" alt="put name here" />
+            <img src="<%= news.photo %>" alt="<%= news.title %>" />
           </div>
           <div class="yangilik-card-content">
             <h2>
-              Tog' seminarimizda, kompaniyamizning direktori, kuchli spiker,
-              marketolog Shikhnazar Ruzmetov o'zining avtorlik "Orzu O'g'rilar"
-              treningini seminar qatnashchilariga o'tib berdi. Hamma
-              ishtirokchilar birdamlikda katta kuch borligini yana bir marotaba
-              xis qilishdi.
+              <%= news.title %>
             </h2>
-
+            <p>
+              <%= news.shortDescription %> 
+            </p>
+            <p>
+              <%- news.description %> 
+            </p>
             <div class="yangilik-bottom">
               <div class="yangilik-bottom--left">
                 <i class="fas fa-calendar-edit"></i>
-                <p class="yangilik-date">16.02.2020</p>
+                <p class="yangilik-date"><%= new Date(news.createdAt).toLocaleDateString("ru") %></p>
                 <i class="fas fa-clock"></i>
-                <p class="yangilik-time">13:46</p>
+                <p class="yangilik-time"><%= new Date(news.createdAt).toLocaleTimeString("ru") %></p>
               </div>
             </div>
           </div>
