@@ -13,6 +13,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const routes = require("./routes");
 const i18n = require("i18n");
 const constants = require("./utils/constants");
+const { getCurrentUser } = require("./controllers/authController");
 
 const locales = ["uz", "ru", "en"];
 
@@ -107,8 +108,20 @@ app.get("/setlocale/:lang", (req, res) => {
   res.redirect("back");
 });
 
-app.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+app.all("*", async (req, res, next) => {
+  if (req.path.includes("/dashboard/")) {
+    const currentUser = await getCurrentUser(req, res);
+    res.status(404).render("admin/error", {
+      err_code: 404,
+      error: "Bunday sahifa topilmadi!",
+      user: currentUser,
+    });
+  } else {
+    res.status(404).render("static/error", {
+      err_code: 404,
+      error: "Bunday sahifa topilmadi!",
+    });
+  }
 });
 
 app.use(globalErrorHandler);

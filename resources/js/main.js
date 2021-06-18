@@ -13,7 +13,7 @@
 const elsPhoneMask = document.querySelectorAll(".phone-input-mask");
 const phoneMask = {
   mask: "+{998} (00) 000-00-00",
-  lazy: false,
+  lazy: true,
   placeholderChar: "_",
 };
 

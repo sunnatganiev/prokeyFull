@@ -101,7 +101,19 @@ router.get(
 );
 
 //user
-router.get("/user/id/:id", authController.isLoggedIn, dashboard.user.index);
-router.get("/user/add", authController.isLoggedIn, dashboard.user.add);
+router.get(
+  "/user/id/:id",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.restirctTo("admin", "registrator"),
+  dashboard.user.index
+);
+router.get(
+  "/user/add",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.restirctTo("admin", "registrator"),
+  dashboard.user.add
+);
 
 module.exports = router;

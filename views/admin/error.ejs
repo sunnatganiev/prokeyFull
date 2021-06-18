@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('./sidebar.ejs', {
+        page: 'home'
+      }) %>
+
+      <main>
+        <%- include('./header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("danger") %> </h6>
+            </div>
+            <div class="row">
+              <div class="col-lg-9 col-md-12 my-3">
+                <div class="p-3 shadow-sm rounded bg-white mb-3">
+                  <div class="jumbotron mb-0">
+                    <h1 class="display-2 text-center"><%= err_code %> </h1>
+                    <p class="lead display-4 text-center"><%= error %> </p>
+                    <hr class="my-4">
+                    <% if (locals.info) { %>
+                      <p><%= info %> </p>
+                    <% } %>
+                    <a class="btn btn-primary btn-lg" href="/dashboard" role="button"><%= __('main') %> </a>
+                  </div>
+                </div>
+              </div>
+              <%- include('./components/right-sidebar.ejs') %> 
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>
