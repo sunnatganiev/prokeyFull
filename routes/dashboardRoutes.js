@@ -104,6 +104,8 @@ router.get(
 );
 
 //user
+router.get("/settings", authController.isLoggedIn, dashboard.user.index);
+
 router.get(
   "/user/id/:id",
   authController.isLoggedIn,

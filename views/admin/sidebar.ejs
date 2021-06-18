@@ -33,48 +33,50 @@
           </div>
           Transferlar
         </a>
-        <a class="nav-link <% if (page === 'products') {%>active<%}%>" aria-current="page" href="/dashboard/products">
-          <div class="icon-wrapper">
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-          Maxsulotlar
-        </a>
         <a class="nav-link <% if (page === 'customers') {%>active<%}%>" aria-current="page" href="/dashboard/customers">
           <div class="icon-wrapper">
             <i class="icon fas fa-users"></i>
           </div>
           Xaridorlar
         </a>
-        <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
-          <div class="icon-wrapper">
-            <i class="icon fas fa-warehouse"></i>
-          </div>
-          Omborlar
-        </a>
-        <a class="nav-link <% if (page === 'news') {%>active<%}%>" aria-current="page" href="/dashboard/news">
-          <div class="icon-wrapper">
-            <i class="fas fa-newspaper"></i>
-          </div>
-          Yangiliklar
-        </a>
-        <a class="nav-link <% if (page === 'gallery') {%>active<%}%>" aria-current="page" href="/dashboard/gallery">
-          <div class="icon-wrapper">
-            <i class="fas fa-images"></i>
-          </div>
-          Galereya
-        </a>
-        <a class="nav-link <% if (page === 'banners') {%>active<%}%>" aria-current="page" href="/dashboard/banners">
-          <div class="icon-wrapper">
-            <i class="fas fa-map"></i>
-          </div>
-          Bannerlar
-        </a>
-        <a class="nav-link <% if (page === 'workers') {%>active<%}%>" aria-current="page" href="/dashboard/workers">
-          <div class="icon-wrapper">
-            <i class="fas fa-briefcase"></i>
-          </div>
-          Xodimlar
-        </a>
+        <% if (user.role === "admin") { %>
+          <a class="nav-link <% if (page === 'products') {%>active<%}%>" aria-current="page" href="/dashboard/products">
+            <div class="icon-wrapper">
+              <i class="fas fa-shopping-basket"></i>
+            </div>
+            Maxsulotlar
+          </a>
+          <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
+            <div class="icon-wrapper">
+              <i class="icon fas fa-warehouse"></i>
+            </div>
+            Omborlar
+          </a>
+          <a class="nav-link <% if (page === 'news') {%>active<%}%>" aria-current="page" href="/dashboard/news">
+            <div class="icon-wrapper">
+              <i class="fas fa-newspaper"></i>
+            </div>
+            Yangiliklar
+          </a>
+          <a class="nav-link <% if (page === 'gallery') {%>active<%}%>" aria-current="page" href="/dashboard/gallery">
+            <div class="icon-wrapper">
+              <i class="fas fa-images"></i>
+            </div>
+            Galereya
+          </a>
+          <a class="nav-link <% if (page === 'banners') {%>active<%}%>" aria-current="page" href="/dashboard/banners">
+            <div class="icon-wrapper">
+              <i class="fas fa-map"></i>
+            </div>
+            Bannerlar
+          </a>
+          <a class="nav-link <% if (page === 'workers') {%>active<%}%>" aria-current="page" href="/dashboard/workers">
+            <div class="icon-wrapper">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            Xodimlar
+          </a>
+        <% } %>
       </li>
     </ul>
   </div>

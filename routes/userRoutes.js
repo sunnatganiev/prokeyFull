@@ -25,13 +25,7 @@ router.post(
   userController.createUser
 );
 //UPDATE USER
-router.post(
-  "/user/edit",
-  upload().single("photo"),
-  authController.protect,
-  authController.restirctTo("admin", "registrator"),
-  userController.updateUser
-);
+router.post("/user/edit", upload().single("photo"), userController.updateUser);
 // ==========================
 
 // router.patch('/updateMyPassword', authController.updatePassword);

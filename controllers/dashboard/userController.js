@@ -15,10 +15,10 @@ module.exports = {
   },
   user: {
     async index(req, res) {
-      const id = req.params.id;
+      const currentUser = await getCurrentUser(req, res);
+      let id = req.params.id ? req.params.id : await currentUser._id;
       if (mongoose.Types.ObjectId.isValid(id)) {
         const viewUser = await User.findById(id);
-        const currentUser = await getCurrentUser(req, res);
         res.status(200).render("admin/pages/user/index", {
           user: currentUser,
           error: res.locals.error,
