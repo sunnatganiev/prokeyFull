@@ -10,8 +10,8 @@ const router = express.Router();
 
 router.get("/", authController.isLoggedIn, dashboard.index);
 
-//customers
-router.get("/customers", authController.isLoggedIn, dashboard.customers.index);
+//clients
+router.get("/clients", authController.isLoggedIn, dashboard.clients.index);
 
 //registrators
 router.get(

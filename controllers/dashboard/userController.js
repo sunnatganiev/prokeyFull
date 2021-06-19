@@ -3,9 +3,9 @@ const User = require("../../models/userModel");
 const { getCurrentUser } = require("../authController");
 
 module.exports = {
-  customers: {
+  clients: {
     index(req, res) {
-      res.status(200).render("admin/pages/customers/index");
+      res.status(200).render("admin/pages/clients/index");
     },
   },
   registrators: {

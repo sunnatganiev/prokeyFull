@@ -4,6 +4,11 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const { ERRORS } = require("../utils/constants");
 
+// const userRelation = {
+//   type: mongoose.Schema.Types.ObjectId,
+//   ref: "User",
+// };
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -44,6 +49,7 @@ const userSchema = new mongoose.Schema({
       "Iltimos sizni taklif qilgan mijozning emailini kirgizing",
     ],
   },
+  // followers: [],
   following: {
     type: String,
     required: [true, "email kirgizing"],

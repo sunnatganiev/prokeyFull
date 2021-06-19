@@ -15,12 +15,6 @@
           </div>
           Asosiy
         </a>
-        <a class="nav-link <% if (page === 'registrators') {%>active<%}%>" aria-current="page" href="/dashboard/registrators">
-         <div class="icon-wrapper">
-          <i class="fas fa-id-badge"></i>
-         </div>
-          Registratorlar
-        </a>
         <a class="nav-link <% if (page === 'team') {%>active<%}%>" aria-current="page" href="/dashboard/team">
           <div class="icon-wrapper">
             <i class="icon fas fa-user-friends"></i>
@@ -33,13 +27,20 @@
           </div>
           Transferlar
         </a>
-        <a class="nav-link <% if (page === 'customers') {%>active<%}%>" aria-current="page" href="/dashboard/customers">
-          <div class="icon-wrapper">
-            <i class="icon fas fa-users"></i>
-          </div>
-          Xaridorlar
-        </a>
+        
         <% if (user.role === "admin") { %>
+          <a class="nav-link <% if (page === 'registrators') {%>active<%}%>" aria-current="page" href="/dashboard/registrators">
+            <div class="icon-wrapper">
+             <i class="fas fa-id-badge"></i>
+            </div>
+             Registratorlar
+           </a>
+           <a class="nav-link <% if (page === 'clients') {%>active<%}%>" aria-current="page" href="/dashboard/clients">
+            <div class="icon-wrapper">
+              <i class="icon fas fa-users"></i>
+            </div>
+            <%= __("clients") %> 
+          </a>
           <a class="nav-link <% if (page === 'products') {%>active<%}%>" aria-current="page" href="/dashboard/products">
             <div class="icon-wrapper">
               <i class="fas fa-shopping-basket"></i>
