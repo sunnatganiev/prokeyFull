@@ -1,3 +1,5 @@
+const Banner = require("../models/bannerModel");
+const Feedback = require("../models/feedbackModel");
 const News = require("../models/newsModel");
 const getGallery = require("../utils/getGallery");
 
@@ -43,10 +45,14 @@ exports.contacts = (req, res) => {
 
 exports.home = async (req, res) => {
   const newsList = await News.find({}, {}, { limit: 4 });
+  const feedbacks = await Feedback.find({});
+  const banners = await Banner.find({});
   res.status(200).render("static/index", {
     title: "Home",
     user: res.locals.user,
     newsList,
+    feedbacks,
+    banners,
   });
 };
 

@@ -17,53 +17,25 @@
         <div class="container">
           <div id="home-banner" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner karusel">
-              <%- include('../components/banner-item.ejs', {
-                isActive: true,
-                title: "Imbir choy",
-                img: "/img/medicine/1.png",
-                info: "",
-                link: "/product/5"
-              }) %> 
-              <%- include('../components/banner-item.ejs', {
-                isActive: false,
-                title: "Cleaner choyi",
-                img: "/img/medicine/2.png",
-                info: "",
-                link: "/product/5"
-              }) %> 
-              <%- include('../components/banner-item.ejs', {
-                isActive: false,
-                title: "Kaltsiy Magniy",
-                img: "/img/medicine/3.png",
-                info: "",
-                link: "/product/5"
-              }) %>
-              <%- include('../components/banner-item.ejs', {
-                isActive: false,
-                title: "Zn Fe Cu Spreyi",
-                img: "/img/medicine/4.png",
-                info: "",
-                link: "/product/5"
-              }) %> 
-              <%- include('../components/banner-item.ejs', {
-                isActive: false,
-                title: "Zn Spreyi",
-                img: "/img/medicine/5.png",
-                info: "",
-                link: "/product/5"
-              }) %> 
+              <% banners.forEach((banner, i) => { %>
+                <%- include('../components/banner-item.ejs', {
+                  isActive: i === 0,
+                  title: banner.title,
+                  img: banner.photo,
+                  info: banner.description,
+                  link: banner.url
+                }) %> 
+              <% }) %>
             </div>
             <ol
               class="carousel-indicators position-static mt-5"
               id="banner-indicators"
             >
-              <li data-target="#home-banner" data-slide-to="0" class="active">
-                1
+            <% banners.forEach((x,i) => { %>
+              <li data-target="#home-banner" data-slide-to="<%= i %> " class="<% if (i === 0) { %>active<% } %>">
+                <%= i + 1 %> 
               </li>
-              <li data-target="#home-banner" data-slide-to="1">2</li>
-              <li data-target="#home-banner" data-slide-to="2">3</li>
-              <li data-target="#home-banner" data-slide-to="3">4</li>
-              <li data-target="#home-banner" data-slide-to="4">5</li>
+            <% }) %>
             </ol>
           </div>
         </div>
@@ -351,8 +323,11 @@
       </div>
     </div>
 
-    <%- include("../components/feedbacks.ejs") %> <%-
-    include('../components/footer.ejs') %>
+    <%- include("../components/feedbacks.ejs", {
+      feedbacks: feedbacks
+    }) %> 
+    
+    <%-include('../components/footer.ejs') %>
 
     <script src="/scripts/main.js"></script>
     <!-- test -->

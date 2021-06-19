@@ -71,6 +71,14 @@ jQuery(function () {
     ...fileInputOptions,
     initialPreviewShowDelete: false,
   });
+  $("#input-feedback-images").fileinput({
+    ...fileInputOptions,
+    initialPreviewShowDelete: false,
+  });
+  $("#input-banner-images").fileinput({
+    ...fileInputOptions,
+    initialPreviewShowDelete: false,
+  });
   $("#input-gallery-images")
     .fileinput(fileInputOptions)
     .on("fileloaded", function (e, file) {

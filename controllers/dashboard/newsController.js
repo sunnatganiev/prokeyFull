@@ -22,7 +22,6 @@ module.exports = {
     } else {
       res.locals.error = ERRORS.DB_INSERTION_FAILED;
     }
-    console.log(news);
     res.redirect(dashUrl(`/news`));
   },
   async updateNews(req, res) {

@@ -2,6 +2,8 @@ const User = require("../../models/userModel");
 const { customers, registrators, user } = require("./userController");
 const getGallery = require("../../utils/getGallery");
 const News = require("../../models/newsModel");
+const Feedback = require("../../models/feedbackModel");
+const Banner = require("../../models/bannerModel");
 
 module.exports = {
   async index(req, res) {
@@ -96,19 +98,31 @@ module.exports = {
     },
   },
   banners: {
-    index(req, res) {
-      res.status(200).render("admin/pages/banners/index");
+    async index(req, res) {
+      const banners = await Banner.find({});
+      res.status(200).render("admin/pages/banners/index", {
+        banners,
+      });
     },
-    single(req, res) {
-      res.status(200).render("admin/pages/banners/single");
+    async single(req, res) {
+      const banner = await Banner.findById(req.params.id);
+      res.status(200).render("admin/pages/banners/single", {
+        banner,
+      });
     },
   },
   feedbacks: {
-    index(req, res) {
-      res.status(200).render("admin/pages/feedbacks/index");
+    async index(req, res) {
+      const feedbacks = await Feedback.find({});
+      res.status(200).render("admin/pages/feedbacks/index", {
+        feedbacks,
+      });
     },
-    single(req, res) {
-      res.status(200).render("admin/pages/feedbacks/single");
+    async single(req, res) {
+      const feedback = await Feedback.findById(req.params.id);
+      res.status(200).render("admin/pages/feedbacks/single", {
+        feedback,
+      });
     },
   },
 };
