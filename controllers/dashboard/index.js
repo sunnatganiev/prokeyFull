@@ -4,6 +4,8 @@ const getGallery = require("../../utils/getGallery");
 const News = require("../../models/newsModel");
 const Feedback = require("../../models/feedbackModel");
 const Banner = require("../../models/bannerModel");
+const regions = require("../../data/regions.json");
+const Territory = require("../../models/territoryModel");
 
 module.exports = {
   async index(req, res) {
@@ -129,6 +131,39 @@ module.exports = {
       const feedback = await Feedback.findById(req.params.id);
       res.status(200).render("admin/pages/feedbacks/single", {
         feedback,
+      });
+    },
+  },
+  territories: {
+    async index(req, res) {
+      const territories = [];
+      const territoriesDB = await Territory.find();
+      territoriesDB.forEach((db) => {
+        const region = regions.find((y) => y.id === db.region);
+        region.mapUrl = db.mapUrl;
+        region._id = db._id;
+        if (region) {
+          region.cities.filter((z) => db.cities.includes(z.id));
+          territories.push(region);
+        }
+      });
+      res.status(200).render("admin/pages/territories/index", {
+        territories,
+      });
+    },
+    async add(req, res) {
+      const { id } = req.params;
+      const region = regions.find((x) => x.id === id);
+      res.status(200).render("admin/pages/territories/add", {
+        regions,
+        cities: region.cities,
+        regionId: id,
+      });
+    },
+    async single(req, res) {
+      // const feedback = await Feedback.findById(req.params.id);
+      res.status(200).render("admin/pages/territories/single", {
+        // feedback,
       });
     },
   },

@@ -1,9 +1,6 @@
 const express = require("express");
 const dashboard = require("../controllers/dashboard");
 const authController = require("../controllers/authController");
-const { api } = require("../utils/constants");
-const apiController = require("../controllers/dashboard/apiController");
-const { upload } = require("../utils/uploadMiddleware");
 
 const router = express.Router();
 //DASHBOARD
@@ -105,23 +102,45 @@ router.get(
   "/users",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   dashboard.users.index
 );
-
 router.get(
   "/users/id/:id",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin", "registrator"),
+  authController.allowTo("admin", "registrator"),
   dashboard.users.single
 );
 router.get(
   "/users/add",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin", "registrator"),
+  authController.allowTo("admin", "registrator"),
   dashboard.users.add
+);
+
+//territories
+router.get(
+  "/territories",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.territories.index
+);
+router.get(
+  "/territories/add/:id",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.territories.add
+);
+router.get(
+  "/territories/id/:id",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.territories.single
 );
 
 module.exports = router;

@@ -14,7 +14,7 @@ module.exports = {
   getImgPath: (img) => `${__dirname}/../public${img}`,
   getError: (error) =>
     error.errors
-      ? Object.values(error.errors)[0].properties.message
+      ? Object.values(error.errors)[0].properties?.message
       : error.toString(),
   getCompactObj: (obj) => {
     const newObj = {};

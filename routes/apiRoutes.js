@@ -4,6 +4,7 @@ const apiController = require("../controllers/dashboard/apiController");
 const bannerController = require("../controllers/dashboard/bannerController");
 const feedbackController = require("../controllers/dashboard/feedbackController");
 const newsController = require("../controllers/dashboard/newsController");
+const territoryController = require("../controllers/dashboard/territoryController");
 const { upload } = require("../utils/uploadMiddleware");
 
 const router = express.Router();
@@ -14,7 +15,7 @@ router.post(
   upload("gallery").single("image"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   apiController.galleryAdd
 );
 
@@ -22,7 +23,7 @@ router.post(
   "/gallery/delete",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   apiController.galleryDelete
 );
 ///////
@@ -33,7 +34,7 @@ router.post(
   upload().single("photo"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   newsController.createNews
 );
 
@@ -42,7 +43,7 @@ router.post(
   upload().single("photo"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   newsController.updateNews
 );
 
@@ -50,7 +51,7 @@ router.post(
   "/news/delete",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   newsController.deleteNews
 );
 ////////
@@ -61,7 +62,7 @@ router.post(
   upload().single("photo"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   feedbackController.createFeedback
 );
 
@@ -70,7 +71,7 @@ router.post(
   upload().single("photo"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   feedbackController.updateFeedback
 );
 
@@ -78,7 +79,7 @@ router.post(
   "/feedbacks/delete",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   feedbackController.deleteFeedback
 );
 ////////
@@ -89,7 +90,7 @@ router.post(
   upload().single("photo"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   bannerController.createBanner
 );
 
@@ -98,7 +99,7 @@ router.post(
   upload().single("photo"),
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   bannerController.updateBanner
 );
 
@@ -106,8 +107,34 @@ router.post(
   "/banners/delete",
   authController.isLoggedIn,
   authController.protect,
-  authController.restirctTo("admin"),
+  authController.allowTo("admin"),
   bannerController.deleteBanner
+);
+////////
+
+//TERRITORIES
+router.post(
+  "/territories/add",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  territoryController.createTerritory
+);
+
+router.post(
+  "/territories/edit",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  territoryController.updateTerritory
+);
+
+router.post(
+  "/territories/delete",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  territoryController.deleteTerritory
 );
 ////////
 

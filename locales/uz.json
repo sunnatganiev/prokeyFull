@@ -27,7 +27,12 @@
 	"region": "Viloyat",
 	"city": "Shahar/Tuman",
 	"all": "Barchasi",
-	"admin": "admin",
-	"master": "master",
-	"registrator": "registrator"
+	"admin": "Admin",
+	"master": "Master",
+	"registrator": "Registrator",
+	"territories": "Hududlar",
+	"regions": "Viloyatlar",
+	"mapUrl": "mapUrl",
+	"actions": "actions",
+	"addTerritory": "addTerritory"
 }

@@ -21,7 +21,7 @@ router.post(
   "/user",
   upload().single("photo"),
   authController.protect,
-  authController.restirctTo("admin", "registrator"),
+  authController.allowTo("admin", "registrator"),
   userController.createUser
 );
 //UPDATE USER
@@ -35,7 +35,7 @@ router.post("/user/edit", upload().single("photo"), userController.updateUser);
 // router.patch('/updateMe', userController.updateMe);
 // router.delete('/deleteMe', userController.deleteMe);
 
-// router.use(authController.restirctTo('admin'));
+// router.use(authController.allowTo('admin'));
 
 // router
 //   .route('/')

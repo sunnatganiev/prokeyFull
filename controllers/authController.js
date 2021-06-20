@@ -186,7 +186,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.restirctTo = (...roles) => (req, res, next) => {
+exports.allowTo = (...roles) => (req, res, next) => {
   // roles ['admin', 'registrator']. role='user'
   if (!roles.includes(req.user.role)) {
     // return next(

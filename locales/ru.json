@@ -5,5 +5,11 @@
 	"news": "Новости",
 	"gallery": "Галерея",
 	"contact": "Контакт",
-	"WRONG_CREDENTIALS": "Parol yoki email xato!"
+	"WRONG_CREDENTIALS": "Parol yoki email xato!",
+	"territories": "Hududlar",
+	"users": "Foydalanuvchilar",
+	"addTerritory": "addTerritory",
+	"region": "Viloyat",
+	"city": "Shahar/Tuman",
+	"mapUrl": "mapUrl"
 }

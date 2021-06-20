@@ -29,6 +29,12 @@
         </a>
         
         <% if (user.role === "admin") { %>
+          <a class="nav-link <% if (page === 'territories') {%>active<%}%>" aria-current="page" href="/dashboard/territories">
+            <div class="icon-wrapper">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+             <%= __("territories") %> 
+           </a>
           <a class="nav-link <% if (page === 'registrators') {%>active<%}%>" aria-current="page" href="/dashboard/registrators">
             <div class="icon-wrapper">
              <i class="fas fa-id-badge"></i>
@@ -45,7 +51,7 @@
             <div class="icon-wrapper">
               <i class="fas fa-shopping-basket"></i>
             </div>
-            Maxsulotlar
+             <%= __("products") %> 
           </a>
           <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
             <div class="icon-wrapper">
@@ -67,7 +73,7 @@
           </a>
           <a class="nav-link <% if (page === 'banners') {%>active<%}%>" aria-current="page" href="/dashboard/banners">
             <div class="icon-wrapper">
-              <i class="fas fa-map"></i>
+              <i class="fas fa-map-signs"></i>
             </div>
             Bannerlar
           </a>
