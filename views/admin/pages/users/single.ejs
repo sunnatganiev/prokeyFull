@@ -135,7 +135,7 @@
                                   <span class="input-group-text bg-warning text-white">Lavozim</span>
                                 </div>
                                 <select name="role" class="custom-select" required>
-                                  <option value="client" selected <% if (viewUser.role === "client") { %>selected<% } %>>Klient</option>
+                                  <option value="client" selected <% if (viewUser.role === "client") { %>selected<% } %>><%= __("client") %></option>
                                   <option value="admin" <% if (viewUser.role === "admin") { %>selected<% } %>>Admin</option>
                                   <option value="registrator" <% if (viewUser.role === "registrator") { %>selected<% } %>>Registrator</option>
                                 </select>
@@ -148,7 +148,7 @@
                                 <span class="input-group-text bg-warning text-white">Status</span>
                               </div>
                               <select name="status" class="custom-select" required>
-                                <option value="client" selected <% if (viewUser.status === "client") { %>selected<% } %>>Klient</option>
+                                <option value="client" selected <% if (viewUser.status === "client") { %>selected<% } %>><%= __("client") %></option>
                                 <option value="partner" <% if (viewUser.status === "partner") { %>selected<% } %>>Partner</option>
                                 <option value="master" <% if (viewUser.status === "master") { %>selected<% } %>>Master</option>
                                 <option value="manager" <% if (viewUser.status === "manager") { %>selected<% } %>>Manager</option>

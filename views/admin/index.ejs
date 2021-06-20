@@ -32,9 +32,9 @@
                         <div class="icon-wrapper">
                           <i class="fas fa-walking"></i>
                         </div>
-                        50
+                        <%= clientCount %> 
                       </div>
-                      <a href="#">
+                      <a href="/dashboard/users?status=client">
                         <i class="fas fa-clock mr-1"></i>
                         Barchasi haqida bilish
                       </a>
@@ -48,9 +48,9 @@
                         <div class="icon-wrapper">
                           <i class="fas fa-handshake"></i>
                         </div>
-                        50
+                        <%= partnerCount %> 
                       </div>
-                      <a href="#">
+                      <a href="/dashboard/users?status=partner">
                         <i class="fas fa-clock mr-1"></i>
                         Barchasi haqida bilish
                       </a>
@@ -64,9 +64,9 @@
                         <div class="icon-wrapper">
                           <i class="fas fa-crown"></i>
                         </div>
-                        45
+                        <%= masterCount %> 
                       </div>
-                      <a href="#">
+                      <a href="/dashboard/users?status=master">
                         <i class="fas fa-clock mr-1"></i>
                         Barchasi haqida bilish
                       </a>
@@ -80,9 +80,9 @@
                         <div class="icon-wrapper">
                           <i class="fas fa-book-reader"></i>
                         </div>
-                        45
+                        <%= managerCount %> 
                       </div>
-                      <a href="#">
+                      <a href="/dashboard/users?status=manager">
                         <i class="fas fa-clock mr-1"></i>
                         Barchasi haqida bilish
                       </a>
@@ -94,12 +94,12 @@
                     <h4 class="title-left-stick">
                       Registratorlar
                     </h4>
-                    <a href="#" class="h6 text-dark">Jadval shaklida ko'rish</a>
+                    <a href="/dashboard/users?role=registrator" class="h6 text-dark">Jadval shaklida ko'rish</a>
                     
                   </div>
                   <div class="container-fluid">
                     <div class="user-cards-wrapper d-flex overflow-auto pb-3">
-                      <a href="/dashboard/user/add" class="add-card d-flex justify-content-center align-items-center flex-column">
+                      <a href="/dashboard/users/add" class="add-card d-flex justify-content-center align-items-center flex-column">
                         <div class="border border-2 border-black square-50 rounded-circle bg-white d-flex justify-content-center align-items-center">
                           <i class="fas fa-plus"></i>
                         </div>
@@ -121,20 +121,20 @@
                 <div class="p-3 shadow-sm rounded bg-white mb-3">
                   <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom">
                     <h4 class="title-left-stick">
-                      <%= __("clients") %> 
+                      <%= __("watchers") %> 
                     </h4>
-                    <a href="#" class="h6 text-dark">Jadval shaklida ko'rish</a>
+                    <a href="/dashboard/users?role=watcher" class="h6 text-dark">Jadval shaklida ko'rish</a>
                     
                   </div>
                   <div class="container-fluid">
                     <div class="user-cards-wrapper d-flex overflow-auto pb-3">
-                      <a href="/dashboard/user/add" class="add-card d-flex justify-content-center align-items-center flex-column">
+                      <a href="/dashboard/" class="add-card d-flex justify-content-center align-items-center flex-column">
                         <div class="border border-2 border-black square-50 rounded-circle bg-white d-flex justify-content-center align-items-center">
                           <i class="fas fa-plus"></i>
                         </div>
                         <h5>Yangi qo'shish</h5>
                       </a>
-                      <% clients?.forEach(user => { %>
+                      <% watchers?.forEach(user => { %>
                         <%- include('./components/user-card.ejs', {
                           email: user.email,
                           name: user.name,

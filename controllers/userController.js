@@ -41,7 +41,7 @@ module.exports = {
       res.locals.error = ERRORS.DB_INSERTION_FAILED;
     }
 
-    res.redirect(dashUrl(`/user/id/${user._id}`));
+    res.redirect(dashUrl(`/users/id/${user._id}`));
   },
   async updateUser(req, res, next) {
     const currentUser = await getCurrentUser(req, res);
@@ -69,7 +69,7 @@ module.exports = {
     if (currentUser._id.toString() === userObj.id) {
       res.redirect(dashUrl(`/settings`));
     } else {
-      res.redirect(dashUrl(`/user/id/${oldUser._id}`));
+      res.redirect(dashUrl(`/users/id/${oldUser._id}`));
     }
   },
 };

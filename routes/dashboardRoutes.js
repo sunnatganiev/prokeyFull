@@ -99,21 +99,29 @@ router.get(
 );
 
 //user
-router.get("/settings", authController.isLoggedIn, dashboard.user.index);
+router.get("/settings", authController.isLoggedIn, dashboard.users.single);
 
 router.get(
-  "/user/id/:id",
+  "/users",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.restirctTo("admin"),
+  dashboard.users.index
+);
+
+router.get(
+  "/users/id/:id",
   authController.isLoggedIn,
   authController.protect,
   authController.restirctTo("admin", "registrator"),
-  dashboard.user.index
+  dashboard.users.single
 );
 router.get(
-  "/user/add",
+  "/users/add",
   authController.isLoggedIn,
   authController.protect,
   authController.restirctTo("admin", "registrator"),
-  dashboard.user.add
+  dashboard.users.add
 );
 
 module.exports = router;

@@ -16,4 +16,13 @@ module.exports = {
     error.errors
       ? Object.values(error.errors)[0].properties.message
       : error.toString(),
+  getCompactObj: (obj) => {
+    const newObj = {};
+    Object.keys(obj).forEach((prop) => {
+      if (obj[prop]) {
+        newObj[prop] = obj[prop];
+      }
+    });
+    return newObj;
+  },
 };

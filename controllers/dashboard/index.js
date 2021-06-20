@@ -1,5 +1,5 @@
 const User = require("../../models/userModel");
-const { clients, registrators, user } = require("./userController");
+const { clients, registrators, users } = require("./userController");
 const getGallery = require("../../utils/getGallery");
 const News = require("../../models/newsModel");
 const Feedback = require("../../models/feedbackModel");
@@ -8,16 +8,23 @@ const Banner = require("../../models/bannerModel");
 module.exports = {
   async index(req, res) {
     const regs = await User.find({ role: "registrator" });
-    const clientsList = await User.find({ role: "client" });
-
+    const watchers = await User.find({ role: "watcher" });
+    const clientCount = await User.count({ status: "client" });
+    const partnerCount = await User.count({ status: "partner" });
+    const masterCount = await User.count({ status: "master" });
+    const managerCount = await User.count({ status: "manager" });
     res.status(200).render("admin/index", {
       registrators: regs,
-      clients: clientsList,
+      watchers: watchers,
+      clientCount,
+      partnerCount,
+      masterCount,
+      managerCount,
     });
   },
   clients: clients,
   registrators: registrators,
-  user: user,
+  users: users,
   team: {
     index(req, res) {
       res.status(200).render("admin/pages/team/index");
