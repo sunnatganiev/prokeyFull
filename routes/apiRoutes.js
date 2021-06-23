@@ -1,5 +1,6 @@
 const express = require("express");
 const authController = require("../controllers/authController");
+const { transfersAdd } = require("../controllers/dashboard/apiController");
 const apiController = require("../controllers/dashboard/apiController");
 const bannerController = require("../controllers/dashboard/bannerController");
 const feedbackController = require("../controllers/dashboard/feedbackController");
@@ -137,5 +138,8 @@ router.post(
   territoryController.deleteTerritory
 );
 ////////
+
+//TRANSFERS
+router.post("/transfers/add", authController.isLoggedIn, transfersAdd);
 
 module.exports = router;

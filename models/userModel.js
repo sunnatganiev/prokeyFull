@@ -74,13 +74,18 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  // followers: [
-  //   {
-  //     type: mongoose,
-  //     ball
-  //     ref: "User"
-  //   }
-  // ],
+  followers: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  transactions: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Transaction",
+    },
+  ],
   left: {
     leftSum: {
       type: Number,
@@ -96,6 +101,10 @@ const userSchema = new mongoose.Schema({
     },
     week: [Object],
     month: [Object],
+  },
+  territory: {
+    type: mongoose.Types.ObjectId,
+    ref: "Territory",
   },
   status: {
     type: String,
@@ -140,16 +149,16 @@ userSchema.pre("save", async function (next) {
 
 userSchema.pre(/^find/, function (next) {
   // this points to the current query
-  this.find({ active: { $ne: false } });
+  this.find({ active: { $ne: false } }).populate("territory");
   next();
 });
 
-userSchema.pre("save", function (next) {
-  if (!this.isModified("password") || this.isNew) return next();
+// userSchema.pre("save", function (next) {
+//   if (!this.isModified("password") || this.isNew) return next();
 
-  this.passwordChangedAt = Date.now() - 1000;
-  next();
-});
+//   this.passwordChangedAt = Date.now() - 1000;
+//   next();
+// });
 
 userSchema.methods.correctPasaword = async function (
   candidatePassword,

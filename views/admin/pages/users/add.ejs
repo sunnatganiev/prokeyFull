@@ -64,14 +64,27 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-success text-white">TUG'ULGAN KUN</span>
+                              <span class="input-group-text bg-success text-white">Tug'...kun</span>
                             </div>
-                            <input type="date" id="birthday-input" class="form-control" name="birthDate" required>
+                            <input type="date" id="birthday-input" class="form-control" name="birthDate" required placeholder="<%= __("birthDate") %>">
                           </div>
                         </div>
+                        <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-success text-white"><%= __("territory") %></span>
+                            </div>
+                            <select name="territory" class="custom-select">
+                              <option disabled selected><%= __("choose") %></option>
+                              <% territories.forEach(x => { %>
+                               <option value="<%= x._id %>" <% if (x.registrator?._id) { %>disabled<% } %>><%= x.region[`name_${getLocale()}`] %> / <%= x.city[`name_${getLocale()}`] %></option>
+                              <% }) %>
+                            </select>
+                          </div>
+                        </div> -->
                       </div>
                     </div>
 

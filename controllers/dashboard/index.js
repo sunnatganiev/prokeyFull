@@ -6,15 +6,18 @@ const Feedback = require("../../models/feedbackModel");
 const Banner = require("../../models/bannerModel");
 const regions = require("../../data/regions.json");
 const Territory = require("../../models/territoryModel");
+const { getPopulatedTerritories } = require("../utilities");
+const { getCurrentUser } = require("../authController");
+const Transaction = require("../../models/transactionModel");
 
 module.exports = {
   async index(req, res) {
-    const regs = await User.find({ role: "registrator" });
-    const watchers = await User.find({ role: "watcher" });
-    const clientCount = await User.count({ status: "client" });
-    const partnerCount = await User.count({ status: "partner" });
-    const masterCount = await User.count({ status: "master" });
-    const managerCount = await User.count({ status: "manager" });
+    const regs = await User.find({ role: "registrator" }).populate("followers");
+    const watchers = await User.find({ role: "watcher" }).populate("followers");
+    const clientCount = await User.countDocuments({ status: "client" });
+    const partnerCount = await User.countDocuments({ status: "partner" });
+    const masterCount = await User.countDocuments({ status: "master" });
+    const managerCount = await User.countDocuments({ status: "manager" });
     res.status(200).render("admin/index", {
       registrators: regs,
       watchers: watchers,
@@ -28,16 +31,23 @@ module.exports = {
   registrators: registrators,
   users: users,
   team: {
-    index(req, res) {
-      res.status(200).render("admin/pages/team/index");
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/team/add");
+    async index(req, res) {
+      const currentUser = await getCurrentUser(req, res);
+      res.status(200).render("admin/pages/team/index", {
+        followers: currentUser.followers,
+      });
     },
   },
   transfers: {
-    index(req, res) {
-      res.status(200).render("admin/pages/transfers/index");
+    async index(req, res) {
+      const currentUser = await getCurrentUser(req, res);
+      const transactions = await Transaction.find({
+        $or: [{ from: currentUser._id }, { to: currentUser._id }],
+      }).populate("from to", "name surname _id photo");
+      console.log(transactions);
+      res.status(200).render("admin/pages/transfers/index", {
+        transactions: transactions,
+      });
     },
   },
   warehouses: {
@@ -136,23 +146,23 @@ module.exports = {
   },
   territories: {
     async index(req, res) {
-      const territories = [];
-      const territoriesDB = await Territory.find();
-      territoriesDB.forEach((db) => {
-        const region = regions.find((y) => y.id === db.region);
-        region.mapUrl = db.mapUrl;
-        region._id = db._id;
-        if (region) {
-          region.cities.filter((z) => db.cities.includes(z.id));
-          territories.push(region);
-        }
-      });
+      const territoriesDB = await Territory.find().populate("registrator");
+      // territoriesDB.forEach((db) => {
+      //   const region = regions.find((y) => y.id === db.region);
+      //   region.mapUrl = db.mapUrl;
+      //   region._id = db._id;
+      //   if (region) {
+      //     region.cities.filter((z) => db.cities.includes(z.id));
+      //     territories.push(region);
+      //   }
+      // });
+      const territories = getPopulatedTerritories(territoriesDB);
       res.status(200).render("admin/pages/territories/index", {
         territories,
       });
     },
     async add(req, res) {
-      const { id } = req.params;
+      const { region: id } = req.query;
       const region = regions.find((x) => x.id === id);
       res.status(200).render("admin/pages/territories/add", {
         regions,
@@ -161,9 +171,18 @@ module.exports = {
       });
     },
     async single(req, res) {
-      // const feedback = await Feedback.findById(req.params.id);
+      const { region: id } = req.query;
+      const { id: _id } = req.params;
+      const territory = await Territory.findById(_id).populate("registrator");
+      const temp = id || (await territory.region);
+      // console.log(regions.filter((x) => x.id === temp));
+      const regionObj = regions.find((x) => x.id === temp);
+
       res.status(200).render("admin/pages/territories/single", {
-        // feedback,
+        regionId: regionObj.id,
+        regions,
+        cities: regionObj.cities,
+        territory,
       });
     },
   },

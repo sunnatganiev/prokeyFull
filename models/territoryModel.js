@@ -5,8 +5,8 @@ const territorySchema = mongoose.Schema({
     type: String,
     required: [true, "Viloyatni kiriting"],
   },
-  cities: {
-    type: [String],
+  city: {
+    type: String,
     required: [true, "Shahar/Tuman tanlang"],
   },
   mapUrl: {

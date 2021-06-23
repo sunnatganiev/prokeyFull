@@ -11,5 +11,16 @@
 	"addTerritory": "addTerritory",
 	"region": "Viloyat",
 	"city": "Shahar/Tuman",
-	"mapUrl": "mapUrl"
+	"mapUrl": "mapUrl",
+	"userType": "Foydalanuvchi turi",
+	"all": "Barchasi",
+	"client": "Mijoz",
+	"partner": "Hamkor",
+	"territory": "Hudud",
+	"admin": "Admin",
+	"master": "Master",
+	"undefined": "undefined",
+	"watcher": "Kuzatuvchi",
+	"registrator": "Registrator",
+	"manager": "Manager"
 }

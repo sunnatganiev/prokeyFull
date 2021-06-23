@@ -110,7 +110,7 @@ exports.isLoggedIn = async (req, res, next) => {
   next();
 };
 
-exports.getCurrentUser = async (req, res) => {
+exports.getCurrentUser = async (req, res, populations = ["followers"]) => {
   if (req.cookies.jwt) {
     try {
       // 1) Verification token
@@ -120,7 +120,9 @@ exports.getCurrentUser = async (req, res) => {
       );
 
       // 2) Check if user still exists
-      const currentUser = await User.findById(decoded.id);
+      const currentUser = await User.findById(decoded.id).populate(
+        populations.join(" ")
+      );
       if (!currentUser) {
         return null;
       }

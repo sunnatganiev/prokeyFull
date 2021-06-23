@@ -11,16 +11,14 @@ router.get("/", authController.isLoggedIn, dashboard.index);
 router.get("/clients", authController.isLoggedIn, dashboard.clients.index);
 
 //registrators
-router.get(
-  "/registrators",
-  authController.isLoggedIn,
-  dashboard.registrators.index
-);
+// router.get(
+//   "/registrators",
+//   authController.isLoggedIn,
+//   dashboard.registrators.index
+// );
 
 //team
 router.get("/team", authController.isLoggedIn, dashboard.team.index);
-
-router.get("/team/add", authController.isLoggedIn, dashboard.team.add);
 
 //transfers
 router.get("/transfers", authController.isLoggedIn, dashboard.transfers.index);
@@ -129,7 +127,7 @@ router.get(
   dashboard.territories.index
 );
 router.get(
-  "/territories/add/:id",
+  "/territories/add",
   authController.isLoggedIn,
   authController.protect,
   authController.allowTo("admin"),

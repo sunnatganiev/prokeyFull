@@ -39656,6 +39656,7 @@ $(window).on("load", function () {
 
 jQuery(function () {
   $(".toast").toast();
+  $('[data-toggle="tooltip"]').tooltip();
 
   elToastWrapper.on("click", ".close", function () {
     $(this).parent().parent().remove();

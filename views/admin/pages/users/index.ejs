@@ -25,66 +25,64 @@
               </a>
             </div>
             <div class="row px-3">
-              <div class="col-lg-9 col-md-12 my-3">
+              <div class="col-md-12 my-3">
                 <div class="row">
                   <div class="col-lg-12 dashboard__card">
                     <div class="p-3 shadow-sm">
                       <form method="GET">
-                        <div class="mb-3">
-                          <h6 class="title-left-stick mb-3"><%= __("userType") %></h6>
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text bg-warning text-white">Lavozim</span>
+                        <div class="row">
+                          <div class="col-lg-6 col-md-12">
+                            <div class="mb-3">
+                              <h6 class="title-left-stick mb-3"><%= __("userType") %></h6>
+                              <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-warning text-white">Lavozim</span>
+                                    </div>
+                                    <select name="role" class="custom-select" onchange="this.form.submit()">
+                                      <option selected value="">-- <%= __("all") %> --</option>
+                                      <option value="watcher" <% if (query.role === "watcher") { %>selected<% } %>>Kuzatuvchi</option>
+                                      <option value="admin" <% if (query.role === "admin") { %>selected<% } %>>Admin</option>
+                                      <option value="registrator" <% if (query.role === "registrator") { %>selected<% } %>>Registrator</option>
+                                    </select>
+                                  </div>
                                 </div>
-                                <select name="role" class="custom-select" onchange="this.form.submit()">
-                                  <option selected value="">-- <%= __("all") %> --</option>
-                                  <option value="watcher" <% if (query.role === "watcher") { %>selected<% } %>>Kuzatuvchi</option>
-                                  <option value="admin" <% if (query.role === "admin") { %>selected<% } %>>Admin</option>
-                                  <option value="registrator" <% if (query.role === "registrator") { %>selected<% } %>>Registrator</option>
-                                </select>
+                                <div class="col-md-6 col-sm-12">
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-warning text-white">Status</span>
+                                    </div>
+                                    <select name="status" class="custom-select" onchange="this.form.submit()">
+                                      <option selected value="">-- <%= __("all") %> --</option>
+                                      <option value="client" <% if (query.status === "client") { %>selected<% } %>><%= __("client") %></option>
+                                      <option value="partner" <% if (query.status === "partner") { %>selected<% } %>><%= __("partner") %></option>
+                                      <option value="master" <% if (query.status === "master") { %>selected<% } %>>Master</option>
+                                      <option value="manager" <% if (query.status === "manager") { %>selected<% } %>>Manager</option>
+                                    </select>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text bg-warning text-white">Status</span>
-                                </div>
-                                <select name="status" class="custom-select" onchange="this.form.submit()">
-                                  <option selected value="">-- <%= __("all") %> --</option>
-                                  <option value="client" <% if (query.status === "client") { %>selected<% } %>><%= __("client") %></option>
-                                  <option value="partner" <% if (query.status === "partner") { %>selected<% } %>><%= __("partner") %></option>
-                                  <option value="master" <% if (query.status === "master") { %>selected<% } %>>Master</option>
-                                  <option value="manager" <% if (query.status === "manager") { %>selected<% } %>>Manager</option>
-                                </select>
-                              </div>
-                            </div>
+                           
                           </div>
-                        </div>
-                        <div class="mb-3">
-                          <h6 class="title-left-stick mb-3"><%= __("territory") %></h6>
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text bg-success text-white"><%= __("region") %> </span>
+                          <div class="col-lg-6 col-md-12">
+                            <div class="mb-3">
+                              <h6 class="title-left-stick mb-3"><%= __("territory") %></h6>
+                              <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-success text-white"><%= __("region") %> </span>
+                                    </div>
+                                    <select name="territory" class="custom-select" onchange="this.form.submit()">
+                                      <option selected value="">-- <%= __("all") %> --</option>
+                                      <% territories.forEach(x => { %>
+                                        <option <% if (query.territory === x._id.toString()) { %>selected<% } %> value="<%= x._id %>"><%= x.region[`name_${getLocale()}`] %>/<%= x.city[`name_${getLocale()}`] %></option>
+                                      <% }) %>
+                                    </select>
+                                  </div>
                                 </div>
-                                <select name="region" class="custom-select" disabled>
-                                  <option selected value="">-- <%= __("all") %> --</option>
-                                  <option value="tashkent">Toshkent</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text bg-success text-white"><%= __("city") %> </span>
-                                </div>
-                                <select name="city" class="custom-select" disabled>
-                                  <option selected value="">-- <%= __("all") %> --</option>
-                                  <option value="olmaliq">olmaliq</option>
-                                </select>
                               </div>
                             </div>
                           </div>
@@ -95,12 +93,16 @@
                   <div class="col-lg-12 dashboard__card">
                     <div class="p-3 shadow-sm">
                       <h6 class="title-left-stick mb-3"><%= __("users") %></h6>
-                      <table class="table table-responsive-md custom-table table-hover table-borderless table-sm">
+                      <table class="table table-responsive-xl custom-table table-hover table-borderless table-sm">
                         <thead class="thead-light">
                           <tr>
                             <th scope="col">Rasm</th>
                             <th scope="col">F.I.SH</th>
                             <th scope="col">Email</th>
+                            <th scope="col"><%= __("phoneNumber") %></th>
+                            <th scope="col"><%= __("followers") %></th>
+                            <th scope="col"><%= __("balance") %></th>
+                            <th scope="col"><%= __("whoInvited") %></th>
                             <th scope="col">Lavozim</th>
                             <th scope="col">Status</th>
                             <th scope="col">Hudud</th>
@@ -109,14 +111,18 @@
                         <tbody>
                          <% users.forEach(user => { %>
                           <tr>
-                            <td>
+                            <td class="small text-nowrap">
                               <img src="<%= user.photo %>" class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden" alt="<%= user.name %>">
                             </td>
-                            <td><%= `${user.surname} ${user.name} ${user.middleName}` %></td>
-                            <td><a href="<%= `/dashboard/users/id/${user._id}` %>"><%= user.email %></a></td>
-                            <td><%= __(user.role) %></td>
-                            <td><%= __(user.status) %></td>
-                            <!-- <th><%= `${user.region}/${user.city}` %> </th> -->
+                            <td class="small text-nowrap"><%= `${user.surname} ${user.name} ${user.middleName}` %></td>
+                            <td class="small text-nowrap"><a href="<%= `/dashboard/users/id/${user._id}` %>"><%= user.email %></a></td>
+                            <td class="small text-nowrap"><%= user.followers.length %></td>
+                            <td class="small text-nowrap"><%= user.phoneNumber %></td>
+                            <td class="small text-nowrap"><%= user.balance %></td>
+                            <td class="small text-nowrap"><%= user.whoInvited %></td>
+                            <td class="small text-nowrap"><%= __(user.role) %></td>
+                            <td class="small text-nowrap"><%= __(user.status) %></td>
+                            <td class="small text-nowrap"><%= `${getTerritory(user.territory)?.region[`name_${getLocale()}`] || __("undefined")}/${getTerritory(user.territory)?.city[`name_${getLocale()}`] || __("undefined")}` %> </td>
                           </tr>
                          <% }) %>
                         </tbody>
@@ -138,7 +144,6 @@
                   
                 </div>
               </div>
-             <%- include('../../components/right-sidebar.ejs') %> 
             </div>
           </div>
         </div>

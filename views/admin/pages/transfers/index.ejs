@@ -17,14 +17,14 @@
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
               <h6 class="font-weight-bold text-muted mb-0">Transferlar</h6>
-              <a href="#buy-product" data-toggle="collapse">
+              <!-- <a href="#buy-product" data-toggle="collapse">
                 Maxsulot sotib olish
                 <i class="fas fa-plus"></i>
-              </a>
+              </a> -->
             </div>
             <div class="row px-3">
 
-              <div class="col-lg-12 dashboard__card collapse" id="buy-product">
+              <!-- <div class="col-lg-12 dashboard__card collapse" id="buy-product">
                 <div class="p-3 shadow-sm">
                   <h6 class="title-left-stick mb-3">Maxsulot sotib olish</h6>
                   <form>
@@ -86,12 +86,12 @@
                     </div>
                   </form>
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-lg-12 dashboard__card">
                 <div class="p-3 shadow-sm">
-                  <h6 class="title-left-stick mb-3">Transferlar qilish</h6>
-                  <form>
+                  <h6 class="title-left-stick mb-3">Transferlar qilish - [<%= __("balance") %>: <%= user.balance %>]</h6>
+                  <form method="POST" action="<%= api("transfers/add") %>">
                     <div class="d-flex flex-wrap align-items-center justify-content-around">
                       <div>
                         <label
@@ -107,11 +107,13 @@
                           </div>
                           <input
                             type="number"
-                            min="5000"
+                            min="1"
+                            max="<%= user.balance %>"
                             class="form-control"
                             id="amount-input"
-                            placeholder="Kamida 5000"
+                            placeholder="Kamida 5"
                             name="amount"
+                            required
                           />
                         </div>
                       </div>
@@ -125,15 +127,36 @@
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text bg-info text-white"
-                              >ID</span
+                              ><%= __("email") %> </span
+                            >
+                          </div>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="reciever-input"
+                            placeholder="example@mail.com"
+                            name="email"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label
+                          class="form-label h6 text-uppercase mb-3"
+                          for="reciever-input"
+                          ><%= __("comment") %></label
+                        >
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text bg-info text-white"
+                              ><%= __("comment") %> </span
                             >
                           </div>
                           <input
                             type="text"
                             class="form-control"
-                            id="reciever-input"
-                            placeholder="U000000"
-                            name="receiver"
+                            name="comment"
+                            required
                           />
                         </div>
                       </div>
@@ -144,7 +167,7 @@
                           >Tasdiqlash</label
                         >
                         <div class="input-group mb-3">
-                          <button type="submit" class="btn btn-primary">Roziman</button>
+                          <button type="submit" class="btn btn-primary" <% if (!user.balance) { %>disabled<% } %>>Roziman</button>
                         </div>
                       </div>
                     </div>
@@ -159,115 +182,52 @@
                   >
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">F.I.SH</th>
-                        <th scope="col">Maqomi</th>
-                        <th scope="col">Sana</th>
+                        <th scope="col"><%= __("users") %> </th>
+                        <th scope="col"><%= __("comment") %></th>
+                        <th scope="col"><%= __("date") %></th>
                         <th scope="col">
-                          Kirim<i class="fas fa-arrow-down ml-2"></i>
-                        </th>
-                        <th scope="col">
-                          Chiqim<i class="fas fa-arrow-up ml-2"></i>
+                          <%= __("amount") %>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">UZ100000</th>
-                        <td>
-                          <img
-                            src="/img/slide-2.jpg"
-                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
-                            alt="John Doe"
-                          />
-                          Jhon Doe
-                        </td>
-                        <td>Lider</td>
-                        <td>21.05.2021</td>
-                        <td>100 000 so'm</td>
-                        <td>50 000 so'm</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">UZ100000</th>
-                        <td>
-                          <img
-                            src="/img/slide-2.jpg"
-                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
-                            alt="John Doe"
-                          />
-                          Jhon Doe
-                        </td>
-                        <td>Lider</td>
-                        <td>21.05.2021</td>
-                        <td>100 000 so'm</td>
-                        <td>50 000 so'm</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">UZ100000</th>
-                        <td>
-                          <img
-                            src="/img/slide-2.jpg"
-                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
-                            alt="John Doe"
-                          />
-                          Jhon Doe
-                        </td>
-                        <td>Lider</td>
-                        <td>21.05.2021</td>
-                        <td>100 000 so'm</td>
-                        <td>50 000 so'm</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">UZ100000</th>
-                        <td>
-                          <img
-                            src="/img/slide-2.jpg"
-                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
-                            alt="John Doe"
-                          />
-                          Jhon Doe
-                        </td>
-                        <td>Lider</td>
-                        <td>21.05.2021</td>
-                        <td>100 000 so'm</td>
-                        <td>50 000 so'm</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">UZ100000</th>
-                        <td>
-                          <img
-                            src="/img/slide-2.jpg"
-                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
-                            alt="John Doe"
-                          />
-                          Jhon Doe
-                        </td>
-                        <td>Lider</td>
-                        <td>21.05.2021</td>
-                        <td>100 000 so'm</td>
-                        <td>50 000 so'm</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">UZ100000</th>
-                        <td>
-                          <img
-                            src="/img/slide-2.jpg"
-                            class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
-                            alt="John Doe"
-                          />
-                          Jhon Doe
-                        </td>
-                        <td>Lider</td>
-                        <td>21.05.2021</td>
-                        <td>100 000 so'm</td>
-                        <td>50 000 so'm</td>
+                      <% transactions.reverse().forEach(x => { %>
+                        <tr>
+                          <td>
+                            <a href="/dashboard/users/id/<%= x.from._id %>" data-toggle="tooltip" data-placement="top" title="<%= x.from.name %> <%= x.from.surname %>">
+                              <img
+                              src="<%= x.from.photo %>"
+                              class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                              alt="<%= x.from.name %>"/>
+                            </a>
+                            <i class="fas fa-angle-double-right text-success"></i>
+                            <a href="/dashboard/users/id/<%= x.to._id %>" data-toggle="tooltip" data-placement="top" title="<%= x.to.name %> <%= x.to.surname %>">
+                              <img
+                              src="<%= x.to.photo %>"
+                              class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden"
+                              alt="<%= x.to.name %>"/>
+                            </a>
+                          </td>
+                          <td><%= x.comment %></td>
+                          <td><%= new Date(x.createdAt).toLocaleString("ru") %></td>
+                          <td>
+                            <% if(x.from._id.equals(user._id)){ %>
+                              <span class="text-danger"> <%= x.amount %> <%= __("ball") %></span>
+                              <i class="fas fa-long-arrow-alt-up text-danger"></i>
+                            <% } else{ %>
+                              <span class="text-success"><%= x.amount %> <%= __("ball") %></span>
+                              <i class="fas fa-long-arrow-alt-down text-success"></i>
+                           <% } %>
+                          </td>
+                      <% }) %>
+                      
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
 
-              <div class="col-lg-12">
+              <!-- <div class="col-lg-12">
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item disabled">
@@ -295,12 +255,19 @@
                     </li>
                   </ul>
                 </nav>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </main>
     </div>
+
+    <% if (locals.error) { %>
+      <%- include('../../components/toast.ejs', {
+        type: "danger",
+        content: __(error)
+      }) %> 
+    <% } %>
 
     <script src="/scripts/backend/index.js"></script>
     <script src="/scripts/main.js"></script>

@@ -1,6 +1,8 @@
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/userModel");
 const { sum } = require("./utilities");
+const Territory = require("../models/territoryModel");
+const Transaction = require("../models/transactionModel");
 
 exports.invite = async (req, invited) => {
   let ballInvite = invited.balance;
@@ -26,7 +28,7 @@ exports.invite = async (req, invited) => {
   return await invited.save({ validateBeforeSave: false });
 };
 
-exports.side = async (req, following) => {
+exports.side = async (req, following, user) => {
   let ball = 0;
 
   switch (req.body.status) {
@@ -77,7 +79,27 @@ exports.side = async (req, following) => {
       }
     });
   }
+
+  following.followers.push(user._id);
+
   return await following.save({ validateBeforeSave: false });
+};
+
+exports.transfer = async (from, to, transactionObj) => {
+  const amount = parseInt(transactionObj.amount, 10);
+  from.balance -= amount;
+  to.balance += amount;
+  const transaction = await Transaction.create({
+    from: from._id,
+    to: to._id,
+    comment: transactionObj.comment,
+    amount,
+  });
+  from.transactions.push(transaction._id);
+  to.transactions.push(transaction._id);
+  await from.save({ validateBeforeSave: false });
+  await to.save({ validateBeforeSave: false });
+  return transaction;
 };
 
 const binar = catchAsync(async (user, limit) => {
@@ -167,3 +189,17 @@ exports.checkSalary = catchAsync(async () => {
     });
   });
 });
+
+exports.assignToTerritory = async (territoryId, user) => {
+  const territory = await Territory.findById(territoryId);
+  if (user.role === "registrator" && !territory?.registrator) {
+    await Territory.findOneAndUpdate(
+      { registrator: user._id },
+      { registrator: null }
+    );
+    return await Territory.findByIdAndUpdate(territoryId, {
+      registrator: user._id,
+    });
+  }
+  return null;
+};

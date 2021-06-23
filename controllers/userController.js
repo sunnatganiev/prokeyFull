@@ -1,7 +1,7 @@
 const fs = require("fs");
 const User = require("../models/userModel");
 const logic = require("./logic");
-const { user: userViews } = require("./dashboard/userController");
+const { users: userViews } = require("./dashboard/userController");
 const { ERRORS } = require("../utils/constants");
 const { getCurrentUser } = require("./authController");
 const { getFileName, dashUrl, getImgPath, getError } = require("./utilities");
@@ -26,10 +26,11 @@ module.exports = {
     let user = {};
 
     await logic.invite(req, whoInvited);
-    await logic.side(req, following);
 
     try {
       user = await User.create(userObj);
+      await logic.assignToTerritory(userObj.territory, user);
+      await logic.side(req, following, user);
     } catch (error) {
       const errMsg = getError(error);
       res.locals.error = errMsg;
@@ -56,6 +57,7 @@ module.exports = {
       userObj.photo = getFileName(file.path);
     }
     const oldUser = await User.findByIdAndUpdate(userObj.id, userObj);
+    await logic.assignToTerritory(userObj.territory, oldUser);
     const oldFileName = oldUser.photo;
 
     if (file) {

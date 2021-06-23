@@ -1,3 +1,5 @@
+const regions = require("../data/regions.json");
+
 module.exports = {
   sum(side, sum = 0) {
     side.forEach((user) => {
@@ -24,5 +26,20 @@ module.exports = {
       }
     });
     return newObj;
+  },
+  getPopulatedTerritories: (territories) => {
+    const temp = [];
+    territories.forEach((db) => {
+      const region = regions.find((reg) => reg.id === db.region);
+      const city = region.cities.find((x) => x.id === db.city);
+      temp.push({
+        city,
+        region,
+        mapUrl: db.mapUrl,
+        _id: db._id,
+        registrator: db.registrator,
+      });
+    });
+    return temp;
   },
 };
