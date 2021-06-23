@@ -22,17 +22,13 @@
             </div>
             <div class="row px-3">
               <div class="col-lg-12 my-3">
-                <% if (error) { %>
-                  <div class="alert alert-success" role="alert">
-                    Maxsulot muvaffaqiyatli o'zgartirildi!
-                  </div>
-                <% } %>
                 <div class="dashboard__card bg-white p-3 rounded mx-n3">
-                  <form>
+                  <form action="<%= api("products/edit") %>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<%= product._id %>">
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">Malumotlar</h6>
                       <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
@@ -45,11 +41,12 @@
                               class="form-control"
                               placeholder="Maxulot nomi"
                               name="name"
-                              value="Evloution Cleaner"
+                              value="<%= product.name %>"
+                              required
                             />
                           </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
@@ -62,12 +59,13 @@
                               min="1"
                               class="form-control"
                               placeholder="Soni"
-                              value="10"
                               name="quantity"
+                              value="<%= product.quantity %>"
+                              required
                             />
                           </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
@@ -76,26 +74,14 @@
                               >
                             </div>
                             <input
-                              type="text"
+                              type="number"
+                              min="1"
                               class="form-control"
                               placeholder="Narx"
                               name="price"
-                              value="100000"
+                              value="<%= product.price %>"
+                              required
                             />
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span
-                                class="input-group-text bg-success text-white"
-                                >Ombor</span
-                              >
-                            </div>
-                            <select name="warehouse" class="custom-select">
-                              <option value="chilonzor">Chilonzor</option>
-                              <option value="olmazor">Olmazor</option>
-                            </select>
                           </div>
                         </div>
                       </div>
@@ -107,9 +93,14 @@
                         <div class="col-12">
                           <div class="file-loading">
                             <input
-                            data-images=["/img/dori-1.png","/img/dori-2.png"]
-                            id="input-images" name="images" type="file"
-                            accept="image/*" multiple />
+                              id="input-product-images"
+                              name="images"
+                              data-images="<%= product.images.join(",") %>"
+                              type="file"
+                              accept="image/*"
+                              multiple
+                              required
+                            />
                           </div>
                         </div>
                       </div>
@@ -119,10 +110,11 @@
                       <h6 class="title-left-stick mb-3">Maxsulot haqida</h6>
                       <div class="row">
                         <div class="col-lg-12">
-                          <textarea name="description" id="product-description">
-                          product-description
-                        </textarea
-                          >
+                          <textarea
+                            name="description"
+                            id="product-description"
+                            required
+                          ><%= product.description %></textarea>
                         </div>
                       </div>
                     </div>

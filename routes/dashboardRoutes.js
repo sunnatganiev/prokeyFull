@@ -40,7 +40,7 @@ router.get(
 router.get("/products", authController.isLoggedIn, dashboard.products.index);
 
 router.get(
-  "/product/:id",
+  "/products/id/:id",
   authController.isLoggedIn,
   dashboard.products.single
 );

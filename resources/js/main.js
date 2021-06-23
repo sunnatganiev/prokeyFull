@@ -80,6 +80,10 @@ jQuery(function () {
     ...fileInputOptions,
     initialPreviewShowDelete: false,
   });
+  $("#input-product-images").fileinput({
+    ...fileInputOptions,
+    initialPreviewShowDelete: false,
+  });
   $("#input-gallery-images")
     .fileinput(fileInputOptions)
     .on("fileloaded", function (e, file) {

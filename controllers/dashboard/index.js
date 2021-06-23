@@ -9,6 +9,7 @@ const Territory = require("../../models/territoryModel");
 const { getPopulatedTerritories } = require("../utilities");
 const { getCurrentUser } = require("../authController");
 const Transaction = require("../../models/transactionModel");
+const Product = require("../../models/productModel");
 
 module.exports = {
   async index(req, res) {
@@ -74,11 +75,10 @@ module.exports = {
         isDeleted: true,
       });
     },
-    single(req, res) {
-      //handle id
-      console.log(req.params.id);
+    async single(req, res) {
+      const product = await Product.findById(req.params.id);
       res.status(200).render("admin/pages/products/single", {
-        error: true,
+        product,
       });
     },
     add(req, res) {
