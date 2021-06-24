@@ -3,7 +3,7 @@
   "extends": ["airbnb", "prettier", "plugin:node/recommended"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": 1,
+    "prettier/prettier": 0,
     "spaced-comment": 0,
     "no-console": 1,
     "consistent-return": 0,
