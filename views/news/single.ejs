@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title><%= title %> </title>
+  </head>
+  <body>
+    <%- include('../components/nav.ejs', {page: 'news'}) %>
+
+    <div class="container">
+      <div class="py-5">
+        <div class="yangilik-card news-single-page shadow-sm mb-3">
+          <div class="card-img">
+            <img src="<%= news.photo %>" alt="<%= news.title %>" />
+          </div>
+          <div class="yangilik-card-content">
+            <h2>
+              <%= news.title %>
+            </h2>
+            <p>
+              <%= news.shortDescription %> 
+            </p>
+            <p>
+              <%- news.description %> 
+            </p>
+            <div class="yangilik-bottom">
+              <div class="yangilik-bottom--left">
+                <i class="fas fa-calendar-edit"></i>
+                <p class="yangilik-date"><%= new Date(news.createdAt).toLocaleDateString("ru") %></p>
+                <i class="fas fa-clock"></i>
+                <p class="yangilik-time"><%= new Date(news.createdAt).toLocaleTimeString("ru") %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../components/footer.ejs') %>
+
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

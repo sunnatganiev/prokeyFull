@@ -9,7 +9,7 @@
   </head>
   <body class="dashboard">
     <div class="dashboard-content-wrapper">
-      <%- include('../../sidebar.ejs', { page: 'banners' }) %>
+      <%- include('../../sidebar.ejs', { page: 'products' }) %>
 
       <main>
         <%- include('../../header.ejs') %>
@@ -23,11 +23,11 @@
             <div class="row px-3">
               <div class="col-lg-12 my-3">
                 <div class="dashboard__card bg-white p-3 rounded mx-n3">
-                  <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+                  <form action="<%= api("products/add") %>" method="POST" enctype="multipart/form-data">
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">Malumotlar</h6>
                       <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
@@ -40,10 +40,11 @@
                               class="form-control"
                               placeholder="Maxulot nomi"
                               name="name"
+                              required
                             />
                           </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
@@ -56,12 +57,12 @@
                               min="1"
                               class="form-control"
                               placeholder="Soni"
-                              value="1"
                               name="quantity"
+                              required
                             />
                           </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
@@ -70,25 +71,13 @@
                               >
                             </div>
                             <input
-                              type="text"
+                              type="number"
+                              min="1"
                               class="form-control"
                               placeholder="Narx"
                               name="price"
+                              required
                             />
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span
-                                class="input-group-text bg-success text-white"
-                                >Ombor</span
-                              >
-                            </div>
-                            <select name="warehouse" class="custom-select">
-                              <option value="chilonzor">Chilonzor</option>
-                              <option value="olmazor">Olmazor</option>
-                            </select>
                           </div>
                         </div>
                       </div>
@@ -100,12 +89,12 @@
                         <div class="col-12">
                           <div class="file-loading">
                             <input
-                              
-                              id="input-images"
+                              id="input-product-images"
                               name="images"
                               type="file"
                               accept="image/*"
                               multiple
+                              required
                             />
                           </div>
                         </div>
@@ -119,6 +108,7 @@
                           <textarea
                             name="description"
                             id="product-description"
+                            required
                           ></textarea>
                         </div>
                       </div>

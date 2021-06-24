@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <script defer src="/scripts/pages/index.js"></script>
+    <title><%= title %> </title>
+  </head>
+  <body>
+    <%- include('../components/nav.ejs', {user: user, page: 'home'}) %>
+
+    <div class="home">
+      <div class="home__main">
+        <div class="container">
+          <div id="home-banner" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner karusel">
+              <% banners.forEach((banner, i) => { %>
+                <%- include('../components/banner-item.ejs', {
+                  isActive: i === 0,
+                  title: banner.title,
+                  img: banner.photo,
+                  info: banner.description,
+                  link: banner.url
+                }) %> 
+              <% }) %>
+            </div>
+            <ol
+              class="carousel-indicators position-static mt-5"
+              id="banner-indicators"
+            >
+            <% banners.forEach((x,i) => { %>
+              <li data-target="#home-banner" data-slide-to="<%= i %> " class="<% if (i === 0) { %>active<% } %>">
+                <%= i + 1 %> 
+              </li>
+            <% }) %>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-shape-divider-bottom-1618924706">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="section section--hidden home__maslaxat">
+          <div class="home__maslaxat-card">
+            <h4 class="maslaxat-text">Qonunlar</h4>
+            <div class="maslaxat-main">
+              <p class="text-white">
+                1-modda. Ushbu Qonunning maqsadi. Ushbu Qonunning maqsadi- aholi
+                o'rtasida mikronutrient etishmasligi profilaktikasi sohasidagi...
+              </p>
+              <div class="maslaxat-right">
+                <i class="maslaxat-icon fas fa-gavel"></i>
+              </div>
+            </div>
+            <a class="text-white" href="/laws/1">Batafsil</a>
+          </div>
+          <div class="home__maslaxat-card">
+            <h4 class="maslaxat-text">Qonunlar</h4>
+            <div class="maslaxat-main">
+              <p class="text-white">
+                O'zbekiston respublikasi prezidentining qarori aholining sog'lom ovqatlanishini ta’minlash bo'yicha qo'shimcha chora-tadbirlar to'g'risida...
+              </p>
+              <div class="maslaxat-right">
+                <i class="maslaxat-icon fas fa-gavel"></i>
+              </div>
+            </div>
+            <a class="text-white" href="/laws/2">Batafsil</a>
+          </div>
+          <div class="home__maslaxat-card">
+            <h4 class="maslaxat-text">Qonunlar</h4>
+            <div class="maslaxat-main">
+              <p class="text-white">
+                O'zbekiston respublikasi prezidentining farmoni savdo va xizmat ko'rsatish sohasidagi hisob-kitoblar tizimiga zamonaviy axborot texnologiyalarini joriy...
+              </p>
+              <div class="maslaxat-right">
+                <i class="maslaxat-icon fas fa-gavel"></i>
+              </div>
+            </div>
+            <a class="text-white" href="/laws/3">Batafsil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section--hidden mt-4">
+      <div class="container">
+        <ul class="nav nav-tabs home-royxat" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              id="recently-added-tab"
+              data-toggle="tab"
+              href="#recently-added"
+              role="tab"
+              aria-controls="recently-added"
+              aria-selected="true"
+              >So'ngi qo'shilganlar</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="top-products-tab"
+              data-toggle="tab"
+              href="#top-products"
+              role="tab"
+              aria-controls="top-products"
+              aria-selected="false"
+              >Top maxsulotlar</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="most-sold-products-tab"
+              data-toggle="tab"
+              href="#most-sold-products"
+              role="tab"
+              aria-controls="most-sold-products"
+              aria-selected="false"
+              >Ko'p sotilganlar</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="popular-products-tab"
+              data-toggle="tab"
+              href="#popular-products"
+              role="tab"
+              aria-controls="popular-products"
+              aria-selected="false"
+              >Ommabop maxsulotlar</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="recently-added"
+            role="tabpanel"
+            aria-labelledby="recently-added-tab"
+          >
+            <%- include('../components/products.ejs', {products}) %>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="top-products"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <%- include('../components/products.ejs', {products}) %>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="most-sold-products"
+            role="tabpanel"
+            aria-labelledby="most-sold-products-tab"
+          >
+            <%- include('../components/products.ejs', {products}) %>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="popular-products"
+            role="tabpanel"
+            aria-labelledby="popular-products-tab"
+          >
+            <%- include('../components/products.ejs', {products}) %>
+          </div>
+        </div>
+
+        <p class="korish-item">
+          <a class="korish-link" href="#">Barchasini ko'rish ></a>
+        </p>
+      </div>
+    </div>
+
+    <div class="section section--hidden chegirma-kartalar">
+      <p class="main-text">chegirma kartalar</p>
+
+      <div class="kartalar">
+        <div class="first-card sale-card shadow-lg">
+          <img src="../img/5percent.png" alt="" class="chegirma-img" />
+        </div>
+        <div class="bronze-card sale-card shadow-lg">
+          <img src="../img/10percent.png" alt="" class="chegirma-img" />
+        </div>
+        <div class="silver-card sale-card shadow-lg">
+          <img src="../img/15percent.png" alt="" class="chegirma-img" />
+        </div>
+        <div class="gold-card sale-card shadow-lg">
+          <img src="../img/20percent.png" alt="" class="chegirma-img" />
+        </div>
+      </div>
+    </div>
+
+    <%- include('../components/news.ejs', {
+      newsList: newsList
+    }) %>
+
+    <div class="section section--hidden">
+      <div class="py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <h3 class="text-primary text-uppercase mb-4 font-weight-bold">
+                online operatordan
+                <span class="text-dark d-block font-weight-bold"
+                  >maslaxat olish</span
+                >
+              </h3>
+
+              <form action="" class="contacts-form">
+                <div class="row">
+                  <div class="col-lg-6 col-md-12 mb-2">
+                    <div class="form-group position-relative">
+                      <input
+                        class="form-control form-control-lg rounded-0"
+                        type="text"
+                        placeholder="Ism"
+                        name="name"
+                      />
+                      <i class="fas fa-user text-primary position-absolute"></i>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-12 mb-2">
+                    <div class="form-group position-relative">
+                      <input
+                        class="form-control form-control-lg rounded-0 phone-input-mask"
+                        type="text"
+                        name="phone"
+                        placeholder="+998 ("
+                      />
+                      <i
+                        class="fas fa-phone text-primary position-absolute"
+                      ></i>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 mb-2">
+                    <div class="form-group position-relative">
+                      <input
+                        class="form-control form-control-lg rounded-0"
+                        type="email"
+                        placeholder="Email"
+                      />
+                      <i
+                        class="fas fa-envelope text-primary position-absolute"
+                      ></i>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 mb-2">
+                    <div class="form-group position-relative">
+                      <textarea
+                        class="form-control form-control-lg rounded-0"
+                        rows="4"
+                        placeholder="Xabar matnini kiriting"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-100 d-flex align-items-center justify-content-center"
+                >
+                  <button class="btn btn-primary" type="submit">
+                    Jo'natish <i class="fab fa-telegram-plane"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+              <img
+                src="img/doctor.png"
+                alt=""
+                class="home__operator-right--img"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section section--hidden home__map">
+      <h3 class="home__map-text">O'zingizga yaqin do'konni tanlang</h3>
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe
+            class="gmap_iframe"
+            width="100%"
+            height="500"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.255647781862!2d69.24867231542383!3d41.325053979269946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE5JzMwLjIiTiA2OcKwMTUnMDMuMSJF!5e0!3m2!1sen!2s!4v1623083246917!5m2!1sen!2s"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <%- include("../components/feedbacks.ejs", {
+      feedbacks: feedbacks
+    }) %> 
+    
+    <%-include('../components/footer.ejs') %>
+
+    <script src="/scripts/main.js"></script>
+    <!-- test -->
+  </body>
+</html>

@@ -1,37 +1,12 @@
 <div class="row">
-  <div class="col-lg-3 col-md-6 col-sm-12">
-    <%- include('./product-item.ejs', {
-      img: "/img/medicine/1.png",
-      title: "Imbir choy",
-      price: 150000
-    }) %>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-12">
-    <%- include('./product-item.ejs', {
-      img: "/img/medicine/2.png",
-      title: "Cleaner choyi",
-      price: 150000
-    }) %>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-12">
-    <%- include('./product-item.ejs', {
-      img: "/img/medicine/3.png",
-      title: "Kaltsiy Magniy",
-      price: 250000
-    }) %>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-12">
-    <%- include('./product-item.ejs', {
-      img: "/img/medicine/4.png",
-      title: "Zn Fe Cu Spreyi",
-      price: 250000
-    }) %>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-12">
-    <%- include('./product-item.ejs', {
-      img: "/img/medicine/5.png",
-      title: "Zn Spreyi",
-      price: 100000
-    }) %>
-  </div>
+  <% products.forEach(x => { %>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <%- include('./product-item.ejs', {
+        img: x.images[0],
+        title: x.title,
+        price: x.price,
+        _id: x._id
+      }) %>
+    </div>
+  <% }) %>
 </div>

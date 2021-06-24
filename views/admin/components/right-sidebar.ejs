@@ -3,6 +3,151 @@
     <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card w-100">
       <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
         <h4 class="title-left-stick">
+          <%= __("infos") %> 
+        </h4>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0 ">
+          <i class="fas fa-user-tie mr-2"></i>
+          <%= __("role") %>
+        </p>
+        <div class="box">
+          <%= __(user.role) %>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0">
+          <i class="fas fa-user-tag mr-2"></i>
+          <%= __("status") %>
+        </p>
+        <div class="box">
+          <%= __(user.status) %> 
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0 ">
+          <i class="fas fa-money-bill-alt mr-2"></i>
+          <%= __("balance") %>
+        </p>
+        <div class="box">
+          <%= user.balance %> <%= __("ball") %>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0 ">
+          <i class="fas fa-link mr-2"></i>
+          <%= __("followers") %>
+        </p>
+        <div class="box">
+          <%= user.followers.length %>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card w-100">
+      <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
+        <h4 class="title-left-stick">
+          <%= __("personalInfo") %> 
+        </h4>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0 ">
+          <i class="fas fa-user-tie mr-2"></i>
+          <%= __("name") %>
+        </p>
+        <div class="box">
+          <%= user.name %>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0">
+          <i class="fas fa-user-tag mr-2"></i>
+          <%= __("middleName") %>
+        </p>
+        <div class="box">
+          <%= user.middleName %> 
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0 ">
+          <i class="fas fa-user-circle mr-2"></i>
+          <%= __("surname") %>
+        </p>
+        <div class="box">
+          <%= user.surname %>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <p class="text-primary mb-0 ">
+          <i class="fas fa-envelope mr-2"></i>
+        </p>
+        <div class="box small">
+          <%= user.email %>
+        </div>
+      </div>
+    </div>
+
+    <% if (user.role === "registrator") { %>
+      <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card w-100">
+        <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
+          <h4 class="title-left-stick">
+            BONUSLAR
+          </h4>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <p class="text-primary mb-0 ">
+            <i class="fas fa-globe mr-2"></i>Jami bonuslar:
+          </p>
+          <div class="box">
+            1400 b
+          </div>
+        </div>
+  
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <p class="text-primary mb-0 ">
+            <i class="fas fa-code-branch mr-2"></i>Taklif:
+          </p>
+          <div class="box">
+            0 b
+          </div>
+        </div>
+  
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <p class="text-primary mb-0 ">
+            <i class="fas fa-coins mr-2"></i>Binar:
+          </p>
+          <div class="box">
+            0 b
+          </div>
+        </div>
+  
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <p class="text-primary mb-0 ">
+            <i class="fas fa-hand-point-left mr-2"></i>Oylik chap:
+          </p>
+          <div class="box">
+            0 b
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between">
+          <p class="text-primary mb-0 ">
+            <i class="fas fa-hand-point-right mr-2"></i>Oylik o'ng:
+          </p>
+          <div class="box">
+            0 b
+          </div>
+        </div>
+  
+      </div>  
+    <% } %>
+  </div>
+</div>
+
+<!-- <div class="col-lg-3 col-md-12 my-3">
+  <div class="d-flex justify-content-around flex-wrap">
+    <div class="p-3 shadow-sm rounded bg-white dashboard-sidebar-card w-100">
+      <div class="d-flex pb-2 mb-3 align-items-center justify-content-between border-bottom ">
+        <h4 class="title-left-stick">
           PAKETLAR
         </h4>
       </div>
@@ -47,4 +192,4 @@
     </div>
     
   </div>
-</div>
+</div> -->

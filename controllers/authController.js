@@ -1,12 +1,12 @@
 const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
-
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const sendEmail = require("../utils/email");
-const logic = require("./logic");
+const viewsController = require("./viewsController");
+const { ERRORS } = require("../utils/constants");
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -24,16 +24,19 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_END === "production") cookieOptions.secure = true;
 
   res.cookie("jwt", token, cookieOptions);
-
   user.password = undefined;
 
-  res.status(statusCode).json({
-    status: "success",
-    token,
-    data: {
-      user,
-    },
-  });
+  // res.status(statusCode).json({
+  //   status: "success",
+  //   token,
+  //   data: {
+  //     user,
+  //   },
+  // });
+  // res.status(statusCode).render("static/login", {
+  //   user: user,
+  // });
+  res.redirect("/dashboard");
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
@@ -52,21 +55,19 @@ exports.login = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email }).select("+password");
 
   if (!user || !(await user.correctPasaword(password, user.password))) {
-    return next(new AppError("Incorrect email or password", 401));
+    // return next(new AppError("Incorrect email or password", 401));
+    res.locals.error = ERRORS.WRONG_CREDENTIALS;
+
+    return viewsController.login(req, res);
   }
 
   // 3) If everything ok, send token to client
 
-  const day = new Date();
-  const dayOfTheWeek = day.getDay();
-  const date = day.getDate();
-  if (dayOfTheWeek === 2) {
-    await logic.checkDay();
-  }
-
-  if (date === 18) {
-    await logic.checkSalary();
-  }
+  // const day = new Date();
+  // const dayOfTheWeek = day.getDay();
+  // const date = day.getDate();
+  // if (dayOfTheWeek === 2)
+  // }
 
   createSendToken(user, 200, res);
 });
@@ -103,12 +104,43 @@ exports.isLoggedIn = async (req, res, next) => {
   next();
 };
 
+exports.getCurrentUser = async (req, res, populations = ["followers"]) => {
+  if (req.cookies.jwt) {
+    try {
+      // 1) Verification token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+      // 2) Check if user still exists
+      const currentUser = await User.findById(decoded.id).populate(
+        populations.join(" ")
+      );
+      if (!currentUser) {
+        return null;
+      }
+
+      // 3) Check if user changed password after the token was issued
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return null;
+      }
+
+      // THERE IS A LOGGED IN USER
+      return currentUser;
+    } catch (error) {
+      return null;
+    }
+  }
+};
+
 exports.logout = (req, res) => {
   res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
-  res.status(200).json({ status: "success" });
+  // res.status(200).json({ status: "success" });
+  res.redirect("/login");
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -150,16 +182,18 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.restirctTo = (...roles) => {
-  return (req, res, next) => {
-    // roles ['admin', 'registrator']. role='user'
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new AppError("You do not have permission to perfomr this action", 403)
-      );
-    }
-    next();
-  };
+exports.allowTo = (...roles) => (req, res, next) => {
+  // roles ['admin', 'registrator']. role='user'
+  if (!roles.includes(req.user.role)) {
+    // return next(
+    //   new AppError("You do not have permission to perfomr this action", 403)
+    // );
+    return res.status(403).render("admin/error", {
+      err_code: 403,
+      error: res.__(ERRORS.PERMISSION_DENIED),
+    });
+  }
+  next();
 };
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {

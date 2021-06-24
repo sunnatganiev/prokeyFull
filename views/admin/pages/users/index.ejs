@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', {
+        page: 'users'
+      }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("users") %></h6>
+              <a href="users/add">
+                Yangi qo'shish
+                <i class="fas fa-user-plus"></i>
+              </a>
+            </div>
+            <div class="row px-3">
+              <div class="col-md-12 my-3">
+                <div class="row">
+                  <div class="col-lg-12 dashboard__card">
+                    <div class="p-3 shadow-sm">
+                      <form method="GET">
+                        <div class="row">
+                          <div class="col-lg-6 col-md-12">
+                            <div class="mb-3">
+                              <h6 class="title-left-stick mb-3"><%= __("userType") %></h6>
+                              <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-warning text-white">Lavozim</span>
+                                    </div>
+                                    <select name="role" class="custom-select" onchange="this.form.submit()">
+                                      <option selected value="">-- <%= __("all") %> --</option>
+                                      <option value="watcher" <% if (query.role === "watcher") { %>selected<% } %>>Kuzatuvchi</option>
+                                      <option value="admin" <% if (query.role === "admin") { %>selected<% } %>>Admin</option>
+                                      <option value="registrator" <% if (query.role === "registrator") { %>selected<% } %>>Registrator</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-warning text-white">Status</span>
+                                    </div>
+                                    <select name="status" class="custom-select" onchange="this.form.submit()">
+                                      <option selected value="">-- <%= __("all") %> --</option>
+                                      <option value="client" <% if (query.status === "client") { %>selected<% } %>><%= __("client") %></option>
+                                      <option value="partner" <% if (query.status === "partner") { %>selected<% } %>><%= __("partner") %></option>
+                                      <option value="master" <% if (query.status === "master") { %>selected<% } %>>Master</option>
+                                      <option value="manager" <% if (query.status === "manager") { %>selected<% } %>>Manager</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                           
+                          </div>
+                          <div class="col-lg-6 col-md-12">
+                            <div class="mb-3">
+                              <h6 class="title-left-stick mb-3"><%= __("territory") %></h6>
+                              <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-success text-white"><%= __("region") %> </span>
+                                    </div>
+                                    <select name="territory" class="custom-select" onchange="this.form.submit()">
+                                      <option selected value="">-- <%= __("all") %> --</option>
+                                      <% territories.forEach(x => { %>
+                                        <option <% if (query.territory === x._id.toString()) { %>selected<% } %> value="<%= x._id %>"><%= x.region[`name_${getLocale()}`] %>/<%= x.city[`name_${getLocale()}`] %></option>
+                                      <% }) %>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 dashboard__card">
+                    <div class="p-3 shadow-sm">
+                      <h6 class="title-left-stick mb-3"><%= __("users") %></h6>
+                      <table class="table table-responsive-xxl custom-table table-hover table-borderless table-sm">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Rasm</th>
+                            <th scope="col">F.I.SH</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"><%= __("phoneNumber") %></th>
+                            <th scope="col"><%= __("followers") %></th>
+                            <th scope="col"><%= __("balance") %></th>
+                            <th scope="col"><%= __("whoInvited") %></th>
+                            <th scope="col">Lavozim</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Hudud</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         <% users.forEach(user => { %>
+                          <tr>
+                            <td class="small text-nowrap">
+                              <img src="<%= user.photo %>" class="square-50 rounded-circle object-fit-cover mr-2 overflow-hidden" alt="<%= user.name %>">
+                            </td>
+                            <td class="small text-nowrap"><%= `${user.surname} ${user.name} ${user.middleName}` %></td>
+                            <td class="small text-nowrap"><a href="<%= `/dashboard/users/id/${user._id}` %>"><%= user.email %></a></td>
+                            <td class="small text-nowrap"><%= user.followers.length %></td>
+                            <td class="small text-nowrap"><%= user.phoneNumber %></td>
+                            <td class="small text-nowrap"><%= user.balance %></td>
+                            <td class="small text-nowrap"><%= user.whoInvited %></td>
+                            <td class="small text-nowrap"><%= __(user.role) %></td>
+                            <td class="small text-nowrap"><%= __(user.status) %></td>
+                            <td class="small text-nowrap"><%= `${getTerritory(user.territory)?.region[`name_${getLocale()}`] || __("undefined")}/${getTerritory(user.territory)?.city[`name_${getLocale()}`] || __("undefined")}` %></td>
+                          </tr>
+                         <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  
+                  <!-- <div class="col-lg-12">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-chevron-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+                      </ul>
+                    </nav>
+                  </div> -->
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

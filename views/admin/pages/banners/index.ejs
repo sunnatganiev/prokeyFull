@@ -27,11 +27,11 @@
                 <div class="row">
                   <div class="col-lg-12 dashboard__card collapse" id="banner-add">
                     <div class="p-3 shadow-sm">
-                      <form>
+                      <form method="POST" enctype="multipart/form-data" action="<%= api("banners/add") %> ">
                         <div class="mb-4">
                           <h6 class="title-left-stick mb-3">Malumotlar</h6>
                           <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="col-md-6 col-sm-12">
                               <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span
@@ -43,11 +43,30 @@
                                   type="text"
                                   class="form-control"
                                   placeholder="Banner nomi"
-                                  name="name"
+                                  name="title"
+                                  required
                                 />
                               </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="col-md-6 col-sm-12">
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span
+                                    class="input-group-text bg-success text-white"
+                                    >URL</span
+                                  >
+                                </div>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Banner url"
+                                  name="url"
+                                  required
+                                />
+                              </div>
+                            </div>
+
+                            <div class="col-12">
                               <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span
@@ -64,23 +83,6 @@
                               </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span
-                                    class="input-group-text bg-success text-white"
-                                    >URL</span
-                                  >
-                                </div>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  placeholder="Banner url"
-                                  name="url"
-                                />
-                              </div>
-                            </div>
-
                           </div>
                         </div>
     
@@ -91,10 +93,11 @@
                               <div class="file-loading">
                                 <input
                                   data-count="1"
-                                  id="input-images"
-                                  name="images"
+                                  id="input-banner-images"
+                                  name="photo"
                                   type="file"
                                   accept="image/*"
+                                  required
                                 />
                               </div>
                             </div>
@@ -121,7 +124,6 @@
                       >
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Rasm</th>
                             <th scope="col">Sarlavha</th>
                             <th scope="col">Ta'rif</th>
@@ -130,19 +132,20 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <% banners.forEach(banner => { %>
+                           
                           <tr>
-                            <th scope="row">15</th>
                             <td>
                               <img
-                              src="/img/dori-1.png"
+                              src="<%= banner.photo %>"
                               height="50"
                               class="square-50 img-thumbnail object-fit-contain"
-                              alt="Product name"
+                              alt="<%= banner.title %>"
                             />
                             </td>
-                            <td>Kalsiy va Magniy birikmasi </td>
-                            <td>Maxsulotlarimizni harid qilib liderga aylaning va o'z daromadingizni oshirib boring</td>
-                            <td><a href="/product/id/5">/product/id/5</a></td>
+                            <td><%= banner.title %></td>
+                            <td><%= banner.description %></td>
+                            <td><%= banner.url %></td>
                             <td>
                               <div class="d-flex justify-content-center">
                                 <div class="dropdown d-flex align-items-center">
@@ -150,21 +153,25 @@
                                   <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
                                     <h6 class="text-center">Ushbu bannerni o'chirishni tasdiqlaysizmi?</h6>
                                     <div class="d-flex justify-content-center">
-                                      <a class="btn btn-danger btn-sm mr-1" href="/dashboard/banner/delete/5">HA</a>
+                                      <form method="POST" action="<%= api("banners/delete") %>" class="d-flex">
+                                        <input type="hidden" name="id" value="<%= banner._id %>">
+                                        <button type="submit" class="btn btn-danger btn-sm mr-1">HA</button>
+                                      </form>
                                       <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
                                     </div>
                                   </div>
                                 </div>
-                                <a href="/dashboard/banners/id/5" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
+                                <a href="/dashboard/banners/id/<%= banner._id %>" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
                               </div>
                             </td>
                           </tr>
+                          <% }) %>
                         </tbody>
                       </table>
                     </div>
                   </div>
 
-                  <div class="col-lg-12">
+                  <!-- <div class="col-lg-12">
                     <nav aria-label="Page navigation example">
                       <ul class="pagination">
                         <li class="page-item disabled">
@@ -192,7 +199,7 @@
                         </li>
                       </ul>
                     </nav>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <%- include('../../components/right-sidebar.ejs') %>

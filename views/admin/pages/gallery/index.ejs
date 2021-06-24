@@ -28,8 +28,8 @@
                         <input
                           data-count="200"
                           date-gallery
-                          data-images=["/img/news1.jpg","/img/news2.jpg","/img/news3.jpg","/img/news4.jpg","/img/news5.jpg"]
-                          id="input-images"
+                          data-images="<%= images.join(",") %>"
+                          id="input-gallery-images"
                           name="images"
                           type="file"
                           accept="image/*"
@@ -37,13 +37,6 @@
                         />
                       </div>
                     </div>
-
-                    <button
-                      type="submit"
-                      class="btn btn-primary text-uppercase"
-                    >
-                      Saqlash
-                    </button>
                   </form>
                 </div>
               </div>

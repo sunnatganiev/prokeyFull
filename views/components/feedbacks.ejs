@@ -4,185 +4,27 @@
   data-ride="carousel"
 >
   <div class="carousel-inner mb-4">
-    <div class="carousel-item active">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-1.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
+    <% feedbacks.forEach((feedback, i) => { %>
+      <div class="carousel-item <% if (i === 0) { %>active<% } %>">
+        <div class="home__carousel-img">
+          <img
+            src="<%= feedback.photo %>"
+            alt="<%= feedback.fullname %>"
+            class="carousel-img w-100 h-100 object-fit-cover"
+          />
+        </div>
+  
+        <h5 class="home__carousel-name"><%= feedback.fullname %></h5>
+        <em class="home__carousel-text">
+          <%= feedback.description %> 
+        </em>
       </div>
-
-      <h5 class="home__carousel-name">Faxriddin Madrahimov</h5>
-      <em class="home__carousel-text">
-        Assalomu alaykum Progress Key kompaniyasining xamkorlari ! Man Faxriddin
-        Madrahimov Network soxasidagi 10 yillik faoliyatim va tajribamdan kelib
-        chiqib, 2021 yil May oyidan Start olgan O'zbekistonning Milliy
-        kompaniyasi, Milliy brendi, ya'ni Progress Key kompaniyasida o'z ish
-        faoliyatimni boshladim! Progress Key kompaniyasini boshlashimga turtki
-        bo'lgan omillardan O'zbegimning milliy brendi, Kompaniya marketing plani
-        , Evolution maxsulotlari, qolaversa axil jamoasi sababchi bo'ldi! Man
-        shunga ishonamanki, albatta bu Evolution maxsulotlarini nafaqat
-        O'zbekistan xalqiga, qolaversa boshqa chet davlatlarga ham birgalikda
-        axil jamoamiz bilan yetkazamiz ! Biz siz bilan birgalikda katta kuchmiz!
-      </em>
-    </div>
-
-    <div class="carousel-item">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-2.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
-      </div>
-
-      <h5 class="home__carousel-name">Matchanova Dilnavoz</h5>
-      <em class="home__carousel-text">
-        Assalomu alaykum PROGRESS KEY kompaniyasining hamkorlari !!!! Men
-        Matchanova Dilnavoz 15 yildan buyon tarmoqli marketing soxasida faoliyat
-        yuritib kelaman. Men 2021 yil may oyida o'z faoliyatini boshlagan
-        O'zbekistonning yangi PROGRESS KEY kompaniyasida o'z ish faoliyatimni
-        boshladim. Meni bu kompaniyaga hamkor bo'lishimga turtki bo'lgan
-        sabablardan bittasi kompaniyaning asoschisi kuchli lider, motivator,
-        yosh bo'lishiga qaramasdan bir nechta muaffaqiyatlarga erishgan,
-        g'ayratli, shijoatli, halol inson, bir nechta proektlarda men bilan
-        ishlab, menga qo'lidan kelganicha yordamini ayamagan, Ustozim Shixnazar
-        Ruzmetov, ikkinchidan O'zbekistonni qonunchiligi doirasida ishlab
-        chiqarilgan marketing va O'zbekiston aholisi uchun zarur bo'lgan
-        maxsulotlari mani diqqatimni tortdi va shu kompaniyada ish boshlashimga
-        sababchi bo'ldi. Men ishonamanki, biz axil jamoamiz bilan birgalikda
-        katta natijalarga erishamiz va PROGRESS KEY kompaniyasini butun dunyoga
-        tanitamiz.
-      </em>
-    </div>
-
-    <div class="carousel-item">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-3.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
-      </div>
-
-      <h5 class="home__carousel-name">Raximova Nodirabegim Rasulovna</h5>
-      <em class="home__carousel-text">
-        Assalomu alaykum xurmatli Progress KEY xamkorlari. Men Raximova
-        Nodirabegim Rasulovna 2021 yil may oyida O'zbekistonning Progress Key
-        kompaniyasida o'z faoliyatimni boshladim. Sababi raxbariyatning o'z
-        liderlariga bo'lgan e'tibori imkoniyatlari koʻpligi, sifatli tabiiy
-        maxsulotlaridir. Progress Key kompaniyamiz In Shaa Allox jahon bozorida
-        yuqori ko'rsatkichlari bilan munosib o'rinlarni egallashida o'z xissamni
-        qo'shaman va bunga ishonaman 👍👍👍👍Shunday ahil jamoada ekanligimdan
-        va bir maqsad yo'lida harakat qilayotganimdan minnatdorman. Biz
-        birlashganda katta kuchmiz💪💪💪👍👍👍👍👍👍👍👍👍😊
-      </em>
-    </div>
-
-    <div class="carousel-item">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-4.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
-      </div>
-
-      <h5 class="home__carousel-name">Xayitova Sanoatxon Aliqoziyevna</h5>
-      <em class="home__carousel-text">
-        Assalomu alaykum xurmatli Progress KEY xamkorlari. Men Xayitova
-        Sanoatxon Aliqoziyevna 2021 yil may oyida O'zbekistonning milliy
-        Progress KEY kompaniyasida o'z faoliyatimni boshladim. Sababi
-        raxbariyatning o'z liderlariga bo'lgan etibori, ularga berilayotgan
-        imkoniyatlar va o'z liderlarini fikrini xurmat bilan e'tiborga olishi,
-        sifatli tabiiy brend maxsulotlaridir. Evolution brendi o'zbegimni milliy
-        brendiga Progress KEY kompaniyamiz esa jahon bozorida yuqori
-        ko'rsatkichlari bilan munosib o'rinlarni egallashida o'z xissamni
-        qo'shaman va bunga ishonaman🔥🔥🔥 Shunday ahil jamoada ekanligimdan va
-        bir maqsad yo'lida xarakat qilayotganimdan minnatdorman 💥💥💥 Biz
-        birgalikda katta kuchmiz💪💪💪🔥🔥🔥
-      </em>
-    </div>
-
-    <div class="carousel-item">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-5.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
-      </div>
-      <h5 class="home__carousel-name">Hoshimova Gulnoza Alisherovna</h5>
-      <em class="home__carousel-text">
-        Assalamu alaykum Progress Key hamkorlari! Men Hoshimova Gulnoza
-        Alisherovna Network sohasida 14 yildan beri faoliyatimni olib boraman.
-        Bu faoliyatim davrida muvaffaqiyatga erishgan, muvaffaqiyatsizlikkaga
-        uchragan davrim ham bo'ldi. Shu faoliyatim davrida olgan tajribam va
-        xulosalarimdan kelib chiqib, nafaqat meni balkim, har bir
-        hamkorlarimizni maqsadlarini va orzularini ro'yobga chiqara oladigan
-        2021-yilni eng shov-shuvli kampaniyasiga hamkor bo'ldim. Kampaniyaning
-        marketing plani va eng asosiysi Evolution mahsulotlariga ehtiyoj
-        kattaligi sababli har bir inson o'zi xohlagan natijaga bemalol erisha
-        olishiga men ishonaman. Butun jamoamiz bilan birgalikda biz eng yuqori
-        cho'qilarni zabt etamiz!
-      </em>
-    </div>
-
-    <div class="carousel-item">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-6.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
-      </div>
-      <h5 class="home__carousel-name">Sulaymanova Muslima Muxtarovna</h5>
-      <em class="home__carousel-text">
-        Assalomu alaykum PROGRESS KEY kompaniyasining hamkorlari! Men
-        Sulaymanova Muslima Muxtarovna tarmoqli marketing sohasidagi tajribamdan
-        kelib chiqib, 2021 yil may oyida O'zbekistonning milliy kompaniyasi
-        PROGRESS KEY кompaniyasida o'z ish faoliyatimni boshladim уз. Bu
-        kompaniyada ish boshlashimdan maqsadim, kompaniya mahsulotlari
-        O'zbekiston bozorida yangiligi hamda aholi o'rtasida MIKRONUTRIENT
-        yetishmasligini oldini oluvchi mahsulotlar ekanligi va jamoamizning
-        birdamligi bo'ldi. Ishontirib aytamanki, mahsulotlarimiz albatta Jahon
-        bozorlarida sotiladi va Kompaniyamiz eng oldi kompaniyalardan bo'ladi!!!
-      </em>
-    </div>
-
-    <div class="carousel-item">
-      <div class="home__carousel-img">
-        <img
-          src="/img/team-7.jpg"
-          alt=""
-          class="carousel-img w-100 h-100 object-fit-cover"
-        />
-      </div>
-      <h5 class="home__carousel-name">Yusupova Bibisora Qalandarovna</h5>
-      <em class="home__carousel-text">
-        Assalomu alaykum xurmatli PROGRESS KEY hamkorlari! Men Yusupova Bibisora
-        Qalandarovna 2021 yil may oyida O'zbekistonning milliy Progress Key
-        kompaniyasiga hamkor bo'lganimdan juda baxtliman va minnatdorman. Nima
-        uchun aynan Progress Key kompaniyasini tanladim, sababi, ham o'zimni,
-        ham xalqimizni salomatligini ko'taruvchi mahsulotlari borligi uchun
-        hamda tarmoqli marketing biznesida 16 yillik tajribam natijasida shu
-        kompaniyaning marketing rejasi juda oson va qulay. Har bir insonni o'z
-        maqsadlariga tez fursatda chiqishiga ishonaman. Va qarorim qat'iy.
-        Shunday mahsulotga va imkoniyatlarga ega Kompaniyani komandam bilan
-        birgalikda chet davlatlargayam tanitamiz. PROGRESS KEY kompaniyasi
-        kelajakda dunyoning eng kuchli kompaniyalar 10 taligiga kira oladi.
-      </em>
-    </div>
+    <% }) %>
   </div>
 
   <ol class="home-carousel carousel-indicators position-relative">
-    <li data-target="#team-members" data-slide-to="0" class="active"></li>
-    <li data-target="#team-members" data-slide-to="1"></li>
-    <li data-target="#team-members" data-slide-to="2"></li>
-    <li data-target="#team-members" data-slide-to="3"></li>
-    <li data-target="#team-members" data-slide-to="4"></li>
-    <li data-target="#team-members" data-slide-to="5"></li>
-    <li data-target="#team-members" data-slide-to="6"></li>
+    <% feedbacks.forEach((x,i) => { %>
+      <li data-target="#team-members" data-slide-to="<%= i %>" class="<% if (i === 0) { %>active<% } %>"></li>
+    <% }) %>
   </ol>
 </div>

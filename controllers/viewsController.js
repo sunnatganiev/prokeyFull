@@ -1,170 +1,104 @@
-exports.getProducts = (req, res) => {
-  res.status(200).render("mahsulotlar", {
-    title: "Mahsulotlar",
-  });
+const Banner = require("../models/bannerModel");
+const Feedback = require("../models/feedbackModel");
+const News = require("../models/newsModel");
+const Product = require("../models/productModel");
+const Territory = require("../models/territoryModel");
+const getGallery = require("../utils/getGallery");
+const { getPopulatedTerritories } = require("./utilities");
+
+exports.products = {
+  async index(req, res) {
+    const products = await Product.find();
+    res.status(200).render("products/index", {
+      title: "Mahsulotlar",
+      products,
+    });
+  },
+  async single(req, res) {
+    const product = await Product.findById(req.params.id);
+    const products = await Product.find();
+    res.status(200).render("products/single", {
+      title: "Mahsulotlar",
+      product,
+      products,
+    });
+  },
 };
 
-exports.proIn = (req, res) => {
-  res.status(200).render("mahsulotichi", {
-    title: "Mahsulotlar",
-  });
-};
+exports.localShops = async (req, res) => {
+  const territoriesDB = await Territory.find();
 
-exports.dokonlar = (req, res) => {
-  res.status(200).render("hududiydokonlar", {
+  res.status(200).render("static/local-shops", {
     title: "Do'konlar",
+    territories: getPopulatedTerritories(territoriesDB),
+    territory: req.query.territory
+      ? getPopulatedTerritories(territoriesDB).find(
+          (x) => x._id.toString() === req.query.territory
+        )
+      : getPopulatedTerritories(territoriesDB)[0],
   });
 };
 
-exports.galereya = (req, res) => {
-  res.status(200).render("galereya", {
-    title: "Do'konlar",
+exports.gallery = async (req, res) => {
+  const images = await getGallery();
+  const rows = [];
+  const imagesLength = images.length;
+  while (images.length > 0) {
+    const chunk = images.splice(0, imagesLength / 3);
+    rows.push(chunk);
+  }
+  res.status(200).render("static/gallery", {
+    title: res.__("gallery"),
+    rows,
   });
 };
 
-exports.kontakt = (req, res) => {
-  res.status(200).render("kontaktlar", {
+exports.contacts = (req, res) => {
+  res.status(200).render("static/contacts", {
     title: "Kontaktlar",
   });
 };
 
-exports.home = (req, res) => {
-  res.status(200).render("index", {
+exports.home = async (req, res) => {
+  const newsList = await News.find({}, {}, { limit: 4 });
+  const feedbacks = await Feedback.find({});
+  const banners = await Banner.find({});
+  const products = await Product.find();
+  res.status(200).render("static/index", {
     title: "Home",
     user: res.locals.user,
+    newsList,
+    feedbacks,
+    banners,
+    products,
   });
 };
 
-exports.getLoginForm = (req, res) => {
-  res.status(200).render("login", {
+exports.login = (req, res) => {
+  res.status(200).render("static/login", {
     user: res.locals.user,
+    title: "Login",
+    error: res.locals.error,
   });
 };
 
-exports.yangiliklar = (req, res) => {
-  res.status(200).render("yangiliklar");
-};
-
-exports.yangilikIchi = (req, res) => {
-  res.status(200).render("yangiliklarichi");
+exports.news = {
+  async index(req, res) {
+    const newsList = await News.find({});
+    res.status(200).render("news/index", {
+      title: "Yangiliklar",
+      newsList,
+    });
+  },
+  async single(req, res) {
+    const news = await News.findById(req.params.id);
+    res.status(200).render("news/single", {
+      title: news.title,
+      news,
+    });
+  },
 };
 
 exports.laws = (req, res) => {
   res.status(200).render(`laws/${req.params.id}`);
-};
-
-//DASHBOARD
-
-exports.dashboard = {
-  index(req, res) {
-    res.status(200).render("admin/index");
-  },
-  customers: {
-    index(req, res) {
-      res.status(200).render("admin/pages/customers/index");
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/customers/add");
-      console.log("viewsController line 64: ", req.body);
-    },
-  },
-
-  registrators: {
-    index(req, res) {
-      res.status(200).render("admin/pages/registrators/index");
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/registrators/add");
-    },
-  },
-  team: {
-    index(req, res) {
-      res.status(200).render("admin/pages/team/index");
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/team/add");
-    },
-  },
-  transfers: {
-    index(req, res) {
-      res.status(200).render("admin/pages/transfers/index");
-    },
-  },
-  warehouses: {
-    index(req, res) {
-      res.status(200).render("admin/pages/warehouses/index");
-    },
-    single(req, res) {
-      //handle id
-      console.log(req.params.id);
-      res
-        .status(200)
-        .render("admin/pages/warehouses/single", { id: req.params.id });
-    },
-  },
-  products: {
-    index(req, res) {
-      res
-        .status(200)
-        .render("admin/pages/products/index", { isDeleted: false });
-    },
-    delete(req, res) {
-      //if successfull send isDeleted: true
-      res.status(200).render("admin/pages/products/index", { isDeleted: true });
-    },
-    single(req, res) {
-      //handle id
-      console.log(req.params.id);
-      res.status(200).render("admin/pages/products/single", { error: true });
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/products/add", { id: req.params.id });
-    },
-    // edit(req, res) {
-    //   res.status(200).render("admin/pages/products/edit", { error: null });
-    // },
-  },
-  news: {
-    index(req, res) {
-      res.status(200).render("admin/pages/news/index", { isDeleted: false });
-    },
-    delete(req, res) {
-      //if successfull send isDeleted: true
-      res.status(200).render("admin/pages/news/index", { isDeleted: true });
-    },
-    single(req, res) {
-      //handle id
-      console.log(req.params.id);
-      res.status(200).render("admin/pages/news/single", { error: true });
-    },
-    add(req, res) {
-      res.status(200).render("admin/pages/news/add", { id: req.params.id });
-    },
-  },
-  gallery: {
-    index(req, res) {
-      res.status(200).render("admin/pages/gallery/index");
-    },
-  },
-  banners: {
-    index(req, res) {
-      res.status(200).render("admin/pages/banners/index");
-    },
-    single(req, res) {
-      res.status(200).render("admin/pages/banners/single");
-    },
-  },
-  workers: {
-    index(req, res) {
-      res.status(200).render("admin/pages/workers/index");
-    },
-    single(req, res) {
-      res.status(200).render("admin/pages/workers/single");
-    },
-  },
-  settings: {
-    index(req, res) {
-      res.status(200).render("admin/pages/settings/index");
-    },
-  },
 };

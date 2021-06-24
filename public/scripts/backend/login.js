@@ -16,7 +16,7 @@ export const login = async (email, password) => {
       showAlert("success", "Logged in successfully!");
       window.setTimeout(() => {
         // eslint-disable-next-line no-restricted-globals
-        location.assign("/index.html");
+        location.assign("/");
       }, 1500);
     }
   } catch (error) {
