@@ -122,7 +122,7 @@
                             <td class="small text-nowrap"><%= user.whoInvited %></td>
                             <td class="small text-nowrap"><%= __(user.role) %></td>
                             <td class="small text-nowrap"><%= __(user.status) %></td>
-                            <td class="small text-nowrap"><%= `${getTerritory(user.territory)?.region[`name_${getLocale()}`] || __("undefined")}/${getTerritory(user.territory)?.city[`name_${getLocale()}`] || __("undefined")}` %> </td>
+                            <td class="small text-nowrap"><%= `${getTerritory(user.territory)?.region[`name_${getLocale()}`] || __("undefined")}/${getTerritory(user.territory)?.city[`name_${getLocale()}`] || __("undefined")}` %></td>
                           </tr>
                          <% }) %>
                         </tbody>

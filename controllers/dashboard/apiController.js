@@ -7,7 +7,6 @@ const { dashUrl } = require("../utilities");
 
 module.exports = {
   async galleryAdd(req, res) {
-    console.log(req.file);
     res.status(200).json({ file: req.file });
   },
   async galleryDelete(req, res) {

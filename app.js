@@ -42,6 +42,7 @@ app.use(
 app.locals = constants;
 
 // Development loginqa
+// eslint-disable-next-line no-console
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));

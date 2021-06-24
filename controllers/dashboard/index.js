@@ -10,6 +10,7 @@ const { getPopulatedTerritories } = require("../utilities");
 const { getCurrentUser } = require("../authController");
 const Transaction = require("../../models/transactionModel");
 const Product = require("../../models/productModel");
+const Warehouse = require("../../models/warehouseModel");
 
 module.exports = {
   async index(req, res) {
@@ -45,19 +46,28 @@ module.exports = {
       const transactions = await Transaction.find({
         $or: [{ from: currentUser._id }, { to: currentUser._id }],
       }).populate("from to", "name surname _id photo");
-      console.log(transactions);
       res.status(200).render("admin/pages/transfers/index", {
         transactions: transactions,
       });
     },
   },
   warehouses: {
-    index(req, res) {
-      res.status(200).render("admin/pages/warehouses/index");
+    async index(req, res) {
+      const territoriesDB = await Territory.find();
+      const warehouses = await Warehouse.find().populate({
+        path: "territory",
+        populate: {
+          path: "registrator",
+          select: "name surname",
+        },
+      });
+      res.status(200).render("admin/pages/warehouses/index", {
+        territories: getPopulatedTerritories(territoriesDB),
+        warehouses,
+      });
     },
     single(req, res) {
       //handle id
-      console.log(req.params.id);
       res.status(200).render("admin/pages/warehouses/single", {
         id: req.params.id,
       });

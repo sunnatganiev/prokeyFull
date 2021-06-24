@@ -149,7 +149,6 @@ exports.checkDay = catchAsync(async () => {
     if (user.status === "master") binar(user, 80000);
     if (user.status === "manager") binar(user, 150000);
   });
-  console.log("day checked");
 });
 
 const salary = catchAsync(async (user, limit) => {
@@ -173,6 +172,7 @@ const salary = catchAsync(async (user, limit) => {
   try {
     await user.save({ validateBeforeSave: false });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(err);
   }
 });
@@ -193,7 +193,6 @@ exports.checkSalary = catchAsync(async () => {
     //   },
     // });
   });
-  console.log("salary checked");
 });
 
 exports.assignToTerritory = async (territoryId, user) => {

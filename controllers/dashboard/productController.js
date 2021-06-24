@@ -3,7 +3,7 @@ const Product = require("../../models/productModel");
 const { dashUrl, getFileName, getImgPath } = require("../utilities");
 
 module.exports = {
-  addProduct: async (req, res, next) => {
+  async addProduct(req, res, next) {
     const productObj = req.body;
     productObj.images = [];
     if (req.files) {

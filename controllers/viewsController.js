@@ -2,7 +2,9 @@ const Banner = require("../models/bannerModel");
 const Feedback = require("../models/feedbackModel");
 const News = require("../models/newsModel");
 const Product = require("../models/productModel");
+const Territory = require("../models/territoryModel");
 const getGallery = require("../utils/getGallery");
+const { getPopulatedTerritories } = require("./utilities");
 
 exports.products = {
   async index(req, res) {
@@ -23,9 +25,17 @@ exports.products = {
   },
 };
 
-exports.localShops = (req, res) => {
+exports.localShops = async (req, res) => {
+  const territoriesDB = await Territory.find();
+
   res.status(200).render("static/local-shops", {
     title: "Do'konlar",
+    territories: getPopulatedTerritories(territoriesDB),
+    territory: req.query.territory
+      ? getPopulatedTerritories(territoriesDB).find(
+          (x) => x._id.toString() === req.query.territory
+        )
+      : getPopulatedTerritories(territoriesDB)[0],
   });
 };
 

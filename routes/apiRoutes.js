@@ -11,6 +11,7 @@ const {
   deleteProduct,
 } = require("../controllers/dashboard/productController");
 const territoryController = require("../controllers/dashboard/territoryController");
+const warehouseController = require("../controllers/warehouseController");
 const { upload } = require("../utils/uploadMiddleware");
 
 const router = express.Router();
@@ -171,6 +172,50 @@ router.post(
   authController.protect,
   authController.allowTo("admin"),
   deleteProduct
+);
+
+//WAREHOUSE
+router.post(
+  "/warehouse/add",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  warehouseController.addWarehouse
+);
+router.post(
+  "/warehouse/edit",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  warehouseController.updateWarehouse
+);
+router.post(
+  "/warehouse/delete",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  warehouseController.deleteWarehouse
+);
+router.post(
+  "/warehouse/product/add",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  warehouseController.addWarehouseProduct
+);
+router.post(
+  "/warehouse/product/edit",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin", "registrator"),
+  warehouseController.updateWarehouseProduct
+);
+router.post(
+  "/warehouse/product/delete",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  warehouseController.deleteWarehouseProduct
 );
 
 module.exports = router;

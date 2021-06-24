@@ -28,46 +28,17 @@
                 <label
                   class="h5 font-weight-bold text-secondary"
                   for="region-select"
-                  >Viloyat</label
+                  ><%= __("territory") %></label
                 >
                 <select
+                  onchange="this.form.submit()"
                   id="region-select"
-                  name="region"
+                  name="territory"
                   class="custom-select custom-select-lg"
                 >
-                  <option value="toshkent" selected>Toshkent</option>
-                  <option value="samarkand">Samarkand</option>
-                </select>
-              </div>
-              <div class="col-lg-4 col-md-6 col-sm-12 form-group">
-                <label
-                  class="h5 font-weight-bold text-secondary"
-                  for="district-select"
-                  >Tuman</label
-                >
-                <select
-                  id="district-select"
-                  name="district"
-                  class="custom-select custom-select-lg"
-                >
-                  <option value="yunusobod" selected>Yunusobod</option>
-                  <option value="chilonzor">Chilonzor</option>
-                </select>
-              </div>
-              <div class="col-lg-4 col-md-6 col-sm-12 form-group">
-                <label
-                  class="h5 font-weight-bold text-secondary"
-                  for="city-select"
-                  >Shahar</label
-                >
-                <select
-                  name="city"
-                  id="city-select"
-                  class="custom-select custom-select-lg"
-                >
-                  <option value="tashkent-city" selected>
-                    Toshkent shahri
-                  </option>
+                  <% territories.forEach(x => { %>
+                    <option <% if (x._id.equals(territory._id)) { %>selected<% } %> value="<%= x._id %>"><%= x.region[`name_${getLocale()}`] %>/<%= x.city[`name_${getLocale()}`] %></option>
+                  <% }) %>
                 </select>
               </div>
             </div>
@@ -112,7 +83,7 @@
                 scrolling="no"
                 marginheight="0"
                 marginwidth="0"
-                src="https://maps.google.com/maps?width=1120&amp;height=527&amp;hl=en&amp;q=toshkent&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                src="<%= territory.mapUrl %>"
               ></iframe>
             </div>
           </div>
