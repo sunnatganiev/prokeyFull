@@ -17,6 +17,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - name: Copying old public files
+        run: cp -R public/* ./../backup
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -27,12 +29,16 @@ jobs:
         run: |
           touch config.env
           echo TEST=PASSED >> config.env
-          echo "DATABASE_URL=${{ secrets.DATABASE }}" >> config.env
+          echo "DATABASE=${{ secrets.DATABASE }}" >> config.env
           echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> config.env
           echo JWT_COOKIE_EXPIRES_IN=90 >> config.env
           echo JWT_EXPIRES_IN=90d >> config.env
           echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> config.env
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> config.env
           echo PORT=${{ secrets.PORT }} >> config.env
+      - name: Loading old public files
+        run: cp -R ./../backup/* ./public
+      - name: Deleting contents of backup
+        run: rm -r ./../backup/*
       - name: Starting server
-        run: pm2 start server
+        run: pm2 restart server
