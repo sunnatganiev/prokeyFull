@@ -64,15 +64,10 @@ module.exports = {
     },
   },
   products: {
-    index(req, res) {
+    async index(req, res) {
+      const products = await Product.find();
       res.status(200).render("admin/pages/products/index", {
-        isDeleted: false,
-      });
-    },
-    delete(req, res) {
-      //if successfull send isDeleted: true
-      res.status(200).render("admin/pages/products/index", {
-        isDeleted: true,
+        products,
       });
     },
     async single(req, res) {
@@ -86,9 +81,6 @@ module.exports = {
         id: req.params.id,
       });
     },
-    // edit(req, res) {
-    //   res.status(200).render("admin/pages/products/edit", { error: null });
-    // },
   },
   news: {
     async index(req, res) {

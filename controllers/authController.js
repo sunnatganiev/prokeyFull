@@ -5,7 +5,6 @@ const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const sendEmail = require("../utils/email");
-const logic = require("./logic");
 const viewsController = require("./viewsController");
 const { ERRORS } = require("../utils/constants");
 
@@ -64,16 +63,11 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3) If everything ok, send token to client
 
-  const day = new Date();
-  const dayOfTheWeek = day.getDay();
-  const date = day.getDate();
-  if (dayOfTheWeek === 2) {
-    await logic.checkDay();
-  }
-
-  if (date === 18) {
-    await logic.checkSalary();
-  }
+  // const day = new Date();
+  // const dayOfTheWeek = day.getDay();
+  // const date = day.getDate();
+  // if (dayOfTheWeek === 2)
+  // }
 
   createSendToken(user, 200, res);
 });

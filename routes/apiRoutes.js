@@ -5,7 +5,11 @@ const apiController = require("../controllers/dashboard/apiController");
 const bannerController = require("../controllers/dashboard/bannerController");
 const feedbackController = require("../controllers/dashboard/feedbackController");
 const newsController = require("../controllers/dashboard/newsController");
-const { addProduct } = require("../controllers/dashboard/productController");
+const {
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} = require("../controllers/dashboard/productController");
 const territoryController = require("../controllers/dashboard/territoryController");
 const { upload } = require("../utils/uploadMiddleware");
 
@@ -151,6 +155,22 @@ router.post(
   authController.allowTo("admin"),
   upload().array("images"),
   addProduct
+);
+router.post(
+  "/products/edit",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  upload().array("images"),
+  updateProduct
+);
+
+router.post(
+  "/products/delete",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  deleteProduct
 );
 
 module.exports = router;

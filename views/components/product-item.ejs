@@ -1,21 +1,21 @@
 <div class="mahsulot-card">
   <div class="card_inside">
-    <a href="/products/5" class="mahsulot-card--top shadow-sm">
+    <a href="/products/<%= _id %>" class="mahsulot-card--top shadow-sm">
       <img src="<%= img %> " alt="" class="mahsulot-img" />
     </a>
     <div class="mahsulot-card--bottom">
-      <a href="/products/5">
+      <a href="/products/<%= _id %>">
         <h3 class="mahsulot-name"><%= title %> </h3>
       </a>
-      <p class="mahsulot-price"><%= price %>  sum</p>
+      <p class="mahsulot-price"><%= price.toLocaleString("ru") %> <%= __("sum") %></p>
 
-      <div class="stars">
+      <!-- <div class="stars">
         <i class="colored fas fa-star"></i>
         <i class="colored fas fa-star"></i>
         <i class="colored fas fa-star"></i>
         <i class="colored fas fa-star"></i>
         <i class="colored fas fa-star"></i>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

@@ -1,18 +1,24 @@
 const Banner = require("../models/bannerModel");
 const Feedback = require("../models/feedbackModel");
 const News = require("../models/newsModel");
+const Product = require("../models/productModel");
 const getGallery = require("../utils/getGallery");
 
 exports.products = {
-  index(req, res) {
+  async index(req, res) {
+    const products = await Product.find();
     res.status(200).render("products/index", {
       title: "Mahsulotlar",
+      products,
     });
   },
-  single(req, res) {
-    //TODO handle id
+  async single(req, res) {
+    const product = await Product.findById(req.params.id);
+    const products = await Product.find();
     res.status(200).render("products/single", {
       title: "Mahsulotlar",
+      product,
+      products,
     });
   },
 };
@@ -47,12 +53,14 @@ exports.home = async (req, res) => {
   const newsList = await News.find({}, {}, { limit: 4 });
   const feedbacks = await Feedback.find({});
   const banners = await Banner.find({});
+  const products = await Product.find();
   res.status(200).render("static/index", {
     title: "Home",
     user: res.locals.user,
     newsList,
     feedbacks,
     banners,
+    products,
   });
 };
 

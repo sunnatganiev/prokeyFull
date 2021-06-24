@@ -24,27 +24,18 @@
             </div>
             <div class="row px-3">
               <div class="col-lg-9 col-md-12 my-3">
-                <% if (isDeleted) { %>
-                  <div class="alert alert-success" role="alert">
-                    Maxsulot muvaffaqiyatli o'chirildi!
-                  </div>
-                <% } %>
                 <div class="row">
                   <div class="col-lg-12 dashboard__card">
                     <div class="p-3 shadow-sm">
                       <div class="d-flex align-items-center mb-3">
                         <h6 class="title-left-stick mr-4"> <%= __("products") %> </h6>
-                        <select name="warehouse" class="custom-select">
-                          <option value="chilonzor">Chilonzor</option>
-                        </select>
                       </div>
                       <table
                         class="table table-responsive-md custom-table table-hover table-borderless table-sm"
                       >
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Rasm</th>
+                            <th scope="col">Rasmlar</th>
                             <th scope="col">Nom</th>
                             <th scope="col">Narx</th>
                             <th scope="col">Soni</th>
@@ -52,157 +43,48 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">15</th>
-                            <td>
-                              <img
-                              src="/img/dori-1.png"
-                              height="50"
-                              class="square-50 img-thumbnail object-fit-contain"
-                              alt="Product name"
-                            />
-                            </td>
-                            <td><a href="/dashboard/product/5">Evolution Cleaner</a></td>
-                            <td>200 000 so'm</td>
-                            <td>50</td>
-                            <td>
-                              <div class="d-flex justify-content-center">
-                                <div class="dropdown d-flex align-items-center">
-                                  <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
-                                  <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                    <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
-                                    <div class="d-flex justify-content-center">
-                                      <a class="btn btn-danger btn-sm mr-1" href="/dashboard/product/delete/5">HA</a>
-                                      <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
+                          <% products.forEach(pr => { %>
+                            <tr>
+                              <td>
+                                <% pr.images.forEach(img => { %>
+                                  <img
+                                  src="<%= img %>"
+                                  height="50"
+                                  class="square-50 img-thumbnail object-fit-contain mr-1"
+                                  alt="<%= pr.name %>"
+                                />
+                                <% }) %>
+                              </td>
+                              <td><a href="/dashboard/products/id/<%= pr._id %>"><%= pr.name %></a></td>
+                              <td><%= pr.price %> <%= __("sum") %></td>
+                              <td><%= pr.quantity %> </td>
+                              <td>
+                                <div class="d-flex justify-content-center">
+                                  <div class="dropdown d-flex align-items-center">
+                                    <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
+                                    <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
+                                      <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
+                                      <div class="d-flex justify-content-center">
+                                        <form method="POST" action="<%= api("products/delete") %>" class="d-flex">
+                                          <input type="hidden" name="id" value="<%= pr._id %>">
+                                          <button type="submit" class="btn btn-danger btn-sm mr-1">HA</button>
+                                        </form>
+                                       
+                                        <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
+                                      </div>
                                     </div>
                                   </div>
+                                  <a href="/dashboard/products/id/<%= pr._id %>" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
                                 </div>
-                                <a href="/dashboard/product/5" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">15</th>
-                            <td>
-                              <img
-                              src="/img/dori-1.png"
-                              height="50"
-                              class="square-50 img-thumbnail object-fit-contain"
-                              alt="Product name"
-                            />
-                            </td>
-                            <td><a href="/dashboard/product/5">Evolution Cleaner</a></td>
-                            <td>200 000 so'm</td>
-                            <td>50</td>
-                            <td>
-                              <div class="d-flex justify-content-center">
-                                <div class="dropdown d-flex align-items-center">
-                                  <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
-                                  <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                    <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
-                                    <div class="d-flex justify-content-center">
-                                      <a class="btn btn-danger btn-sm mr-1" href="/dashboard/product/delete/5">HA</a>
-                                      <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <a href="/dashboard/product/5" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">15</th>
-                            <td>
-                              <img
-                              src="/img/dori-1.png"
-                              height="50"
-                              class="square-50 img-thumbnail object-fit-contain"
-                              alt="Product name"
-                            />
-                            </td>
-                            <td><a href="/dashboard/product/5">Evolution Cleaner</a></td>
-                            <td>200 000 so'm</td>
-                            <td>50</td>
-                            <td>
-                              <div class="d-flex justify-content-center">
-                                <div class="dropdown d-flex align-items-center">
-                                  <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
-                                  <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                    <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
-                                    <div class="d-flex justify-content-center">
-                                      <a class="btn btn-danger btn-sm mr-1" href="/dashboard/product/delete/5">HA</a>
-                                      <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <a href="/dashboard/product/5" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">15</th>
-                            <td>
-                              <img
-                              src="/img/dori-1.png"
-                              height="50"
-                              class="square-50 img-thumbnail object-fit-contain"
-                              alt="Product name"
-                            />
-                            </td>
-                            <td><a href="/dashboard/product/5">Evolution Cleaner</a></td>
-                            <td>200 000 so'm</td>
-                            <td>50</td>
-                            <td>
-                              <div class="d-flex justify-content-center">
-                                <div class="dropdown d-flex align-items-center">
-                                  <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
-                                  <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                    <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
-                                    <div class="d-flex justify-content-center">
-                                      <a class="btn btn-danger btn-sm mr-1" href="/dashboard/product/delete/5">HA</a>
-                                      <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <a href="/dashboard/product/5" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">15</th>
-                            <td>
-                              <img
-                              src="/img/dori-1.png"
-                              height="50"
-                              class="square-50 img-thumbnail object-fit-contain"
-                              alt="Product name"
-                            />
-                            </td>
-                            <td><a href="/dashboard/product/5">Evolution Cleaner</a></td>
-                            <td>200 000 so'm</td>
-                            <td>50</td>
-                            <td>
-                              <div class="d-flex justify-content-center">
-                                <div class="dropdown d-flex align-items-center">
-                                  <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
-                                  <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                    <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
-                                    <div class="d-flex justify-content-center">
-                                      <a class="btn btn-danger btn-sm mr-1" href="/dashboard/product/delete/5">HA</a>
-                                      <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <a href="/dashboard/product/5" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
-                              </div>
-                            </td>
-                          </tr>
+                              </td>
+                            </tr>
+                          <% }) %>
                         </tbody>
                       </table>
                     </div>
                   </div>
 
-                  <div class="col-lg-12">
+                  <!-- <div class="col-lg-12">
                     <nav aria-label="Page navigation example">
                       <ul class="pagination">
                         <li class="page-item disabled">
@@ -230,7 +112,7 @@
                         </li>
                       </ul>
                     </nav>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <%- include('../../components/right-sidebar.ejs') %>

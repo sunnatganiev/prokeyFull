@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 
 const dotenv = require("dotenv");
 
+const { eachWeek, eachMonth } = require("./utils/crons");
+
 process.on("uncaughtException", (err) => {
   console.log("UNHALDED EXCEPTION! 💥 Shutting down...");
   console.log(err);
@@ -23,7 +25,11 @@ mongoose
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("DB connection successful!"));
+  .then(() => {
+    console.log("DB connection successful!");
+    eachWeek().start();
+    eachMonth().start();
+  });
 
 const app = require("./app");
 

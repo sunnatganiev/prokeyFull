@@ -83,6 +83,7 @@ jQuery(function () {
   $("#input-product-images").fileinput({
     ...fileInputOptions,
     initialPreviewShowDelete: false,
+    overwriteInitial: true,
   });
   $("#input-gallery-images")
     .fileinput(fileInputOptions)

@@ -45,12 +45,6 @@ router.get(
   dashboard.products.single
 );
 
-router.get(
-  "/product/delete/:id",
-  authController.isLoggedIn,
-  dashboard.products.delete
-);
-
 // handle logic
 // router.put(
 //   "/product/edit/:id",
