@@ -6,16 +6,29 @@ const Feedback = require("../../models/feedbackModel");
 const Banner = require("../../models/bannerModel");
 const regions = require("../../data/regions.json");
 const Territory = require("../../models/territoryModel");
-const { getPopulatedTerritories } = require("../utilities");
+const { getPopulatedTerritories, dashUrl } = require("../utilities");
 const { getCurrentUser } = require("../authController");
 const Transaction = require("../../models/transactionModel");
-const Product = require("../../models/productModel");
+const { Product } = require("../../models/productModel");
 const Warehouse = require("../../models/warehouseModel");
+const { ERRORS } = require("../../utils/constants");
 
 module.exports = {
   async index(req, res) {
-    const regs = await User.find({ role: "registrator" }).populate("followers");
-    const watchers = await User.find({ role: "watcher" }).populate("followers");
+    const currentUser = await getCurrentUser(req, res);
+    if (currentUser.role === "watcher" || currentUser.role === "registrator") {
+      return res.redirect(dashUrl("/settings"));
+    }
+    const regs = await User.find(
+      { role: "registrator" },
+      {},
+      { limit: 4 }
+    ).populate("followers");
+    const watchers = await User.find(
+      { role: "watcher" },
+      {},
+      { limit: 4 }
+    ).populate("followers");
     const clientCount = await User.countDocuments({ status: "client" });
     const partnerCount = await User.countDocuments({ status: "partner" });
     const masterCount = await User.countDocuments({ status: "master" });
@@ -34,9 +47,26 @@ module.exports = {
   users: users,
   team: {
     async index(req, res) {
-      const currentUser = await getCurrentUser(req, res);
+      const currentUser = await getCurrentUser(req, res, ["followers"]);
+      let followers = currentUser?.followers;
+      if (req.query.id) {
+        const user = await User.findById(req.query.id).populate("followers");
+        // eslint-disable-next-line prefer-destructuring
+        if (
+          currentUser.followers.find((x) => x._id.toString() === req.query.id)
+        ) {
+          // eslint-disable-next-line prefer-destructuring
+          followers = user.followers;
+        } else {
+          return res.status(403).render("admin/error", {
+            err_code: 403,
+            error: res.__(ERRORS.PERMISSION_DENIED),
+          });
+        }
+      }
+
       res.status(200).render("admin/pages/team/index", {
-        followers: currentUser.followers,
+        followers: followers,
       });
     },
   },
@@ -53,23 +83,44 @@ module.exports = {
   },
   warehouses: {
     async index(req, res) {
+      const currentUser = await getCurrentUser(req, res);
       const territoriesDB = await Territory.find();
-      const warehouses = await Warehouse.find().populate({
+      let warehouses = await Warehouse.find().populate({
         path: "territory",
         populate: {
           path: "registrator",
           select: "name surname",
         },
       });
+
+      if (currentUser.role === "registrator") {
+        warehouses = warehouses.filter((x) =>
+          x.territory.registrator._id.equals(currentUser._id)
+        );
+      }
+
       res.status(200).render("admin/pages/warehouses/index", {
         territories: getPopulatedTerritories(territoriesDB),
         warehouses,
       });
     },
-    single(req, res) {
-      //handle id
+    async single(req, res) {
+      const currentUser = await getCurrentUser(req, res);
+      const warehouse = await Warehouse.findById(req.params.id).populate(
+        "territory products.product"
+      );
+      if (currentUser.role === "registrator") {
+        if (!warehouse.territory.registrator._id.equals(currentUser._id)) {
+          return res.status(403).render("admin/error", {
+            err_code: 403,
+            error: res.__(ERRORS.PERMISSION_DENIED),
+          });
+        }
+      }
+      const products = await Product.find();
       res.status(200).render("admin/pages/warehouses/single", {
-        id: req.params.id,
+        warehouse,
+        products,
       });
     },
   },

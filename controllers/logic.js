@@ -198,10 +198,10 @@ exports.checkSalary = catchAsync(async () => {
 exports.assignToTerritory = async (territoryId, user) => {
   const territory = await Territory.findById(territoryId);
   if (user.role === "registrator" && !territory?.registrator) {
-    await Territory.findOneAndUpdate(
-      { registrator: user._id },
-      { registrator: null }
-    );
+    // await Territory.findOneAndUpdate(
+    //   { registrator: user._id },
+    //   { registrator: null }
+    // );
     return await Territory.findByIdAndUpdate(territoryId, {
       registrator: user._id,
     });

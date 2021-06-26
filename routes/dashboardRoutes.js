@@ -31,7 +31,7 @@ router.get(
 );
 
 router.get(
-  "/warehouses/:id",
+  "/warehouses/id/:id",
   authController.isLoggedIn,
   dashboard.warehouses.single
 );

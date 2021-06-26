@@ -19,9 +19,9 @@ router.use(authController.protect);
 //CREATE USER
 router.post(
   "/user",
-  upload().single("photo"),
   authController.protect,
   authController.allowTo("admin", "registrator"),
+  upload().single("photo"),
   userController.createUser
 );
 //UPDATE USER

@@ -10,7 +10,7 @@
   <body class="dashboard">
     <div class="dashboard-content-wrapper">
       <%- include('../../sidebar.ejs', {
-        page: 'customers'
+        page: viewUser.role === "watcher" ? "home" : "users"
       }) %>
 
       <main>
@@ -31,6 +31,71 @@
                 <% } %>
 
                 <% if(locals.viewUser){ %>
+                  <div class="dashboard__card bg-white p-3 rounded mx-n3">
+                    <h6 class="title-left-stick mb-3">
+                      Malumotlar
+                    </h6>
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <div class="media">
+                          <img width="150" height="150" class="img-thumbnail object-fit-cover mr-3" src="<%= user.photo %>" alt="<%= user.name %>">
+                          <div class="media-body">
+                            <h5 class="mt-0"><%= `${user.surname} ${user.name}` %></h5>
+                            <p class="mb-2"><strong><%= __("email") %>: </strong> <a href="/dashboard/users/id/<%= user._id %>"><%= user.email %></a></p>
+                            <p class="mb-2"><strong><%= __("status") %>: </strong><%= user.status %></p>
+                            <% if (user.followers.length) { %>
+                              <div class="mb-3">
+                                <h6>Qo'shgan profillari</h6>
+                                <div class="added-users">
+                                  <% for( let i = 0; i < 4; i++ ) { %>
+                                    <% if (user.followers[i]) { %>
+                                      <a href="/dashboard/users/id/<%= user.followers[i]._id %>" class="img-wrapper">
+                                        <img src="<%= user.followers[i].photo %>" alt="<%= user.followers[i].name %>"/>
+                                      </a>
+                                    <% } %>
+                                  <% } %>
+                                  
+                                  <% if (user.followers.length > 4) { %>
+                                    <a href="/dashboard/users?following=<%= email %>" class="img-wrapper"><%= user.followers.length - 4 %></a>
+                                  <% } %>
+                                  
+                                </div>
+                              </div>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-12">
+                        <div class="media">
+                          <img width="150" height="150" class="img-thumbnail object-fit-cover mr-3" src="<%= following.photo %>" alt="<%= following.name %>">
+                          <div class="media-body">
+                            <h5 class="mt-0"><%= __("invited") %>: <%= `${following.surname} ${following.name}` %></h5>
+                            <p class="mb-2"><strong><%= __("email") %>: </strong> <a href="/dashboard/users/id/<%= following._id %>"><%= following.email %></a></p>
+                            <p class="mb-2"><strong><%= __("status") %>: </strong><%= following.status %></p>
+                            <% if (following.followers.length) { %>
+                              <div class="mb-3">
+                                <h6>Qo'shgan profillari</h6>
+                                <div class="added-users">
+                                  <% for( let i = 0; i < 4; i++ ) { %>
+                                    <% if (following.followers[i]) { %>
+                                      <a href="/dashboard/users/id/<%= following.followers[i]._id %>" class="img-wrapper">
+                                        <img src="<%= following.followers[i].photo %>" alt="<%= following.followers[i].name %>"/>
+                                      </a>
+                                    <% } %>
+                                  <% } %>
+                                  
+                                  <% if (following.followers.length > 4) { %>
+                                    <a href="/dashboard/users?following=<%= email %>" class="img-wrapper"><%= following.followers.length - 4 %></a>
+                                  <% } %>
+                                  
+                                </div>
+                              </div>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="dashboard__card bg-white p-3 rounded mx-n3">
                     <form method="POST" enctype="multipart/form-data" action="<%= api("users/user/edit") %>">
                       <input type="hidden" value="<%= viewUser._id %>" name="id">
@@ -136,25 +201,25 @@
                         </div>
                       </div>
    
+                      
+                      <% if (locals.user?.role === "admin") { %>
                       <div class="mb-4">
                         <h6 class="title-left-stick mb-3">
                           Referal
                         </h6>
                         <div class="row">
-                          <% if (locals.user?.role === "admin") { %>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text bg-warning text-white">Lavozim</span>
-                                </div>
-                                <select name="role" class="custom-select" required>
-                                  <option value="watcher" selected <% if (viewUser.role === "watcher") { %>selected<% } %>><%= __("watcher") %></option>
-                                  <option value="admin" <% if (viewUser.role === "admin") { %>selected<% } %>>Admin</option>
-                                  <option value="registrator" <% if (viewUser.role === "registrator") { %>selected<% } %>>Registrator</option>
-                                </select>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-warning text-white">Lavozim</span>
                               </div>
+                              <select name="role" class="custom-select" required>
+                                <option value="watcher" selected <% if (viewUser.role === "watcher") { %>selected<% } %>><%= __("watcher") %></option>
+                                <option value="admin" <% if (viewUser.role === "admin") { %>selected<% } %>>Admin</option>
+                                <option value="registrator" <% if (viewUser.role === "registrator") { %>selected<% } %>>Registrator</option>
+                              </select>
                             </div>
-                          <% } %>
+                          </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
@@ -168,8 +233,10 @@
                               </select>
                             </div>
                           </div>
+                                                  
                         </div>  
                       </div>
+                      <% } %>    
    
                       <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
    

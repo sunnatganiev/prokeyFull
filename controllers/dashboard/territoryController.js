@@ -3,6 +3,7 @@ const { getError, dashUrl } = require("../utilities");
 const { territories: territoryView } = require("./index");
 const regions = require("../../data/regions.json");
 const User = require("../../models/userModel");
+const Warehouse = require("../../models/warehouseModel");
 
 module.exports = {
   async createTerritory(req, res) {
@@ -30,6 +31,7 @@ module.exports = {
   async deleteTerritory(req, res) {
     const ter = await Territory.findById(req.body.id).populate("registrator");
     await User.updateMany({ territory: ter._id }, { territory: null });
+    await Warehouse.findOneAndDelete({ territory: ter._id });
     await Territory.findByIdAndDelete(req.body.id);
     res.redirect(dashUrl("/territories"));
   },

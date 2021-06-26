@@ -203,19 +203,21 @@ router.post(
   authController.allowTo("admin"),
   warehouseController.addWarehouseProduct
 );
-router.post(
-  "/warehouse/product/edit",
-  authController.isLoggedIn,
-  authController.protect,
-  authController.allowTo("admin", "registrator"),
-  warehouseController.updateWarehouseProduct
-);
+
 router.post(
   "/warehouse/product/delete",
   authController.isLoggedIn,
   authController.protect,
   authController.allowTo("admin"),
   warehouseController.deleteWarehouseProduct
+);
+
+router.post(
+  "/warehouse/product/decrement",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("registrator"),
+  warehouseController.decrementProduct
 );
 
 module.exports = router;

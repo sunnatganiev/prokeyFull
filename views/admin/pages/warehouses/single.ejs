@@ -16,100 +16,116 @@
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Ombordagi maxsulotlar [ID: <%= id %>] </h6>
-              <a href="/dashboard/products/add" data-toggle="collapse">
-                Yangi qo'shish
-                <i class="fas fa-user-plus"></i>
-              </a>
+              <h6 class="font-weight-bold text-muted mb-0">Ombordagi maxsulotlar </h6>
             </div>
             <div class="row px-3">
               <div class="col-lg-9 col-md-12 my-3">
                 <div class="row">
+
+                  <% if (user.role === "admin") { %>
+                    <div class="col-lg-12 dashboard__card">
+                      <div class="p-3 shadow-sm">
+                        <h6 class="title-left-stick mb-3"><%= __("assignProduct") %></h6>
+                        <form method="POST" action="<%= api("warehouse/product/add") %>">
+                          <input type="hidden" name="warehouse" value="<%= warehouse._id %>">
+                          <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                              <label for="region-input" class="form-label"
+                                ><%= __("product") %> </label
+                              >
+                              <select required name="product" id="region-input" class="custom-select">
+                                <% products.forEach(x => { %>
+                                  <option value="<%= x._id %>"><%= x.name %></option>
+                                <% }) %>
+                              </select>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                              <label for="registrator" class="form-label"
+                                ><%= __("quantity") %></label
+                              >
+                             <input required type="number" min="1" class="form-control" name="quantity" id="name-input"/>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-end">
+                              <button type="submit" class="btn btn-success">SAQLASH</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  <% } %>
+
                   <div class="col-lg-12 dashboard__card">
                     <div class="p-3 shadow-sm">
                       <div class="d-flex align-items-center justify-content-between flex-wrap">
-                        <h6 class="title-left-stick mb-3">Mahsulot turlari <span class="border rounded px-3 py-1 text-lowercase text-muted ml-2 small">11ta</span></h6>
-                        <h6 class="title-left-stick mb-3">Umumiy narx <span class="border rounded px-3 py-1 text-lowercase text-muted ml-2 small">441b</span></h6>
-                        <h6 class="title-left-stick mb-3">So'ralgan maxsulotlar <span class="border rounded px-3 py-1 text-lowercase text-muted ml-2 small">0 b</span></h6>
+                        <h6 class="title-left-stick mb-3">Mahsulot soni <span class="border rounded px-3 py-1 text-lowercase text-muted ml-2 small"><%= warehouse.products.length %> </span></h6>
                       </div>
                       <table
                         class="table table-striped table-responsive-md custom-table table-hover"
                       >
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Rasm</th>
-                            <th scope="col">Mahsulot nomi</th>
+                            <th scope="col">Rasmlar</th>
+                            <th scope="col">Nom</th>
                             <th scope="col">Narx</th>
-                            <th scope="col">Mahsulot soni</th>
-                            <th scope="col">So'ralganlik soni</th>
+                            <th scope="col">Soni</th>
+                            <th scope="col">Amallar</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>
-                              <img width="50" height="50" src="/img/b-complex.png" class="img-thumbnail" alt="product name">
-                            </td>
-                            <td><a href="/dashboard/product/5">B Complex</a></td>
-                            <td>100 000 so'm</td>
-                            <td>100</td>
-                            <td>10</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>
-                              <img width="50" height="50" src="/img/b-complex.png" class="img-thumbnail" alt="product name">
-                            </td>
-                            <td><a href="/dashboard/product/5">B Complex</a></td>
-                            <td>100 000 so'm</td>
-                            <td>100</td>
-                            <td>10</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>
-                              <img width="50" height="50" src="/img/b-complex.png" class="img-thumbnail" alt="product name">
-                            </td>
-                            <td><a href="/dashboard/product/5">B Complex</a></td>
-                            <td>100 000 so'm</td>
-                            <td>100</td>
-                            <td>10</td>
-                          </tr>
+                          <% warehouse.products.forEach(pr => { %>
+                            <tr>
+                              <td>
+                                <% pr.product.images.forEach(img => { %>
+                                  <img
+                                  src="<%= img %>"
+                                  height="50"
+                                  class="square-50 img-thumbnail object-fit-contain mr-1"
+                                  alt="<%= pr.product.name %>"
+                                />
+                                <% }) %>
+                              </td>
+                              <td><a href="/dashboard/products/id/<%= pr.product._id %>"><%= pr.product.name %></a></td>
+                              <td><%= pr.product.price %> <%= __("sum") %></td>
+                              <td><%= pr.quantity %></td>
+                              <% if (user.role === "registrator") { %>
+                                <td>
+                                    <form method="POST" action="<%= api("warehouse/product/decrement") %>">
+                                      <input type="hidden" name="product" value="<%= pr.product._id %>">
+                                      <input type="hidden" name="warehouse" value="<%= warehouse._id %>">
+                                      <button <% if (pr.quantity === 0) { %>disabled<% } %> type="submit" class="btn btn-warning btn-sm mx-auto d-block"><%= __("sold") %><i class="fas fa-minus-square ml-1"></i></button>
+                                    </form>
+                                  </div>
+                                </td>
+                              <% } %>
+                              <% if (user.role === "admin") { %>
+                                <td>
+                                  <div class="d-flex justify-content-center">
+                                    <div class="dropdown d-flex align-items-center">
+                                      <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
+                                      <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
+                                        <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
+                                        <div class="d-flex justify-content-center">
+                                          <form method="POST" action="<%= api("warehouse/product/delete") %>" class="d-flex">
+                                            <input type="hidden" name="product" value="<%= pr.product._id %>">
+                                            <input type="hidden" name="warehouse" value="<%= warehouse._id %>">
+                                            <button type="submit" class="btn btn-danger btn-sm mr-1">HA</button>
+                                          </form>
+                                        
+                                          <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <a href="/dashboard/products/id/<%= pr.product._id %>" class="btn btn-warning btn-sm ml-2 d-block"><i class="fas fa-edit"></i></a>
+                                  </div>
+                                </td>
+                              <% } %>
+                            </tr>
+                          <% }) %>
                         </tbody>
                       </table>
                     </div>
                   </div>
 
-                  <div class="col-lg-12">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination">
-                        <li class="page-item disabled">
-                          <a
-                            class="page-link"
-                            href="#"
-                            tabindex="-1"
-                            aria-disabled="true"
-                            ><i class="fas fa-chevron-left"></i
-                          ></a>
-                        </li>
-                        <li class="page-item active">
-                          <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#"
-                            ><i class="fas fa-chevron-right"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
                 </div>
               </div>
               <%- include('../../components/right-sidebar.ejs') %>

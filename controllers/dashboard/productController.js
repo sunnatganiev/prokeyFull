@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Product = require("../../models/productModel");
+const { Product } = require("../../models/productModel");
 const { dashUrl, getFileName, getImgPath } = require("../utilities");
 
 module.exports = {
@@ -20,8 +20,7 @@ module.exports = {
   },
   async updateProduct(req, res) {
     const productObj = req.body;
-
-    if (req.files) {
+    if (req.files?.length > 0) {
       productObj.images = [];
       req.files.forEach((x) => {
         productObj.images.push(getFileName(x.path));
@@ -33,7 +32,7 @@ module.exports = {
     );
     const oldFileNames = oldProduct.images;
 
-    if (req.files) {
+    if (req.files?.length > 0) {
       oldFileNames.forEach((x) => {
         fs.unlink(getImgPath(x), (err) => {
           // eslint-disable-next-line no-console

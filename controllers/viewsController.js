@@ -1,7 +1,7 @@
 const Banner = require("../models/bannerModel");
 const Feedback = require("../models/feedbackModel");
 const News = require("../models/newsModel");
-const Product = require("../models/productModel");
+const { Product } = require("../models/productModel");
 const Territory = require("../models/territoryModel");
 const getGallery = require("../utils/getGallery");
 const { getPopulatedTerritories } = require("./utilities");

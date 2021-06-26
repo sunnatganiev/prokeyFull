@@ -57,5 +57,13 @@
 	"date": "Sana",
 	"sum": "so'm",
 	"productImagesNote": "Yangi rasmlar eski rasmlarni o'chirilgan holda qo'yiladi. Ya'ni rasmlarni bittalab o'chirishni imkoni yo'q!",
-	"cancel": "cancel"
+	"cancel": "cancel",
+	"assignProduct": "assignProduct",
+	"product": "product",
+	"quantity": "quantity",
+	"unit": "unit",
+	"Path `password` (`1111`) is shorter than the minimum allowed length (8).": "Path `password` (`1111`) is shorter than the minimum allowed length (8).",
+	"sold": "sold",
+	"laws": "laws",
+	"invited": "invited"
 }

@@ -27,8 +27,23 @@
           </div>
           Transferlar
         </a>
+
+        <% if (user.role === "registrator") { %>
+          <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
+            <div class="icon-wrapper">
+              <i class="icon fas fa-warehouse"></i>
+            </div>
+            Omborlar
+          </a>
+        <% } %>
         
         <% if (user.role === "admin") { %>
+          <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
+            <div class="icon-wrapper">
+              <i class="icon fas fa-warehouse"></i>
+            </div>
+            Omborlar
+          </a>
           <a class="nav-link <% if (page === 'territories') {%>active<%}%>" aria-current="page" href="/dashboard/territories">
             <div class="icon-wrapper">
               <i class="fas fa-map-marked-alt"></i>
@@ -53,12 +68,7 @@
             </div>
              <%= __("products") %> 
           </a>
-          <a class="nav-link <% if (page === 'warehouses') {%>active<%}%>" aria-current="page" href="/dashboard/warehouses">
-            <div class="icon-wrapper">
-              <i class="icon fas fa-warehouse"></i>
-            </div>
-            Omborlar
-          </a>
+          
           <a class="nav-link <% if (page === 'news') {%>active<%}%>" aria-current="page" href="/dashboard/news">
             <div class="icon-wrapper">
               <i class="fas fa-newspaper"></i>
