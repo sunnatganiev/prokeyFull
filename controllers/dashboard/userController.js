@@ -18,27 +18,35 @@ module.exports = {
   },
   users: {
     async index(req, res) {
+      const currentPage = parseInt(req.query.page, 10) || 0;
       const query = getCompactObj(req.query);
-      const users = await User.find(query).populate("followers");
+      delete query.page;
+      const users = await User.find(
+        query,
+        {},
+        { limit: 10, skip: currentPage * 10 }
+      ).populate("followers");
+      const usersCount = await User.countDocuments();
       const territories = await Territory.find();
 
       res.status(200).render("admin/pages/users/index", {
         users: users,
         query,
+        pages: users.length >= 10 ? Math.ceil(usersCount / 10) : 0,
+        currentPage,
         territories: getPopulatedTerritories(territories),
       });
     },
     async single(req, res) {
       const currentUser = await getCurrentUser(req, res, ["followers"]);
 
-      const following = await User.findOne({
-        email: currentUser.following,
-      }).populate("followers");
-
       const territoriesDB = await Territory.find();
       const id = req.params.id ? req.params.id : await currentUser._id;
       if (mongoose.Types.ObjectId.isValid(id)) {
         const viewUser = await User.findById(id);
+        const following = await User.findOne({
+          email: viewUser.following,
+        }).populate("followers");
 
         if (
           ["registrator"].includes(currentUser.role) &&
@@ -51,7 +59,7 @@ module.exports = {
             });
           }
         }
-
+        console.log(following);
         res.status(200).render("admin/pages/users/single", {
           user: currentUser,
           error: res.locals.error,

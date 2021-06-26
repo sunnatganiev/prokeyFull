@@ -32,7 +32,7 @@
               id="banner-indicators"
             >
             <% banners.forEach((x,i) => { %>
-              <li data-target="#home-banner" data-slide-to="<%= i %> " class="<% if (i === 0) { %>active<% } %>">
+              <li data-target="#home-banner" data-slide-to="<%= i %>" class="<% if (i === 0) { %>active<% } %>">
                 <%= i + 1 %> 
               </li>
             <% }) %>

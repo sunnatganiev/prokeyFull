@@ -8,6 +8,7 @@ const { getFileName, dashUrl, getImgPath, getError } = require("./utilities");
 
 module.exports = {
   async createUser(req, res, next) {
+    const currentUser = await getCurrentUser();
     const following = await User.findOne({ email: req.body.following });
     const whoInvited = await User.findOne({ email: req.body.whoInvited });
 
@@ -22,6 +23,9 @@ module.exports = {
     }
 
     const userObj = req.body;
+    if (currentUser.role === "registrator") {
+      userObj.role = "watcher";
+    }
     userObj.photo = getFileName(req.file.path);
     let user = {};
 
@@ -48,6 +52,9 @@ module.exports = {
     const currentUser = await getCurrentUser(req, res);
     const { file } = req;
     const userObj = req.body;
+    if (currentUser.role === "registrator") {
+      userObj.role = "watcher";
+    }
     if (!["admin", "registrator"].includes(currentUser.role)) {
       if (currentUser._id.toString() !== userObj.id) {
         return res.redirect("back");

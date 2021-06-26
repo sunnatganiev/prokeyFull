@@ -38,25 +38,25 @@
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="media">
-                          <img width="150" height="150" class="img-thumbnail object-fit-cover mr-3" src="<%= user.photo %>" alt="<%= user.name %>">
+                          <img width="150" height="150" class="img-thumbnail object-fit-cover mr-3" src="<%= viewUser.photo %>" alt="<%= viewUser.name %>">
                           <div class="media-body">
-                            <h5 class="mt-0"><%= `${user.surname} ${user.name}` %></h5>
-                            <p class="mb-2"><strong><%= __("email") %>: </strong> <a href="/dashboard/users/id/<%= user._id %>"><%= user.email %></a></p>
-                            <p class="mb-2"><strong><%= __("status") %>: </strong><%= user.status %></p>
-                            <% if (user.followers.length) { %>
+                            <h5 class="mt-0"><%= `${viewUser.surname} ${viewUser.name}` %></h5>
+                            <p class="mb-2"><strong><%= __("email") %>: </strong> <a href="/dashboard/users/id/<%= viewUser._id %>"><%= viewUser.email %></a></p>
+                            <p class="mb-2"><strong><%= __("status") %>: </strong><%= viewUser.status %></p>
+                            <% if (viewUser.followers.length) { %>
                               <div class="mb-3">
                                 <h6>Qo'shgan profillari</h6>
                                 <div class="added-users">
                                   <% for( let i = 0; i < 4; i++ ) { %>
-                                    <% if (user.followers[i]) { %>
-                                      <a href="/dashboard/users/id/<%= user.followers[i]._id %>" class="img-wrapper">
-                                        <img src="<%= user.followers[i].photo %>" alt="<%= user.followers[i].name %>"/>
+                                    <% if (viewUser.followers[i]) { %>
+                                      <a href="/dashboard/users/id/<%= viewUser.followers[i]._id %>" class="img-wrapper">
+                                        <img src="<%= viewUser.followers[i].photo %>" alt="<%= viewUser.followers[i].name %>"/>
                                       </a>
                                     <% } %>
                                   <% } %>
                                   
-                                  <% if (user.followers.length > 4) { %>
-                                    <a href="/dashboard/users?following=<%= email %>" class="img-wrapper"><%= user.followers.length - 4 %></a>
+                                  <% if (viewUser.followers.length > 4) { %>
+                                    <a href="/dashboard/users?following=<%= email %>" class="img-wrapper"><%= viewUser.followers.length - 4 %></a>
                                   <% } %>
                                   
                                 </div>
@@ -65,35 +65,37 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6 col-sm-12">
-                        <div class="media">
-                          <img width="150" height="150" class="img-thumbnail object-fit-cover mr-3" src="<%= following.photo %>" alt="<%= following.name %>">
-                          <div class="media-body">
-                            <h5 class="mt-0"><%= __("invited") %>: <%= `${following.surname} ${following.name}` %></h5>
-                            <p class="mb-2"><strong><%= __("email") %>: </strong> <a href="/dashboard/users/id/<%= following._id %>"><%= following.email %></a></p>
-                            <p class="mb-2"><strong><%= __("status") %>: </strong><%= following.status %></p>
-                            <% if (following.followers.length) { %>
-                              <div class="mb-3">
-                                <h6>Qo'shgan profillari</h6>
-                                <div class="added-users">
-                                  <% for( let i = 0; i < 4; i++ ) { %>
-                                    <% if (following.followers[i]) { %>
-                                      <a href="/dashboard/users/id/<%= following.followers[i]._id %>" class="img-wrapper">
-                                        <img src="<%= following.followers[i].photo %>" alt="<%= following.followers[i].name %>"/>
-                                      </a>
+                      <% if (following) { %>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="media">
+                            <img width="150" height="150" class="img-thumbnail object-fit-cover mr-3" src="<%= following.photo %>" alt="<%= following.name %>">
+                            <div class="media-body">
+                              <h5 class="mt-0"><%= __("invited") %>: <%= `${following.surname} ${following.name}` %></h5>
+                              <p class="mb-2"><strong><%= __("email") %>: </strong> <a href="/dashboard/users/id/<%= following._id %>"><%= following.email %></a></p>
+                              <p class="mb-2"><strong><%= __("status") %>: </strong><%= following.status %></p>
+                              <% if (following.followers.length) { %>
+                                <div class="mb-3">
+                                  <h6>Qo'shgan profillari</h6>
+                                  <div class="added-users">
+                                    <% for( let i = 0; i < 4; i++ ) { %>
+                                      <% if (following.followers[i]) { %>
+                                        <a href="/dashboard/users/id/<%= following.followers[i]._id %>" class="img-wrapper">
+                                          <img src="<%= following.followers[i].photo %>" alt="<%= following.followers[i].name %>"/>
+                                        </a>
+                                      <% } %>
                                     <% } %>
-                                  <% } %>
-                                  
-                                  <% if (following.followers.length > 4) { %>
-                                    <a href="/dashboard/users?following=<%= email %>" class="img-wrapper"><%= following.followers.length - 4 %></a>
-                                  <% } %>
-                                  
+                                    
+                                    <% if (following.followers.length > 4) { %>
+                                      <a href="/dashboard/users?following=<%= email %>" class="img-wrapper"><%= following.followers.length - 4 %></a>
+                                    <% } %>
+                                    
+                                  </div>
                                 </div>
-                              </div>
-                            <% } %>
+                              <% } %>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      <% } %>
                     </div>
                   </div>
                   <div class="dashboard__card bg-white p-3 rounded mx-n3">
@@ -181,7 +183,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white">EMAIL</span>
                               </div>
-                              <input value="<%= viewUser.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
+                              <input disabled value="<%= viewUser.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
                             </div>
                           </div>
                           <div class="col-12">

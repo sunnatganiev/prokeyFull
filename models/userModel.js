@@ -40,6 +40,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: [true, "Iltimos elektron pochtangizni kirgizing!"],
     lowercase: true,
+    immutable: true,
     validate: [validator.isEmail, "Please provide a valid email"],
   },
   whoInvited: {

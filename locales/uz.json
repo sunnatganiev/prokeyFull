@@ -65,5 +65,6 @@
 	"Path `password` (`1111`) is shorter than the minimum allowed length (8).": "Path `password` (`1111`) is shorter than the minimum allowed length (8).",
 	"sold": "sold",
 	"laws": "laws",
-	"invited": "invited"
+	"invited": "invited",
+	"page": "page"
 }
