@@ -236,7 +236,7 @@
                 >
               </h3>
 
-              <form action="" class="contacts-form">
+              <form method="POST" action="/message/add" class="contacts-form">
                 <div class="row">
                   <div class="col-lg-6 col-md-12 mb-2">
                     <div class="form-group position-relative">
@@ -245,6 +245,7 @@
                         type="text"
                         placeholder="Ism"
                         name="name"
+                        required
                       />
                       <i class="fas fa-user text-primary position-absolute"></i>
                     </div>
@@ -254,7 +255,8 @@
                       <input
                         class="form-control form-control-lg rounded-0 phone-input-mask"
                         type="text"
-                        name="phone"
+                        name="phoneNumber"
+                        required
                         placeholder="+998 ("
                       />
                       <i
@@ -268,6 +270,8 @@
                         class="form-control form-control-lg rounded-0"
                         type="email"
                         placeholder="Email"
+                        name="email"
+                        required
                       />
                       <i
                         class="fas fa-envelope text-primary position-absolute"
@@ -280,6 +284,8 @@
                         class="form-control form-control-lg rounded-0"
                         rows="4"
                         placeholder="Xabar matnini kiriting"
+                        name="message"
+                        required
                       ></textarea>
                     </div>
                   </div>
@@ -328,6 +334,13 @@
     }) %> 
     
     <%-include('../components/footer.ejs') %>
+    
+    <% if (locals.message) { %>
+      <%- include("../admin/components/toast.ejs", {
+        type: message,
+        content: __(message)
+      }) %>
+    <% } %> 
 
     <script src="/scripts/main.js"></script>
     <!-- test -->

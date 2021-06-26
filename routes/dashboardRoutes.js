@@ -135,4 +135,13 @@ router.get(
   dashboard.territories.single
 );
 
+//MESSAGES
+router.get(
+  "/messages",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.messages.index
+);
+
 module.exports = router;

@@ -26,7 +26,7 @@ exports.products = {
 };
 
 exports.localShops = async (req, res) => {
-  const territoriesDB = await Territory.find();
+  const territoriesDB = await Territory.find().populate("registrator");
 
   res.status(200).render("static/local-shops", {
     title: "Do'konlar",
@@ -71,6 +71,7 @@ exports.home = async (req, res) => {
     feedbacks,
     banners,
     products,
+    message: req.query ? req.query.message : null,
   });
 };
 

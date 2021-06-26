@@ -1,6 +1,7 @@
 const express = require("express");
 const viewsController = require("../controllers/viewsController");
 const authController = require("../controllers/authController");
+const { addMessage } = require("../controllers/dashboard/apiController");
 
 const router = express.Router();
 
@@ -23,5 +24,7 @@ router.get("/news/:id", viewsController.news.single);
 router.get("/laws/:id", viewsController.laws);
 
 router.get("/login", authController.isLoggedIn, viewsController.login);
+
+router.post("/message/add", addMessage);
 
 module.exports = router;

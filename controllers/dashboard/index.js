@@ -12,6 +12,7 @@ const Transaction = require("../../models/transactionModel");
 const { Product } = require("../../models/productModel");
 const Warehouse = require("../../models/warehouseModel");
 const { ERRORS } = require("../../utils/constants");
+const Message = require("../../models/messageModel");
 
 module.exports = {
   async index(req, res) {
@@ -236,6 +237,22 @@ module.exports = {
         regions,
         cities: regionObj.cities,
         territory,
+      });
+    },
+  },
+  messages: {
+    async index(req, res) {
+      const currentPage = parseInt(req.query.page, 10) || 0;
+      const messages = await Message.find(
+        {},
+        {},
+        { limit: 20, skip: currentPage * 10 }
+      );
+      const messagesCount = await Message.countDocuments({});
+      res.status(200).render("admin/pages/messages/index", {
+        messages,
+        currentPage,
+        pages: Math.ceil(messagesCount / 20),
       });
     },
   },

@@ -1,4 +1,5 @@
 const fs = require("fs");
+const Message = require("../../models/messageModel");
 const User = require("../../models/userModel");
 const { ERRORS } = require("../../utils/constants");
 const { getCurrentUser } = require("../authController");
@@ -44,5 +45,15 @@ module.exports = {
     }
 
     res.redirect(dashUrl("/transfers"));
+  },
+  async addMessage(req, res) {
+    const messageObj = req.body;
+    const message = await Message.create(messageObj);
+
+    if (message) {
+      res.redirect("/?message=success");
+    } else {
+      res.redirect("/?message=danger");
+    }
   },
 };

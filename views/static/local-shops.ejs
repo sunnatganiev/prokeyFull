@@ -92,67 +92,36 @@
           <h2 class="mb-4 text-uppercase font-weight-bold">
             Hududiy do'kon adminiga murojaat qilish
           </h2>
-          <div class="row">
-            <div class="col-lg-8 col-md-12 mb-2">
-              <form action="" class="contacts-form">
-                <div class="row">
-                  <div class="col-lg-6 col-md-12 mb-2">
-                    <div class="form-group position-relative">
-                      <input
-                        class="form-control form-control-lg border-2 shadow-sm"
-                        type="text"
-                        placeholder="Ism"
-                        name="name"
-                      />
-                      <i class="fas fa-user text-primary position-absolute"></i>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12 mb-2">
-                    <div class="form-group position-relative">
-                      <input
-                        class="form-control form-control-lg border-2 shadow-sm phone-input-mask"
-                        type="text"
-                        name="phone"
-                        placeholder="+998 ("
-                      />
-                      <i
-                        class="fas fa-phone text-primary position-absolute"
-                      ></i>
-                    </div>
-                  </div>
-                  <div class="col-lg-12 mb-2">
-                    <div class="form-group position-relative">
-                      <input
-                        class="form-control form-control-lg border-2 shadow-sm"
-                        type="email"
-                        placeholder="Email"
-                      />
-                      <i
-                        class="fas fa-envelope text-primary position-absolute"
-                      ></i>
-                    </div>
-                  </div>
-                  <div class="col-lg-12 mb-2">
-                    <div class="form-group position-relative">
-                      <textarea
-                        class="form-control form-control-lg border-2 shadow-sm"
-                        rows="4"
-                        placeholder="Xabar matnini kiriting"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="w-100 d-flex align-items-center justify-content-center"
+          <div class="row align-items-stretch">
+            <div class="col-lg-4 col-md-6 mb-2">
+              <div class="p-3 h-100 border border-2 text-left shadow-sm rounded">
+                <h4
+                  class="title-underlined text-left text-uppercase font-weight-bold mr-auto"
                 >
-                  <button class="btn btn-primary mx-auto px-4" type="submit">
-                    Jo'natish <i class="fab fa-telegram-plane"></i>
-                  </button>
-                </div>
-              </form>
+                  <%= __("localRegistrator") %>
+                </h4>
+                <p>
+                  <%= `${territory.registrator?.surname} ${territory.registrator?.name} ${territory.registrator?.middleName}` %> 
+                </p>
+              </div>
             </div>
-            <div class="col-lg-4 col-md-12 mb-2">
-              <div class="p-3 border border-2 text-left shadow-sm rounded">
+            <div class="col-lg-4 col-md-6 mb-2">
+              <div class="p-3 h-100 border border-2 text-left shadow-sm rounded">
+                <h4
+                  class="title-underlined text-left text-uppercase font-weight-bold mr-auto"
+                >
+                  <%= __("contacts") %>
+                </h4>
+                <p class="mb-1">
+                  <a href="mailto:<%= territory.registrator?.email %>"><%= territory.registrator?.email %></a>
+                </p>
+                <p>
+                  <a href="tel:<%= territory.registrator?.phoneNumber %>"><%= territory.registrator?.phoneNumber %></a>
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-2">
+              <div class="p-3 h-100 border border-2 text-left shadow-sm rounded">
                 <h4
                   class="title-underlined text-left text-uppercase font-weight-bold mr-auto"
                 >
