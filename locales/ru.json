@@ -22,5 +22,19 @@
 	"undefined": "undefined",
 	"watcher": "Kuzatuvchi",
 	"registrator": "Registrator",
-	"manager": "Manager"
+	"manager": "Manager",
+	"email": "email",
+	"status": "Status",
+	"invited": "invited",
+	"birthDate": "Tug'ulgan kun",
+	"choose": "Tanlang",
+	"infos": "Ma'lumotlar",
+	"role": "Lavozim",
+	"balance": "Balans",
+	"ball": "ball",
+	"followers": "Obunachilar",
+	"personalInfo": "Shaxsiy ma'lumotlar",
+	"name": "Ism",
+	"middleName": "Otasi ismi",
+	"surname": "Familiya"
 }

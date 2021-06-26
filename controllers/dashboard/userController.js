@@ -42,7 +42,7 @@ module.exports = {
 
         if (
           ["registrator"].includes(currentUser.role) &&
-          currentUser._id.toString() !== req.params.id
+          currentUser._id.toString() !== id.toString()
         ) {
           if (!currentUser.followers.find((x) => x._id.equals(viewUser._id))) {
             return res.status(403).render("admin/error", {
