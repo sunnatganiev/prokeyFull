@@ -46,15 +46,16 @@
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-12 mb-2">
-            <form action="" class="contacts-form">
+            <form method="POST" action="/message/add" class="contacts-form">
               <div class="row">
                 <div class="col-lg-6 col-md-12 mb-2">
                   <div class="form-group position-relative">
                     <input
-                      class="form-control form-control-lg border-2 shadow-sm"
+                      class="form-control form-control-lg rounded-0"
                       type="text"
                       placeholder="Ism"
                       name="name"
+                      required
                     />
                     <i class="fas fa-user text-primary position-absolute"></i>
                   </div>
@@ -62,20 +63,25 @@
                 <div class="col-lg-6 col-md-12 mb-2">
                   <div class="form-group position-relative">
                     <input
-                      class="form-control form-control-lg border-2 shadow-sm phone-input-mask"
+                      class="form-control form-control-lg rounded-0 phone-input-mask"
                       type="text"
-                      name="phone"
+                      name="phoneNumber"
+                      required
                       placeholder="+998 ("
                     />
-                    <i class="fas fa-phone text-primary position-absolute"></i>
+                    <i
+                      class="fas fa-phone text-primary position-absolute"
+                    ></i>
                   </div>
                 </div>
                 <div class="col-lg-12 mb-2">
                   <div class="form-group position-relative">
                     <input
-                      class="form-control form-control-lg border-2 shadow-sm"
+                      class="form-control form-control-lg rounded-0"
                       type="email"
                       placeholder="Email"
+                      name="email"
+                      required
                     />
                     <i
                       class="fas fa-envelope text-primary position-absolute"
@@ -85,9 +91,11 @@
                 <div class="col-lg-12 mb-2">
                   <div class="form-group position-relative">
                     <textarea
-                      class="form-control form-control-lg border-2 shadow-sm"
+                      class="form-control form-control-lg rounded-0"
                       rows="4"
                       placeholder="Xabar matnini kiriting"
+                      name="message"
+                      required
                     ></textarea>
                   </div>
                 </div>
@@ -95,11 +103,11 @@
               <div
                 class="w-100 d-flex align-items-center justify-content-center"
               >
-                <button class="btn btn-primary mx-auto px-4" type="submit">
+                <button class="btn btn-primary" type="submit">
                   Jo'natish <i class="fab fa-telegram-plane"></i>
                 </button>
               </div>
-            </form>
+            </form>Form 
           </div>
           <div class="col-lg-4 col-md-12 mb-2">
             <div class="p-3 border border-2 text-left shadow-sm rounded">
