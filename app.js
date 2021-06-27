@@ -23,6 +23,7 @@ i18n.configure({
   retryInDefaultLocale: true,
   queryParameter: "lang",
   cookie: "language",
+  autoReload: true,
 });
 
 const app = express();
