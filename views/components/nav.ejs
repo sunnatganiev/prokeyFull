@@ -117,32 +117,32 @@
       </div>
 
       <div class="d-flex align-items-center justify-content-end">
-        <% if (locals.user) { %>
-          <a href="/dashboard" class="lupa">
-            <i class="fas fa-user-lock text-white"></i>
-          </a>
-          <% } %>
-            <button type="button" data-toggle="collapse" data-target="#search-bar" class="lupa btn">
-              <i class="fas fa-search"></i>
-            </button>
-            <div class="dropdown ml-2">
-              <button class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= getLocale() %>
-              </button>
-              <div class="dropdown-menu" style="min-width: 50px" aria-labelledby="dropdownMenuButton">
-                <% getLocales().forEach(el=> { %>
-                  <% if (getLocale() !== el) { %>
-                    <a class="dropdown-item text-uppercase" referrerpolicy="origin-when-cross-origin" href="/setlocale/<%= el %>">
-                      <%= el %>
-                    </a>
-                  <% } %>
-                <% }) %>
-              </div>
-            </div>
-            <div class="admin_login ml-2">
-              <a href="/login" class="admin"><i class="fas fa-user"></i></a>
-            </div>
+      <% if (locals.user) { %>
+        <a href="/dashboard" class="lupa">
+          <i class="fas fa-user-lock text-white"></i>
+        </a>
+        <% } %>
+        <button type="button" data-toggle="collapse" data-target="#search-bar" class="lupa btn">
+          <i class="fas fa-search"></i>
+        </button>
+        <div class="dropdown ml-2">
+          <button class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= getLocale() %>
+          </button>
+          <div class="dropdown-menu" style="min-width: 50px" aria-labelledby="dropdownMenuButton">
+            <% getLocales().forEach(el=> { %>
+              <% if (getLocale() !== el) { %>
+                <a class="dropdown-item text-uppercase" referrerpolicy="origin-when-cross-origin" href="/setlocale/<%= el %>">
+                  <%= el %>
+                </a>
+              <% } %>
+            <% }) %>
+          </div>
+        </div>
+        <div class="admin_login ml-2">
+          <a href="/login" class="admin"><i class="fas fa-user"></i></a>
+        </div>
       </div>
     </div>
   </div>
