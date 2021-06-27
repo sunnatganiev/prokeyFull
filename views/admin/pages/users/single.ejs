@@ -33,7 +33,7 @@
                 <% if(locals.viewUser){ %>
                   <div class="dashboard__card bg-white p-3 rounded mx-n3">
                     <h6 class="title-left-stick mb-3">
-                      Malumotlar
+                      <%= __("info") %>
                     </h6>
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
@@ -45,7 +45,7 @@
                             <p class="mb-2"><strong><%= __("status") %>: </strong><%= viewUser.status %></p>
                             <% if (viewUser.followers.length) { %>
                               <div class="mb-3">
-                                <h6>Qo'shgan profillari</h6>
+                                <h6><%= __("addedUsers") %></h6>
                                 <div class="added-users">
                                   <% for( let i = 0; i < 4; i++ ) { %>
                                     <% if (viewUser.followers[i]) { %>
@@ -103,41 +103,41 @@
                       <input type="hidden" value="<%= viewUser._id %>" name="id">
                       <div class="mb-4">
                         <h6 class="title-left-stick mb-3">
-                          Malumotlar
+                          <%= __("info") %>
                         </h6>
                         <div class="row">
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-success text-white">ISM</span>
+                                <span class="input-group-text bg-success text-white"><%= __("name") %></span>
                               </div>
-                              <input type="text" class="form-control" placeholder="Ism" name="name" required value="<%= viewUser.name %>">
+                              <input type="text" class="form-control" placeholder="<%= __("name") %>" name="name" required value="<%= viewUser.name %>">
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-success text-white">FAMILIYA</span>
+                                <span class="input-group-text bg-success text-white"><%= __("surname") %></span>
                               </div>
-                              <input value="<%= viewUser.surname %>" type="text" class="form-control" placeholder="Familiya" name="surname" required>
+                              <input value="<%= viewUser.surname %>" type="text" class="form-control" placeholder="<%= __("surname") %>" name="surname" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-success text-white">SHARIF</span>
+                                <span class="input-group-text bg-success text-white"><%= __("middleName") %></span>
                               </div>
-                              <input value="<%= viewUser.middleName %>"" type="text" class="form-control" placeholder="Sharif" name="middleName" required>
+                              <input value="<%= viewUser.middleName %>"" type="text" class="form-control" placeholder="<%= __("middleName") %>" name="middleName" required>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-success text-white">JINSI</span>
+                                <span class="input-group-text bg-success text-white"><%= __("gender") %></span>
                               </div>
                               <select name="gender" class="custom-select" required>
-                                <option value="male" <% if (viewUser.gender === "male") { %>selected<% } %>>Erkak</option>
-                                <option value="female" <% if (viewUser.gender === "female") { %>selected<% } %>>Ayol</option>
+                                <option value="male" <% if (viewUser.gender === "male") { %>selected<% } %>><%= __("male") %></option>
+                                <option value="female" <% if (viewUser.gender === "female") { %>selected<% } %>><%= __("female") %></option>
                               </select>
                             </div>
                           </div>
@@ -167,13 +167,13 @@
    
                       <div class="mb-4">
                         <h6 class="title-left-stick mb-3">
-                          Kontakt
+                          <%= __("contact") %>
                         </h6>
                         <div class="row">
                           <div class="col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-danger text-white">TELEFON</span>
+                                <span class="input-group-text bg-danger text-white"><%= __("phoneNumber") %></span>
                               </div>
                               <input value="<%= viewUser.phoneNumber %> " type="text" class="form-control phone-input-mask" placeholder="+998" name="phoneNumber" required>
                             </div>
@@ -181,7 +181,7 @@
                           <div class="col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-danger text-white">EMAIL</span>
+                                <span class="input-group-text bg-danger text-white"><%= __("email") %></span>
                               </div>
                               <input disabled value="<%= viewUser.email %> " type="email" class="form-control" placeholder="example@mail.com" name="email" required>
                             </div>
@@ -195,7 +195,7 @@
                                 </span>
                               </div>
                               <div class="custom-file">
-                                <input type="file" id="avatar-input" class="custom-file-input" placeholder="Rasm yuklash" name="photo">
+                                <input type="file" id="avatar-input" class="custom-file-input" placeholder="<%= __("uploadPhoto") %>" name="photo">
                                 <label class="custom-file-label" for="avatar-input"></label>
                               </div>
                             </div>
@@ -207,18 +207,18 @@
                       <% if (locals.user?.role === "admin") { %>
                       <div class="mb-4">
                         <h6 class="title-left-stick mb-3">
-                          Referal
+                          <%= __("referal") %>
                         </h6>
                         <div class="row">
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text bg-warning text-white">Lavozim</span>
+                                <span class="input-group-text bg-warning text-white"><%= __("role") %></span>
                               </div>
                               <select name="role" class="custom-select" required>
                                 <option value="watcher" selected <% if (viewUser.role === "watcher") { %>selected<% } %>><%= __("watcher") %></option>
-                                <option value="admin" <% if (viewUser.role === "admin") { %>selected<% } %>>Admin</option>
-                                <option value="registrator" <% if (viewUser.role === "registrator") { %>selected<% } %>>Registrator</option>
+                                <option value="admin" <% if (viewUser.role === "admin") { %>selected<% } %>><%= __("admin") %></option>
+                                <option value="registrator" <% if (viewUser.role === "registrator") { %>selected<% } %>><%= __("registrator") %></option>
                               </select>
                             </div>
                           </div>
@@ -229,9 +229,9 @@
                               </div>
                               <select name="status" class="custom-select" required>
                                 <option value="client" selected <% if (viewUser.status === "client") { %>selected<% } %>><%= __("client") %></option>
-                                <option value="partner" <% if (viewUser.status === "partner") { %>selected<% } %>>Partner</option>
-                                <option value="master" <% if (viewUser.status === "master") { %>selected<% } %>>Master</option>
-                                <option value="manager" <% if (viewUser.status === "manager") { %>selected<% } %>>Manager</option>
+                                <option value="partner" <% if (viewUser.status === "partner") { %>selected<% } %>><%= __("partner") %></option>
+                                <option value="master" <% if (viewUser.status === "master") { %>selected<% } %>><%= __("master") %></option>
+                                <option value="manager" <% if (viewUser.status === "manager") { %>selected<% } %>><%= __("manager") %></option>
                               </select>
                             </div>
                           </div>
@@ -240,7 +240,7 @@
                       </div>
                       <% } %>    
    
-                      <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
+                      <button type="submit" class="btn btn-primary text-uppercase"><%= __("save") %></button>
    
                     </form>
                   </div>

@@ -17,7 +17,7 @@
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
               <h6 class="font-weight-bold text-muted mb-0">
-                Yangi xaridor qo'shish
+                <%= __("addNew") %>
               </h6>
             </div>
             <div class="row px-3">
@@ -26,14 +26,14 @@
                   <form method="POST" enctype="multipart/form-data" action="<%= api("news/edit") %> ">
                     <input type="hidden" name="id" value="<%= news._id %>">
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Malumotlar</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("info") %></h6>
                       <div class="row">
                         <div class="col-lg-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
                                 class="input-group-text bg-success text-white"
-                                >Sarlavha</span
+                                ><%= __("title") %></span
                               >
                             </div>
                             <input
@@ -50,13 +50,13 @@
                             <div class="input-group-prepend">
                               <span
                                 class="input-group-text bg-success text-white"
-                                >Qisqa ta'rif</span
+                                ><%= __("shortDescription") %></span
                               >
                             </div>
                             <input
                               type="text"
                               class="form-control"
-                              placeholder="Qisa ta'rif"
+                              placeholder="<%= __("shortDescription") %>"
                               name="shortDescription"
                               value="<%= news.shortDescription %>"
                             />
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Rasm</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("image") %></h6>
                       <div class="row">
                         <div class="col-12">
                           <div class="file-loading">
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Yangilik ta'rifi</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("description") %></h6>
                       <div class="row">
                         <div class="col-lg-12">
                           <textarea
@@ -99,7 +99,7 @@
                       type="submit"
                       class="btn btn-primary text-uppercase"
                     >
-                      Saqlash
+                      <%= __("save") %>
                     </button>
                     
                   </form>

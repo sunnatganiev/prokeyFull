@@ -9,9 +9,10 @@ const { getPopulatedTerritories } = require("./utilities");
 exports.products = {
   async index(req, res) {
     const products = await Product.find();
+    // console.log(products);
     res.status(200).render("products/index", {
       title: "Mahsulotlar",
-      products,
+      products: products,
     });
   },
   async single(req, res) {

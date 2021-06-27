@@ -27,45 +27,44 @@
             <%= __('products')%></a>
         </li>
         <li class="navigation__item">
-          <a href="/local-shops" class="<% if (page === 'local-shops') {%>active<%}%> navigation__link">Hududiy
-            do'konlar</a>
+          <a href="/local-shops" class="<% if (page === 'local-shops') {%>active<%}%> navigation__link"><%= __("localShops") %></a>
         </li>
         <li class="navigation__item">
-          <a href="/news" class="<% if (page === 'news') {%>active<%}%> navigation__link">Yangiliklar</a>
+          <a href="/news" class="<% if (page === 'news') {%>active<%}%> navigation__link"><%= __("news") %></a>
         </li>
         <li class="navigation__item">
-          <a href="/gallery" class="<% if (page === 'gallery') {%>active<%}%> navigation__link">Galereya</a>
+          <a href="/gallery" class="<% if (page === 'gallery') {%>active<%}%> navigation__link"><%= __("gallery") %></a>
         </li>
 
         <li class="navigation__item">
-          <a href="/contacts" class="<% if (page === 'contacts') {%>active<%}%> navigation__link">Kontakt</a>
+          <a href="/contacts" class="<% if (page === 'contacts') {%>active<%}%> navigation__link"><%= __("contacts") %></a>
         </li>
       </ul>
       <div class="nav-right d-flex flex-column">
         <div class="icons mb-3 d-flex align-items-center justify-content-center">
-          <% if (locals.user) { %>
-            <a href="/dashboard" class="lupa">
-              <i class="fas fa-user-lock text-white"></i>
-            </a>
-            <% } %>
-              <button class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuButtonM"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= getLocale() %>
-              </button>
-              <div class="dropdown-menu" style="min-width: 50px" aria-labelledby="dropdownMenuButtonM">
-                <% getLocales().forEach(el=> { %>
-                    <% if (getLocale() !== el) { %>
-                      <a class="dropdown-item text-uppercase" referrerpolicy="origin-when-cross-origin" href="/setlocale/<%= el %>">
-                        <%= el %>
-                      </a>
-                    <% } %>
-                  <% }) %>
-              </div>
-              <div class="admin_login">
-                <a href="/login" class="admin"><i class="fas fa-user"></i></a>
-              </div>
+        <% if (locals.user) { %>
+          <a href="/dashboard" class="lupa">
+            <i class="fas fa-user-lock text-white"></i>
+          </a>
+          <% } %>
+          <button class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuButtonM"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= getLocale() %>
+          </button>
+          <div class="dropdown-menu" style="min-width: 50px" aria-labelledby="dropdownMenuButtonM">
+            <% getLocales().forEach(el=> { %>
+                <% if (getLocale() !== el) { %>
+                  <a class="dropdown-item text-uppercase" referrerpolicy="origin-when-cross-origin" href="/setlocale/<%= el %>">
+                    <%= el %>
+                  </a>
+                <% } %>
+              <% }) %>
+          </div>
+          <div class="admin_login">
+            <a href="/login" class="admin"><i class="fas fa-user"></i></a>
+          </div>
         </div>
-        <div class="container">
+        <!-- <div class="container">
           <form class="collapse show w-100 mb-3">
             <div class="d-flex">
               <div class="form-group w-100 mb-0">
@@ -76,7 +75,7 @@
               </button>
             </div>
           </form>
-        </div>
+        </div> -->
       </div>
     </nav>
   </div>
@@ -97,22 +96,22 @@
           <%= __('products')%></a>
       </li>
       <li class="nav-item">
-        <a href="/local-shops" class="<% if (page === 'local-shops') {%>active<%}%> nav-link">Hududiy do'konlar</a>
+        <a href="/local-shops" class="<% if (page === 'local-shops') {%>active<%}%> nav-link"><%= __("localShops") %></a>
       </li>
       <li class="nav-item">
-        <a href="/news" class="<% if (page === 'news') {%>active<%}%> nav-link">Yangiliklar</a>
+        <a href="/news" class="<% if (page === 'news') {%>active<%}%> nav-link"><%= __("news") %></a>
       </li>
       <li class="nav-item">
-        <a href="/gallery" class="<% if (page === 'gallery') {%>active<%}%> nav-link">Galereya</a>
+        <a href="/gallery" class="<% if (page === 'gallery') {%>active<%}%> nav-link"><%= __("gallery") %></a>
       </li>
       <li class="nav-item">
-        <a href="/contacts" class="<% if (page === 'contacts') {%>active<%}%> nav-link">Kontakt</a>
+        <a href="/contacts" class="<% if (page === 'contacts') {%>active<%}%> nav-link"><%= __("contacts") %></a>
       </li>
     </ul>
     <div class="nav-right">
       <div class="nav-right-phone">
         <div class="nav-phone">
-          <p class="tel mb-0">Telefon</p>
+          <p class="tel mb-0"><%= __("phoneNumber") %></p>
           <p class="phone mb-0">+998(71)258-36-69</p>
         </div>
       </div>
@@ -147,7 +146,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <form id="search-bar" class="collapse w-100 mb-3">
       <div class="d-flex">
         <div class="form-group w-100 mb-0">
@@ -156,5 +155,5 @@
         <button type="submit" class="btn btn-primary ml-2">Qidirish</button>
       </div>
     </form>
-  </div>
+  </div> -->
 </div>

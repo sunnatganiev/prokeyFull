@@ -13,19 +13,19 @@
           <div class="icon-wrapper">
             <i class="icon fas fa-home"></i>
           </div>
-          Asosiy
+          <%= __("main") %>
         </a>
         <a class="nav-link <% if (page === 'team') {%>active<%}%>" aria-current="page" href="/dashboard/team">
           <div class="icon-wrapper">
             <i class="icon fas fa-user-friends"></i>
           </div>
-          Jamoa
+          <%= __("team") %>
         </a>
         <a class="nav-link <% if (page === 'transfers') {%>active<%}%>" aria-current="page" href="/dashboard/transfers">
           <div class="icon-wrapper">
             <i class="icon fas fa-random"></i>
           </div>
-          Transferlar
+          <%= __("transfers") %>
         </a>
 
         <% if (user.role === "registrator") { %>
@@ -33,7 +33,7 @@
             <div class="icon-wrapper">
               <i class="icon fas fa-warehouse"></i>
             </div>
-            Omborlar
+            <%= __("warehouses") %>
           </a>
         <% } %>
         
@@ -42,7 +42,7 @@
             <div class="icon-wrapper">
               <i class="icon fas fa-warehouse"></i>
             </div>
-            Omborlar
+            <%= __("warehouses") %>
           </a>
           <a class="nav-link <% if (page === 'territories') {%>active<%}%>" aria-current="page" href="/dashboard/territories">
             <div class="icon-wrapper">
@@ -73,31 +73,37 @@
             <div class="icon-wrapper">
               <i class="fas fa-newspaper"></i>
             </div>
-            Yangiliklar
+            <%= __("news") %>
           </a>
           <a class="nav-link <% if (page === 'gallery') {%>active<%}%>" aria-current="page" href="/dashboard/gallery">
             <div class="icon-wrapper">
               <i class="fas fa-images"></i>
             </div>
-            Galereya
+            <%= __("gallery") %>
           </a>
           <a class="nav-link <% if (page === 'banners') {%>active<%}%>" aria-current="page" href="/dashboard/banners">
             <div class="icon-wrapper">
               <i class="fas fa-map-signs"></i>
             </div>
-            Bannerlar
+            <%= __("banners") %>
           </a>
           <a class="nav-link <% if (page === 'feedbacks') {%>active<%}%>" aria-current="page" href="/dashboard/feedbacks">
             <div class="icon-wrapper">
               <i class="fas fa-comments"></i>
             </div>
-            Fikrlar
+            <%= __("feedbacks") %>
           </a>
           <a class="nav-link <% if (page === 'messages') {%>active<%}%>" aria-current="page" href="/dashboard/messages">
             <div class="icon-wrapper">
               <i class="fas fa-envelope"></i>
             </div>
             <%= __("messages") %>
+          </a>
+          <a class="nav-link <% if (page === 'translations') {%>active<%}%>" aria-current="page" href="/dashboard/translations">
+            <div class="icon-wrapper">
+              <i class="fas fa-language"></i>
+            </div>
+            <%= __("translations") %>
           </a>
         <% } %>
       </li>

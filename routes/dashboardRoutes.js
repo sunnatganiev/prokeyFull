@@ -144,4 +144,36 @@ router.get(
   dashboard.messages.index
 );
 
+//MESSAGES
+router.get(
+  "/translations",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.translations.index
+);
+
+router.get(
+  "/translations/products",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.translations.products
+);
+router.get(
+  "/translations/news",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.translations.news
+);
+
+router.get(
+  "/translations/banners",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  dashboard.translations.banners
+);
+
 module.exports = router;

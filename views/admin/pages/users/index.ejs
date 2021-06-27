@@ -20,7 +20,7 @@
             <div class="dashboard-content__header py-3 border-bottom">
               <h6 class="font-weight-bold text-muted mb-0"><%= __("users") %></h6>
               <a href="users/add">
-                Yangi qo'shish
+                <%= __("addNew") %>
                 <i class="fas fa-user-plus"></i>
               </a>
             </div>
@@ -38,27 +38,27 @@
                                 <div class="col-md-6 col-sm-12">
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text bg-warning text-white">Lavozim</span>
+                                      <span class="input-group-text bg-warning text-white"><%= __("role") %></span>
                                     </div>
                                     <select name="role" class="custom-select" onchange="this.form.submit()">
                                       <option selected value="">-- <%= __("all") %> --</option>
-                                      <option value="watcher" <% if (query.role === "watcher") { %>selected<% } %>>Kuzatuvchi</option>
-                                      <option value="admin" <% if (query.role === "admin") { %>selected<% } %>>Admin</option>
-                                      <option value="registrator" <% if (query.role === "registrator") { %>selected<% } %>>Registrator</option>
+                                      <option value="watcher" <% if (query.role === "watcher") { %>selected<% } %>><%= __("watcher") %></option>
+                                      <option value="admin" <% if (query.role === "admin") { %>selected<% } %>><%= __("admin") %></option>
+                                      <option value="registrator" <% if (query.role === "registrator") { %>selected<% } %>><%= __("registrator") %></option>
                                     </select>
                                   </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text bg-warning text-white">Status</span>
+                                      <span class="input-group-text bg-warning text-white"><%= __("status") %></span>
                                     </div>
                                     <select name="status" class="custom-select" onchange="this.form.submit()">
                                       <option selected value="">-- <%= __("all") %> --</option>
                                       <option value="client" <% if (query.status === "client") { %>selected<% } %>><%= __("client") %></option>
                                       <option value="partner" <% if (query.status === "partner") { %>selected<% } %>><%= __("partner") %></option>
-                                      <option value="master" <% if (query.status === "master") { %>selected<% } %>>Master</option>
-                                      <option value="manager" <% if (query.status === "manager") { %>selected<% } %>>Manager</option>
+                                      <option value="master" <% if (query.status === "master") { %>selected<% } %>><%= __("master") %></option>
+                                      <option value="manager" <% if (query.status === "manager") { %>selected<% } %>><%= __("manager") %></option>
                                     </select>
                                   </div>
                                 </div>
@@ -109,16 +109,16 @@
                       <table class="table table-responsive-xxl custom-table table-hover table-borderless table-sm">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Rasm</th>
-                            <th scope="col">F.I.SH</th>
-                            <th scope="col">Email</th>
+                            <th scope="col"><%= __("image") %></th>
+                            <th scope="col"><%= __("fullnameString") %></th>
+                            <th scope="col"><%= __("email") %></th>
                             <th scope="col"><%= __("phoneNumber") %></th>
                             <th scope="col"><%= __("followers") %></th>
                             <th scope="col"><%= __("balance") %></th>
                             <th scope="col"><%= __("whoInvited") %></th>
-                            <th scope="col">Lavozim</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Hudud</th>
+                            <th scope="col"><%= __("role") %></th>
+                            <th scope="col"><%= __("status") %></th>
+                            <th scope="col"><%= __("territory") %></th>
                           </tr>
                         </thead>
                         <tbody>

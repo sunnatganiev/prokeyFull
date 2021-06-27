@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="img/favicon1.png" type="image/png" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title><%= __("translations") %></title>
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-content-wrapper">
+      <%- include('../../sidebar.ejs', {
+        page: 'translations'
+      }) %>
+
+      <main>
+        <%- include('../../header.ejs') %>
+        <div class="dashboard-content">
+          <div class="container-fluid">
+            <div class="dashboard-content__header py-3 border-bottom">
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("translations") %></h6>
+            </div>
+            <ul class="nav nav-pills nav-fill flex-nowrap overflow-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-link text-dark <% if (page === "/") { %>active text-white-override<% } %>" href="/dashboard/translations" ><%= __("staticTranslations") %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark <% if (page === "products") { %>active text-white-override<% } %>" href="/dashboard/translations/products"><%= __("products") %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark <% if (page === "news") { %>active text-white-override<% } %>" href="/dashboard/translations/news"><%= __("news") %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark <% if (page === "banners") { %>active text-white-override<% } %>" href="/dashboard/translations/banners"><%= __("banners") %></a>
+              </li>
+            </ul>
+            <div class="container">
+              <% stringKeys.forEach((key,i) => { %>
+                <ul class="list-group list-group-horizontal w-100 row">
+                  <li class="list-group-item col-lg-6 col-md-12"><span class="small"><%= i+1 %>.</span> <%= defaultStrings[key] %>
+                    <div>
+                      <span class="badge-pill badge-warning d-inline-block" style="font-size: 9px;"><%= key %> </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item col-lg-5 col-md-12">
+                    <input type="text" class="form-control" value="<%= stringValues[i] %>">
+                  </li>
+                  <li class="list-group-item col-lg-1 col-md-12 d-flex justify-content-center">
+                    <button type="button" class="btn square-50 p-0 btn-success js-save-string" data-key="<%= key %>">
+                      <i class="fas fa-check-square"></i>
+                    </button>
+                  </li>
+                </ul>
+              <% }) %>
+             
+              
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

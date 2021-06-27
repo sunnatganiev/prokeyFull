@@ -16,26 +16,25 @@
         <div class="hudud__malumotlar">
           <div class="hudud__malumotlar-cart">
             <i class="fas fa-map-marker-alt icon"></i>
-            <h4>Manzil</h4>
+            <h4><%= __("address") %></h4>
             <p style="line-height: 1">
-              Toshkent shaxri, Chilonzor tumani, Bunyodkor va Cho'pon ota
-              ko'chalari kesishuvi
+              <%= __("siteAddress") %>
             </p>
           </div>
           <div class="hudud__malumotlar-cart">
             <i class="fas fa-phone icon"></i>
-            <h4>Telefon</h4>
+            <h4><%= __("phoneNumber") %></h4>
             <p class="mb-0">+998 91 778 89 89</p>
             <p class="mb-0">+998 99 699 00 19</p>
           </div>
           <div class="hudud__malumotlar-cart">
             <i class="fas fa-envelope icon"></i>
-            <h4>E-Pochta</h4>
+            <h4><%= __("email") %></h4>
             <p>info@progresskey.uz</p>
           </div>
           <div class="hudud__malumotlar-cart">
             <i class="fas fa-globe icon"></i>
-            <h4>Sayt</h4>
+            <h4><%= __("site") %></h4>
             <p>progresskey.uz</p>
           </div>
           <!-- <div class="hudud__malumotlar-cart">
@@ -53,7 +52,7 @@
                     <input
                       class="form-control form-control-lg rounded-0"
                       type="text"
-                      placeholder="Ism"
+                      placeholder="<%= __("name") %>"
                       name="name"
                       required
                     />
@@ -79,7 +78,7 @@
                     <input
                       class="form-control form-control-lg rounded-0"
                       type="email"
-                      placeholder="Email"
+                      placeholder="<%= __("email") %>"
                       name="email"
                       required
                     />
@@ -93,7 +92,7 @@
                     <textarea
                       class="form-control form-control-lg rounded-0"
                       rows="4"
-                      placeholder="Xabar matnini kiriting"
+                      placeholder="<%= __("inputMessage") %>"
                       name="message"
                       required
                     ></textarea>
@@ -104,20 +103,19 @@
                 class="w-100 d-flex align-items-center justify-content-center"
               >
                 <button class="btn btn-primary" type="submit">
-                  Jo'natish <i class="fab fa-telegram-plane"></i>
+                  <%= __("send") %> <i class="fab fa-telegram-plane"></i>
                 </button>
               </div>
-            </form>Form 
+            </form>
           </div>
           <div class="col-lg-4 col-md-12 mb-2">
             <div class="p-3 border border-2 text-left shadow-sm rounded">
               <h4
                 class="title-underlined text-left text-uppercase font-weight-bold mr-auto"
               >
-                Ish vaqti
+                <%= __("workingHours") %>
               </h4>
-              <p>Dushanba - Payshanba<br>
-                9:00 - 20:00</p>
+              <p><%- __("siteWorkingHours") %></p>
             </div>
           </div>
         </div>

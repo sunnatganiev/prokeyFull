@@ -17,6 +17,24 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  translations: {
+    ru: {
+      name: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+    },
+    en: {
+      name: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+    },
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);

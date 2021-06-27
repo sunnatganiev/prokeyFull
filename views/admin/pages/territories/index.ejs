@@ -18,7 +18,7 @@
             <div class="dashboard-content__header py-3 border-bottom">
               <h6 class="font-weight-bold text-muted mb-0"> <%= __("territories") %> </h6>
               <a href="/dashboard/territories/add?region=14" >
-                Yangi qo'shish 
+                <%= __("addNew") %> 
                 <i class="fas fa-user-plus"></i>
               </a>
             </div>
@@ -35,7 +35,7 @@
                           <div class="card mx-2" style="width: 300px;" >
                             <iframe class="card-img-top" src="<%= x.mapUrl %> " width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                             <div class="card-body">
-                              <h5 class="card-title">Hudud</h5>
+                              <h5 class="card-title"><%= __("territory") %></h5>
                               <div class="card-text">
                                 <p class="text-dark"><strong class="text-danger"><%= __("region") %>: </strong><%= x.region[`name_${getLocale()}`] %></p>
                                 <p class="text-dark"><strong class="text-danger"><%= __("city") %>: </strong><%= x.city[`name_${getLocale()}`] %></p>
@@ -53,13 +53,13 @@
                                 <div class="dropdown d-flex align-items-center">
                                   <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
                                   <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                    <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
+                                    <h6 class="text-center"><%= __("areYouSureToDelete") %></h6>
                                     <div class="d-flex justify-content-center">
                                       <form method="POST" action="<%= api("territories/delete") %>" class="d-flex">
                                         <input type="hidden" name="id" value="<%= x._id %>">
-                                        <button type="submit" class="btn btn-danger btn-sm mr-1">HA</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mr-1"><%= __("yes") %></button>
                                       </form>
-                                      <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
+                                      <a class="btn btn-success btn-sm ml-1" href="#"><%= __("no") %></a>
                                     </div>
                                   </div>
                                 </div>

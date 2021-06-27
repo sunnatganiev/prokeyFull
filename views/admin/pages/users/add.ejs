@@ -18,7 +18,7 @@
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Yangi foydalanuvchi qo'shish</h6>
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("addNew") %></h6>
             </div>
             <div class="row px-3">
               <div class="col-lg-9 col-md-12 my-3">
@@ -26,48 +26,48 @@
                   <form method="POST" enctype="multipart/form-data" action="<%= api("users/user") %>">
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">
-                        Malumotlar
+                        <%= __("info") %>
                       </h6>
                       <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-success text-white">ISM</span>
+                              <span class="input-group-text bg-success text-white"><%= __("name") %></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Ism" name="name" required>
+                            <input type="text" class="form-control" placeholder="<%= __("name") %>" name="name" required>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-success text-white">FAMILIYA</span>
+                              <span class="input-group-text bg-success text-white"><%= __("surname") %></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Familiya" name="surname" required>
+                            <input type="text" class="form-control" placeholder="<%= __("surname") %>" name="surname" required>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-success text-white">SHARIF</span>
+                              <span class="input-group-text bg-success text-white"><%= __("middleName") %></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Sharif" name="middleName" required>
+                            <input type="text" class="form-control" placeholder="<%= __("middleName") %>" name="middleName" required>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-success text-white">JINSI</span>
+                              <span class="input-group-text bg-success text-white"><%= __("gender") %></span>
                             </div>
                             <select name="gender" class="custom-select" required>
-                              <option value="male">Erkak</option>
-                              <option value="female">Ayol</option>
+                              <option value="male"><%= __("male") %></option>
+                              <option value="female"><%= __("female") %></option>
                             </select>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-success text-white">Tug'...kun</span>
+                              <span class="input-group-text bg-success text-white"><%= __("birthDate") %></span>
                             </div>
                             <input type="date" id="birthday-input" class="form-control" name="birthDate" required placeholder="<%= __("birthDate") %>">
                           </div>
@@ -90,13 +90,13 @@
 
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">
-                        Kontakt
+                        <%= __("contact") %>
                       </h6>
                       <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-danger text-white">TELEFON</span>
+                              <span class="input-group-text bg-danger text-white"><%= __("phoneNumber") %></span>
                             </div>
                             <input type="text" class="form-control phone-input-mask" placeholder="+998" name="phoneNumber" required>
                           </div>
@@ -104,7 +104,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-danger text-white">EMAIL</span>
+                              <span class="input-group-text bg-danger text-white"><%= __("email") %></span>
                             </div>
                             <input type="email" class="form-control" placeholder="example@mail.com" name="email" required>
                           </div>
@@ -125,13 +125,13 @@
 
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">
-                        Referal
+                        <%= __("referal") %>
                       </h6>
                       <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-warning text-white">Kim taklif qilgan?</span>
+                              <span class="input-group-text bg-warning text-white"><%= __("whoInvited") %></span>
                             </div>
                             <input type="email" class="form-control" name="whoInvited" placeholder="example@.gmail.com" required>
                           </div>
@@ -139,7 +139,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-warning text-white">Obuna</span>
+                              <span class="input-group-text bg-warning text-white"><%= __("following") %></span>
                             </div>
                             <input type="email" class="form-control" name="following" placeholder="example@.gmail.com" required>
                           </div>
@@ -147,11 +147,11 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-warning text-white">Obuna tomoni</span>
+                              <span class="input-group-text bg-warning text-white"><%= __("followingSide") %></span>
                             </div>
                             <select name="followingSide" class="custom-select" required>
-                              <option value="right">O'ng</option>
-                              <option value="left">Chap</option>
+                              <option value="right"><%= __("right") %></option>
+                              <option value="left"><%= __("left") %></option>
                             </select>
                           </div>
                         </div>
@@ -163,8 +163,8 @@
                               </div>
                               <select name="role" class="custom-select" required>
                                 <option value="watcher" selected><%= __("watcher") %></option>
-                                <option value="admin">Admin</option>
-                                <option value="registrator">Registrator</option>
+                                <option value="admin"><%= __("admin") %></option>
+                                <option value="registrator"><%= __("registrator") %></option>
                               </select>
                             </div>
                           </div>
@@ -176,9 +176,9 @@
                             </div>
                             <select name="status" class="custom-select" required>
                               <option value="client" selected><%= __("client") %></option>
-                              <option value="partner">Partner</option>
-                              <option value="master">Master</option>
-                              <option value="manager">Manager</option>
+                              <option value="partner"><%= __("partner") %></option>
+                              <option value="master"><%= __("master") %></option>
+                              <option value="manager"><%= __("manager") %></option>
                             </select>
                           </div>
                         </div>
@@ -187,13 +187,13 @@
 
                     <div class="mb-4">
                       <h6 class="title-left-stick mb-3">
-                        Autentifikatsiya
+                        <%= __("authentication") %>
                       </h6>
                       <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-primary text-white">Parol</span>
+                              <span class="input-group-text bg-primary text-white"><%= __("password") %></span>
                             </div>
                             <input type="password" class="form-control" name="password" required>
                           </div>
@@ -201,7 +201,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-primary text-white">Parolni qaytaring</span>
+                              <span class="input-group-text bg-primary text-white"><%= __("repeatPassword") %></span>
                             </div>
                             <input type="password" class="form-control" name="passwordConfirm" required/>
                           </div>
@@ -209,7 +209,7 @@
                       </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary text-uppercase">Saqlash</button>
+                    <button type="submit" class="btn btn-primary text-uppercase"><%= __("save") %></button>
 
                   </form>
                 </div>

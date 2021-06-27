@@ -17,7 +17,7 @@
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
               <h6 class="font-weight-bold text-muted mb-0">
-                Yangi xaridor qo'shish
+                <%= __("addNew") %>
               </h6>
             </div>
             <div class="row px-3">
@@ -26,20 +26,20 @@
                   <form action="<%= api("products/edit") %>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<%= product._id %>">
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Malumotlar</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("info") %></h6>
                       <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span
                                 class="input-group-text bg-success text-white"
-                                >Nom</span
+                                ><%= __("title") %></span
                               >
                             </div>
                             <input
                               type="text"
                               class="form-control"
-                              placeholder="Maxulot nomi"
+                              placeholder="<%= __("title") %>"
                               name="name"
                               value="<%= product.name %>"
                               required
@@ -70,14 +70,14 @@
                             <div class="input-group-prepend">
                               <span
                                 class="input-group-text bg-success text-white"
-                                >Narxi</span
+                                ><%= __("price") %></span
                               >
                             </div>
                             <input
                               type="number"
                               min="1"
                               class="form-control"
-                              placeholder="Narx"
+                              placeholder="<%= __("price") %>"
                               name="price"
                               value="<%= product.price %>"
                               required
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Rasmlar</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("images") %></h6>
                       <p class="text-danger"><%= __("productImagesNote") %></p>
                       <div class="row">
                         <div class="col-12">
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="mb-4">
-                      <h6 class="title-left-stick mb-3">Maxsulot haqida</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("description") %></h6>
                       <div class="row">
                         <div class="col-lg-12">
                           <textarea
@@ -123,7 +123,7 @@
                       type="submit"
                       class="btn btn-primary text-uppercase"
                     >
-                      Saqlash
+                      <%= __("save") %>
                     </button>
                   </form>
                 </div>

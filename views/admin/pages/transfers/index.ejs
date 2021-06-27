@@ -16,7 +16,7 @@
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Transferlar</h6>
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("transfers") %></h6>
               <!-- <a href="#buy-product" data-toggle="collapse">
                 Maxsulot sotib olish
                 <i class="fas fa-plus"></i>
@@ -90,19 +90,19 @@
 
               <div class="col-lg-12 dashboard__card">
                 <div class="p-3 shadow-sm">
-                  <h6 class="title-left-stick mb-3">Transferlar qilish - [<%= __("balance") %>: <%= user.balance %>]</h6>
+                  <h6 class="title-left-stick mb-3"><%= __("transfer") %> - [<%= __("balance") %>: <%= user.balance %>]</h6>
                   <form method="POST" action="<%= api("transfers/add") %>">
                     <div class="d-flex flex-wrap align-items-center justify-content-around">
                       <div>
                         <label
                           class="form-label h6 text-uppercase mb-3"
                           for="amount-input"
-                          >Transfer miqdori</label
+                          ><%= __("amount") %></label
                         >
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text bg-danger text-white"
-                              >Summa</span
+                              ><%= __("amount") %></span
                             >
                           </div>
                           <input
@@ -111,7 +111,7 @@
                             max="<%= user.balance %>"
                             class="form-control"
                             id="amount-input"
-                            placeholder="Kamida 5"
+                            placeholder="<%= __("atLeast5") %>"
                             name="amount"
                             required
                           />
@@ -122,7 +122,7 @@
                         <label
                           class="form-label h6 text-uppercase mb-3"
                           for="reciever-input"
-                          >Qabul qiluvchi</label
+                          ><%= __("reciever") %></label
                         >
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
@@ -164,10 +164,10 @@
                         <label
                           class="form-label h6 text-uppercase mb-3"
                           for="reciever-input"
-                          >Tasdiqlash</label
+                          ><%= __("confirm") %></label
                         >
                         <div class="input-group mb-3">
-                          <button type="submit" class="btn btn-primary" <% if (!user.balance) { %>disabled<% } %>>Roziman</button>
+                          <button type="submit" class="btn btn-primary" <% if (!user.balance) { %>disabled<% } %>><%= __("agree") %></button>
                         </div>
                       </div>
                     </div>
@@ -176,7 +176,7 @@
               </div>
               <div class="col-lg-12 dashboard__card">
                 <div class="p-3 shadow-sm">
-                  <h6 class="title-left-stick mb-3">Transferlar tarixi</h6>
+                  <h6 class="title-left-stick mb-3"><%= __("transfersHistory") %></h6>
                   <table
                     class="table-striped table table-responsive-md custom-table table-hover"
                   >

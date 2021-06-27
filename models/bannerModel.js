@@ -16,6 +16,24 @@ const bannerSchema = new mongoose.Schema({
     type: String,
     required: [true, "Iltimos url kirgizing!"],
   },
+  translations: {
+    ru: {
+      title: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+    },
+    en: {
+      title: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+    },
+  },
 });
 
 const Banner = mongoose.model("Banner", bannerSchema);

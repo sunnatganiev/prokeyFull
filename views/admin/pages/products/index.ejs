@@ -18,7 +18,7 @@
             <div class="dashboard-content__header py-3 border-bottom">
               <h6 class="font-weight-bold text-muted mb-0"> <%= __("products") %> </h6>
               <a href="products/add">
-                Yangi qo'shish
+                <%= __("addNew") %>
                 <i class="fas fa-user-plus"></i>
               </a>
             </div>
@@ -35,11 +35,11 @@
                       >
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Rasmlar</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Narx</th>
+                            <th scope="col"><%= __("images") %></th>
+                            <th scope="col"><%= __("title") %></th>
+                            <th scope="col"><%= __("price") %></th>
                             <!-- <th scope="col">Soni</th> -->
-                            <th scope="col">Amallar</th>
+                            <th scope="col"><%= __("actions") %></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -63,14 +63,14 @@
                                   <div class="dropdown d-flex align-items-center">
                                     <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
                                     <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                      <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
+                                      <h6 class="text-center"><%= __("areYouSureToDelete") %></h6>
                                       <div class="d-flex justify-content-center">
                                         <form method="POST" action="<%= api("products/delete") %>" class="d-flex">
                                           <input type="hidden" name="id" value="<%= pr._id %>">
-                                          <button type="submit" class="btn btn-danger btn-sm mr-1">HA</button>
+                                          <button type="submit" class="btn btn-danger btn-sm mr-1"><%= __("yes") %></button>
                                         </form>
                                        
-                                        <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
+                                        <a class="btn btn-success btn-sm ml-1" href="#"><%= __("no") %></a>
                                       </div>
                                     </div>
                                   </div>

@@ -29,4 +29,11 @@ module.exports = {
     NOT_ENOUGH_BALL: "NOT_ENOUGH_BALL",
     ERROR: "ERROR",
   },
+  translate(obj, lang) {
+    if (lang === "uz") return obj;
+    if (!obj) {
+      return null;
+    }
+    return { ...obj, ...obj.translations[lang] };
+  },
 };

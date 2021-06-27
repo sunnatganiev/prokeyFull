@@ -45,7 +45,7 @@
           <div class="col-xl-7 col-lg-6 col-md-12">
             <div class="inside_goods_info">
               <div class="d-flex align-items-center justify-content-between flex-wrap w-100">
-                <h2 class="font-weight-bold h3"><%= product.name %></h2>
+                <h2 class="font-weight-bold h3"><%= translate(product, getLocale()).name %></h2>
                 <!-- <div class="inside_goods_stars">
                   <i class="fas fa-star colored"></i>
                   <i class="fas fa-star colored"></i>
@@ -56,7 +56,7 @@
                 
               </div>
               <div class="mt-3">
-                <%- product.description %>
+                <%-translate(product, getLocale()).description %>
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-between">
@@ -80,7 +80,7 @@
       </div>
 
       <div class="my-5">
-        <h3 class="text-light">Boshqalar</h3>
+        <h3 class="text-light"><%= __("others") %></h3>
         <%- include('../components/products.ejs', {products}) %>
       </div>
 

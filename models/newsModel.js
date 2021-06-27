@@ -18,6 +18,30 @@ const newsSchema = new mongoose.Schema(
       type: String,
       required: [true, "Iltimos rasm kirgizing!"],
     },
+    translations: {
+      ru: {
+        title: {
+          type: String,
+        },
+        description: {
+          type: String,
+        },
+        shortDescription: {
+          type: String,
+        },
+      },
+      en: {
+        title: {
+          type: String,
+        },
+        shortDescription: {
+          type: String,
+        },
+        description: {
+          type: String,
+        },
+      },
+    },
   },
   {
     timestamps: true,

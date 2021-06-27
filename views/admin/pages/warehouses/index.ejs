@@ -16,9 +16,9 @@
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Omborlar</h6>
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("warehouses") %></h6>
               <a href="#warehouses-add" data-toggle="collapse">
-                Yangi qo'shish
+                <%= __("addNew") %>
                 <i class="fas fa-user-plus"></i>
               </a>
             </div>
@@ -27,7 +27,7 @@
                 <div class="row">
                   <div class="col-lg-12 dashboard__card collapse" id="warehouses-add">
                     <div class="p-3 shadow-sm">
-                      <h6 class="title-left-stick mb-3">Ombor qo'shish</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("addNew") %></h6>
                       <form method="POST" action="<%= api("warehouse/add") %>">
                         <div class="row">
                           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -42,12 +42,12 @@
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12">
                             <label for="registrator" class="form-label"
-                              >Ombor nomi</label
+                              ><%= __("title") %></label
                             >
                            <input required type="text" class="form-control" name="name" id="name-input"/>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-end">
-                            <button type="submit" class="btn btn-success">SAQLASH</button>
+                            <button type="submit" class="btn btn-success"><%= __("save") %></button>
                           </div>
                         </div>
                       </form>
@@ -56,18 +56,18 @@
 
                   <div class="col-lg-12 dashboard__card">
                     <div class="p-3 shadow-sm">
-                      <h6 class="title-left-stick mb-3">Omborlar</h6>
+                      <h6 class="title-left-stick mb-3"><%= __("warehouses") %></h6>
                       <table
                         class="table table-striped table-responsive-md custom-table table-hover"
                       >
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Ombor nomi</th>
-                            <th scope="col">Hudud</th>
-                            <th scope="col">Boshqaruchi</th>
-                            <th scope="col">Maxsulot soni</th>
+                            <th scope="col"><%= __("title") %></th>
+                            <th scope="col"><%= __("territory") %></th>
+                            <th scope="col"><%= __("registrator") %></th>
+                            <th scope="col"><%= __("productsCount") %></th>
                             <% if (user.role === "admin") { %>
-                              <th scope="col">Amallar</th>
+                              <th scope="col"><%= __("actions") %></th>
                             <% } %>
                           </tr>
                         </thead>
@@ -92,14 +92,14 @@
                                     <div class="dropdown d-flex align-items-center">
                                       <a href="#" class="btn btn-danger btn-sm" id="dropDownDeleteConfirm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-trash"></i></a>
                                       <div class="dropdown-menu p-3" aria-labelledby="dropDownDeleteConfirm">
-                                        <h6 class="text-center">Ushbu maxsulotni o'chirishni tasdiqlaysizmi?</h6>
+                                        <h6 class="text-center"><%= __("areYouSureToDelete") %></h6>
                                         <div class="d-flex justify-content-center">
                                           <form method="POST" action="<%= api("warehouse/delete") %>" class="d-flex">
                                             <input type="hidden" name="id" value="<%= x._id %>">
-                                            <button type="submit" class="btn btn-danger btn-sm mr-1">HA</button>
+                                            <button type="submit" class="btn btn-danger btn-sm mr-1"><%= __("yes") %></button>
                                           </form>
                                          
-                                          <a class="btn btn-success btn-sm ml-1" href="#">YO'Q</a>
+                                          <a class="btn btn-success btn-sm ml-1" href="#"><%= __("no") %></a>
                                         </div>
                                       </div>
                                     </div>
@@ -116,7 +116,7 @@
                                     <div class="row w-100">
                                       <div class="col-4">
                                         <label for="registrator" class="form-label"
-                                          >Ombor nomi</label
+                                          ><%= __("name") %></label
                                         >
                                         <input required type="text" class="form-control" name="name" id="name-input" value="<%= x.name %>"/>
                                       </div>
@@ -131,7 +131,7 @@
                                         </select>
                                       </div>
                                       <div class="col-4 d-flex align-items-end">
-                                        <button type="submit" class="btn btn-success mr-2 text-uppercase">SAQLASH</button>
+                                        <button type="submit" class="btn btn-success mr-2 text-uppercase"><%= __("save") %></button>
                                         <button type="button" data-toggle="collapse" data-target="#warehouse-edit-<%= i %>" class="btn btn-danger text-uppercase"><%= __("cancel") %></button>
                                       </div>
                                     </div>

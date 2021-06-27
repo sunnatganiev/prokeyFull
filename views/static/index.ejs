@@ -20,9 +20,9 @@
               <% banners.forEach((banner, i) => { %>
                 <%- include('../components/banner-item.ejs', {
                   isActive: i === 0,
-                  title: banner.title,
+                  title: translate(banner, getLocale()).title,
                   img: banner.photo,
-                  info: banner.description,
+                  info: translate(banner, getLocale()).description,
                   link: banner.url
                 }) %> 
               <% }) %>
@@ -120,7 +120,7 @@
               role="tab"
               aria-controls="recently-added"
               aria-selected="true"
-              >So'ngi qo'shilganlar</a
+              ><%= __("recentlyAdded") %></a
             >
           </li>
           <li class="nav-item" role="presentation">
@@ -132,7 +132,7 @@
               role="tab"
               aria-controls="top-products"
               aria-selected="false"
-              >Top maxsulotlar</a
+              ><%= __("topProducts") %></a
             >
           </li>
           <li class="nav-item" role="presentation">
@@ -144,7 +144,7 @@
               role="tab"
               aria-controls="most-sold-products"
               aria-selected="false"
-              >Ko'p sotilganlar</a
+              ><%= __("mostSold") %></a
             >
           </li>
           <li class="nav-item" role="presentation">
@@ -156,7 +156,7 @@
               role="tab"
               aria-controls="popular-products"
               aria-selected="false"
-              >Ommabop maxsulotlar</a
+              ><%= __("popularProducts") %></a
             >
           </li>
         </ul>
@@ -196,13 +196,13 @@
         </div>
 
         <p class="korish-item">
-          <a class="korish-link" href="#">Barchasini ko'rish ></a>
+          <a class="korish-link" href="#"><%= __("seeAll") %> ></a>
         </p>
       </div>
     </div>
 
     <div class="section section--hidden chegirma-kartalar">
-      <p class="main-text">chegirma kartalar</p>
+      <p class="main-text"><%= __("discountCards") %></p>
 
       <div class="kartalar">
         <div class="first-card sale-card shadow-lg">
@@ -230,10 +230,7 @@
           <div class="row">
             <div class="col-lg-6 col-md-12">
               <h3 class="text-primary text-uppercase mb-4 font-weight-bold">
-                online operatordan
-                <span class="text-dark d-block font-weight-bold"
-                  >maslaxat olish</span
-                >
+                <%- __("getFeedback") %> 
               </h3>
 
               <form method="POST" action="/message/add" class="contacts-form">
@@ -243,7 +240,7 @@
                       <input
                         class="form-control form-control-lg rounded-0"
                         type="text"
-                        placeholder="Ism"
+                        placeholder="<%= __("name") %>"
                         name="name"
                         required
                       />
@@ -269,7 +266,7 @@
                       <input
                         class="form-control form-control-lg rounded-0"
                         type="email"
-                        placeholder="Email"
+                        placeholder="<%= __("email") %>"
                         name="email"
                         required
                       />
@@ -283,7 +280,7 @@
                       <textarea
                         class="form-control form-control-lg rounded-0"
                         rows="4"
-                        placeholder="Xabar matnini kiriting"
+                        placeholder="<%= __("inputMessage") %>"
                         name="message"
                         required
                       ></textarea>
@@ -294,7 +291,7 @@
                   class="w-100 d-flex align-items-center justify-content-center"
                 >
                   <button class="btn btn-primary" type="submit">
-                    Jo'natish <i class="fab fa-telegram-plane"></i>
+                    <%= __("send") %> <i class="fab fa-telegram-plane"></i>
                   </button>
                 </div>
               </form>
@@ -312,7 +309,7 @@
       </div>
     </div>
     <div class="section section--hidden home__map">
-      <h3 class="home__map-text">O'zingizga yaqin do'konni tanlang</h3>
+      <h3 class="home__map-text"><%= __("chooseCloseShop") %></h3>
       <div class="mapouter">
         <div class="gmap_canvas">
           <iframe

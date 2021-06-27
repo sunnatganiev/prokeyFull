@@ -1,13 +1,13 @@
 <div class="section section--hidden home-yangiliklar">
-  <p class="main-text">yangiliklar</p>
+  <p class="main-text"><%= __("news") %></p>
 
   <div class="row">
     <% newsList.forEach(news => { %>
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
         <%- include('./news-item.ejs', {
           img: news.photo,
-          title: news.title,
-          description: news.shortDescription,
+          title: translate(news, getLocale()).title,
+          description: translate(news, getLocale()).shortDescription,
           id: news._id,
           createdAt: news.createdAt
         }) %> 

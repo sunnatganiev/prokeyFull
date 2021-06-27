@@ -15,17 +15,17 @@
       <div class="py-5">
         <div class="yangilik-card news-single-page shadow-sm mb-3">
           <div class="card-img">
-            <img src="<%= news.photo %>" alt="<%= news.title %>" />
+            <img src="<%= news.photo %>" alt="<%= translate(news, getLocale()).title %>" />
           </div>
           <div class="yangilik-card-content">
             <h2>
-              <%= news.title %>
+              <%= translate(news, getLocale()).title %>
             </h2>
             <p>
-              <%= news.shortDescription %> 
+              <%= translate(news, getLocale()).shortDescription %> 
             </p>
             <p>
-              <%- news.description %> 
+              <%- translate(news, getLocale()).description %> 
             </p>
             <div class="yangilik-bottom">
               <div class="yangilik-bottom--left">

@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Copying old public files
         run: cp -R public/* ./../backup
+      - name: Copying old locales files
+        run: cp -R locales/* ./../locales
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -40,5 +42,9 @@ jobs:
         run: cp -R ./../backup/* ./public
       - name: Deleting contents of backup
         run: rm -r ./../backup/*
+      - name: Loading old locale files
+        run: cp -R ./../locales/* ./locales
+      - name: Deleting contents of locales
+        run: rm -r ./../locales/*
       - name: Starting server
         run: pm2 restart server

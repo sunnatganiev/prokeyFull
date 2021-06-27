@@ -8,8 +8,7 @@
           >www.prokey.one
         </a>
         <p class="footer-address">
-          Toshkent shaxri, Chilonzor tumani, Bunyodkor va Cho'pon ota ko'chalari
-          kesishuvi
+          <%= __("siteAddress") %>
         </p>
 
         <div class="footer-info">
@@ -28,63 +27,47 @@
         </div>
 
         <div class="footer-ishkun">
-          <h4 class="ishkunlari-left">ish kunlari</h4>
+          <h4 class="ishkunlari-left"><%= __("workingHours") %></h4>
           <p class="ishkunlari-right">
-            dushanba-Shanba <span>09:00 - 20:00</span>
+            <%- __("siteWorkingHours") %>
           </p>
         </div>
-        <p class="footer-huquq">Progresskey.uz Barcha huquqlar himoyalangan</p>
+        <p class="footer-huquq"><%= __("copyright") %></p>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-md-center">
         <ul class="footer__menyu d-inline-block">
-          <h3 class="footer-text">menyu</h3>
+          <h3 class="footer-text"><%= __("menu") %></h3>
           <li class="footer-li">
-            <a href="/" class="footer-menyu--link">Asosiy</a>
+            <a href="/" class="footer-menyu--link"><%= __("main") %></a>
           </li>
           <li class="footer-li">
             <a href="/products" class="footer-menyu--link"
-              >Mahsulotlar</a
+              ><%= __("products") %></a
             >
           </li>
           <li class="footer-li">
             <a href="/local-shops" class="footer-menyu--link"
-              >Hududiy do'konlar</a
+              ><%= __("localShops") %></a
             >
           </li>
           <li class="footer-li">
             <a href="/news" class="footer-menyu--link"
-              >Yangiliklar</a
+              ><%= __("news") %></a
             >
           </li>
           <li class="footer-li">
-            <a href="/gallery" class="footer-menyu--link">Galereya</a>
+            <a href="/gallery" class="footer-menyu--link"><%= __("gallery") %></a>
           </li>
           <li class="footer-li">
             <a href="/contacts" class="footer-menyu--link"
-              >Ma'lumot va yordam</a
+              ><%= __("contacts") %> </a
             >
           </li>
         </ul>
       </div>
 
       <div class="footer__last col-lg-4 col-md-6 col-sm-12">
-        <h3 class="footer-text fs-3">sayt yangiliklariga a'zo bo'lish</h3>
-        <div class="my-4">
-          <form action="">
-            <div class="input-group">
-              <input
-                type="email"
-                name="email"
-                class="form-control"
-                placeholder="Email"
-              />
-              <div class="input-group-append">
-                <button class="btn-primary btn" type="submit">Jo'natish</button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <h3 class="footer-text">ijtimoiy tarmoqlar</h3>
+        <h3 class="footer-text"><%= __("socialNetworks") %></h3>
         <div class="footer__social-media">
           <a
             href="https://www.facebook.com/progresskey"

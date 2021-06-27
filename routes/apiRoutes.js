@@ -220,4 +220,36 @@ router.post(
   warehouseController.decrementProduct
 );
 
+router.put(
+  "/translations/static/edit",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  apiController.staticTranslationEdit
+);
+
+router.put(
+  "/translations/field/product",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  apiController.translateProduct
+);
+
+router.put(
+  "/translations/field/news",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  apiController.translateNews
+);
+
+router.put(
+  "/translations/field/banner",
+  authController.isLoggedIn,
+  authController.protect,
+  authController.allowTo("admin"),
+  apiController.translateBanner
+);
+
 module.exports = router;

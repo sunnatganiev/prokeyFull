@@ -27,6 +27,104 @@ $(window).on("load", function () {
 });
 
 jQuery(function () {
+  //translations request
+  $(".js-save-string").on("click", function (evt) {
+    const btn = $(this);
+    const btnHtml = `<i class="fas fa-check-square"></i>`;
+    const dataKey = btn.data("key");
+    console.log(dataKey);
+    const newValue = btn.parent().parent().find(".form-control").val();
+
+    $.ajax({
+      url: "/api/v1/translations/static/edit",
+      method: "PUT",
+      data: { key: dataKey, value: newValue },
+      beforeSend: () => {
+        btn.html(`<div class="spinner-border" role="status"></div>`);
+      },
+      success: (res) => {
+        btn.html(btnHtml);
+      },
+      error: (err) => {
+        btn.html(btnHtml);
+      },
+    });
+  });
+
+  $(".js-product-translate").on("click", function (evt) {
+    const btn = $(this);
+    const btnHtml = `<i class="fas fa-check-square"></i>`;
+    const id = btn.data("id");
+    const name = btn.parent().parent().find("input").val();
+    const description = btn.parent().parent().find("textarea").val();
+
+    $.ajax({
+      url: "/api/v1/translations/field/product",
+      method: "PUT",
+      data: { id, name, description },
+      beforeSend: () => {
+        btn.html(`<div class="spinner-border" role="status"></div>`);
+      },
+      success: (res) => {
+        btn.html(btnHtml);
+      },
+      error: (err) => {
+        btn.html(btnHtml);
+      },
+    });
+  });
+
+  $(".js-news-translate").on("click", function (evt) {
+    const btn = $(this);
+    const btnHtml = `<i class="fas fa-check-square"></i>`;
+    const id = btn.data("id");
+    const title = btn.parent().parent().find(".js-title").val();
+    const shortDescription = btn
+      .parent()
+      .parent()
+      .find(".js-short-description")
+      .val();
+    const description = btn.parent().parent().find(".js-description").val();
+
+    $.ajax({
+      url: "/api/v1/translations/field/news",
+      method: "PUT",
+      data: { id, title, shortDescription, description },
+      beforeSend: () => {
+        btn.html(`<div class="spinner-border" role="status"></div>`);
+      },
+      success: (res) => {
+        btn.html(btnHtml);
+      },
+      error: (err) => {
+        btn.html(btnHtml);
+      },
+    });
+  });
+
+  $(".js-banners-translate").on("click", function (evt) {
+    const btn = $(this);
+    const btnHtml = `<i class="fas fa-check-square"></i>`;
+    const id = btn.data("id");
+    const title = btn.parent().parent().find(".js-title").val();
+    const description = btn.parent().parent().find(".js-description").val();
+
+    $.ajax({
+      url: "/api/v1/translations/field/banner",
+      method: "PUT",
+      data: { id, title, description },
+      beforeSend: () => {
+        btn.html(`<div class="spinner-border" role="status"></div>`);
+      },
+      success: (res) => {
+        btn.html(btnHtml);
+      },
+      error: (err) => {
+        btn.html(btnHtml);
+      },
+    });
+  });
+
   $(".toast").toast();
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -106,59 +204,8 @@ jQuery(function () {
       });
     });
 
-  $("#product-description").richText({
-    fonts: false,
-    fontColor: false,
-    fontSize: true,
-
-    // uploads
-    imageUpload: false,
-    fileUpload: false,
-
-    // media
-    videoEmbed: false,
-
-    // link
-    urls: true,
-
-    // tables
-    table: false,
-
-    // code
-    removeStyles: true,
-    code: false,
-
-    translations: {
-      sameTab: "Joriy tabda",
-      newTab: "Yangi tabda",
-      title: "Sarlavha",
-      linkText: "Matnga havola",
-      url: "URL",
-      size: "O'lcham",
-      responsive: "Moslashuvchan",
-      text: "Matn",
-      openIn: "Ochish",
-      align: "Tekislash",
-      left: "Chap",
-      center: "Markaz",
-      right: "O'ng",
-      add: "Qo'shish",
-      pleaseEnterURL: "Havola kiriting",
-      bold: "Qalin matn",
-      italic: "Kursiv",
-      underline: "Tag chiziqli",
-      alignLeft: "Chapga tekislash",
-      alignCenter: "Markazga tekislash",
-      alignRight: "O'nga tekislash",
-      addOrderedList: "Tartiblangan ro'yxat",
-      addUnorderedList: "Tartiblanmagan ro'yxat",
-      addHeading: "Sarlavha qo'shish",
-      addFontSize: "Shrift o'lchami",
-      addURL: "Havola qo'shish",
-      removeStyles: "Remove styles",
-      undo: "Orqaga",
-      redo: "Oldinga",
-      close: "Yopish",
-    },
-  });
+  $("#product-description").richText(richTextOptions);
+  for (let i = 0; i < +$("#rich-texts").data("count"); i++) {
+    $(`#textarea-${i}`).richText(richTextOptions);
+  }
 });

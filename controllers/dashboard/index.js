@@ -1,3 +1,4 @@
+const fs = require("fs");
 const User = require("../../models/userModel");
 const { clients, registrators, users } = require("./userController");
 const getGallery = require("../../utils/getGallery");
@@ -253,6 +254,72 @@ module.exports = {
         messages,
         currentPage,
         pages: Math.ceil(messagesCount / 20),
+      });
+    },
+  },
+  translations: {
+    async index(req, res) {
+      const lang = res.getLocale();
+
+      const defaultStrings = await fs.promises.readFile(
+        `${__dirname}/../../locales/uz.json`
+      );
+      const strings = await fs.promises.readFile(
+        `${__dirname}/../../locales/${lang}.json`
+      );
+      res.status(200).render("admin/pages/translations/index", {
+        stringKeys: Object.keys(JSON.parse(strings.toString())),
+        stringValues: Object.values(JSON.parse(strings.toString())),
+        defaultStrings: JSON.parse(defaultStrings.toString()),
+        page: "/",
+      });
+    },
+    async products(req, res) {
+      const lang = res.getLocale();
+      if (lang === "uz") {
+        return res.status(200).render("admin/error", {
+          err_code: 403,
+          error: res.__(ERRORS.PERMISSION_DENIED),
+          info: res.__("changeLanguageToTranslate"),
+        });
+      }
+
+      const products = await Product.find();
+      res.status(200).render("admin/pages/translations/products", {
+        products,
+        page: "products",
+      });
+    },
+    async news(req, res) {
+      const lang = res.getLocale();
+      if (lang === "uz") {
+        return res.status(200).render("admin/error", {
+          err_code: 403,
+          error: res.__(ERRORS.PERMISSION_DENIED),
+          info: res.__("changeLanguageToTranslate"),
+        });
+      }
+
+      const news = await News.find();
+      res.status(200).render("admin/pages/translations/news", {
+        news,
+        page: "news",
+      });
+    },
+    async banners(req, res) {
+      const lang = res.getLocale();
+      if (lang === "uz") {
+        return res.status(200).render("admin/error", {
+          err_code: 403,
+          error: res.__(ERRORS.PERMISSION_DENIED),
+          info: res.__("changeLanguageToTranslate"),
+        });
+      }
+
+      const banners = await Banner.find();
+      res.status(200).render("admin/pages/translations/banners", {
+        banners,
+        page: "banners",
       });
     },
   },

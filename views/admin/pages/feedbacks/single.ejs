@@ -28,20 +28,20 @@
                       <form method="POST" enctype="multipart/form-data" action="<%= api("feedbacks/edit") %>">
                         <input type="hidden" name="id" value="<%= feedback._id %>">
                         <div class="mb-4">
-                          <h6 class="title-left-stick mb-3">Malumotlar</h6>
+                          <h6 class="title-left-stick mb-3"><%= __("info") %></h6>
                           <div class="row">
                             <div class="col-lg-12">
                               <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span
                                     class="input-group-text bg-success text-white"
-                                    >F.I.SH</span
+                                    ><%= __("fullnameString") %></span
                                   >
                                 </div>
                                 <input
                                   type="text"
                                   class="form-control"
-                                  placeholder="F.I.SH"
+                                  placeholder="<%= __("fullnameString") %>"
                                   name="fullname"
                                   value="<%= feedback.fullname %>"
                                   required
@@ -53,12 +53,12 @@
                                 <div class="input-group-prepend">
                                   <span
                                     class="input-group-text bg-success text-white"
-                                    >Ta'rif</span
+                                    ><%= __("description") %></span
                                   >
                                 </div>
                                 <textarea
                                   class="form-control"
-                                  placeholder="Ta'rif"
+                                  placeholder="<%= __("description") %>"
                                   name="description"
                                   required
                                   rows="6"
@@ -70,7 +70,7 @@
                         </div>
     
                         <div class="mb-4">
-                          <h6 class="title-left-stick mb-3">Rasm</h6>
+                          <h6 class="title-left-stick mb-3"><%= __("image") %></h6>
                           <div class="row">
                             <div class="col-12">
                               <div class="file-loading">
@@ -92,7 +92,7 @@
                           type="submit"
                           class="btn btn-primary text-uppercase"
                         >
-                          Saqlash
+                          <%= __("save") %>
                         </button>
                       </form>
                     </div>

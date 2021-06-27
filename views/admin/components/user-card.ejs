@@ -7,12 +7,12 @@
     <div>
       <h4><%= name %> <%= surname %></h4>
       <p><a href="/dashboard/users/id/<%= _id %>" class="small overflow-hidden"><%= email %></a> </p>
-      <p>Status: <%= __(status) %> </p>
+      <p><%= __("status") %>: <%= __(status) %> </p>
     </div>
   </div>
   <% if (followers.length) { %>
     <div class="mb-3">
-      <h5>Qo'shgan profillari</h5>
+      <h5><%= __("addedUsers") %></h5>
       <div class="added-users">
         <% for( let i = 0; i < 4; i++ ) { %>
           <% if (followers[i]) { %>

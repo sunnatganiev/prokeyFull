@@ -18,9 +18,9 @@
         <div class="dashboard-content">
           <div class="container-fluid">
             <div class="dashboard-content__header py-3 border-bottom">
-              <h6 class="font-weight-bold text-muted mb-0">Me'ning a'zolarim</h6>
+              <h6 class="font-weight-bold text-muted mb-0"><%= __("myTeam") %></h6>
               <a href="/dashboard/users/add">
-                Yangi qo'shish
+                <%= __("addNew") %>
                 <i class="fas fa-user-plus"></i>
               </a>
             </div>
@@ -32,12 +32,12 @@
                       <table class="table-striped table table-responsive-md custom-table table-hover table-borderless table-sm">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">A'zo</th>
+                            <th scope="col"><%= __("member") %></th>
                             <th scope="col"><%= __("email") %> </th>
                             <th scope="col"><%= __("status") %> </th>
-                            <th scope="col">A'zolari</th>
-                            <th scope="col">Chap qo'l</th>
-                            <th scope="col">O'ng qo'l</th>
+                            <th scope="col"><%= __("members") %></th>
+                            <th scope="col"><%= __("leftHand") %></th>
+                            <th scope="col"><%= __("rightHand") %></th>
                             <th scope="col"><%= __("actions") %></th>
                           </tr>
                         </thead>
