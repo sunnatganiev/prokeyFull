@@ -141,5 +141,6 @@
   "left": "Chap",
   "authentication": "Authentication",
   "repeatPassword": "Repeat password",
-  "staticTranslations": "Static translations"
+  "staticTranslations": "Static translations",
+  "changeLanguageToTranslate": "Tarjimani boshlash uchun iltimos boshqa til tanlang!"
 }
