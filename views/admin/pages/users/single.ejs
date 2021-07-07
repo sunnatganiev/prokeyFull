@@ -244,6 +244,38 @@
    
                     </form>
                   </div>
+
+                  <% if (viewUser._id.equals(locals.user._id)) { %>
+                    <div class="dashboard__card bg-white p-3 rounded mx-n3">
+                      <h6 class="title-left-stick mb-3">
+                        <%= __("password") %>
+                      </h6>
+                      <form method="POST" action="<%= api("users/user/change-password") %>">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white"><%= __("password") %></span>
+                              </div>
+                              <input type="password" class="form-control" placeholder="<%= __("password") %>" name="password" required>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white"><%= __("newPassword") %></span>
+                              </div>
+                              <input type="password" class="form-control" placeholder="<%= __("newPassword") %>" name="newPassword" required>
+                            </div>
+                          </div>                                                   
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          <%= __("save") %>
+                        </button>
+                      </form>
+                    </div>
+                  <% } %>
+
                 <% } else{ %>  
                   <%- include('../components/alert.ejs', {
                     dismissable: true,

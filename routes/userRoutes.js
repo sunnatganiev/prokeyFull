@@ -9,8 +9,8 @@ router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.get("/logout", authController.logout);
 
-router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
+router.post("/forgot-password", authController.forgotPassword);
 
 // Protect all routes after this middleware
 router.use(authController.protect);
@@ -25,7 +25,20 @@ router.post(
   userController.createUser
 );
 //UPDATE USER
-router.post("/user/edit", upload().single("photo"), userController.updateUser);
+router.post(
+  "/user/edit",
+  authController.protect,
+  upload().single("photo"),
+  userController.updateUser
+);
+
+//CHANGE PASSWORD
+router.post(
+  "/user/change-password",
+  authController.protect,
+  authController.updatePassword
+);
+
 // ==========================
 
 // router.patch('/updateMyPassword', authController.updatePassword);

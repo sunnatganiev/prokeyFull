@@ -62,6 +62,29 @@
               <%= __("signIn") %>
             </button>
           </form>
+
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#forgotPassword">
+            <%= __("forgotPassword") %>
+          </button>
+
+          <form class="collapse" id="forgotPassword" method="POST" action="<%= api("users/forgot-password") %>">
+            <div class="mb-3">
+              <label for="email-input" class="form-label mb-1"><%= __("email") %></label>
+              <input
+                type="email"
+                class="form-control"
+                autocomplete="email"
+                id="email-input"
+                placeholder="<%= __("email") %>"
+                name="email"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <%= __("reset") %>
+            </button>
+          </form>
+
           <% } else { %>
           <div class="d-flex flex-column align-items-center">
             <div class="logo">

@@ -154,12 +154,12 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-// userSchema.pre("save", function (next) {
-//   if (!this.isModified("password") || this.isNew) return next();
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
 
-//   this.passwordChangedAt = Date.now() - 1000;
-//   next();
-// });
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
 
 userSchema.methods.correctPasaword = async function (
   candidatePassword,

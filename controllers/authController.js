@@ -200,7 +200,10 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    return next(new AppError("There is no user with email address.", 404));
+    return res.status(401).render("static/error", {
+      err_code: 401,
+      error: res.__(ERRORS.USER_DOES_NOT_EXIST),
+    });
   }
 
   // 2) Generate the random reset token
@@ -269,15 +272,36 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection
   const user = await User.findById(req.user.id).select("+password");
 
+  if (req.body.newPassword?.length < 8) {
+    return res.status(401).render("admin/error", {
+      err_code: 401,
+      error: res.__(ERRORS.PASSWORD_MUST_CONTAIN_8_CHARS),
+      user: user,
+    });
+  }
+
   // 2) Check if POSTed current password is correct
-  if (!(await user.correctPasaword(req.body.passwordCurrent, user.password))) {
-    return next(new AppError("You current password is wron.", 401));
+  console.log(user);
+  try {
+    if (!(await user.correctPasaword(req.body.password, user.password))) {
+      return res.status(401).render("admin/error", {
+        err_code: 401,
+        error: res.__(ERRORS.INCORRECT_PASSWORD),
+        user: user,
+      });
+    }
+  } catch (error) {
+    return res.status(401).render("admin/error", {
+      err_code: 401,
+      error: res.__(ERRORS.INCORRECT_PASSWORD),
+      user: user,
+    });
   }
 
   // 3) If so, update password
-  user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
-  await user.save();
+  user.password = req.body.newPassword;
+  user.passwordConfirm = req.body.newPassword;
+  await user.save({ validateBeforeSave: false });
 
   // 4) Log user in, send JWT
   createSendToken(user, 200, res);

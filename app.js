@@ -13,6 +13,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const routes = require("./routes");
 const constants = require("./utils/constants");
 const { getCurrentUser } = require("./controllers/authController");
+const { ERRORS } = require("./utils/constants");
 
 const locales = ["uz", "ru", "en"];
 
@@ -115,13 +116,13 @@ app.all("*", async (req, res, next) => {
     const currentUser = await getCurrentUser(req, res);
     res.status(404).render("admin/error", {
       err_code: 404,
-      error: "Bunday sahifa topilmadi!",
+      error: res.__(ERRORS.PAGE_NOT_FOUND),
       user: currentUser,
     });
   } else {
     res.status(404).render("static/error", {
       err_code: 404,
-      error: "Bunday sahifa topilmadi!",
+      error: res.__(ERRORS.PAGE_NOT_FOUND),
     });
   }
 });
