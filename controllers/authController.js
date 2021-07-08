@@ -21,6 +21,7 @@ const createSendToken = (user, statusCode, res) => {
     ),
     httpOnly: true,
   };
+
   if (process.env.NODE_END === "production") cookieOptions.secure = true;
 
   res.cookie("jwt", token, cookieOptions);
@@ -33,10 +34,10 @@ const createSendToken = (user, statusCode, res) => {
   //     user,
   //   },
   // });
-  // res.status(statusCode).render("static/login", {
-  //   user: user,
-  // });
-  res.redirect("/dashboard");
+  res.status(statusCode).render("static/login", {
+    user: user,
+  });
+  // res.redirect("/dashboard");
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
@@ -251,6 +252,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     passwordResetExpires: { $gt: Date.now() },
   });
 
+  console.log('user 254: ', user);
   // 2) If token has not expired, and there is user, set the new password
   if (!user) {
     return next(new AppError("Token is invalid or has expired", 400));
