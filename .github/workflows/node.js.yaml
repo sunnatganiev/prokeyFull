@@ -37,6 +37,8 @@ jobs:
           echo JWT_EXPIRES_IN=90d >> config.env
           echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> config.env
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> config.env
+          echo EMAIL_USERNAME=${{secrets.EMAIL_USERNAME}} >> config.env
+          echo EMAIL_PASSWORD=${{secrets.EMAIL_PASSWORD}} >> config.env
           echo PORT=${{ secrets.PORT }} >> config.env
       - name: Loading old public files
         run: cp -R ./../backup/* ./public

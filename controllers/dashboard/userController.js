@@ -43,7 +43,7 @@ module.exports = {
       const territoriesDB = await Territory.find();
       const id = req.params.id ? req.params.id : await currentUser._id;
       if (mongoose.Types.ObjectId.isValid(id)) {
-        const viewUser = await User.findById(id);
+        const viewUser = await User.findById(id).populate("followers");
         const following = await User.findOne({
           email: viewUser.following,
         }).populate("followers");
@@ -59,7 +59,6 @@ module.exports = {
             });
           }
         }
-        console.log(following);
         res.status(200).render("admin/pages/users/single", {
           user: currentUser,
           error: res.locals.error,
