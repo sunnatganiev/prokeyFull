@@ -27,4 +27,6 @@ router.get("/login", authController.isLoggedIn, viewsController.login);
 
 router.post("/message/add", addMessage);
 
+router.get("/reset-password/:token", authController.resetPasswordView);
+
 module.exports = router;

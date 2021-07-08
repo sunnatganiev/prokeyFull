@@ -34,10 +34,10 @@ const createSendToken = (user, statusCode, res) => {
   //     user,
   //   },
   // });
-  res.status(statusCode).render("static/login", {
-    user: user,
-  });
-  // res.redirect("/dashboard");
+  // res.status(statusCode).render("static/login", {
+  //   user: user,
+  // });
+  res.redirect("/dashboard");
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
@@ -57,7 +57,10 @@ exports.login = catchAsync(async (req, res, next) => {
 
   if (!user || !(await user.correctPasaword(password, user.password))) {
     // return next(new AppError("Incorrect email or password", 401));
-    res.locals.error = ERRORS.WRONG_CREDENTIALS;
+    res.locals.message = {
+      type: "danger",
+      content: ERRORS.WRONG_CREDENTIALS,
+    };
 
     return viewsController.login(req, res);
   }
@@ -201,10 +204,12 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    return res.status(401).render("static/error", {
-      err_code: 401,
-      error: res.__(ERRORS.USER_DOES_NOT_EXIST),
-    });
+    res.locals.message = {
+      type: "danger",
+      content: ERRORS.USER_DOES_NOT_EXIST,
+    };
+
+    return viewsController.login(req, res);
   }
 
   // 2) Generate the random reset token
@@ -214,9 +219,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 3) Send it to user's email
   const resetURL = `${req.protocol}://${req.get(
     "host"
-  )}/api/v1/users/resetPassword/${resetToken}`;
+  )}/reset-password/${resetToken}`;
 
-  const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
+  const message = `Forgot your password? Follow the link below: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
   try {
     await sendEmail({
       email: user.email,
@@ -224,24 +229,22 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       message,
     });
 
-    res.status(200).json({
-      status: "success",
-      message: "Token sent to email",
-    });
+    res.locals.message = {
+      type: "success",
+      content: ERRORS.EMAIL_IS_SENT,
+    };
+
+    return viewsController.login(req, res);
   } catch (error) {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
 
-    return next(
-      new AppError("There was an error sending the email. Try again  later!"),
-      500
-    );
+    return next(new AppError(error), 500);
   }
 });
 
-exports.resetPassword = catchAsync(async (req, res, next) => {
-  // 1) Get user based on the token
+exports.resetPasswordView = async (req, res, next) => {
   const hashedToken = crypto
     .createHash("sha256")
     .update(req.params.token)
@@ -252,10 +255,59 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     passwordResetExpires: { $gt: Date.now() },
   });
 
-  console.log('user 254: ', user);
   // 2) If token has not expired, and there is user, set the new password
   if (!user) {
-    return next(new AppError("Token is invalid or has expired", 400));
+    res.locals.message = {
+      type: "danger",
+      content: ERRORS.INVALID_TOKEN,
+    };
+  }
+  return res.status(200).render("static/reset-password", {
+    title: res.__("resetPassword"),
+    token: req.params.token,
+  });
+};
+
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  // 1) Get user based on the token
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.body.token)
+    .digest("hex");
+
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+  if (req.body.password !== req.body.passwordConfirm) {
+    res.locals.message = {
+      type: "danger",
+      content: ERRORS.PASSWORDS_NOT_SAME,
+    };
+    return res.status(400).render("static/reset-password", {
+      title: res.__("resetPassword"),
+    });
+  }
+
+  if (req.body.password.length < 8) {
+    res.locals.message = {
+      type: "danger",
+      content: ERRORS.PASSWORD_MUST_CONTAIN_8_CHARS,
+    };
+    return res.status(400).render("static/reset-password", {
+      title: res.__("resetPassword"),
+    });
+  }
+  // 2) If token has not expired, and there is user, set the new password
+  if (!user) {
+    res.locals.message = {
+      type: "danger",
+      content: ERRORS.INVALID_TOKEN,
+    };
+    return res.status(400).render("static/reset-password", {
+      title: res.__("resetPassword"),
+    });
   }
 
   user.password = req.body.password;
@@ -264,9 +316,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetExpires = undefined;
   await user.save({ validateBeforeSave: false });
 
-  // 3) Update changedPasswordAt property for the user
-
-  // 4) log the user in, send JWT
   createSendToken(user, 200, res);
 });
 
@@ -282,8 +331,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     });
   }
 
-  // 2) Check if POSTed current password is correct
-  console.log(user);
+  // 2) Check if POSTed current password is correct\
   try {
     if (!(await user.correctPasaword(req.body.password, user.password))) {
       return res.status(401).render("admin/error", {

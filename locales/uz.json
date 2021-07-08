@@ -149,5 +149,7 @@
 	"INCORRECT_PASSWORD": "INCORRECT_PASSWORD",
 	"PASSWORD_MUST_CONTAIN_8_CHARS": "PASSWORD_MUST_CONTAIN_8_CHARS",
 	"forgotPassword": "forgotPassword",
-	"reset": "reset"
+	"reset": "reset",
+	"EMAIL_IS_SENT": "EMAIL_IS_SENT",
+	"resetPassword": "resetPassword"
 }

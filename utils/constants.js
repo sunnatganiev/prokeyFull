@@ -31,6 +31,8 @@ module.exports = {
     ERROR: "ERROR",
     INCORRECT_PASSWORD: "INCORRECT_PASSWORD",
     PASSWORD_MUST_CONTAIN_8_CHARS: "PASSWORD_MUST_CONTAIN_8_CHARS",
+    EMAIL_IS_SENT: "EMAIL_IS_SENT",
+    INVALID_TOKEN: "INVALID_TOKEN",
   },
   translate(obj, lang) {
     if (lang === "uz") return obj;

@@ -13,11 +13,11 @@
     <div class="container">
      
       <div class="login-page py-5">
-        <% if (locals.error) { %>
+        <% if (locals.message) { %>
           <%- include('../components/alert.ejs', {
             dismissable: true,
-            type: "danger",
-            content: __(error)
+            type: message.type,
+            content: __(message.content)
           }) %> 
         <% } %>
         <div class="w-100 w-md-50 mx-auto">

@@ -8,7 +8,7 @@ const { getFileName, dashUrl, getImgPath, getError } = require("./utilities");
 
 module.exports = {
   async createUser(req, res, next) {
-    const currentUser = await getCurrentUser();
+    const currentUser = await getCurrentUser(req, res);
     const following = await User.findOne({ email: req.body.following });
     const whoInvited = await User.findOne({ email: req.body.whoInvited });
 
