@@ -24,7 +24,7 @@ module.exports = {
       const users = await User.find(
         query,
         {},
-        { limit: 10, skip: currentPage * 10 }
+        { sort: "-createdAt", limit: 10, skip: currentPage * 10 }
       ).populate("followers");
       const usersCount = await User.countDocuments();
       const territories = await Territory.find();

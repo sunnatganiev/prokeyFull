@@ -464,7 +464,7 @@ button {
 }
 
 .e-nav__link:after {
-  content: "Home Page";
+  content: attr(data-text);
 }
 
 .e-nav__link:hover:before {

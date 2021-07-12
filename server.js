@@ -37,10 +37,20 @@ const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
+  if (new Date().getTimezoneOffset() / 60 !== -5) {
+    console.error(
+      new Error(
+        `TIMEZONE MUST BE Asia/Tashkent (JS timezone offset must be -300), current timezone offset from JS DATE is ${new Date().getTimezoneOffset()}`
+      )
+    );
+    server.close(() => {
+      process.exit(1);
+    });
+  }
 });
 
 process.on("unhandledRejection", (err) => {
-  console.log("UNHALDED REJECTION! 💥 Shutting down...");
+  console.log("UNHANDLED REJECTION! 💥 Shutting down...");
   console.log(err);
   server.close(() => {
     process.exit(1);

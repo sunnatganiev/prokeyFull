@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 const cron = require("node-cron");
-const { checkDay, checkSalary } = require("../controllers/logic");
+const { checkDay, checkSalary, sendReport } = require("../controllers/logic");
+const User = require("../models/userModel");
+const sendEmail = require("./email");
 
 module.exports = {
   eachWeek: () => {
@@ -9,6 +11,7 @@ module.exports = {
       "0 0 * * monday",
       async () => {
         await checkDay();
+        await sendReport("week");
       },
       {
         timezone: "Asia/Tashkent",
@@ -22,6 +25,7 @@ module.exports = {
       "0 0 1 * *",
       async () => {
         await checkSalary();
+        await await sendReport("month");
       },
       {
         timezone: "Asia/Tashkent",

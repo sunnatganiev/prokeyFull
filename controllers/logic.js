@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const { sum } = require("./utilities");
 const Territory = require("../models/territoryModel");
 const Transaction = require("../models/transactionModel");
+const sendEmail = require("../utils/email");
 
 exports.invite = async (req, invited) => {
   let ballInvite = invited.balance;
@@ -207,4 +208,25 @@ exports.assignToTerritory = async (territoryId, user) => {
     });
   }
   return null;
+};
+
+exports.sendReport = async (type = "week") => {
+  let days = 7;
+  let keyStrings = ["Haftalik", "hafta"];
+
+  if (type === "month") {
+    days = 30;
+    keyStrings = ["Oylik", "oy"];
+  }
+
+  const usersCount = await User.countDocuments({
+    createdAt: {
+      $gte: new Date(Date.now() - days * 60 * 60 * 24 * 1000),
+    },
+  });
+  await sendEmail({
+    email: "progresskeyuz@gmail.com",
+    subject: `${keyStrings[0]} hisobot`,
+    message: `${keyStrings[0]} ballar hisoblandi, Ushbu ${keyStrings[1]} umumiy ${usersCount} foydalanuvchi qo'shildi!`,
+  });
 };

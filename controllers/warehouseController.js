@@ -45,7 +45,6 @@ module.exports = {
     res.redirect(dashUrl(`/warehouses/id/${warehouse._id}`));
   },
   async decrementProduct(req, res) {
-    console.log(req.body);
     const warehouse = await Warehouse.findById(req.body.warehouse);
 
     const index = warehouse.products.findIndex(

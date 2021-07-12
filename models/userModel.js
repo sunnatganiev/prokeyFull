@@ -9,137 +9,140 @@ const { ERRORS } = require("../utils/constants");
 //   ref: "User",
 // };
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Iltimos ismingizni kirgizing!"],
-    trim: true,
-  },
-  surname: {
-    type: String,
-    required: [true, "Iltimos familiyangizni kirgizing!"],
-    trim: true,
-  },
-  middleName: {
-    type: String,
-    trim: true,
-  },
-  birthDate: {
-    type: Date,
-    required: [true, "Iltimos tug'ilgan kuningizni tanlang"],
-  },
-  gender: {
-    type: String,
-    enum: ["male", "female"],
-  },
-  phoneNumber: {
-    type: String,
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: [true, "Iltimos elektron pochtangizni kirgizing!"],
-    lowercase: true,
-    immutable: true,
-    validate: [validator.isEmail, "Please provide a valid email"],
-  },
-  whoInvited: {
-    type: String,
-    required: [
-      true,
-      "Iltimos sizni taklif qilgan mijozning emailini kirgizing",
-    ],
-  },
-  // followers: [],
-  following: {
-    type: String,
-    required: [true, "email kirgizing"],
-  },
-  followingSide: {
-    type: String,
-    required: [true, "A user must select a side to followe"],
-    enum: {
-      values: ["left", "right"],
-      message: "Side is either left or right",
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Iltimos ismingizni kirgizing!"],
+      trim: true,
     },
-  },
-  photo: {
-    type: String,
-  },
-  role: {
-    type: String,
-    enum: ["admin", "registrator", "watcher"],
-    default: "watcher",
-  },
-  balance: {
-    type: Number,
-    default: 0,
-  },
-  followers: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
+    surname: {
+      type: String,
+      required: [true, "Iltimos familiyangizni kirgizing!"],
+      trim: true,
     },
-  ],
-  transactions: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Transaction",
+    middleName: {
+      type: String,
+      trim: true,
     },
-  ],
-  left: {
-    leftSum: {
-      type: Number,
-      default: 0,
+    birthDate: {
+      type: Date,
+      required: [true, "Iltimos tug'ilgan kuningizni tanlang"],
     },
-    week: [Object],
-    month: [Object],
-  },
-  right: {
-    rightSum: {
-      type: Number,
-      default: 0,
+    gender: {
+      type: String,
+      enum: ["male", "female"],
     },
-    week: [Object],
-    month: [Object],
-  },
-  territory: {
-    type: mongoose.Types.ObjectId,
-    ref: "Territory",
-  },
-  status: {
-    type: String,
-    enum: {
-      values: ["client", "partner", "master", "manager"],
-      message: "status is either: client, partner, master, manager",
+    phoneNumber: {
+      type: String,
     },
-    required: [true, "Mijozning statusini tanlang"],
-  },
-  password: {
-    type: String,
-    required: [true, "A user must have a password"],
-    minlength: 8,
-    select: false,
-  },
-  passwordConfirm: {
-    type: String,
-    validate: {
-      // this only works on CREATE and SAVE!!!
-      validator: function (val) {
-        return val === this.password;
+    email: {
+      type: String,
+      unique: true,
+      required: [true, "Iltimos elektron pochtangizni kirgizing!"],
+      lowercase: true,
+      immutable: true,
+      validate: [validator.isEmail, "Please provide a valid email"],
+    },
+    whoInvited: {
+      type: String,
+      required: [
+        true,
+        "Iltimos sizni taklif qilgan mijozning emailini kirgizing",
+      ],
+    },
+    // followers: [],
+    following: {
+      type: String,
+      required: [true, "email kirgizing"],
+    },
+    followingSide: {
+      type: String,
+      required: [true, "A user must select a side to followe"],
+      enum: {
+        values: ["left", "right"],
+        message: "Side is either left or right",
       },
-      message: ERRORS.PASSWORDS_NOT_SAME,
+    },
+    photo: {
+      type: String,
+    },
+    role: {
+      type: String,
+      enum: ["admin", "registrator", "watcher"],
+      default: "watcher",
+    },
+    balance: {
+      type: Number,
+      default: 0,
+    },
+    followers: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    transactions: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Transaction",
+      },
+    ],
+    left: {
+      leftSum: {
+        type: Number,
+        default: 0,
+      },
+      week: [Object],
+      month: [Object],
+    },
+    right: {
+      rightSum: {
+        type: Number,
+        default: 0,
+      },
+      week: [Object],
+      month: [Object],
+    },
+    territory: {
+      type: mongoose.Types.ObjectId,
+      ref: "Territory",
+    },
+    status: {
+      type: String,
+      enum: {
+        values: ["client", "partner", "master", "manager"],
+        message: "status is either: client, partner, master, manager",
+      },
+      required: [true, "Mijozning statusini tanlang"],
+    },
+    password: {
+      type: String,
+      required: [true, "A user must have a password"],
+      minlength: 8,
+      select: false,
+    },
+    passwordConfirm: {
+      type: String,
+      validate: {
+        // this only works on CREATE and SAVE!!!
+        validator: function (val) {
+          return val === this.password;
+        },
+        message: ERRORS.PASSWORDS_NOT_SAME,
+      },
+    },
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
+    active: {
+      type: Boolean,
+      default: true,
+      select: false,
     },
   },
-  passwordChangedAt: Date,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-  active: {
-    type: Boolean,
-    default: true,
-    select: false,
-  },
-});
+  { timestamps: true }
+);
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
